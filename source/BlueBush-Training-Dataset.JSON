@@ -1,0 +1,373 @@
+[
+  {
+    "id": "email_001",
+    "channel": "Email",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Hi, I recently bought the Maireana linen sheets in Sage. I'm just wondering, how should I wash these to keep them soft? I don't want to ruin the texture.",
+    "brand_response": "Hi there,\n\nThanks so much for choosing BlueBush! It’s lovely to hear you’ve picked up the Maireana linen in Sage—that’s one of our favourite colours this season.\n\nTo keep them beautifully soft, we recommend a gentle machine wash on a cool cycle (30°C is perfect). Use a mild, eco-friendly detergent and avoid bleach, as it can weaken the natural flax fibres. If you can, line drying in the shade is best for longevity and the environment, but a cool tumble dry works too.\n\nThey actually get softer with every wash, so enjoy the process!\n\nWarmly,\nThe BlueBush Team"
+  },
+  {
+    "id": "social_002",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Are your shipping satchels actually compostable? Or is it just greenwashing? 🤔",
+    "brand_response": "Great question! We appreciate you holding us accountable &#128079;. Yes, our satchels are 100% home compostable (certified AS 5810). You can pop them straight in your worm farm or compost bin, and they will break down within months. No plastic nasties here! &#127807;"
+  },
+  {
+    "id": "chatbot_003",
+    "channel": "Chatbot",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "Do you have a store in Perth?",
+    "brand_response": "We sure do. We have a showroom in Fremantle where you can feel the textures in person. Would you like the opening hours or the address?"
+  },
+  {
+    "id": "phone_004",
+    "channel": "Phone Call Transcript",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "Hi, I'm trying to find a gift for my mum. She loves gardening but has a small balcony.",
+    "brand_response": "Agent: G'day! Thanks for calling BlueBush, you're speaking with Sarah. That sounds like a lovely idea for your mum.\n\nCustomer: Yeah, hoping to find something unique.\n\nAgent: I'd love to help with that. Since she's got a balcony, have you seen our 'Bower' vertical planters? They're made from recycled aesthetic plastic and fit perfectly in tight spaces.\n\nCustomer: Oh, I haven't. Do they come in green?\n\nAgent: They do! We have a gorgeous 'Eucalypt' shade that would blend right in with her plants. Let me check the stock levels at our Perth warehouse for you... just a tick... yep, we've got plenty."
+  },
+  {
+    "id": "web_form_005",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: Returns Request for Order #BB-8921. Reason: Item colour didn't match the photo.",
+    "brand_response": "Thanks for lodging your return request for Order #BB-8921. We're sorry the colour wasn't quite right in your space. We've received your details and have just emailed you a prepaid, carbon-neutral shipping label. Pop the item back in the post within 14 days, and we'll handle the rest."
+  },
+  {
+    "id": "email_006",
+    "channel": "Email",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "To Whom It May Concern, I represent a boutique hotel in Margaret River. We are looking to source sustainable bedding for 12 suites. Do you offer trade pricing?",
+    "brand_response": "Hi there,\n\nThank you for reaching out! A Margaret River retreat sounds absolutely dreamy, and we'd be thrilled to help you create a sustainable sanctuary for your guests.\n\nYes, we definitely offer a Trade Programme for commercial partners. We can provide bulk pricing on our organic cotton and French flax linen ranges. I have attached our Trade Lookbook to this email for you to review.\n\nCould you let me know your timeline for the fit-out? I can then check stock availability for that volume.\n\nCheers,\nBlueBush Trade Team"
+  },
+  {
+    "id": "social_007",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Obsessed with my new BlueBush rug! It's so soft underfoot. 😍",
+    "brand_response": "We are blushing! &#128522; So glad it's found a happy home with you. Is that the Jute or the Recycled Wool blend? We'd love to see a photo if you're happy to share! &#128248;"
+  },
+  {
+    "id": "chatbot_008",
+    "channel": "Chatbot",
+    "interaction_depth": "Single",
+    "customer_inquiry": "track my order",
+    "brand_response": "I can help with that. Please enter your Order Number (it starts with BB) or the email address used at checkout."
+  },
+  {
+    "id": "phone_009",
+    "channel": "Phone Call Transcript",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "I'm calling because my delivery is late. It was supposed to be here Tuesday.",
+    "brand_response": "Agent: Hi there, thanks for calling BlueBush. I'm sorry to hear your parcel is taking the scenic route. That's definitely frustrating when you're waiting for something.\n\nCustomer: Yeah, I needed it for the weekend.\n\nAgent: Completely understandable. Let me pull up the tracking info... okay, I see it here. It looks like there was a slight delay with the courier crossing the Nullarbor due to the floods. It's currently scanned in Kewdale and should be out for delivery tomorrow morning. Does that work for you?"
+  },
+  {
+    "id": "web_form_010",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: Newsletter Subscription. Email: user@example.com",
+    "brand_response": "Welcome to the family! &#127807; You are now on the list for our 'Slow Living' newsletter. Keep an eye on your inbox for eco-tips, new arrival alerts, and a little welcome treat."
+  },
+  {
+    "id": "email_011",
+    "channel": "Email",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Hello, are your candles made with paraffin? I get headaches from strong synthetic scents.",
+    "brand_response": "Hi,\n\nThanks for asking—this is such an important question for a healthy home.\n\nRest assured, we never use paraffin or petroleum-based waxes. All BlueBush candles are hand-poured in WA using 100% natural soy wax and pure essential oils. They provide a gentle, natural scent that is much kinder to your senses (and the air quality!).\n\nIf you are sensitive, I'd recommend our 'Paperbark' scent—it's very subtle and earthy.\n\nWarm regards,\nThe BlueBush Team"
+  },
+  {
+    "id": "social_012",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Can I return sale items if they don't fit? 👗",
+    "brand_response": "Hey! For 'Final Sale' items, we generally don't offer returns unless they are faulty. However, if it's just a regular sale promotion, our standard 30-day return policy applies! Check the product page for the specific badge to be sure &#128077;."
+  },
+  {
+    "id": "chatbot_013",
+    "channel": "Chatbot",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Are your products vegan?",
+    "brand_response": "Most of our range is vegan! We use materials like bamboo, linen, and organic cotton. The only exceptions are our recycled wool blankets and beeswax wraps. Each product page lists the materials clearly."
+  },
+  {
+    "id": "phone_014",
+    "channel": "Phone Call Transcript",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "I can't figure out how to put this flat-pack shelving together. The instructions are confusing.",
+    "brand_response": "Agent: G'day, you're speaking with Ben. Sorry to hear the shelving is giving you a bit of grief! Flat-packs can test the best of us, hey?\n\nCustomer: You're not wrong. Step 3 makes no sense.\n\nAgent: Ah, Step 3 on the 'Jarrah' unit? That one is a bit tricky. The trick is to line up the dowels *before* you tighten the cam-locks. Are you looking at the diagram with the long screws right now?"
+  },
+  {
+    "id": "web_form_015",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: Out of Stock Notification for 'Banksia Ceramic Vase'.",
+    "brand_response": "Good taste! The Banksia Vase is a favourite. We've logged your request and will send you an email the moment our potter delivers the next batch. Expect an update in roughly 2 weeks."
+  },
+  {
+    "id": "email_016",
+    "channel": "Email",
+    "interaction_depth": "Single",
+    "customer_inquiry": "My order arrived damaged. The glass jar is shattered.",
+    "brand_response": "Hi there,\n\nOh no! We are so sorry to hear that. Even with our plastic-free protective packaging, sometimes the journey can be a bit rough.\n\nPlease don't worry—we will sort this out for you immediately. Could you please reply to this email with a quick photo of the breakage? Once we have that, we can send a replacement jar out to you express, or organize a refund if you prefer.\n\nApologies for the mess!\n\nBest,\nBlueBush Support"
+  },
+  {
+    "id": "social_017",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Do you ship to New Zealand? 🥝",
+    "brand_response": " Kia Ora! Yes, we absolutely ship to our neighbours across the ditch &#127475;&#127487;. Shipping is calculated at checkout based on weight. Just a heads-up that rural delivery might take a few extra days!"
+  },
+  {
+    "id": "chatbot_018",
+    "channel": "Chatbot",
+    "interaction_depth": "Single",
+    "customer_inquiry": "sustainable materials",
+    "brand_response": "Sustainability is our core! We use organic cotton, hemp, bamboo, recycled glass, and reclaimed timber. Which material are you interested in learning more about?"
+  },
+  {
+    "id": "phone_019",
+    "channel": "Phone Call Transcript",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "Do you guys do gift wrapping? I'm sending this straight to my sister.",
+    "brand_response": "Agent: Hi, thanks for calling BlueBush. We certainly do! We use a lovely recycled kraft paper and finish it with a sprig of dried eucalyptus.\n\nCustomer: That sounds perfect.\n\nAgent: It really looks the part. We can also include a handwritten card if you like? Just let me know what message you want to send to your sister."
+  },
+  {
+    "id": "web_form_020",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: Contact Us. Message: I am an artisan weaver based in Tasmania. How can I stock my products with you?",
+    "brand_response": "Thanks for getting in touch! We love discovering local makers. We've passed your details to our Buying Team. If your weaving style aligns with our upcoming collections, they will reach out to request a sample."
+  },
+  {
+    "id": "email_021",
+    "channel": "Email",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Hi, do you offer a warranty on your bamboo furniture?",
+    "brand_response": "Hi there,\n\nThanks for your enquiry! We stand by the quality of our craftsmanship.\n\nYes, all our BlueBush bamboo furniture pieces come with a 2-year structural warranty. This covers any manufacturing defects or material faults. Since bamboo is a natural material, slight variations in grain are normal, but if anything splits or breaks under normal use, we've got you covered.\n\nLet me know if you need the full T&Cs!\n\nCheers,\nThe BlueBush Team"
+  },
+  {
+    "id": "social_022",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "What's the thread count on the sheets?",
+    "brand_response": "Hey! For our Organic Cotton percale, it's a crisp 300 thread count. For our Linen range, we measure by weight (GSM) rather than thread count—ours is a lush 170GSM, which is the sweet spot for durability and softness! &#128524;"
+  },
+  {
+    "id": "chatbot_023",
+    "channel": "Chatbot",
+    "interaction_depth": "Single",
+    "customer_inquiry": "payment options",
+    "brand_response": "We accept all major credit cards, PayPal, and Afterpay. We also accept Apple Pay for quick checkout on mobile."
+  },
+  {
+    "id": "phone_024",
+    "channel": "Phone Call Transcript",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "I'm looking at the 'BlueBush' rug, but I'm worried it might be too scratchy for my toddler.",
+    "brand_response": "Agent: Hi! Thanks for getting in touch. That's a great question—little ones spend a lot of time on the floor, don't they?\n\nCustomer: Exactly, she's crawling everywhere.\n\nAgent: In that case, I'd probably steer you towards our Organic Cotton or the Recycled Wool blend rather than the Jute. The Jute is durable but can be a bit coarse for little knees. The Cotton one is super soft and machine washable, which is a bonus with kids!"
+  },
+  {
+    "id": "web_form_025",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: Review for 'Hemp Table Runner'. Rating: 5 Stars.",
+    "brand_response": "Thank you for the glowing review! We are thrilled to hear the Hemp Table Runner has added a natural touch to your dining space. Your feedback helps other eco-conscious shoppers make the right choice."
+  },
+  {
+    "id": "email_026",
+    "channel": "Email",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Can I cancel my order? I just placed it 10 minutes ago but clicked the wrong size.",
+    "brand_response": "Hi,\n\nNo stress at all! Since you caught it so quickly, we can definitely catch that before it hits the warehouse floor.\n\nI have put a hold on order #BB-9921. Please let me know which size you intended to buy, and I can update the order for you right now without you needing to re-enter your payment details.\n\nWaiting for your confirmation!\n\nBest,\nBlueBush Customer Care"
+  },
+  {
+    "id": "social_027",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Is the packaging plastic free? I hate getting styrofoam.",
+    "brand_response": "We are with you on that! &#128549; We are proud to be 100% plastic-free. We use honeycomb paper, cardboard, and cornstarch peanuts (which dissolve in water!). Your bin will be empty, and your worm farm will be full. &#127807;"
+  },
+  {
+    "id": "chatbot_028",
+    "channel": "Chatbot",
+    "interaction_depth": "Single",
+    "customer_inquiry": "speak to human",
+    "brand_response": "I can connect you to one of our team members in Perth. Our live chat hours are 9am - 5pm AWST. Would you like to connect now?"
+  },
+  {
+    "id": "phone_029",
+    "channel": "Phone Call Transcript",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "Hi, I'm calling about the ceramic dinner set. Is it dishwasher safe?",
+    "brand_response": "Agent: G'day! Thanks for calling. You're asking about the 'Saltbush' ceramic range?\n\nCustomer: Yes, the speckled white one.\n\nAgent: Beautiful choice. Yes, they are absolutely dishwasher safe. They're fired at a very high temperature so they're quite robust. We just recommend avoiding lemon-heavy detergents if you can, as it keeps the glaze shinier for longer."
+  },
+  {
+    "id": "web_form_030",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: Product Question. Will the 'Eucalypt' Throw match a grey sofa?",
+    "brand_response": "Thanks for your question. The 'Eucalypt' Throw has a warm, green-grey undertone. It pairs beautifully with charcoal or light grey sofas, adding a subtle touch of colour without clashing. We hope this helps you visualise it in your lounge!"
+  },
+  {
+    "id": "email_031",
+    "channel": "Email",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "I'm interested in the beeswax wraps, but I'm allergic to pine resin. Do yours contain resin?",
+    "brand_response": "Hi there,\n\nThank you for checking before you buy—safety first!\n\nYes, our standard beeswax wraps do contain a small amount of pine resin to give them that sticky 'cling'. However, we do stock a 'Sensitive' range which is resin-free and uses just beeswax and jojoba oil. They aren't quite as sticky, but they work perfectly for wrapping sandwiches or cheese.\n\nWould you like me to send you a link to that specific collection?\n\nWarmly,\nBlueBush Support"
+  },
+  {
+    "id": "social_032",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Do you have any discount codes? 💸",
+    "brand_response": "Hey! We don't do flash sales often (we prefer fair pricing year-round), but if you sign up for our newsletter, you'll get $10 off your first order as a welcome gift! Link is in the bio &#128071;"
+  },
+  {
+    "id": "chatbot_033",
+    "channel": "Chatbot",
+    "interaction_depth": "Single",
+    "customer_inquiry": "gift card",
+    "brand_response": "We offer digital Gift Cards starting from $25. They are delivered instantly via email (perfect for last-minute gifts!). Would you like to purchase one?"
+  },
+  {
+    "id": "phone_034",
+    "channel": "Phone Call Transcript",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "I have a store credit, but I don't know how to use it online.",
+    "brand_response": "Agent: Hi there, I can definitely help you with that. It's usually a code we email to you. Do you have your original email handy?\n\nCustomer: I think so... let me check my junk folder.\n\nAgent: No worries, take your time. While you look, I can also look it up on my end using your email address if that's easier?"
+  },
+  {
+    "id": "web_form_035",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: Wholesale Enquiry. Business Name: The Eco Collective.",
+    "brand_response": "Thanks for your interest in partnering with BlueBush. We have received your wholesale application for 'The Eco Collective'. Our team reviews new accounts every Friday, so look out for an email from us before the weekend!"
+  },
+  {
+    "id": "email_036",
+    "channel": "Email",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Do you sell replacement pumps for the glass soap dispensers? My kids broke ours.",
+    "brand_response": "Hi,\n\nOh, the joys of kids! We've all been there.\n\nYes, we absolutely believe in repairing rather than replacing the whole item. We sell standalone stainless steel pumps for just $5. It saves the glass bottle from the bin!\n\nYou can find them under the 'Spare Parts' section on the website, or I can add one to your cart manually if you like?\n\nCheers,\nThe BlueBush Team"
+  },
+  {
+    "id": "social_037",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Is the timber ethically sourced?",
+    "brand_response": "100%! All our timber products are either FSC-certified or made from reclaimed wood salvaged here in WA. We hate deforestation as much as you do. &#127795;"
+  },
+  {
+    "id": "chatbot_038",
+    "channel": "Chatbot",
+    "interaction_depth": "Single",
+    "customer_inquiry": "location",
+    "brand_response": "Our HQ and warehouse are located in Forrestfield, WA. We also have a boutique store in Fremantle."
+  },
+  {
+    "id": "phone_039",
+    "channel": "Phone Call Transcript",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "Hi, do you offer express shipping? I need this by Friday.",
+    "brand_response": "Agent: G'day! We certainly do. If you're in a metro area, Express Post usually takes 1-2 business days.\n\nCustomer: I'm in Sydney.\n\nAgent: Okay, Sydney is usually pretty quick from Perth via air. If we get the order in before 2pm today, it'll fly out tonight. It should comfortably get there by Friday. Just make sure to select 'Express' at checkout!"
+  },
+  {
+    "id": "web_form_040",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: Feedback. The website is a bit slow on mobile.",
+    "brand_response": "Thanks for the heads-up! We appreciate you taking the time to let us know. We are constantly working to optimise our site, so we'll pass this feedback straight to our tech team to investigate. Thanks for helping us improve."
+  },
+  {
+    "id": "email_041",
+    "channel": "Email",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Hi, what are the dimensions of the 'Bower' laundry hamper?",
+    "brand_response": "Hi there,\n\nThanks for the query! The 'Bower' hamper is designed to fit a standard family load.\n\nIt stands 60cm tall, with a diameter of 40cm. It holds approximately 60 litres of laundry. It's also collapsible, so you can tuck it away if you need the floor space.\n\nHope that helps you measure up your space!\n\nBest,\nBlueBush Support"
+  },
+  {
+    "id": "social_042",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Restock update on the Sage tablecloth?? I need it for a wedding! 💍",
+    "brand_response": "Oh, how exciting! Congratulations! &#129395; The Sage tablecloths are currently on the loom and should be back in stock within 10 days. If you sign up for the 'Notify Me' alert on the product page, you'll be the first to know!"
+  },
+  {
+    "id": "chatbot_043",
+    "channel": "Chatbot",
+    "interaction_depth": "Single",
+    "customer_inquiry": "care instructions",
+    "brand_response": "Each product has specific care needs. Are you asking about Linen, Wood, or Ceramics?"
+  },
+  {
+    "id": "phone_044",
+    "channel": "Phone Call Transcript",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "I'm worried about buying a mattress topper online without feeling it.",
+    "brand_response": "Agent: I completely get that. It's a big commitment for your sleep!\n\nCustomer: Yeah, I have a bad back.\n\nAgent: Sorry to hear that. Our Bamboo topper is medium-firm, so it's supportive rather than super squishy. We actually offer a 30-night sleep trial. If your back doesn't love it, you can send it back for a full refund. No hard feelings."
+  },
+  {
+    "id": "web_form_045",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: General Enquiry. Do you use Afterpay?",
+    "brand_response": "Yes, we do! You can select Afterpay at checkout to split your payment into 4 interest-free instalments. It's available for all orders over $50."
+  },
+  {
+    "id": "email_046",
+    "channel": "Email",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Hi, I'm a local artist. I was wondering if you ever collaborate on limited edition prints?",
+    "brand_response": "Hi,\n\nWhat a lovely offer! We are always open to creative collaborations, especially with Aussie artists.\n\nOur 'Artist Series' usually launches in Spring. Could you please send through a link to your portfolio or Instagram? We'd love to have a look at your style and see if it vibes with our upcoming collection themes.\n\nLooking forward to seeing your work!\n\nCheers,\nThe BlueBush Team"
+  },
+  {
+    "id": "social_047",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Are these safe for pets? 🐶",
+    "brand_response": "Great question! Generally yes, but it depends on the product. Our cleaning range is completely pet-safe (non-toxic). However, keep an eye on our essential oils—some scents like Tea Tree can be tricky for pups. Always best to check with your vet! &#128062;"
+  },
+  {
+    "id": "chatbot_048",
+    "channel": "Chatbot",
+    "interaction_depth": "Single",
+    "customer_inquiry": "human",
+    "brand_response": "Connecting you now... You are number 2 in the queue."
+  },
+  {
+    "id": "phone_049",
+    "channel": "Phone Call Transcript",
+    "interaction_depth": "Multi-turn",
+    "customer_inquiry": "Hi, I placed an order yesterday but I haven't got a confirmation email.",
+    "brand_response": "Agent: Hi there, thanks for calling. That's odd! Usually, the internet gremlins are faster than that.\n\nCustomer: I checked my spam too.\n\nAgent: Okay, let's track it down. Can I grab your last name? ... Ah, found it! It looks like there was a typo in the email address—it says '.com' instead of '.com.au'. Easy fix! I'll resend that confirmation to the correct address now."
+  },
+  {
+    "id": "web_form_050",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: Unsubscribe. Reason: Too many emails.",
+    "brand_response": "We hear you! We've removed you from our mailing list. Sorry for cluttering your inbox. You're always welcome back if you change your mind."
+  },
+  {
+    "id": "tech_051",
+    "channel": "Website Forms",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Submission: Question about 'Stone Diffuser'. Does it turn off automatically when the water runs out?",
+    "brand_response": "Hi there! Great question. Yes, for safety and peace of mind, the Stone Diffuser has an auto shut-off sensor. Once the water level gets too low, it powers down instantly to protect the ceramic element."
+  },
+  {
+    "id": "email_052",
+    "channel": "Email",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Hi BlueBush, is your sunscreen greasy? I hate the feeling of thick zinc.",
+    "brand_response": "Hi,\n\nWe totally get that—nobody wants to feel sticky at the beach!\n\nOur 'Kakadu Plum Zinc' is formulated to be 'Clear Zinc'. It goes on white so you can see where you've missed, but rubs in completely clear within seconds. It uses a natural coconut oil base, so it feels more like a moisturiser than a heavy paste.\n\nHope that helps you stay sun-safe!\n\nCheers,\nThe BlueBush Team"
+  },
+  {
+    "id": "social_053",
+    "channel": "Social Media",
+    "interaction_depth": "Single",
+    "customer_inquiry": "Does the bug spray actually work on sandflies? 🦟",
+    "brand_response": "It sure does! &#129392; Our 'Mozzie Mist' uses Lemon Eucalyptus oil, which is scientifically proven to deter sandflies and mozzies just as effectively as DEET, but without the harsh chemical smell. Perfect for camping!"
+  }
+]

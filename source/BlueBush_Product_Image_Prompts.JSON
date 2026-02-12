@@ -1,0 +1,812 @@
+[
+  {
+    "id": "BED-001",
+    "name": "Maireana French Flax Linen Sheet Set",
+    "variant": "Sage",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Maireana French Flax Linen Sheet Set in Sage. Eco-friendly sustainable homewares aesthetic, draped on a modern bed, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-001",
+    "name": "Maireana French Flax Linen Sheet Set",
+    "variant": "Ochre",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Maireana French Flax Linen Sheet Set in Ochre. Eco-friendly sustainable homewares aesthetic, draped on a modern bed, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-001",
+    "name": "Maireana French Flax Linen Sheet Set",
+    "variant": "White",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Maireana French Flax Linen Sheet Set in White. Eco-friendly sustainable homewares aesthetic, draped on a modern bed, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-001",
+    "name": "Maireana French Flax Linen Sheet Set",
+    "variant": "Sand",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Maireana French Flax Linen Sheet Set in Sand. Eco-friendly sustainable homewares aesthetic, draped on a modern bed, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-001",
+    "name": "Maireana French Flax Linen Sheet Set",
+    "variant": "Charcoal",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Maireana French Flax Linen Sheet Set in Charcoal. Eco-friendly sustainable homewares aesthetic, draped on a modern bed, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-002",
+    "name": "Maireana Duvet Cover",
+    "variant": "Sage",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Maireana Duvet Cover in Sage featuring coconut button closures. Eco-friendly sustainable homewares aesthetic, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-002",
+    "name": "Maireana Duvet Cover",
+    "variant": "Ochre",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Maireana Duvet Cover in Ochre featuring coconut button closures. Eco-friendly sustainable homewares aesthetic, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-002",
+    "name": "Maireana Duvet Cover",
+    "variant": "White",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Maireana Duvet Cover in White featuring coconut button closures. Eco-friendly sustainable homewares aesthetic, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-002",
+    "name": "Maireana Duvet Cover",
+    "variant": "Sand",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Maireana Duvet Cover in Sand featuring coconut button closures. Eco-friendly sustainable homewares aesthetic, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-002",
+    "name": "Maireana Duvet Cover",
+    "variant": "Charcoal",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Maireana Duvet Cover in Charcoal featuring coconut button closures. Eco-friendly sustainable homewares aesthetic, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-003",
+    "name": "Bamboo Lyocell Quilt Insert",
+    "variant": "Summer Weight",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bamboo Lyocell Quilt Insert in Summer Weight. Plant-based bedding aesthetic, soft natural morning sunlight, bright airy bedroom background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-003",
+    "name": "Bamboo Lyocell Quilt Insert",
+    "variant": "Winter Weight",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bamboo Lyocell Quilt Insert in Winter Weight. Plant-based bedding aesthetic, soft natural morning sunlight, bright airy bedroom background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-004",
+    "name": "Hemp Bed Runner",
+    "variant": "Natural",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Hemp Bed Runner in Natural texture. Eco-friendly sustainable homewares aesthetic, styled at the foot of a bed, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-004",
+    "name": "Hemp Bed Runner",
+    "variant": "Olive",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Hemp Bed Runner in Olive texture. Eco-friendly sustainable homewares aesthetic, styled at the foot of a bed, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-005",
+    "name": "Silk Eye Mask",
+    "variant": "Blush",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Silk Eye Mask in Blush. Vegetable-dyed peace silk aesthetic, resting on a crisp white pillow, soft natural morning sunlight, minimalist background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-005",
+    "name": "Silk Eye Mask",
+    "variant": "Navy",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Silk Eye Mask in Navy. Vegetable-dyed peace silk aesthetic, resting on a crisp white pillow, soft natural morning sunlight, minimalist background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-006",
+    "name": "Weighted Blanket (Glass Bead)",
+    "variant": "5kg",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush 5kg Weighted Blanket. Organic cotton shell, deep pressure stimulation aesthetic, draped over a cozy chair, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-006",
+    "name": "Weighted Blanket (Glass Bead)",
+    "variant": "7kg",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush 7kg Weighted Blanket. Organic cotton shell, deep pressure stimulation aesthetic, draped over a cozy chair, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BED-006",
+    "name": "Weighted Blanket (Glass Bead)",
+    "variant": "9kg",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush 9kg Weighted Blanket. Organic cotton shell, deep pressure stimulation aesthetic, draped over a cozy chair, soft natural morning sunlight, minimalist neutral background, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-001",
+    "name": "Saltbush Dinner Plate (Set of 4)",
+    "variant": "Speckled White",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Saltbush Dinner Plate in Speckled White. Wabi-sabi hand-thrown stoneware aesthetic, set on a natural wooden dining table, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-001",
+    "name": "Saltbush Dinner Plate (Set of 4)",
+    "variant": "Matte Black",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Saltbush Dinner Plate in Matte Black. Wabi-sabi hand-thrown stoneware aesthetic, set on a natural wooden dining table, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-001",
+    "name": "Saltbush Dinner Plate (Set of 4)",
+    "variant": "Earth",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Saltbush Dinner Plate in Earth. Wabi-sabi hand-thrown stoneware aesthetic, set on a natural wooden dining table, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-002",
+    "name": "Saltbush Ramen Bowl",
+    "variant": "Speckled White",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Saltbush Ramen Bowl in Speckled White. Deep wide-brimmed handmade stoneware, styled on a minimalist kitchen counter, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-002",
+    "name": "Saltbush Ramen Bowl",
+    "variant": "Matte Black",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Saltbush Ramen Bowl in Matte Black. Deep wide-brimmed handmade stoneware, styled on a minimalist kitchen counter, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-003",
+    "name": "Acacia Wood Serving Paddle",
+    "variant": "Round",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Round Acacia Wood Serving Paddle. Sustainably harvested wood grain aesthetic, styled with artisan cheese and crackers, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-003",
+    "name": "Acacia Wood Serving Paddle",
+    "variant": "Rectangle",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Rectangle Acacia Wood Serving Paddle. Sustainably harvested wood grain aesthetic, styled with artisan cheese and crackers, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-004",
+    "name": "Recycled Glass Tumbler (Set of 4)",
+    "variant": "Clear",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Recycled Glass Tumbler in Clear. Thick eco-friendly glass with subtle natural imperfections, catching soft morning sunlight on a dining table, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-004",
+    "name": "Recycled Glass Tumbler (Set of 4)",
+    "variant": "Amber",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Recycled Glass Tumbler in Amber. Thick eco-friendly glass with subtle natural imperfections, catching soft morning sunlight on a dining table, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-004",
+    "name": "Recycled Glass Tumbler (Set of 4)",
+    "variant": "Bottle Green",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Recycled Glass Tumbler in Bottle Green. Thick eco-friendly glass with subtle natural imperfections, catching soft morning sunlight on a dining table, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-005",
+    "name": "Brass & Wood Salad Servers",
+    "variant": "Gold/Teak",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Brass & Wood Salad Servers in Gold/Teak. Minimalist polished brass heads with sustainable teak handles, resting on a ceramic bowl, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-006",
+    "name": "Bamboo Cutlery Set (Travel)",
+    "variant": "Charcoal Pouch",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bamboo Cutlery Set emerging from a Charcoal Pouch. Zero-waste travel aesthetic, styled on an outdoor picnic blanket, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DIN-006",
+    "name": "Bamboo Cutlery Set (Travel)",
+    "variant": "Sage Pouch",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bamboo Cutlery Set emerging from a Sage Pouch. Zero-waste travel aesthetic, styled on an outdoor picnic blanket, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-001",
+    "name": "Zero-Waste Bento Box",
+    "variant": "1200ml",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush 1200ml Zero-Waste Bento Box. Double-tier stainless steel with a bamboo lid, plastic-free kitchen aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-002",
+    "name": "Beeswax Wrap Starter Pack",
+    "variant": "Mixed Size (S/M/L)",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Beeswax Wrap Starter Pack in Mixed Sizes. Organic cotton infused with wax, wrapped around fresh artisan bread and cut fruit, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-003",
+    "name": "Vegan Wax Wrap Pack",
+    "variant": "Mixed Size (S/M/L)",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Vegan Wax Wrap Pack in Mixed Sizes. Plant-based candelilla wax on organic cotton, wrapped around fresh vegetables, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-004",
+    "name": "Silicone Stretch Lids (6 Pack)",
+    "variant": "Clear",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Clear Silicone Stretch Lids. Stretched tightly over glass bowls containing fresh food, zero-waste kitchen aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-005",
+    "name": "Compostable Sponge Cloths",
+    "variant": "Wattle Print",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Compostable Sponge Cloths featuring a Wattle Print. Eco-friendly cellulose material, draped over a modern kitchen sink edge, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-005",
+    "name": "Compostable Sponge Cloths",
+    "variant": "Gum Nut Print",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Compostable Sponge Cloths featuring a Gum Nut Print. Eco-friendly cellulose material, draped over a modern kitchen sink edge, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-006",
+    "name": "Coconut Coir Scourer (4 Pack)",
+    "variant": "Natural",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Coconut Coir Scourer. Natural husk fibres, plastic-free cleaning aesthetic, styled next to a ceramic plate, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-007",
+    "name": "Glass Pantry Jar",
+    "variant": "500ml",
+    "image_prompt": "High-end editorial lifestyle photography of a 500ml BlueBush Glass Pantry Jar. Borosilicate glass with an airtight bamboo suction lid, filled with organic dry pantry goods, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-007",
+    "name": "Glass Pantry Jar",
+    "variant": "1L",
+    "image_prompt": "High-end editorial lifestyle photography of a 1L BlueBush Glass Pantry Jar. Borosilicate glass with an airtight bamboo suction lid, filled with organic dry pantry goods, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-007",
+    "name": "Glass Pantry Jar",
+    "variant": "2L",
+    "image_prompt": "High-end editorial lifestyle photography of a 2L BlueBush Glass Pantry Jar. Borosilicate glass with an airtight bamboo suction lid, filled with organic dry pantry goods, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "KIT-008",
+    "name": "Unbleached Baking Paper",
+    "variant": "15m Roll",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Unbleached Baking Paper roll. Toxin-free parchment paper aesthetic, styled with freshly baked sourdough on a cooling rack, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "LIV-001",
+    "name": "Bower Recycled Wool Throw",
+    "variant": "Grey Tartan",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bower Recycled Wool Throw in Grey Tartan. Heavy fringed texture, draped casually over a mid-century modern armchair, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "LIV-001",
+    "name": "Bower Recycled Wool Throw",
+    "variant": "Oatmeal",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bower Recycled Wool Throw in Oatmeal. Heavy fringed texture, draped casually over a mid-century modern armchair, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "LIV-001",
+    "name": "Bower Recycled Wool Throw",
+    "variant": "Navy",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bower Recycled Wool Throw in Navy. Heavy fringed texture, draped casually over a mid-century modern armchair, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "LIV-002",
+    "name": "Jute Area Rug",
+    "variant": "Round (2m)",
+    "image_prompt": "High-end editorial lifestyle photography of a Round (2m) BlueBush Jute Area Rug. Hand-braided natural fibres, styling a bright living room floor, soft natural morning sunlight, minimalist aesthetic, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "LIV-002",
+    "name": "Jute Area Rug",
+    "variant": "Rectangle (2x3m)",
+    "image_prompt": "High-end editorial lifestyle photography of a Rectangle (2x3m) BlueBush Jute Area Rug. Hand-braided natural fibres, styling a bright living room floor, soft natural morning sunlight, minimalist aesthetic, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "LIV-003",
+    "name": "Hemp Floor Cushion",
+    "variant": "Rust",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Hemp Floor Cushion in Rust. Oversized casual seating, thick hemp texture, resting on hardwood floors, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "LIV-003",
+    "name": "Hemp Floor Cushion",
+    "variant": "Sage",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Hemp Floor Cushion in Sage. Oversized casual seating, thick hemp texture, resting on hardwood floors, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "LIV-004",
+    "name": "Dried Native Arrangement",
+    "variant": "Banksia Mix",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Dried Native Arrangement in a Banksia Mix. Preserved Australian flowers in a ceramic vase, water-free sustainable decor, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "LIV-004",
+    "name": "Dried Native Arrangement",
+    "variant": "Eucalypt Mix",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Dried Native Arrangement in a Eucalypt Mix. Preserved Australian flowers in a ceramic vase, water-free sustainable decor, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-001",
+    "name": "Bamboo Towel Set",
+    "variant": "Bath Sheet",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bamboo Bath Sheet. Ultra-absorbent bamboo and cotton blend, neatly folded on a wooden bathroom stool, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-001",
+    "name": "Bamboo Towel Set",
+    "variant": "Hand Towel",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bamboo Hand Towel. Ultra-absorbent bamboo and cotton blend, hanging on a matte black bathroom rail, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-001",
+    "name": "Bamboo Towel Set",
+    "variant": "Face Washer",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bamboo Face Washer. Ultra-absorbent bamboo and cotton blend, resting next to a natural soap bar, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-002",
+    "name": "Diatomite Stone Bath Mat",
+    "variant": "Grey",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Diatomite Stone Bath Mat in Grey. Minimalist fossilised algae mat, styled on modern bathroom tiles, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-002",
+    "name": "Diatomite Stone Bath Mat",
+    "variant": "Sand",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Diatomite Stone Bath Mat in Sand. Minimalist fossilised algae mat, styled on modern bathroom tiles, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-003",
+    "name": "Safety Razor",
+    "variant": "Rose Gold",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Safety Razor in Rose Gold. Zero-waste plastic-free bathroom aesthetic, beautifully weighted brass handle, resting on a stone vanity, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-003",
+    "name": "Safety Razor",
+    "variant": "Matte Black",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Safety Razor in Matte Black. Zero-waste plastic-free bathroom aesthetic, beautifully weighted brass handle, resting on a stone vanity, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-003",
+    "name": "Safety Razor",
+    "variant": "Silver",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Safety Razor in Silver. Zero-waste plastic-free bathroom aesthetic, beautifully weighted brass handle, resting on a stone vanity, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-004",
+    "name": "Safety Razor Blades (10 Pack)",
+    "variant": "Standard",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Safety Razor Blades 10 Pack. Stainless steel plastic-free aesthetic, small paper box resting on a stone vanity, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-005",
+    "name": "Toilet Cleaning Bombs",
+    "variant": "Eucalyptus",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Toilet Cleaning Bombs in Eucalyptus scent. Chemical-free fizzing tablets in a minimalist reusable tin, styled in a clean bathroom, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-005",
+    "name": "Toilet Cleaning Bombs",
+    "variant": "Lemon",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Toilet Cleaning Bombs in Lemon scent. Chemical-free fizzing tablets in a minimalist reusable tin, styled in a clean bathroom, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-006",
+    "name": "Konjac Facial Sponge",
+    "variant": "Charcoal (Oily)",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Konjac Facial Sponge infused with Charcoal. Compostable plant-root sponge, hanging from a cotton string in a modern bathroom, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BATH-006",
+    "name": "Konjac Facial Sponge",
+    "variant": "Pink Clay (Sensitive)",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Konjac Facial Sponge infused with Pink Clay. Compostable plant-root sponge, hanging from a cotton string in a modern bathroom, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-001",
+    "name": "Kakadu Plum Solid Shampoo Bar",
+    "variant": "Normal Hair",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Kakadu Plum Solid Shampoo Bar for Normal Hair. Plastic-free haircare aesthetic, resting on a draining soap dish, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-001",
+    "name": "Kakadu Plum Solid Shampoo Bar",
+    "variant": "Dry Hair",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Kakadu Plum Solid Shampoo Bar for Dry Hair. Plastic-free haircare aesthetic, resting on a draining soap dish, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-001",
+    "name": "Kakadu Plum Solid Shampoo Bar",
+    "variant": "Oily Hair",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Kakadu Plum Solid Shampoo Bar for Oily Hair. Plastic-free haircare aesthetic, resting on a draining soap dish, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-002",
+    "name": "Macadamia Solid Conditioner Bar",
+    "variant": "Hydrating",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Hydrating Macadamia Solid Conditioner Bar. Plastic-free haircare aesthetic, resting on a ceramic dish in a shower, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-002",
+    "name": "Macadamia Solid Conditioner Bar",
+    "variant": "Volumising",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Volumising Macadamia Solid Conditioner Bar. Plastic-free haircare aesthetic, resting on a ceramic dish in a shower, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-003",
+    "name": "Natural Deodorant Paste",
+    "variant": "Lemon Myrtle",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Natural Deodorant Paste in Lemon Myrtle. Toxin-free paste inside a recyclable tin, styled on a wooden vanity table, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-003",
+    "name": "Natural Deodorant Paste",
+    "variant": "Rose & Geranium",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Natural Deodorant Paste in Rose & Geranium. Toxin-free paste inside a recyclable tin, styled on a wooden vanity table, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-003",
+    "name": "Natural Deodorant Paste",
+    "variant": "Unscented",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Natural Deodorant Paste in Unscented. Toxin-free paste inside a recyclable tin, styled on a wooden vanity table, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-004",
+    "name": "Mineral Foundation Powder",
+    "variant": "Light",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Mineral Foundation Powder in Light. Vegan loose powder in a refillable glass container, styled with a kabuki brush, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-004",
+    "name": "Mineral Foundation Powder",
+    "variant": "Medium",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Mineral Foundation Powder in Medium. Vegan loose powder in a refillable glass container, styled with a kabuki brush, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-004",
+    "name": "Mineral Foundation Powder",
+    "variant": "Tan",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Mineral Foundation Powder in Tan. Vegan loose powder in a refillable glass container, styled with a kabuki brush, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-004",
+    "name": "Mineral Foundation Powder",
+    "variant": "Deep",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Mineral Foundation Powder in Deep. Vegan loose powder in a refillable glass container, styled with a kabuki brush, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-005",
+    "name": "Tinted Lip & Cheek Balm",
+    "variant": "Rosy Red",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Tinted Lip & Cheek Balm in Rosy Red. Zero-waste compostable cardboard push-tube, soft natural morning sunlight, minimalist aesthetic, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-005",
+    "name": "Tinted Lip & Cheek Balm",
+    "variant": "Nude",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Tinted Lip & Cheek Balm in Nude. Zero-waste compostable cardboard push-tube, soft natural morning sunlight, minimalist aesthetic, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BEAUTY-005",
+    "name": "Tinted Lip & Cheek Balm",
+    "variant": "Berry",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Tinted Lip & Cheek Balm in Berry. Zero-waste compostable cardboard push-tube, soft natural morning sunlight, minimalist aesthetic, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DENT-001",
+    "name": "Bamboo Toothbrush (4 Pack)",
+    "variant": "Mixed Colours",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Bamboo Toothbrush 4 Pack in Mixed Colours. Compostable moso bamboo handles with charcoal bristles, standing in a ceramic cup, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DENT-002",
+    "name": "Mint Toothpaste Tablets",
+    "variant": "With Fluoride",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Mint Toothpaste Tablets (With Fluoride). Chewable waterless tabs in a small refillable glass jar, zero-waste dental aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DENT-002",
+    "name": "Mint Toothpaste Tablets",
+    "variant": "Fluoride Free",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Mint Toothpaste Tablets (Fluoride Free). Chewable waterless tabs in a small refillable glass jar, zero-waste dental aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DENT-003",
+    "name": "Corn Starch Dental Floss",
+    "variant": "Mint",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Corn Starch Dental Floss in Mint. Vegan plant-based floss inside a small refillable glass vial, plastic-free dental aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "DENT-004",
+    "name": "Copper Tongue Cleaner",
+    "variant": "Copper",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Copper Tongue Cleaner. Pure copper U-shape tool, Ayurvedic zero-waste aesthetic, resting on a white towel, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FEM-001",
+    "name": "The 'Flow' Menstrual Cup",
+    "variant": "Model 1 (Pre-Birth)",
+    "image_prompt": "High-end editorial lifestyle photography of The 'Flow' Menstrual Cup, Model 1. Medical-grade silicone, zero-waste period care aesthetic, resting in a small cotton pouch, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FEM-001",
+    "name": "The 'Flow' Menstrual Cup",
+    "variant": "Model 2 (Post-Birth)",
+    "image_prompt": "High-end editorial lifestyle photography of The 'Flow' Menstrual Cup, Model 2. Medical-grade silicone, zero-waste period care aesthetic, resting in a small cotton pouch, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FEM-002",
+    "name": "Organic Cotton Period Briefs",
+    "variant": "Bikini (Black)",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Organic Cotton Period Briefs in Black Bikini style. Reusable leak-proof underwear neatly folded, sustainable period care aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FEM-002",
+    "name": "Organic Cotton Period Briefs",
+    "variant": "High Waist (Black)",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Organic Cotton Period Briefs in Black High Waist style. Reusable leak-proof underwear neatly folded, sustainable period care aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FEM-003",
+    "name": "Reusable Cloth Pad Set",
+    "variant": "Day Pack",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Reusable Cloth Pad Day Pack. Soft bamboo velour with snap wings, plastic-free period care aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FEM-003",
+    "name": "Reusable Cloth Pad Set",
+    "variant": "Night Pack",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Reusable Cloth Pad Night Pack. Soft bamboo velour with snap wings, plastic-free period care aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BABY-001",
+    "name": "Modern Cloth Nappy (MCN)",
+    "variant": "Eucalypt Print",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Modern Cloth Nappy in Eucalypt Print. Reusable waterproof shell with bamboo inserts, sustainable baby care aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BABY-001",
+    "name": "Modern Cloth Nappy (MCN)",
+    "variant": "Wattle Print",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Modern Cloth Nappy in Wattle Print. Reusable waterproof shell with bamboo inserts, sustainable baby care aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BABY-001",
+    "name": "Modern Cloth Nappy (MCN)",
+    "variant": "Sage Solid",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Modern Cloth Nappy in Sage Solid. Reusable waterproof shell with bamboo inserts, sustainable baby care aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BABY-002",
+    "name": "Biodegradable Baby Wipes",
+    "variant": "80 Pack",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Biodegradable Baby Wipes 80 Pack. Bamboo viscose water wipes, plastic-free baby care aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BABY-003",
+    "name": "Bamboo Dinner Set (Kids)",
+    "variant": "Koala Grey",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Kids Bamboo Dinner Set in Koala Grey. Drop-proof plate, bowl, and cup made from compressed bamboo fibre, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BABY-003",
+    "name": "Bamboo Dinner Set (Kids)",
+    "variant": "Possum Pink",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Kids Bamboo Dinner Set in Possum Pink. Drop-proof plate, bowl, and cup made from compressed bamboo fibre, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "BABY-004",
+    "name": "Natural Baby Balm",
+    "variant": "100g Tin",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Natural Baby Balm in a 100g Tin. Zinc and calendula barrier cream, gentle baby care aesthetic, styled with a soft cotton cloth, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "TECH-001",
+    "name": "Stone Ultrasonic Diffuser",
+    "variant": "White Stone",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Stone Ultrasonic Diffuser in White Stone. Matte ceramic cover emitting a fine mist, energy-efficient wellness tech aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "TECH-001",
+    "name": "Stone Ultrasonic Diffuser",
+    "variant": "Black Stone",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Stone Ultrasonic Diffuser in Black Stone. Matte ceramic cover emitting a fine mist, energy-efficient wellness tech aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "TECH-002",
+    "name": "Bluebush Pure Air Micro",
+    "variant": "White",
+    "image_prompt": "High-end editorial lifestyle photography of a Bluebush Pure Air Micro in White. Compact desktop HEPA-13 air purifier, clean minimalist workspace aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "TECH-003",
+    "name": "Loop Rechargeable Battery Kit",
+    "variant": "AA",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Loop Rechargeable AA Battery Kit. Lithium-ion batteries with integrated USB-C ports, waste reduction aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "TECH-003",
+    "name": "Loop Rechargeable Battery Kit",
+    "variant": "AAA",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Loop Rechargeable AAA Battery Kit. Lithium-ion batteries with integrated USB-C ports, waste reduction aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "TECH-004",
+    "name": "Solar Power Bank",
+    "variant": "10000mAh",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush 10000mAh Solar Power Bank. Bamboo casing with a high-efficiency solar panel, outdoor wellness tech aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "CHEM-001",
+    "name": "Kakadu Plum Zinc Balm (SPF 50)",
+    "variant": "Tin",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Kakadu Plum Zinc Balm SPF 50 in a Tin. Reef-safe clear zinc sunscreen, styled on a sandy beach towel, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "CHEM-002",
+    "name": "Mozzie Mist Insect Repellent",
+    "variant": "100ml Glass Spray",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Mozzie Mist Insect Repellent. 100ml glass spray bottle, DEET-free natural outdoor aesthetic, styled with eucalyptus leaves, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "CHEM-003",
+    "name": "Natural Hand Sanitizer",
+    "variant": "Native Citrus",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Natural Hand Sanitizer in Native Citrus. Refillable glass pump bottle infused with aloe vera, clean hygiene aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "CHEM-003",
+    "name": "Natural Hand Sanitizer",
+    "variant": "Fragrance Free",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Natural Hand Sanitizer in Fragrance Free. Refillable glass pump bottle infused with aloe vera, clean hygiene aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "CHEM-004",
+    "name": "Native Room Spray",
+    "variant": "Rainforest",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Native Room Spray in Rainforest. Glass amber bottle, toxin-free essential oil aesthetic, styled in a minimalist bedroom, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "CHEM-004",
+    "name": "Native Room Spray",
+    "variant": "Outback",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Native Room Spray in Outback. Glass amber bottle, toxin-free essential oil aesthetic, styled in a minimalist bedroom, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "UTIL-001",
+    "name": "Wool Dryer Balls (3 Pack)",
+    "variant": "Natural",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Wool Dryer Balls 3 Pack in Natural. Solid Australian wool balls, energy-saving laundry aesthetic, styled in a woven basket, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "UTIL-002",
+    "name": "Storm-Proof Wooden Pegs",
+    "variant": "20 Pack",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Storm-Proof Wooden Pegs 20 Pack. Single-piece FSC hardwood pegs without metal springs, plastic-free laundry aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "UTIL-003",
+    "name": "Canvas Laundry Hamper",
+    "variant": "Natural",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Canvas Laundry Hamper in Natural. Heavy-duty cotton canvas suspended on a bamboo X-frame, sustainable home aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "UTIL-003",
+    "name": "Canvas Laundry Hamper",
+    "variant": "Grey",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Canvas Laundry Hamper in Grey. Heavy-duty cotton canvas suspended on a bamboo X-frame, sustainable home aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "GARD-001",
+    "name": "Native Bee Hotel",
+    "variant": "Natural Timber",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Native Bee Hotel in Natural Timber. Hand-crafted timber house with bamboo nesting tubes, biodiversity garden aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "GARD-002",
+    "name": "Heirloom Native Seed Kit",
+    "variant": "WA Wildflowers",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Heirloom Native Seed Kit featuring WA Wildflowers. Curated box of non-GMO seeds in compostable packets, gardening aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "GARD-003",
+    "name": "Brass Plant Mister",
+    "variant": "Gold",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Brass Plant Mister in Gold. Solid brass construction creating a fine mist over an indoor fern, plastic-free garden aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "PET-001",
+    "name": "Hemp Dog Leash",
+    "variant": "Olive",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Hemp Dog Leash in Olive. Strong raw hemp fibre with a stainless steel clip, biodegradable pet aesthetic, resting on a wooden bench, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "PET-001",
+    "name": "Hemp Dog Leash",
+    "variant": "Rust",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Hemp Dog Leash in Rust. Strong raw hemp fibre with a stainless steel clip, biodegradable pet aesthetic, resting on a wooden bench, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "PET-001",
+    "name": "Hemp Dog Leash",
+    "variant": "Natural",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Hemp Dog Leash in Natural. Strong raw hemp fibre with a stainless steel clip, biodegradable pet aesthetic, resting on a wooden bench, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "PET-002",
+    "name": "Natural Rubber Chew Toy",
+    "variant": "Gum Nut Shape",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Natural Rubber Chew Toy in a Gum Nut Shape. Sustainably tapped Hevea rubber, toxin-free pet aesthetic, resting on green grass, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "PET-003",
+    "name": "Ceramic Pet Bowl",
+    "variant": "Speckled White",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Ceramic Pet Bowl in Speckled White. Heavyweight high-fired stoneware, plastic-free pet aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "PET-003",
+    "name": "Ceramic Pet Bowl",
+    "variant": "Matte Black",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Ceramic Pet Bowl in Matte Black. Heavyweight high-fired stoneware, plastic-free pet aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "PET-004",
+    "name": "Natural Dog Shampoo",
+    "variant": "Lavender & Mint",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Natural Dog Shampoo in Lavender & Mint. 500ml pump bottle, palm-oil free pet wash aesthetic, styled near a bathroom sink, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "PET-004",
+    "name": "Natural Dog Shampoo",
+    "variant": "Unscented",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Natural Dog Shampoo in Unscented. 500ml pump bottle, palm-oil free pet wash aesthetic, styled near a bathroom sink, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "PET-005",
+    "name": "Compostable Poop Bags",
+    "variant": "60 Pack",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Compostable Poop Bags 60 Pack. Plant-based PLA rolls, plastic-free pet care aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FOOD-001",
+    "name": "Native Plum Chocolate Block",
+    "variant": "80g Block",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Native Plum Chocolate Block (80g). Ethically sourced dark chocolate with Davidson Plum, fair trade aesthetic, foil-free wrapper, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FOOD-002",
+    "name": "Organic Loose Leaf Tea",
+    "variant": "Sleep (Chamomile)",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Organic Loose Leaf Tea in Sleep (Chamomile). Hand-blended organic herbs in a refillable tin, relaxing pantry aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FOOD-002",
+    "name": "Organic Loose Leaf Tea",
+    "variant": "Awake (English Breakfast)",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Organic Loose Leaf Tea in Awake (English Breakfast). Hand-blended organic herbs in a refillable tin, relaxing pantry aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FOOD-002",
+    "name": "Organic Loose Leaf Tea",
+    "variant": "Digest (Peppermint)",
+    "image_prompt": "High-end editorial lifestyle photography of BlueBush Organic Loose Leaf Tea in Digest (Peppermint). Hand-blended organic herbs in a refillable tin, relaxing pantry aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "FOOD-003",
+    "name": "Ceramic Tea Strainer",
+    "variant": "White",
+    "image_prompt": "High-end editorial lifestyle photography of a BlueBush Ceramic Tea Strainer in White. Hand-pierced stoneware fitting over a mug, reusable brewing aesthetic, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "GIFT-001",
+    "name": "Bluebush Digital Gift Card",
+    "variant": "$25",
+    "image_prompt": "High-end editorial lifestyle photography representing a $25 BlueBush Digital Gift Card. Paperless eco-friendly gifting aesthetic, minimalist graphic displayed on a modern smartphone resting on a wooden table, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "GIFT-001",
+    "name": "Bluebush Digital Gift Card",
+    "variant": "$50",
+    "image_prompt": "High-end editorial lifestyle photography representing a $50 BlueBush Digital Gift Card. Paperless eco-friendly gifting aesthetic, minimalist graphic displayed on a modern smartphone resting on a wooden table, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "GIFT-001",
+    "name": "Bluebush Digital Gift Card",
+    "variant": "$100",
+    "image_prompt": "High-end editorial lifestyle photography representing a $100 BlueBush Digital Gift Card. Paperless eco-friendly gifting aesthetic, minimalist graphic displayed on a modern smartphone resting on a wooden table, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  },
+  {
+    "id": "GIFT-001",
+    "name": "Bluebush Digital Gift Card",
+    "variant": "$200",
+    "image_prompt": "High-end editorial lifestyle photography representing a $200 BlueBush Digital Gift Card. Paperless eco-friendly gifting aesthetic, minimalist graphic displayed on a modern smartphone resting on a wooden table, soft natural morning sunlight, highly detailed, 8k resolution, photorealistic."
+  }
+]

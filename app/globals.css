@@ -1,0 +1,49 @@
+/* Import Google Fonts for Sofia Pro alternative (using Montserrat) and Lora */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Lora:ital,wght@0,400;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --deep-forest: #1B3022;
+  --vibrant-aqua: #00FFFF;
+  --soft-sandstone: #D7C4BB;
+  --outback-ochre: #AE653F;
+  --paperbark: #E5E1D8;
+  --deep-teal: #006B6B;
+  --emerald: #50C878;
+}
+
+body {
+  font-family: 'Lora', serif;
+  color: var(--deep-forest);
+  background-color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+/* Ensure WCAG 2.1 AA compliance */
+a {
+  text-decoration: underline;
+  color: var(--deep-teal);
+}
+
+a:hover {
+  color: var(--emerald);
+}
+
+a:focus {
+  outline: 2px solid var(--vibrant-aqua);
+  outline-offset: 2px;
+}
+
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--vibrant-aqua);
+  outline-offset: 2px;
+}

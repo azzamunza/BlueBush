@@ -1,9 +1,19 @@
 /* Import Google Fonts - Using Poppins (closest to Sofia Pro) for headings and Lora for body */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* BlueBush Brand Colours - Australian English spelling */
+  --color-deep-forest: #1B3022;
+  --color-vibrant-aqua: #00FFFF;
+  --color-soft-sandstone: #D7C4BB;
+  --color-outback-ochre: #AE653F;
+  --color-paperbark: #E5E1D8;
+  --color-deep-teal: #006B6B;
+  --color-emerald: #50C878;
+  --font-lora: 'Lora', serif;
+}
 
 :root {
   --deep-forest: #1B3022;

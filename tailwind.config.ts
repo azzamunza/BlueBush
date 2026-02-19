@@ -20,7 +20,6 @@ const config: Config = {
         'emerald': '#50C878',
       },
       fontFamily: {
-        'sofia': ['"Sofia Pro"', 'sans-serif'],
         'lora': ['Lora', 'serif'],
       },
     },

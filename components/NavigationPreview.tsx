@@ -15,16 +15,16 @@ export const NavigationPreview: React.FC = () => {
 
         {/* Centre Menu */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
-          <a href="#shop" className="text-deep-forest hover:text-emerald transition-colours font-medium no-underline">
+          <a href="#shop" className="text-deep-forest hover:text-emerald transition-colors font-medium no-underline">
             Shop
           </a>
-          <a href="#story" className="text-deep-forest hover:text-emerald transition-colours font-medium no-underline">
+          <a href="#story" className="text-deep-forest hover:text-emerald transition-colors font-medium no-underline">
             Our Story
           </a>
-          <a href="#journal" className="text-deep-forest hover:text-emerald transition-colours font-medium no-underline">
+          <a href="#journal" className="text-deep-forest hover:text-emerald transition-colors font-medium no-underline">
             Journal
           </a>
-          <a href="#contact" className="text-deep-forest hover:text-emerald transition-colours font-medium no-underline">
+          <a href="#contact" className="text-deep-forest hover:text-emerald transition-colors font-medium no-underline">
             Contact
           </a>
         </nav>
@@ -32,19 +32,19 @@ export const NavigationPreview: React.FC = () => {
         {/* Icons - Right */}
         <div className="flex items-center gap-4 md:gap-6">
           <button
-            className="text-deep-forest hover:text-emerald transition-colours"
+            className="text-deep-forest hover:text-emerald transition-colors"
             aria-label="Search"
           >
             <Search className="w-5 h-5" strokeWidth={2} />
           </button>
           <button
-            className="text-deep-forest hover:text-emerald transition-colours"
+            className="text-deep-forest hover:text-emerald transition-colors"
             aria-label="User profile"
           >
             <User className="w-5 h-5" strokeWidth={2} />
           </button>
           <button
-            className="text-deep-forest hover:text-emerald transition-colours relative"
+            className="text-deep-forest hover:text-emerald transition-colors relative"
             aria-label="Shopping cart"
           >
             <ShoppingCart className="w-5 h-5" strokeWidth={2} />

@@ -6,7 +6,7 @@ export const PrimaryButton: React.FC<{ children: React.ReactNode; onClick?: () =
   return (
     <button
       onClick={onClick}
-      className="px-8 py-3 bg-deep-teal text-white rounded-full font-medium hover:bg-emerald transition-colours duration-300 focus:outline-none focus:ring-2 focus:ring-vibrant-aqua focus:ring-offset-2"
+      className="px-8 py-3 bg-deep-teal text-white rounded-full font-medium hover:bg-emerald transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-vibrant-aqua focus:ring-offset-2"
       aria-label={typeof children === 'string' ? children : 'Primary button'}
     >
       {children}
@@ -18,7 +18,7 @@ export const SecondaryButton: React.FC<{ children: React.ReactNode; onClick?: ()
   return (
     <button
       onClick={onClick}
-      className="px-8 py-3 bg-white text-deep-teal border-2 border-deep-teal rounded-full font-medium hover:bg-paperbark transition-colours duration-300 focus:outline-none focus:ring-2 focus:ring-vibrant-aqua focus:ring-offset-2"
+      className="px-8 py-3 bg-white text-deep-teal border-2 border-deep-teal rounded-full font-medium hover:bg-paperbark transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-vibrant-aqua focus:ring-offset-2"
       aria-label={typeof children === 'string' ? children : 'Secondary button'}
     >
       {children}
@@ -41,7 +41,7 @@ export const FormInput: React.FC<{
         type={type}
         id={id}
         placeholder={placeholder}
-        className="px-4 py-3 border-b-2 border-gray-300 bg-transparent focus:border-deep-teal focus:outline-none transition-colours duration-300"
+        className="px-4 py-3 border-b-2 border-gray-300 bg-transparent focus:border-deep-teal focus:outline-none transition-colors duration-300"
         aria-label={label}
       />
     </div>

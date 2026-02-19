@@ -49,5 +49,5 @@ export const getStockStatus = (stockLevel: number): { text: string; color: strin
   } else if (stockLevel <= 15) {
     return { text: 'Low Stock', color: 'text-yellow-600' };
   }
-  return { text: 'In Stock', color: 'text-emerald' };
+  return { text: 'In Stock', color: 'text-emerald-600' };
 };

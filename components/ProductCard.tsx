@@ -11,6 +11,8 @@ interface ProductCardProps {
   product: Product;
 }
 
+const MAX_VISIBLE_VARIANTS = 4;
+
 export default function ProductCard({ product }: ProductCardProps) {
   const [selectedVariant, setSelectedVariant] = useState(product.static_data.variants[0]);
   const { addItem } = useCart();
@@ -87,7 +89,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
             {/* Variants */}
             <div className="flex gap-2 mb-4 flex-wrap">
-              {product.static_data.variants.slice(0, 4).map((variant) => (
+              {product.static_data.variants.slice(0, MAX_VISIBLE_VARIANTS).map((variant) => (
                 <button
                   key={variant}
                   onClick={(e) => {

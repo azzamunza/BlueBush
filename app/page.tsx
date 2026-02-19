@@ -84,8 +84,9 @@ export default function Home() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
+            aria-label="Scroll down to view more content"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </motion.div>
@@ -204,7 +205,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="order-2 lg:order-1"
             >
-              <div className="aspect-[4/3] bg-gradient-to-br from-emerald to-deep-teal rounded-3xl shadow-2xl flex items-center justify-center text-white text-2xl font-bold overflow-hidden">
+              <div className="aspect-[4/3] bg-gradient-to-br from-emerald to-deep-teal rounded-3xl shadow-2xl flex items-center justify-center text-white text-2xl font-bold overflow-hidden" role="presentation" aria-hidden="true">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent)]" />
                 <span className="relative">Our Story</span>
               </div>

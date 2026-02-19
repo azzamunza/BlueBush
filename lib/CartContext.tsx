@@ -31,19 +31,23 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   // Load cart from localStorage on mount
   useEffect(() => {
-    const savedCart = localStorage.getItem('bluebush-cart');
-    if (savedCart) {
-      try {
-        setItems(JSON.parse(savedCart));
-      } catch (error) {
-        console.error('Failed to load cart:', error);
+    if (typeof window !== 'undefined') {
+      const savedCart = localStorage.getItem('bluebush-cart');
+      if (savedCart) {
+        try {
+          setItems(JSON.parse(savedCart));
+        } catch (error) {
+          console.error('Failed to load cart:', error);
+        }
       }
     }
   }, []);
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('bluebush-cart', JSON.stringify(items));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('bluebush-cart', JSON.stringify(items));
+    }
   }, [items]);
 
   const addItem = (item: Omit<CartItem, 'quantity'>) => {

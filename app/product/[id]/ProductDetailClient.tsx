@@ -39,14 +39,15 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   const stockStatus = getStockStatus(product.dynamic_data.stock_level);
 
   const handleAddToCart = () => {
-    for (let i = 0; i < quantity; i++) {
-      addItem({
+    addItem(
+      {
         id: product.id,
         name: product.name,
         price: product.dynamic_data.price_aud,
         variant: selectedVariant,
-      });
-    }
+      },
+      quantity
+    );
     setAddedToCart(true);
     setTimeout(() => setAddedToCart(false), 3000);
   };

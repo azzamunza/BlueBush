@@ -208,7 +208,7 @@
 
         return `
           <div class="product-card anim" style="animation-delay:${Math.random()*0.2}s">
-            <a href="shop.html#product-${escapeAttr(p.id)}" aria-label="${escapeAttr(p.name)}">
+            <a href="product.html?id=${escapeAttr(p.id)}" aria-label="${escapeAttr(p.name)}">
               <div class="product-img">
                 <img
                   src="${getProductImagePath(p.id, p.name, variants[0])}"
@@ -300,5 +300,6 @@
     // Load featured products after DOM is ready
     document.addEventListener('DOMContentLoaded', loadFeaturedProducts);
   </script>
+  <script src="js/chatbot.js"></script>
 </body>
 </html>

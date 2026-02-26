@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Product details — BlueBush Sustainable Homewares">
+  <title id="page-title">Product | BlueBush Sustainable Homewares</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    .product-detail-section { padding: 4rem 0; }
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .product-detail-grid { grid-template-columns: 1fr; } }
+    .product-gallery { position: sticky; top: 6rem; }
+    .product-main-img {
+      width: 100%;
+      border-radius: 16px;
+      background: var(--paperbark);
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .product-thumb-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .product-thumb {
+      width: 80px; height: 80px;
+      border-radius: 8px; object-fit: cover;
+      cursor: pointer; border: 2px solid transparent;
+      transition: border-color 0.2s;
+      background: var(--paperbark);
+    }
+    .product-thumb.active, .product-thumb:hover { border-color: var(--deep-teal); }
+    .product-detail-info { padding: 0; }
+    .product-detail-category { font-size: 0.875rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .product-detail-name { font-size: 2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--deep-forest); }
+    .product-detail-hook { font-size: 1.1rem; color: var(--gray-600); margin-bottom: 1.5rem; font-family: 'Lora', serif; font-style: italic; }
+    .product-detail-price { font-size: 2rem; font-weight: 700; color: var(--deep-teal); margin-bottom: 1.5rem; }
+    .product-detail-badge { display: inline-block; background: var(--vibrant-aqua); color: var(--deep-forest); padding: 0.3rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+    .variant-section { margin-bottom: 1.5rem; }
+    .variant-label { font-size: 0.875rem; font-weight: 600; color: var(--gray-700); margin-bottom: 0.5rem; }
+    .variant-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .variant-pill {
+      padding: 0.4rem 1rem; border-radius: 999px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white); color: var(--gray-700);
+      cursor: pointer; font-size: 0.875rem; transition: all 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .variant-pill.active, .variant-pill:hover { background: var(--deep-teal); color: var(--white); border-color: var(--deep-teal); }
+    .add-to-cart-btn {
+      width: 100%; padding: 1rem; font-size: 1.05rem; font-weight: 600;
+      background: var(--deep-teal); color: white; border: none; border-radius: 999px;
+      cursor: pointer; transition: background 0.2s; margin-bottom: 1rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .add-to-cart-btn:hover { background: var(--emerald); }
+    .product-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .product-meta-item { background: var(--paperbark); border-radius: 8px; padding: 0.75rem 1rem; }
+    .product-meta-label { font-size: 0.75rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.05em; }
+    .product-meta-value { font-size: 0.9rem; color: var(--gray-700); font-weight: 500; margin-top: 0.2rem; }
+    .product-tabs { margin-top: 3rem; }
+    .tab-buttons { display: flex; border-bottom: 2px solid var(--gray-200); margin-bottom: 1.5rem; gap: 0; }
+    .tab-btn {
+      padding: 0.75rem 1.5rem; border: none; background: none;
+      color: var(--gray-500); font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent;
+      margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tab-btn.active { color: var(--deep-teal); border-bottom-color: var(--deep-teal); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .spec-list { list-style: none; padding: 0; }
+    .spec-list li { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--gray-200); font-size: 0.95rem; }
+    .spec-list li:last-child { border-bottom: none; }
+    .spec-key { color: var(--gray-500); }
+    .spec-val { color: var(--gray-700); font-weight: 500; text-align: right; max-width: 60%; }
+    .care-list { list-style: none; padding: 0; }
+    .care-list li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--gray-700); }
+    .care-list li::before { content: "✓"; position: absolute; left: 0; color: var(--deep-teal); font-weight: 700; }
+    .manual-excerpt { background: var(--paperbark); border-left: 4px solid var(--deep-teal); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; font-family: 'Lora', serif; color: var(--gray-600); margin-top: 1rem; }
+    .stock-indicator { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+    .stock-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .stock-in .stock-dot { background: #16a34a; }
+    .stock-in { color: #16a34a; }
+    .stock-low .stock-dot { background: var(--yellow-600); }
+    .stock-low { color: var(--yellow-600); }
+    .stock-out .stock-dot { background: var(--red-500); }
+    .stock-out { color: var(--red-500); }
+    .not-found { text-align: center; padding: 6rem 2rem; }
+    .not-found h2 { color: var(--gray-500); margin-bottom: 1rem; }
+    .breadcrumb { padding: 1rem 0; font-size: 0.875rem; color: var(--gray-500); }
+    .breadcrumb a { color: var(--gray-500); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--deep-teal); }
+    .breadcrumb span { margin: 0 0.5rem; }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="cart-drawer-root"></div>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb" id="breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="shop.html">Shop</a>
+        <span aria-hidden="true">›</span>
+        <span id="breadcrumb-product">Loading...</span>
+      </nav>
+    </div>
+
+    <section class="product-detail-section" aria-label="Product details" id="product-section">
+      <div class="container">
+        <div id="product-content">
+          <p style="color:var(--gray-500);text-align:center;padding:4rem 0">Loading product...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/main.js"></script>
+  <script>
+    let currentProduct = null;
+    let selectedVariant = null;
+
+    async function loadProduct() {
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get('id');
+      if (!productId) { showNotFound('No product specified.'); return; }
+
+      try {
+        const base = getBase();
+        const res = await fetch(base + 'data/products.json');
+        const products = await res.json();
+        currentProduct = products.find(p => p.id === productId);
+        if (!currentProduct) { showNotFound(`Product "${productId}" not found.`); return; }
+        renderProduct(currentProduct);
+      } catch (e) {
+        showNotFound('Unable to load product data.');
+      }
+    }
+
+    function renderProduct(p) {
+      document.getElementById('page-title').textContent = p.name + ' | BlueBush';
+      document.getElementById('breadcrumb-product').textContent = p.name;
+      const base = getBase();
+
+      const variants = p.static_data.variants || [];
+      selectedVariant = variants[0] || 'Default';
+
+      const thumbs = variants.map((v, i) => {
+        const src = getProductImagePath(p.id, p.name, v);
+        return `<img src="${src}" alt="${escHtml(p.name)} - ${escHtml(v)}" class="product-thumb${i===0?' active':''}" onclick="selectVariantDetail(this,'${escHtml(v)}')" onerror="this.style.display='none'" loading="lazy">`;
+      }).join('');
+
+      const variantBtns = variants.map((v, i) =>
+        `<button class="variant-pill${i===0?' active':''}" onclick="selectVariantDetail(null,'${escHtml(v)}',this)">${escHtml(v)}</button>`
+      ).join('');
+
+      const stock = p.dynamic_data.stock_level;
+      let stockHtml = '';
+      if (stock === 0) stockHtml = `<div class="stock-indicator stock-out"><span class="stock-dot"></span>Out of Stock</div>`;
+      else if (stock <= 5) stockHtml = `<div class="stock-indicator stock-low"><span class="stock-dot"></span>Only ${stock} left</div>`;
+      else stockHtml = `<div class="stock-indicator stock-in"><span class="stock-dot"></span>In Stock</div>`;
+
+      const specs = p.content_triage.technical_specs || [];
+      const specItems = specs.map(s => {
+        const parts = s.split(':');
+        if (parts.length >= 2) {
+          return `<li><span class="spec-key">${escHtml(parts[0].trim())}</span><span class="spec-val">${escHtml(parts.slice(1).join(':').trim())}</span></li>`;
+        }
+        return `<li><span class="spec-key">${escHtml(s)}</span><span class="spec-val">—</span></li>`;
+      }).join('');
+
+      const careItems = (p.rag_resources?.care_instructions || []).map(c =>
+        `<li>${escHtml(c)}</li>`
+      ).join('');
+
+      const manualExcerpt = p.rag_resources?.manual_excerpt
+        ? `<div class="manual-excerpt">${escHtml(p.rag_resources.manual_excerpt)}</div>` : '';
+
+      const dims = p.static_data.dimensions_cm;
+      let dimItems = '';
+      if (dims) {
+        dimItems = Object.entries(dims).map(([k, v]) =>
+          `<li><span class="spec-key">${escHtml(k.replace(/_/g,' '))}</span><span class="spec-val">${escHtml(String(v))} cm</span></li>`
+        ).join('');
+      }
+
+      const mainImgSrc = getProductImagePath(p.id, p.name, selectedVariant);
+
+      document.getElementById('product-content').innerHTML = `
+        <div class="product-detail-grid">
+          <!-- Gallery -->
+          <div class="product-gallery">
+            <img id="main-product-img" class="product-main-img" src="${mainImgSrc}" alt="${escHtml(p.name)} - ${escHtml(selectedVariant)}" onerror="this.src='';this.style.background='var(--paperbark)'">
+            <div class="product-thumb-row">${thumbs}</div>
+          </div>
+
+          <!-- Info -->
+          <div class="product-detail-info">
+            <p class="product-detail-category">${escHtml(p.category)}</p>
+            <h1 class="product-detail-name">${escHtml(p.name)}</h1>
+            ${p.static_data.eco_badge ? `<span class="product-detail-badge">🌿 ${escHtml(p.static_data.eco_badge)}</span>` : ''}
+            <p class="product-detail-hook">${escHtml(p.content_triage.marketing_hook)}</p>
+            <div class="product-detail-price">$${p.dynamic_data.price_aud.toFixed(2)} <span style="font-size:1rem;color:var(--gray-500);font-weight:400">AUD</span></div>
+            ${stockHtml}
+
+            ${variants.length > 0 ? `
+            <div class="variant-section">
+              <div class="variant-label">Choose option: <strong id="selected-variant-label">${escHtml(selectedVariant)}</strong></div>
+              <div class="variant-grid" id="variant-grid">${variantBtns}</div>
+            </div>` : ''}
+
+            <button class="add-to-cart-btn" onclick="addToCartFromDetail()" ${stock===0?'disabled style="opacity:0.5;cursor:not-allowed"':''}>
+              ${stock===0 ? 'Out of Stock' : 'Add to Cart'}
+            </button>
+
+            <div class="product-meta-grid">
+              <div class="product-meta-item">
+                <div class="product-meta-label">Origin</div>
+                <div class="product-meta-value">${escHtml(p.static_data.origin)}</div>
+              </div>
+              <div class="product-meta-item">
+                <div class="product-meta-label">Weight</div>
+                <div class="product-meta-value">${p.static_data.weight_kg ? p.static_data.weight_kg + ' kg' : '—'}</div>
+              </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="product-tabs">
+              <div class="tab-buttons" role="tablist">
+                <button class="tab-btn active" role="tab" aria-selected="true" onclick="switchTab(this,'tab-specs')">Specifications</button>
+                <button class="tab-btn" role="tab" aria-selected="false" onclick="switchTab(this,'tab-care')">Care Guide</button>
+                ${dimItems ? `<button class="tab-btn" role="tab" aria-selected="false" onclick="switchTab(this,'tab-dims')">Dimensions</button>` : ''}
+              </div>
+              <div id="tab-specs" class="tab-panel active" role="tabpanel">
+                ${specItems ? `<ul class="spec-list">${specItems}</ul>` : '<p style="color:var(--gray-500)">See product description for details.</p>'}
+              </div>
+              <div id="tab-care" class="tab-panel" role="tabpanel">
+                ${careItems ? `<ul class="care-list">${careItems}</ul>` : '<p style="color:var(--gray-500)">Care instructions not available.</p>'}
+                ${manualExcerpt}
+              </div>
+              ${dimItems ? `<div id="tab-dims" class="tab-panel" role="tabpanel"><ul class="spec-list">${dimItems}</ul></div>` : ''}
+            </div>
+          </div>
+        </div>`;
+
+      initScrollAnimations();
+    }
+
+    function selectVariantDetail(imgEl, variant, pillBtn) {
+      selectedVariant = variant;
+      document.getElementById('selected-variant-label').textContent = variant;
+
+      // Update pills
+      document.querySelectorAll('.variant-pill').forEach(b => b.classList.remove('active'));
+      if (pillBtn) pillBtn.classList.add('active');
+      else {
+        document.querySelectorAll('.variant-pill').forEach(b => {
+          if (b.textContent.trim() === variant) b.classList.add('active');
+        });
+      }
+
+      // Update thumbnails
+      document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active'));
+      if (imgEl) imgEl.classList.add('active');
+      else {
+        document.querySelectorAll('.product-thumb').forEach(t => {
+          if (t.alt.endsWith(variant)) t.classList.add('active');
+        });
+      }
+
+      // Update main image
+      const mainImg = document.getElementById('main-product-img');
+      if (mainImg) {
+        const src = getProductImagePath(currentProduct.id, currentProduct.name, variant);
+        mainImg.src = src;
+        mainImg.alt = currentProduct.name + ' - ' + variant;
+      }
+    }
+
+    function switchTab(btn, panelId) {
+      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      document.getElementById(panelId)?.classList.add('active');
+    }
+
+    function addToCartFromDetail() {
+      if (!currentProduct) return;
+      cart.addItem(currentProduct.id, currentProduct.name, currentProduct.dynamic_data.price_aud, selectedVariant || 'Default');
+    }
+
+    function showNotFound(msg) {
+      document.getElementById('product-content').innerHTML = `
+        <div class="not-found">
+          <h2>Product Not Found</h2>
+          <p style="color:var(--gray-500);margin-bottom:2rem">${escHtml(msg)}</p>
+          <a href="shop.html" class="btn-primary">Back to Shop</a>
+        </div>`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProduct();
+    });
+  </script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

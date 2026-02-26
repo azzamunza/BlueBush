@@ -50,25 +50,23 @@ export default function Home() {
               and elevate your everyday moments
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/shop">
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-deep-forest px-10 py-4 rounded-full font-bold text-lg hover:bg-vibrant-aqua hover:text-white transition-all duration-300 inline-flex items-center gap-3 shadow-xl"
-                >
-                  Shop Now
-                  <ArrowRight className="w-6 h-6" />
-                </motion.button>
-              </Link>
-              <Link href="/our-story">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-deep-forest transition-all duration-300 backdrop-blur-sm shadow-xl"
-                >
-                  Our Story
-                </motion.button>
-              </Link>
+              <motion(Link)
+                href="/shop"
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-deep-forest px-10 py-4 rounded-full font-bold text-lg hover:bg-vibrant-aqua hover:text-white transition-all duration-300 inline-flex items-center gap-3 shadow-xl"
+              >
+                Shop Now
+                <ArrowRight className="w-6 h-6" />
+              </motion(Link)>
+              <motion(Link)
+                href="/our-story"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-deep-forest transition-all duration-300 backdrop-blur-sm shadow-xl"
+              >
+                Our Story
+              </motion(Link)>
             </div>
           </motion.div>
         </div>

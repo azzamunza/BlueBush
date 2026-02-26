@@ -183,7 +183,7 @@
 
         return `
           <div class="product-card" id="product-${escapeAttr(p.id)}">
-            <a href="#" aria-label="${escapeAttr(p.name)}" onclick="return false">
+            <a href="product.html?id=${escapeAttr(p.id)}" aria-label="${escapeAttr(p.name)}">
               <div class="product-img">
                 <img
                   src="${getProductImagePath(p.id, p.name, variants[0])}"
@@ -259,5 +259,6 @@
       loadProducts();
     });
   </script>
+  <script src="js/chatbot.js"></script>
 </body>
 </html>

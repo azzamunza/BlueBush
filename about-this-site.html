@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About this website — BlueBush is a fictitious project created for a TAFE AI Skillset Course assignment.">
+  <title>About This Website | BlueBush</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    .about-section { padding: 4rem 0; }
+    .about-card {
+      background: var(--paperbark); border-radius: 16px; padding: 2.5rem;
+      margin-bottom: 2rem; border-left: 5px solid var(--deep-teal);
+    }
+    .about-card h2 { margin-bottom: 1rem; color: var(--deep-teal); }
+    .about-card p, .about-card li { color: var(--gray-600); line-height: 1.8; margin-bottom: 0.75rem; }
+    .about-card ul { padding-left: 1.5rem; }
+    .disclaimer-banner {
+      background: #fef3c7; border: 2px solid #f59e0b;
+      border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 2rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .disclaimer-icon { font-size: 2rem; flex-shrink: 0; }
+    .phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    .phase-card {
+      background: white; border-radius: 12px; padding: 1.5rem;
+      border: 1px solid var(--gray-200); transition: box-shadow 0.2s;
+    }
+    .phase-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .phase-number { font-size: 0.75rem; font-weight: 700; color: var(--deep-teal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+    .phase-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .phase-desc { font-size: 0.875rem; color: var(--gray-500); line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="cart-drawer-root"></div>
+
+  <main id="main-content">
+    <section class="page-hero" aria-label="About this website">
+      <div class="page-hero-content container">
+        <h1>About This Website</h1>
+        <p>Purpose, context, and the story behind the BlueBush project</p>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="container">
+
+        <div class="disclaimer-banner" role="alert">
+          <div class="disclaimer-icon">⚠️</div>
+          <div>
+            <strong style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;display:block;margin-bottom:0.5rem">This is a 100% Fictitious Website</strong>
+            <p style="margin:0;color:#78350f;font-size:0.95rem">BlueBush does not exist as a real business. No products listed on this site are real. No transactions can be made. All addresses, phone numbers, and contact details are entirely fabricated. This website was created solely for educational purposes as part of a TAFE assignment.</p>
+          </div>
+        </div>
+
+        <div class="about-card anim">
+          <h2>What is BlueBush?</h2>
+          <p>BlueBush is a <strong>synthetic, fictitious brand</strong> — a Perth-based sustainable homewares business — created entirely as a design and AI training exercise. It does not operate as a real store, does not sell products, and has no physical or commercial presence.</p>
+          <p>The brand was designed to be realistic, believable, and consistent — acting as a "world class" synthetic dataset and web presence for an AI customer service agent training exercise.</p>
+        </div>
+
+        <div class="about-card anim">
+          <h2>Assignment Purpose</h2>
+          <p>This website was generated as part of an assignment for a <strong>TAFE AI Skillset Course</strong>. The project's primary objective was to:</p>
+          <ul>
+            <li>Design a realistic product catalog and AI training dataset for a synthetic e-commerce brand</li>
+            <li>Demonstrate the use of AI tools to generate structured data (product JSON), marketing copy, and training datasets</li>
+            <li>Explore AI customer service agent architecture, including RAG (Retrieval-Augmented Generation) data schema design</li>
+            <li>Build a functional web presence to house and demonstrate the AI training data in context</li>
+            <li>Document risk safeguards against common AI failure modes (greenwashing, phantom stock, etc.)</li>
+          </ul>
+        </div>
+
+        <div class="about-card anim">
+          <h2>The BlueBush Project Roadmap</h2>
+          <p>The project followed a structured multi-phase roadmap:</p>
+          <div class="phase-grid">
+            <div class="phase-card">
+              <div class="phase-number">Phase 1</div>
+              <div class="phase-title">Architecture &amp; Standards</div>
+              <div class="phase-desc">Established brand identity (BlueBush, Perth-based), defined the "Gold Standard" JSON schema separating dynamic data (price, stock) from static data (dimensions, specs), and implemented Content Triage.</div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-number">Phase 2</div>
+              <div class="phase-title">Data Engineering</div>
+              <div class="phase-desc">Generated 70+ product entries across Textiles, Hard Goods, Consumables, and Wellness categories — each with full metadata including GSM weights, ingredient lists, care instructions, and RAG resources.</div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-number">Phase 3</div>
+              <div class="phase-title">Operational Safeguards</div>
+              <div class="phase-desc">FAQ Gap Analysis across 7 categories, Risk Assessment documentation, and explicit mapping of "Competitor Failures" (e.g., phantom stock) to "BlueBush Solutions" (real-time buffer logic).</div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-number">Phase 4</div>
+              <div class="phase-title">Training Assets</div>
+              <div class="phase-desc">Curated 50-item interaction dataset (Q&amp;A pairs), System Prompts based on ICE-AUS and UWA Corpus research (Neutral Professional Australian English, no caricatures).</div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-number">Phase 5</div>
+              <div class="phase-title">Strategic Report</div>
+              <div class="phase-desc">Drafted sections covering RAG Architecture (the "Frozen in Time" Paradox), Strategic Risk Mitigation (preventing greenwashing and subscription traps), and Data Limitations.</div>
+            </div>
+            <div class="phase-card">
+              <div class="phase-number">Phase 6</div>
+              <div class="phase-title">Web Presence</div>
+              <div class="phase-desc">This website — a fully functional static site demonstrating the product catalog, dynamic product pages, FAQ, chatbot UI, and brand identity consistent with the style guide.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card anim">
+          <h2>Key Design Principles</h2>
+          <ul>
+            <li><strong>Neutral Professional Australian English</strong> — informed by ICE-AUS corpus research. No stereotyped slang; approachable and direct.</li>
+            <li><strong>RAG-Ready Data Schema</strong> — Price and Stock are separated from static product data because they change frequently (the "Frozen in Time" Paradox in AI training).</li>
+            <li><strong>Content Triage</strong> — Marketing copy is separated from technical specs to prevent the AI from using promotional language in support contexts.</li>
+            <li><strong>Anti-Greenwashing</strong> — Only specific, verifiable claims (e.g., "OEKO-TEX Standard 100 certified") rather than vague terms like "eco-friendly."</li>
+            <li><strong>Phantom Stock Prevention</strong> — Stock levels include buffer logic to prevent the AI from confirming availability of items that are nearly depleted.</li>
+          </ul>
+        </div>
+
+        <div class="about-card anim">
+          <h2>Technical Implementation</h2>
+          <ul>
+            <li>Static HTML/CSS/JS site hosted on GitHub Pages</li>
+            <li>Product data served from a JSON file acting as a lightweight database</li>
+            <li>Dynamic product pages with JavaScript rendering from JSON data</li>
+            <li>Chatbot UI (Bilby) with keyword-matching responses — demonstrating the frontend template for a future AI-powered assistant</li>
+            <li>WCAG 2.1 AA accessibility standards considered throughout</li>
+            <li>No backend, no real payment processing, no real user accounts</li>
+          </ul>
+        </div>
+
+        <div style="text-align:center;padding:2rem 0" class="anim">
+          <a href="index.html" class="btn-primary">Return to Home</a>
+          &nbsp;&nbsp;
+          <a href="shop.html" class="btn-secondary" style="display:inline-flex">Browse Products</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initScrollAnimations();
+    });
+  </script>
+</body>
+</html>

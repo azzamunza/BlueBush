@@ -59,7 +59,7 @@ const cart = {
       body.innerHTML = `
         <div class="cart-empty">
           <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
-          <p style="font-family:'Poppins',sans-serif;font-size:1.125rem;color:#374151;">Your cart is empty</p>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.125rem;color:#374151;">Your cart is empty</p>
           <p style="font-size:0.875rem;color:#6b7280;">Add some sustainable goodies!</p>
         </div>`;
     } else {
@@ -175,12 +175,7 @@ function renderHeader() {
         <div class="header-inner">
           <!-- Logo -->
           <a href="${base}index.html" class="logo" aria-label="BlueBush Home">
-            <svg width="40" height="48" viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M20 2C20 2 6 10 6 24C6 32.8 12.2 40 20 40C27.8 40 34 32.8 34 24C34 10 20 2 20 2Z" fill="#86c8de"/>
-              <path d="M20 8C20 8 9 15 9 26C9 33.2 14 39 20 40C14.5 36 12 30 12 26C12 17 20 8 20 8Z" fill="#286a58"/>
-              <path d="M20 12C20 12 14 18 14 26C14 32 16.5 37 20 40C23.5 37 26 32 26 26C26 18 20 12 20 12Z" fill="#206c68"/>
-            </svg>
-            <span class="logo-text">BlueBush</span>
+            <img src="${base}images/bluebush-logo.png" alt="BlueBush" class="logo-img" height="40">
           </a>
 
           <!-- Desktop Navigation -->
@@ -257,6 +252,7 @@ function renderFooter() {
           <div>
             <h3 class="footer-heading">About BlueBush</h3>
             <p class="footer-text">Premium sustainable Australian homewares. Ethically sourced, beautifully crafted, built to last.</p>
+            <p class="footer-text" style="margin-top:0.5rem;font-size:0.8rem">📍 42 Wandoo Way, Jarrawood WA 6999</p>
           </div>
           <div>
             <h3 class="footer-heading">Shop</h3>
@@ -281,11 +277,13 @@ function renderFooter() {
             <ul class="footer-links">
               <li><a href="${base}our-story.html">Our Story</a></li>
               <li><a href="${base}journal.html">Journal</a></li>
+              <li><a href="${base}about-this-site.html">About This Site</a></li>
               <li><a href="mailto:hello@bluebush.com.au">hello@bluebush.com.au</a></li>
             </ul>
           </div>
         </div>
         <div class="footer-bottom">
+          <p class="footer-disclaimer">⚠️ <strong>DISCLAIMER:</strong> This website is 100% fictitious. No product is real. No transactions can be made. <a href="${base}about-this-site.html" style="color:var(--vibrant-aqua)">For more information, click here.</a></p>
           <p class="footer-copy">© ${year} BlueBush. Sustainable Homewares. Australian Grown.</p>
           <p class="footer-wcag">WCAG 2.1 AA Compliant • Built with care for accessibility</p>
         </div>

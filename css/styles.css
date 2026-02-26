@@ -1,5 +1,5 @@
 /* ===== IMPORT FONTS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
 /* ===== DESIGN TOKENS ===== */
 :root {
@@ -57,7 +57,7 @@ body {
 main { flex: 1; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.25;
@@ -142,7 +142,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: white;
   font-weight: 700;
   font-size: 1.25rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   transition: transform 0.3s, box-shadow 0.3s;
   flex-shrink: 0;
 }
@@ -153,7 +153,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .logo-text {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: white;
@@ -173,7 +173,7 @@ img { max-width: 100%; height: auto; display: block; }
 @media (min-width: 1024px) { .desktop-nav { display: flex; } }
 
 .desktop-nav a {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.9375rem;
   color: white;
@@ -260,7 +260,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: white;
   font-size: 0.6875rem;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   border-radius: 9999px;
   width: 1.25rem;
   height: 1.25rem;
@@ -332,7 +332,7 @@ img { max-width: 100%; height: auto; display: block; }
   display: block;
   padding: 0.75rem 1rem;
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   text-decoration: none;
   border-radius: 0.5rem;
@@ -432,7 +432,7 @@ img { max-width: 100%; height: auto; display: block; }
 .cart-item-info { flex: 1; min-width: 0; }
 
 .cart-item-name {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   color: var(--deep-forest);
   font-size: 0.875rem;
@@ -446,7 +446,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .cart-item-price {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   color: var(--deep-forest);
   font-size: 1rem;
@@ -476,7 +476,7 @@ img { max-width: 100%; height: auto; display: block; }
 .qty-btn:hover { background: var(--gray-100); }
 
 .qty-value {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
   min-width: 1.5rem;
@@ -507,7 +507,7 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .cart-total-label { font-size: 1rem; color: var(--gray-600); }
@@ -521,7 +521,7 @@ img { max-width: 100%; height: auto; display: block; }
   border: none;
   padding: 1rem;
   border-radius: 9999px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
@@ -545,7 +545,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: white;
   padding: 1rem 2.5rem;
   border-radius: 9999px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   text-decoration: none;
@@ -571,7 +571,7 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 1rem 2.5rem;
   border-radius: 9999px;
   border: 2px solid white;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   text-decoration: none;
@@ -594,7 +594,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--deep-forest);
   padding: 1rem 2.5rem;
   border-radius: 9999px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   text-decoration: none;
@@ -637,7 +637,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .footer-heading {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--vibrant-aqua);
@@ -739,7 +739,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 9999px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -784,7 +784,7 @@ img { max-width: 100%; height: auto; display: block; }
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   animation: bounce 1.5s infinite;
 }
 
@@ -885,7 +885,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--emerald);
   padding: 0.5rem 1.5rem;
   border-radius: 9999px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -985,7 +985,7 @@ img { max-width: 100%; height: auto; display: block; }
 .product-img-label {
   color: var(--gray-500);
   font-size: 0.875rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .product-eco-badge {
@@ -998,7 +998,7 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
@@ -1011,7 +1011,7 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
@@ -1049,7 +1049,7 @@ img { max-width: 100%; height: auto; display: block; }
 .product-info { padding: 1.5rem; }
 
 .product-cat {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.6875rem;
   font-weight: 700;
   color: var(--gray-500);
@@ -1059,7 +1059,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .product-name {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.0625rem;
   font-weight: 700;
   color: var(--deep-forest);
@@ -1100,7 +1100,7 @@ img { max-width: 100%; height: auto; display: block; }
   background: white;
   color: var(--deep-forest);
   cursor: pointer;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   transition: all 0.2s;
 }
@@ -1117,7 +1117,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .product-price {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--deep-forest);
@@ -1126,7 +1126,7 @@ img { max-width: 100%; height: auto; display: block; }
 .product-origin {
   font-size: 0.75rem;
   color: var(--gray-500);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* ===== STORY SECTION ===== */
@@ -1163,7 +1163,7 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   justify-content: center;
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   position: relative;
@@ -1314,7 +1314,7 @@ img { max-width: 100%; height: auto; display: block; }
   border: none;
   background: var(--paperbark);
   color: var(--deep-forest);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
   cursor: pointer;
@@ -1333,7 +1333,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .sort-label {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--deep-forest);
@@ -1485,7 +1485,7 @@ img { max-width: 100%; height: auto; display: block; }
   display: inline-block;
   background: var(--deep-forest);
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.8125rem;
   font-weight: 700;
   padding: 0.25rem 0.75rem;
@@ -1515,7 +1515,7 @@ img { max-width: 100%; height: auto; display: block; }
 .stat-item { text-align: center; }
 
 .stat-number {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   color: var(--emerald);
@@ -1550,7 +1550,7 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: center;
   color: white;
   font-size: 1.25rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 @media (min-width: 1024px) { .featured-img { aspect-ratio: auto; min-height: 20rem; } }
@@ -1568,7 +1568,7 @@ img { max-width: 100%; height: auto; display: block; }
   display: inline-block;
   background: var(--vibrant-aqua);
   color: var(--deep-forest);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.25rem 0.75rem;
@@ -1648,7 +1648,7 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--paperbark);
   color: var(--deep-forest);
   font-size: 0.6875rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
@@ -1710,7 +1710,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .contact-item-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   color: var(--deep-forest);
   margin-bottom: 0.25rem;
@@ -1764,7 +1764,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .form-label {
   display: block;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--deep-forest);
@@ -1800,7 +1800,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--red-600);
   font-size: 0.8125rem;
   margin-top: 0.25rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .form-error.show { display: block; }
@@ -1850,7 +1850,7 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: center;
   color: var(--gray-600);
   font-size: 1.125rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   max-height: 30rem;
 }
 
@@ -1890,7 +1890,7 @@ img { max-width: 100%; height: auto; display: block; }
   border: none;
   background: none;
   color: var(--deep-forest);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.9375rem;
   cursor: pointer;
@@ -1944,7 +1944,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .order-id {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   color: var(--deep-forest);
   margin-bottom: 0.25rem;
@@ -1952,8 +1952,8 @@ img { max-width: 100%; height: auto; display: block; }
 
 .order-meta { font-size: 0.875rem; color: var(--gray-600); }
 
-.order-status-delivered { color: var(--emerald); font-weight: 600; font-family: 'Poppins', sans-serif; font-size: 0.875rem; }
-.order-status-transit { color: var(--deep-teal); font-weight: 600; font-family: 'Poppins', sans-serif; font-size: 0.875rem; }
+.order-status-delivered { color: var(--emerald); font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.875rem; }
+.order-status-transit { color: var(--deep-teal); font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.875rem; }
 
 .order-right {
   display: flex;
@@ -1963,7 +1963,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .order-total {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--deep-forest);
@@ -1977,7 +1977,7 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: 9999px;
   background: none;
   cursor: pointer;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.875rem;
   transition: all 0.2s;
 }
@@ -1985,7 +1985,7 @@ img { max-width: 100%; height: auto; display: block; }
 .btn-outline:hover { background: var(--deep-forest); color: white; }
 
 .profile-form .section-subtitle-sm {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.0625rem;
   font-weight: 600;
   color: var(--deep-forest);
@@ -2008,7 +2008,7 @@ img { max-width: 100%; height: auto; display: block; }
 .eco-pref-category:last-of-type { border-bottom: none; }
 
 .eco-pref-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   color: var(--deep-forest);
   margin-bottom: 1rem;
@@ -2044,7 +2044,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .newsletter-pref h3 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   color: var(--deep-forest);
   margin-bottom: 0.75rem;
@@ -2111,7 +2111,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .faq-category-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--dark-logo);
@@ -2143,7 +2143,7 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: space-between;
   padding: 1.25rem 1.5rem;
   text-align: left;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.9375rem;
   color: var(--deep-forest);
@@ -2205,4 +2205,118 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 0.75rem 1.5rem;
   text-decoration: none;
   display: inline-flex;
+}
+
+/* ===== LOGO IMAGE ===== */
+.logo-img { height: 40px; width: auto; display: block; }
+
+/* ===== FOOTER DISCLAIMER ===== */
+.footer-disclaimer {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  padding: 0.75rem 1rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* ===== CHATBOT WIDGET ===== */
+#chatbot-widget {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+}
+.chatbot-toggle {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--deep-teal); color: white; border: none;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(32,108,104,0.4);
+  transition: background 0.2s, transform 0.2s;
+  position: relative;
+}
+.chatbot-toggle:hover { background: var(--emerald); transform: scale(1.05); }
+.chatbot-badge {
+  position: absolute; top: -4px; right: -4px;
+  background: var(--outback-ochre); color: white;
+  border-radius: 50%; width: 20px; height: 20px;
+  font-size: 0.7rem; font-weight: 700; align-items: center; justify-content: center;
+}
+.chatbot-window {
+  position: absolute; bottom: 72px; right: 0;
+  width: 360px; max-height: 520px;
+  background: white; border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+  display: flex; flex-direction: column;
+  opacity: 0; transform: scale(0.9) translateY(10px);
+  pointer-events: none; transition: opacity 0.25s, transform 0.25s;
+  transform-origin: bottom right;
+}
+.chatbot-window.open {
+  opacity: 1; transform: scale(1) translateY(0);
+  pointer-events: all;
+}
+.chatbot-header {
+  background: var(--deep-teal); color: white; padding: 1rem 1.25rem;
+  border-radius: 16px 16px 0 0; display: flex; align-items: center; justify-content: space-between;
+}
+.chatbot-header-info { display: flex; align-items: center; gap: 0.75rem; }
+.chatbot-avatar { font-size: 1.5rem; }
+.chatbot-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1rem; }
+.chatbot-status { font-size: 0.75rem; opacity: 0.8; }
+.chatbot-close { background: none; border: none; color: white; cursor: pointer; padding: 0.25rem; border-radius: 4px; transition: opacity 0.2s; }
+.chatbot-close:hover { opacity: 0.7; }
+.chatbot-messages {
+  flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;
+  min-height: 200px; max-height: 300px;
+}
+.chat-msg { display: flex; align-items: flex-end; gap: 0.5rem; }
+.chat-user { flex-direction: row-reverse; }
+.chat-bubble {
+  max-width: 80%; padding: 0.6rem 0.9rem; border-radius: 12px;
+  font-size: 0.875rem; line-height: 1.5;
+}
+.chat-bot .chat-bubble { background: var(--paperbark); color: var(--gray-700); border-bottom-left-radius: 4px; }
+.chat-user .chat-bubble { background: var(--deep-teal); color: white; border-bottom-right-radius: 4px; }
+.chat-avatar { font-size: 1.2rem; }
+.chat-typing { display: flex; gap: 4px; align-items: center; padding: 0.75rem 1rem; }
+.chat-typing span {
+  width: 6px; height: 6px; background: var(--gray-500); border-radius: 50%;
+  animation: typing-bounce 1.2s infinite;
+}
+.chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
+.chatbot-suggestions {
+  padding: 0.5rem 1rem; display: flex; gap: 0.4rem; flex-wrap: wrap; border-top: 1px solid var(--gray-100);
+}
+.chatbot-suggestions button {
+  font-size: 0.75rem; padding: 0.3rem 0.75rem; border-radius: 999px;
+  border: 1.5px solid var(--gray-200); background: white; color: var(--gray-700);
+  cursor: pointer; transition: all 0.2s; font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.chatbot-suggestions button:hover { background: var(--deep-teal); color: white; border-color: var(--deep-teal); }
+.chatbot-input-row {
+  padding: 0.75rem 1rem; border-top: 1px solid var(--gray-200);
+  display: flex; gap: 0.5rem; align-items: center;
+}
+.chatbot-input {
+  flex: 1; padding: 0.6rem 0.875rem; border: 1.5px solid var(--gray-200);
+  border-radius: 999px; font-size: 0.875rem; outline: none;
+  font-family: 'Plus Jakarta Sans', sans-serif; transition: border-color 0.2s;
+}
+.chatbot-input:focus { border-color: var(--deep-teal); }
+.chatbot-send {
+  width: 36px; height: 36px; border-radius: 50%; background: var(--deep-teal);
+  border: none; color: white; cursor: pointer; display: flex; align-items: center;
+  justify-content: center; transition: background 0.2s; flex-shrink: 0;
+}
+.chatbot-send:hover { background: var(--emerald); }
+@media (max-width: 480px) {
+  #chatbot-widget { bottom: 1rem; right: 1rem; }
+  .chatbot-window { width: calc(100vw - 2rem); right: -1rem; }
 }

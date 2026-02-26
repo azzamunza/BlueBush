@@ -183,6 +183,7 @@
         const res = await fetch(base + 'data/products.json');
         const products = await res.json();
         const featured = products.slice(0, 4);
+        window._featuredProducts = featured;
         renderProductCards(featured, 'featured-products');
       } catch (e) {
         document.getElementById('featured-products').innerHTML =
@@ -210,9 +211,17 @@
           <div class="product-card anim" style="animation-delay:${Math.random()*0.2}s">
             <a href="shop.html#product-${escapeAttr(p.id)}" aria-label="${escapeAttr(p.name)}">
               <div class="product-img">
-                <div class="product-img-inner">
+                <img
+                  src="${getProductImagePath(p.id, p.name, variants[0])}"
+                  alt="${escapeAttr(p.name)} - ${escapeAttr(variants[0])}"
+                  class="product-img-real"
+                  loading="lazy"
+                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                  data-product-img="${escapeAttr(p.id)}"
+                >
+                <div class="product-img-inner" style="display:none">
                   <div class="product-img-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="#50C878" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="#206c68" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
                   </div>
                   <span class="product-img-label">Product Image</span>
                 </div>
@@ -245,9 +254,22 @@
     }
 
     function selectVariant(btn, productId) {
-      const card = btn.closest('.product-variants');
-      card.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+      const variantsWrap = btn.closest('.product-variants');
+      variantsWrap.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      // Update product image for selected variant
+      const card = variantsWrap.closest('.product-card');
+      const img = card?.querySelector('[data-product-img]');
+      if (img && window._featuredProducts) {
+        const p = window._featuredProducts.find(prod => prod.id === productId);
+        if (p) {
+          img.src = getProductImagePath(p.id, p.name, btn.dataset.variant);
+          img.alt = p.name + ' - ' + btn.dataset.variant;
+          img.style.display = '';
+          const fallback = card.querySelector('.product-img-inner');
+          if (fallback) fallback.style.display = 'none';
+        }
+      }
     }
 
     function addProductToCart(id, name, price) {

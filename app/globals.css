@@ -5,14 +5,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+  --color-deep-forest: #1B3022;
+  --color-vibrant-aqua: #00FFFF;
+  --color-soft-sandstone: #D7C4BB;
+  --color-outback-ochre: #AE653F;
+  --color-paperbark: #E5E1D8;
+  --color-deep-teal: #006B6B;
+  --color-emerald: #50C878;
+}
+
 :root {
-  --deep-forest: #1B3022;
-  --vibrant-aqua: #00FFFF;
-  --soft-sandstone: #D7C4BB;
-  --outback-ochre: #AE653F;
-  --paperbark: #E5E1D8;
-  --deep-teal: #006B6B;
-  --emerald: #50C878;
+  /* Aliases for direct CSS variable usage (e.g. var(--deep-forest) in non-Tailwind rules) */
+  --deep-forest: var(--color-deep-forest);
+  --vibrant-aqua: var(--color-vibrant-aqua);
+  --soft-sandstone: var(--color-soft-sandstone);
+  --outback-ochre: var(--color-outback-ochre);
+  --paperbark: var(--color-paperbark);
+  --deep-teal: var(--color-deep-teal);
+  --emerald: var(--color-emerald);
 }
 
 body {

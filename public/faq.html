@@ -294,7 +294,7 @@
       list.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(openBtn => {
         if (openBtn !== btn) {
           openBtn.setAttribute('aria-expanded', 'false');
-          openBtn.nextElementSibling.classList.remove('open');
+          openBtn.nextElementSibling?.classList.remove('open');
         }
       });
 

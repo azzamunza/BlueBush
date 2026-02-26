@@ -230,7 +230,8 @@
       btn.classList.add('active');
       // Update product image for selected variant
       const card = wrap.closest('.product-card');
-      const img = card?.querySelector('[data-product-img]');
+      if (!card) return;
+      const img = card.querySelector('[data-product-img]');
       if (img) {
         const productId = img.dataset.productImg;
         const p = allProducts.find(prod => prod.id === productId);

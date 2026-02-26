@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop our curated collection of ethically sourced, beautifully crafted sustainable Australian homewares for every room in your home.">
+  <title>Shop | BlueBush Sustainable Homewares</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <div id="site-header"></div>
+  <div id="cart-drawer-root"></div>
+
+  <main id="main-content">
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="page-hero" aria-label="Shop our collection">
+      <div class="page-hero-content container">
+        <h1>Shop Sustainable Homewares</h1>
+        <p>Discover our curated collection of ethically sourced, beautifully crafted essentials for every room in your home</p>
+      </div>
+    </section>
+
+    <!-- ===== FILTERS ===== -->
+    <section class="shop-filters" aria-label="Product filters" id="filters-bar">
+      <div class="container">
+        <div class="filters-inner">
+          <div class="category-filters" id="category-filters" role="group" aria-label="Filter by category">
+            <!-- Populated by JS -->
+          </div>
+          <div class="sort-wrap">
+            <label for="sort-select" class="sort-label">Sort by:</label>
+            <select id="sort-select" class="sort-select" onchange="applyFilters()" aria-label="Sort products">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="name">Name: A to Z</option>
+            </select>
+          </div>
+        </div>
+        <p class="results-count" id="results-count" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ===== PRODUCTS GRID ===== -->
+    <section class="shop-grid-section" aria-label="Products">
+      <div class="container">
+        <div class="shop-products-grid" id="shop-products" aria-live="polite">
+          <p style="color:#6b7280;padding:2rem 0">Loading products…</p>
+        </div>
+        <div id="no-products" class="no-products" style="display:none" aria-live="polite">
+          No products found in this category.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BOTTOM CTA ===== -->
+    <section class="shop-cta" aria-label="Contact us">
+      <div class="container">
+        <h2 class="anim">Can't find what you're looking for?</h2>
+        <p class="anim">Get in touch with our team and we'll help you find the perfect sustainable solution for your home</p>
+        <a href="contact.html" class="btn-primary anim">Contact Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    let allProducts = [];
+    let selectedCategory = 'All';
+
+    function escapeHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function escapeAttr(s) { return String(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+    async function loadProducts() {
+      try {
+        const res = await fetch('data/products.json');
+        allProducts = await res.json();
+        buildCategoryFilters();
+
+        // Check URL params
+        const params = new URLSearchParams(window.location.search);
+        const cat = params.get('category');
+        const search = params.get('search');
+
+        if (cat) {
+          selectedCategory = cat;
+        }
+        if (search) {
+          document.querySelectorAll('.search-input, .mobile-search-input').forEach(el => {
+            el.value = search;
+          });
+        }
+
+        applyFilters(search || '');
+      } catch (e) {
+        document.getElementById('shop-products').innerHTML =
+          '<p style="color:#6b7280;padding:2rem">Unable to load products. Please refresh the page.</p>';
+      }
+    }
+
+    function buildCategoryFilters() {
+      const cats = ['All', ...Array.from(new Set(allProducts.map(p => p.category))).sort()];
+      const container = document.getElementById('category-filters');
+      container.innerHTML = cats.map(c =>
+        `<button class="category-btn${c === selectedCategory ? ' active' : ''}" onclick="selectCategory('${escapeAttr(c)}')" aria-pressed="${c === selectedCategory}">${escapeHtml(c)}</button>`
+      ).join('');
+    }
+
+    function selectCategory(cat) {
+      selectedCategory = cat;
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        const isActive = btn.textContent.trim() === cat;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
+      });
+      applyFilters();
+    }
+
+    function applyFilters(searchOverride) {
+      const sortVal = document.getElementById('sort-select')?.value || 'featured';
+      const searchVal = searchOverride !== undefined ? searchOverride :
+        (document.getElementById('search-input-desktop')?.value || '').toLowerCase();
+
+      let filtered = allProducts.filter(p => {
+        const matchCat = selectedCategory === 'All' || p.category === selectedCategory;
+        const matchSearch = !searchVal || p.name.toLowerCase().includes(searchVal) ||
+          p.content_triage.marketing_hook.toLowerCase().includes(searchVal) ||
+          p.category.toLowerCase().includes(searchVal);
+        return matchCat && matchSearch;
+      });
+
+      // Sort
+      switch (sortVal) {
+        case 'price-low':
+          filtered.sort((a,b) => a.dynamic_data.price_aud - b.dynamic_data.price_aud);
+          break;
+        case 'price-high':
+          filtered.sort((a,b) => b.dynamic_data.price_aud - a.dynamic_data.price_aud);
+          break;
+        case 'name':
+          filtered.sort((a,b) => a.name.localeCompare(b.name));
+          break;
+      }
+
+      renderShopProducts(filtered);
+    }
+
+    function renderShopProducts(products) {
+      const container = document.getElementById('shop-products');
+      const noProducts = document.getElementById('no-products');
+      const countEl = document.getElementById('results-count');
+
+      if (countEl) {
+        countEl.textContent = `Showing ${products.length} ${products.length === 1 ? 'product' : 'products'}`;
+      }
+
+      if (products.length === 0) {
+        container.innerHTML = '';
+        if (noProducts) noProducts.style.display = 'block';
+        return;
+      }
+
+      if (noProducts) noProducts.style.display = 'none';
+
+      container.innerHTML = products.map(p => {
+        const stock = p.dynamic_data.stock_level;
+        let stockBadge = '';
+        if (stock === 0) stockBadge = `<span class="product-stock-badge stock-out">Out of Stock</span>`;
+        else if (stock <= 5) stockBadge = `<span class="product-stock-badge stock-very-low">Only ${stock} left</span>`;
+        else if (stock <= 15) stockBadge = `<span class="product-stock-badge stock-low">Low Stock</span>`;
+
+        const variants = p.static_data.variants.slice(0, 4);
+        const variantBtns = variants.map((v, i) =>
+          `<button class="variant-btn${i===0?' active':''}" onclick="selectVariant(this)" data-variant="${escapeAttr(v)}">${escapeHtml(v)}</button>`
+        ).join('');
+
+        return `
+          <div class="product-card" id="product-${escapeAttr(p.id)}">
+            <a href="#" aria-label="${escapeAttr(p.name)}" onclick="return false">
+              <div class="product-img">
+                <div class="product-img-inner">
+                  <div class="product-img-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="#50C878" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+                  </div>
+                  <span class="product-img-label">Product Image</span>
+                </div>
+                ${p.static_data.eco_badge ? `<span class="product-eco-badge">🌿 ${escapeHtml(p.static_data.eco_badge)}</span>` : ''}
+                ${stockBadge}
+              </div>
+              <div class="product-info">
+                <p class="product-cat">${escapeHtml(p.category)}</p>
+                <h3 class="product-name">${escapeHtml(p.name)}</h3>
+                <p class="product-hook">${escapeHtml(p.content_triage.marketing_hook)}</p>
+                <div class="product-variants" onclick="event.preventDefault()">${variantBtns}</div>
+                <div class="product-footer">
+                  <span class="product-price">$${p.dynamic_data.price_aud.toFixed(2)}</span>
+                  <span class="product-origin">${escapeHtml(p.static_data.origin.split(',')[0])}</span>
+                </div>
+              </div>
+            </a>
+            <button
+              class="product-quick-add"
+              onclick="addToCart(this,'${escapeAttr(p.id)}','${escapeAttr(p.name)}',${p.dynamic_data.price_aud})"
+              aria-label="Add ${escapeAttr(p.name)} to cart"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+            </button>
+          </div>`;
+      }).join('');
+    }
+
+    function selectVariant(btn) {
+      const wrap = btn.closest('.product-variants');
+      wrap.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function addToCart(btn, id, name, price) {
+      const card = btn.closest('.product-card');
+      const activeVariant = card?.querySelector('.variant-btn.active')?.dataset.variant || 'Default';
+      cart.addItem(id, name, price, activeVariant);
+    }
+
+    // Update filters when search input changes
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.search-input, .mobile-search-input').forEach(el => {
+        el.addEventListener('input', () => applyFilters(el.value.toLowerCase()));
+      });
+      loadProducts();
+    });
+  </script>
+</body>
+</html>

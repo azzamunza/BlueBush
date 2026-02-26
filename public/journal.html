@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read the BlueBush Journal for sustainable living tips, care guides, artisan stories, and home inspiration.">
+  <title>Journal | BlueBush Sustainable Homewares</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <div id="site-header"></div>
+  <div id="cart-drawer-root"></div>
+
+  <main id="main-content">
+
+    <!-- ===== HERO ===== -->
+    <section class="page-hero" aria-label="BlueBush Journal">
+      <div class="page-hero-content container">
+        <h1>The BlueBush Journal</h1>
+        <p>Sustainable living tips, care guides, and stories from our artisan community</p>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORY FILTERS ===== -->
+    <section style="position:sticky;top:5rem;z-index:40;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(215,196,187,0.3);padding:1rem 0" aria-label="Filter by category">
+      <div class="container">
+        <div class="category-filters" id="journal-filters" role="group" aria-label="Journal categories">
+          <button class="category-btn active" onclick="filterArticles('All')" aria-pressed="true">All</button>
+          <button class="category-btn" onclick="filterArticles('Sustainability')" aria-pressed="false">Sustainability</button>
+          <button class="category-btn" onclick="filterArticles('Care Guides')" aria-pressed="false">Care Guides</button>
+          <button class="category-btn" onclick="filterArticles('Home Tips')" aria-pressed="false">Home Tips</button>
+          <button class="category-btn" onclick="filterArticles('Artisan Stories')" aria-pressed="false">Artisan Stories</button>
+          <button class="category-btn" onclick="filterArticles('Education')" aria-pressed="false">Education</button>
+          <button class="category-btn" onclick="filterArticles('Seasonal')" aria-pressed="false">Seasonal</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURED ARTICLE ===== -->
+    <section class="journal-section" style="background:var(--paperbark)" aria-label="Featured article">
+      <div class="container">
+        <div class="featured-article anim">
+          <div class="featured-grid">
+            <div class="featured-img" aria-hidden="true">Featured Article Image</div>
+            <div class="featured-content">
+              <span class="featured-badge">Featured</span>
+              <h2 class="featured-title">The Complete Guide to Caring for French Linen</h2>
+              <p class="featured-excerpt">
+                Discover the secrets to keeping your French linen sheets soft, beautiful, and lasting for generations.
+                From washing tips to storage solutions.
+              </p>
+              <div class="article-meta">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                  Emma Thompson
+                </span>
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                  15 Feb 2026
+                </span>
+                <span>5 min read</span>
+              </div>
+              <button class="btn-primary" onclick="showArticleModal()" style="font-size:1rem;padding:0.75rem 1.5rem">
+                Read Article
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ARTICLES GRID ===== -->
+    <section class="journal-section" aria-label="Latest articles">
+      <div class="container">
+        <h2 class="articles-title anim">Latest Articles</h2>
+        <div class="articles-grid" id="articles-grid" aria-live="polite">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEWSLETTER ===== -->
+    <section class="newsletter-section" aria-label="Newsletter signup">
+      <div class="container">
+        <div class="newsletter-content anim">
+          <h2 class="newsletter-title">Never Miss an Article</h2>
+          <p class="newsletter-subtitle">
+            Subscribe to our journal for sustainable living tips, product care guides,
+            and stories from our artisan community
+          </p>
+          <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)" aria-label="Newsletter signup form">
+            <input
+              type="email"
+              class="newsletter-input"
+              placeholder="Your email address"
+              aria-label="Email address"
+              required
+            >
+            <button type="submit" class="btn-white">Subscribe</button>
+          </form>
+          <p class="newsletter-privacy">🔒 We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Article Modal -->
+  <div id="article-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;align-items:center;justify-content:center;padding:1rem" role="dialog" aria-modal="true" aria-label="Article preview" onclick="closeArticleModal(event)">
+    <div style="background:white;border-radius:1rem;max-width:40rem;width:100%;padding:2rem;max-height:80vh;overflow-y:auto" onclick="event.stopPropagation()">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <h2 style="color:var(--deep-forest);font-size:1.5rem" id="modal-title">Article Title</h2>
+        <button onclick="closeArticleModal()" style="background:none;border:none;cursor:pointer;font-size:1.5rem;color:var(--gray-500)" aria-label="Close article">✕</button>
+      </div>
+      <p id="modal-body" style="color:var(--gray-700);line-height:1.8;font-size:1rem"></p>
+      <p style="color:var(--gray-500);font-size:0.875rem;margin-top:1.5rem;font-style:italic">Full article coming soon. Subscribe to our newsletter to be notified.</p>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="js/main.js"></script>
+  <script>
+    const articles = [
+      {
+        id: 1,
+        title: 'The Complete Guide to Caring for French Linen',
+        excerpt: "Discover the secrets to keeping your French linen sheets soft, beautiful, and lasting for generations. From washing tips to storage solutions.",
+        category: 'Care Guides',
+        author: 'Emma Thompson',
+        date: '2026-02-15',
+        readTime: '5 min read',
+      },
+      {
+        id: 2,
+        title: 'Why Bamboo is the Future of Sustainable Textiles',
+        excerpt: "Explore the environmental benefits of bamboo fabric and why it's becoming the go-to choice for eco-conscious homeowners.",
+        category: 'Sustainability',
+        author: 'James Cooper',
+        date: '2026-02-10',
+        readTime: '7 min read',
+      },
+      {
+        id: 3,
+        title: '5 Ways to Create a More Sustainable Bedroom',
+        excerpt: "Simple swaps and mindful choices that can transform your bedroom into an eco-friendly sanctuary without compromising on style.",
+        category: 'Home Tips',
+        author: 'Sarah Mitchell',
+        date: '2026-02-05',
+        readTime: '6 min read',
+      },
+      {
+        id: 4,
+        title: 'The Journey of Our Saltbush Ceramics',
+        excerpt: "Meet the artisan behind our beautiful handcrafted ceramic collection and learn about the traditional techniques that make each piece unique.",
+        category: 'Artisan Stories',
+        author: 'Michael Chen',
+        date: '2026-01-28',
+        readTime: '8 min read',
+      },
+      {
+        id: 5,
+        title: 'Understanding Organic Cotton Certifications',
+        excerpt: "A comprehensive breakdown of GOTS, OEKO-TEX, and other certifications to help you make informed choices.",
+        category: 'Education',
+        author: 'Emma Thompson',
+        date: '2026-01-20',
+        readTime: '10 min read',
+      },
+      {
+        id: 6,
+        title: 'Seasonal Living: Transitioning Your Home for Winter',
+        excerpt: "Discover how to create a cosy, sustainable winter haven with natural materials and thoughtful layering.",
+        category: 'Seasonal',
+        author: 'Sarah Mitchell',
+        date: '2026-01-15',
+        readTime: '6 min read',
+      },
+    ];
+
+    let activeCategory = 'All';
+
+    function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function formatDate(dateStr) {
+      const d = new Date(dateStr);
+      return d.toLocaleDateString('en-AU', { day:'numeric', month:'short' });
+    }
+
+    function filterArticles(cat) {
+      activeCategory = cat;
+      document.querySelectorAll('#journal-filters .category-btn').forEach(btn => {
+        const isActive = btn.textContent.trim() === cat;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
+      });
+      renderArticles();
+    }
+
+    function renderArticles() {
+      const filtered = activeCategory === 'All'
+        ? articles.slice(1)
+        : articles.filter(a => a.category === activeCategory);
+
+      const grid = document.getElementById('articles-grid');
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<p style="color:var(--gray-600);font-size:1.0625rem;padding:2rem 0">No articles in this category yet. Check back soon!</p>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(a => `
+        <article class="article-card anim">
+          <a href="#" onclick="openArticle(${a.id});return false" aria-label="${escHtml(a.title)}">
+            <div class="article-img" aria-hidden="true">Article Image</div>
+            <div class="article-content">
+              <span class="article-cat-badge">${escHtml(a.category)}</span>
+              <h3 class="article-title">${escHtml(a.title)}</h3>
+              <p class="article-excerpt">${escHtml(a.excerpt)}</p>
+              <div class="article-meta" style="font-size:0.75rem">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                  ${escHtml(a.author)}
+                </span>
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                  ${formatDate(a.date)}
+                </span>
+                <span>${escHtml(a.readTime)}</span>
+              </div>
+            </div>
+          </a>
+        </article>`).join('');
+
+      initScrollAnimations();
+    }
+
+    function openArticle(id) {
+      const article = articles.find(a => a.id === id);
+      if (!article) return;
+      document.getElementById('modal-title').textContent = article.title;
+      document.getElementById('modal-body').textContent = article.excerpt + ' [Full article coming soon]';
+      const modal = document.getElementById('article-modal-overlay');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showArticleModal() { openArticle(1); }
+
+    function closeArticleModal(event) {
+      if (!event || event.target === document.getElementById('article-modal-overlay') || !event.target) {
+        document.getElementById('article-modal-overlay').style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input[type=email]');
+      if (input) {
+        input.value = '';
+        input.placeholder = '✓ Thank you for subscribing!';
+        setTimeout(() => { input.placeholder = 'Your email address'; }, 3000);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', renderArticles);
+  </script>
+</body>
+</html>

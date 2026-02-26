@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
 import { motion } from 'framer-motion';
 import productsData from '@/source/BlueBush-Product-Catalog-V1.json';
@@ -141,12 +142,12 @@ export default function ShopPage() {
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
             Get in touch with our team and we'll help you find the perfect sustainable solution for your home
           </p>
-          <a
+          <Link
             href="/contact"
             className="inline-block bg-deep-forest text-white px-8 py-4 rounded-full font-medium hover:bg-emerald transition-colors no-underline"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </section>
     </main>

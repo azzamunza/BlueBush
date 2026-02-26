@@ -8,28 +8,21 @@ Visit the live site at: **https://azzamunza.github.io/BlueBush/**
 
 ## About
 
-BlueBush is a sustainable homewares brand style guide showcasing:
-- Brand identity and color palette
-- Typography system
-- Product mood board
-- UI component library
-- Navigation preview
+BlueBush is a premium sustainable Australian homewares website featuring:
+- Home page with featured products
+- Shop page with filtering and sorting
+- Our Story page
+- Journal page
+- Contact page
+- Account page
+- FAQ page
 
 ## Development
 
-```bash
-# Install dependencies
-npm install
+This is a plain HTML/CSS/JavaScript website. No build step required.
 
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-```
+Open any `.html` file from the `public/` directory in a browser to develop locally.
 
 ## Deployment
 
-This site is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to the `main` branch.
-
-For more details, see [DEPLOYMENT.md](DEPLOYMENT.md) and [GITHUB_PAGES_SETUP_VERIFICATION.md](GITHUB_PAGES_SETUP_VERIFICATION.md).
+This site is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to the `main` branch. The contents of the `public/` directory are served directly.

@@ -99,6 +99,14 @@ function escHtml(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+// ===== PRODUCT IMAGE HELPER =====
+function getProductImagePath(productId, productName, variant) {
+  const base = getBase();
+  const nameSlug = productName.replace(/\s+/g, '_');
+  const filename = `${productId}-${nameSlug}-${variant}.png`;
+  return `${base}images/products/${filename}`;
+}
+
 // ===== CART DRAWER =====
 function openCart() {
   document.getElementById('cart-overlay')?.classList.add('open');
@@ -167,7 +175,11 @@ function renderHeader() {
         <div class="header-inner">
           <!-- Logo -->
           <a href="${base}index.html" class="logo" aria-label="BlueBush Home">
-            <div class="logo-circle" aria-hidden="true">BB</div>
+            <svg width="40" height="48" viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 2C20 2 6 10 6 24C6 32.8 12.2 40 20 40C27.8 40 34 32.8 34 24C34 10 20 2 20 2Z" fill="#86c8de"/>
+              <path d="M20 8C20 8 9 15 9 26C9 33.2 14 39 20 40C14.5 36 12 30 12 26C12 17 20 8 20 8Z" fill="#286a58"/>
+              <path d="M20 12C20 12 14 18 14 26C14 32 16.5 37 20 40C23.5 37 26 32 26 26C26 18 20 12 20 12Z" fill="#206c68"/>
+            </svg>
             <span class="logo-text">BlueBush</span>
           </a>
 
@@ -260,7 +272,7 @@ function renderFooter() {
             <ul class="footer-links">
               <li><a href="${base}contact.html">Contact Us</a></li>
               <li><a href="${base}contact.html">Shipping &amp; Returns</a></li>
-              <li><a href="${base}contact.html">FAQ</a></li>
+              <li><a href="${base}faq.html">FAQ</a></li>
               <li><a href="${base}account.html">My Account</a></li>
             </ul>
           </div>

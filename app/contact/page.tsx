@@ -179,12 +179,9 @@ export default function ContactPage() {
               <p className="text-gray-600 mb-4">
                 Check out our FAQ page for information about shipping, returns, and product care.
               </p>
-              <a
-                href="/faq"
-                className="text-emerald font-medium hover:underline"
-              >
-                Visit FAQ →
-              </a>
+              <span className="text-emerald font-medium">
+                FAQ page coming soon
+              </span>
             </motion.div>
           </div>
 

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage your BlueBush account, view orders, update your profile, and set your eco preferences.">
+  <title>My Account | BlueBush Sustainable Homewares</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <div id="site-header"></div>
+  <div id="cart-drawer-root"></div>
+
+  <main id="main-content">
+    <section class="account-section">
+      <div class="container">
+
+        <!-- Heading -->
+        <div class="account-heading fade-in">
+          <h1>My Account</h1>
+          <p>Welcome back! Manage your orders, profile, and preferences</p>
+        </div>
+
+        <div class="account-grid">
+
+          <!-- ===== Sidebar ===== -->
+          <nav class="account-sidebar" aria-label="Account navigation">
+            <button
+              class="account-tab-btn active"
+              onclick="showTab('orders')"
+              id="tab-btn-orders"
+              aria-controls="tab-orders"
+              aria-selected="true"
+              role="tab"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>
+              Order History
+            </button>
+            <button
+              class="account-tab-btn"
+              onclick="showTab('profile')"
+              id="tab-btn-profile"
+              aria-controls="tab-profile"
+              aria-selected="false"
+              role="tab"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+              My Profile
+            </button>
+            <button
+              class="account-tab-btn"
+              onclick="showTab('preferences')"
+              id="tab-btn-preferences"
+              aria-controls="tab-preferences"
+              aria-selected="false"
+              role="tab"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+              Eco Preferences
+            </button>
+          </nav>
+
+          <!-- ===== Main Content ===== -->
+          <div class="account-content" role="tabpanel">
+
+            <!-- ORDERS TAB -->
+            <div class="account-tab-panel active" id="tab-orders" role="tabpanel" aria-labelledby="tab-btn-orders">
+              <h2 class="account-panel-title">Order History</h2>
+
+              <div class="order-item">
+                <div class="order-inner">
+                  <div>
+                    <div class="order-id">Order #BB123456</div>
+                    <div class="order-meta">Placed on 15 February 2026</div>
+                    <div class="order-meta">3 items</div>
+                  </div>
+                  <div class="order-right">
+                    <div>
+                      <div class="order-total">$280.00</div>
+                      <div class="order-status-delivered">Delivered</div>
+                    </div>
+                    <button class="btn-outline">View Details</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="order-item">
+                <div class="order-inner">
+                  <div>
+                    <div class="order-id">Order #BB123455</div>
+                    <div class="order-meta">Placed on 1 February 2026</div>
+                    <div class="order-meta">2 items</div>
+                  </div>
+                  <div class="order-right">
+                    <div>
+                      <div class="order-total">$185.50</div>
+                      <div class="order-status-transit">In Transit</div>
+                    </div>
+                    <button class="btn-outline">View Details</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="order-item">
+                <div class="order-inner">
+                  <div>
+                    <div class="order-id">Order #BB123454</div>
+                    <div class="order-meta">Placed on 20 January 2026</div>
+                    <div class="order-meta">5 items</div>
+                  </div>
+                  <div class="order-right">
+                    <div>
+                      <div class="order-total">$420.00</div>
+                      <div class="order-status-delivered">Delivered</div>
+                    </div>
+                    <button class="btn-outline">View Details</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- PROFILE TAB -->
+            <div class="account-tab-panel" id="tab-profile" role="tabpanel" aria-labelledby="tab-btn-profile">
+              <h2 class="account-panel-title">My Profile</h2>
+
+              <form class="profile-form" onsubmit="saveProfile(event)" aria-label="Profile form">
+
+                <div class="section-subtitle-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                  Personal Information
+                </div>
+
+                <div class="form-row" style="margin-bottom:1rem">
+                  <div class="form-group" style="margin-bottom:0">
+                    <label for="first-name" class="form-label">First Name</label>
+                    <input type="text" id="first-name" class="form-input" value="Alex" autocomplete="given-name">
+                  </div>
+                  <div class="form-group" style="margin-bottom:0">
+                    <label for="last-name" class="form-label">Last Name</label>
+                    <input type="text" id="last-name" class="form-input" value="Johnson" autocomplete="family-name">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email-profile" class="form-label">Email Address</label>
+                  <input type="email" id="email-profile" class="form-input" value="alex.johnson@email.com" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                  <label for="phone-profile" class="form-label">Phone Number</label>
+                  <input type="tel" id="phone-profile" class="form-input" value="0412 345 678" autocomplete="tel">
+                </div>
+
+                <div class="section-subtitle-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                  Default Shipping Address
+                </div>
+
+                <div class="form-group">
+                  <label for="street" class="form-label">Street Address</label>
+                  <input type="text" id="street" class="form-input" value="123 Green Street" autocomplete="street-address">
+                </div>
+
+                <div class="form-row" style="margin-bottom:1rem">
+                  <div class="form-group" style="margin-bottom:0">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" id="city" class="form-input" value="Melbourne" autocomplete="address-level2">
+                  </div>
+                  <div class="form-group" style="margin-bottom:0">
+                    <label for="state" class="form-label">State</label>
+                    <select id="state" class="form-select" autocomplete="address-level1">
+                      <option>VIC</option>
+                      <option>NSW</option>
+                      <option>QLD</option>
+                      <option>SA</option>
+                      <option>WA</option>
+                      <option>TAS</option>
+                      <option>NT</option>
+                      <option>ACT</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="postcode" class="form-label">Postcode</label>
+                  <input type="text" id="postcode" class="form-input" value="3000" autocomplete="postal-code" style="max-width:10rem">
+                </div>
+
+                <button type="submit" class="btn-primary" style="font-size:1rem;padding:0.875rem 2rem">Save Changes</button>
+              </form>
+            </div>
+
+            <!-- PREFERENCES TAB -->
+            <div class="account-tab-panel" id="tab-preferences" role="tabpanel" aria-labelledby="tab-btn-preferences">
+              <h2 class="account-panel-title">Eco Preferences</h2>
+              <p style="color:var(--gray-600);margin-bottom:1.5rem">Help us personalise your experience by sharing your sustainability priorities</p>
+
+              <div class="eco-pref-category">
+                <div class="eco-pref-title">Material Preferences</div>
+                <div class="eco-options">
+                  <label class="eco-option"><input type="checkbox"> Organic Cotton</label>
+                  <label class="eco-option"><input type="checkbox" checked> Bamboo</label>
+                  <label class="eco-option"><input type="checkbox" checked> Linen</label>
+                  <label class="eco-option"><input type="checkbox"> Recycled Materials</label>
+                </div>
+              </div>
+
+              <div class="eco-pref-category">
+                <div class="eco-pref-title">Eco Certifications</div>
+                <div class="eco-options">
+                  <label class="eco-option"><input type="checkbox" checked> GOTS</label>
+                  <label class="eco-option"><input type="checkbox" checked> OEKO-TEX</label>
+                  <label class="eco-option"><input type="checkbox"> Fair Trade</label>
+                  <label class="eco-option"><input type="checkbox" checked> Carbon Neutral</label>
+                </div>
+              </div>
+
+              <div class="eco-pref-category">
+                <div class="eco-pref-title">Product Priorities</div>
+                <div class="eco-options">
+                  <label class="eco-option"><input type="checkbox" checked> Biodegradable</label>
+                  <label class="eco-option"><input type="checkbox"> Plastic-Free</label>
+                  <label class="eco-option"><input type="checkbox" checked> Locally Made</label>
+                  <label class="eco-option"><input type="checkbox"> Vegan</label>
+                </div>
+              </div>
+
+              <div class="newsletter-pref">
+                <h3>Sustainability Newsletter</h3>
+                <label class="eco-option">
+                  <input type="checkbox" checked>
+                  Send me tips and updates on sustainable living
+                </label>
+              </div>
+
+              <button type="button" class="btn-primary" onclick="savePreferences()" style="font-size:1rem;padding:0.875rem 2rem">Save Preferences</button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/main.js"></script>
+  <script>
+    function showTab(tab) {
+      // Hide all panels
+      document.querySelectorAll('.account-tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.account-tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+
+      // Show selected
+      document.getElementById('tab-' + tab)?.classList.add('active');
+      const btn = document.getElementById('tab-btn-' + tab);
+      if (btn) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+      }
+    }
+
+    function saveProfile(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✓ Changes saved!';
+      btn.style.background = 'var(--emerald)';
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+      }, 2500);
+    }
+
+    function savePreferences() {
+      const btn = document.querySelector('#tab-preferences .btn-primary');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✓ Preferences saved!';
+      btn.style.background = 'var(--emerald)';
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+      }, 2500);
+    }
+  </script>
+</body>
+</html>

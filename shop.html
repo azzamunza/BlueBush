@@ -32,6 +32,10 @@
             <!-- Populated by JS -->
           </div>
           <div class="sort-wrap">
+            <label class="instock-label" style="display:flex;align-items:center;gap:0.4rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.875rem;font-weight:600;color:var(--deep-forest);cursor:pointer;white-space:nowrap">
+              <input type="checkbox" id="instock-toggle" onchange="applyFilters()" style="width:1rem;height:1rem;accent-color:var(--deep-teal);cursor:pointer" aria-label="Show in-stock items only">
+              In Stock Only
+            </label>
             <label for="sort-select" class="sort-label">Sort by:</label>
             <select id="sort-select" class="sort-select" onchange="applyFilters()" aria-label="Sort products">
               <option value="featured">Featured</option>
@@ -127,13 +131,15 @@
       const sortVal = document.getElementById('sort-select')?.value || 'featured';
       const searchVal = searchOverride !== undefined ? searchOverride :
         (document.getElementById('search-input-desktop')?.value || '').toLowerCase();
+      const instockOnly = document.getElementById('instock-toggle')?.checked || false;
 
       let filtered = allProducts.filter(p => {
         const matchCat = selectedCategory === 'All' || p.category === selectedCategory;
         const matchSearch = !searchVal || p.name.toLowerCase().includes(searchVal) ||
           p.content_triage.marketing_hook.toLowerCase().includes(searchVal) ||
           p.category.toLowerCase().includes(searchVal);
-        return matchCat && matchSearch;
+        const matchStock = !instockOnly || p.dynamic_data.stock_level > 0;
+        return matchCat && matchSearch && matchStock;
       });
 
       // Sort

@@ -17,7 +17,7 @@
       align-items: start;
     }
     @media (max-width: 768px) { .product-detail-grid { grid-template-columns: 1fr; } }
-    .product-gallery { position: sticky; top: 6rem; }
+    .product-gallery { position: sticky; top: 9rem; }
     .product-main-img {
       width: 100%;
       border-radius: 16px;
@@ -98,11 +98,93 @@
     .breadcrumb a { color: var(--gray-500); text-decoration: none; }
     .breadcrumb a:hover { color: var(--deep-teal); }
     .breadcrumb span { margin: 0 0.5rem; }
+    /* Category bar on product page */
+    .product-cat-bar {
+      position: sticky;
+      top: 5rem;
+      z-index: 40;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(215,196,187,0.3);
+      padding: 0.75rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .product-cat-bar .cat-scroll {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+      scrollbar-width: none;
+    }
+    .product-cat-bar .cat-scroll::-webkit-scrollbar { display: none; }
+    /* Qty + Add to Cart row */
+    .add-to-cart-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .qty-select {
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--gray-200);
+      background: white;
+      color: var(--deep-forest);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-width: 4.5rem;
+    }
+    .add-to-cart-btn { flex: 1; margin-bottom: 0; }
+    /* Payment instalment logos */
+    .payment-options {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      background: var(--paperbark);
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+    }
+    .payment-options-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gray-500);
+      white-space: nowrap;
+      width: 100%;
+    }
+    .payment-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      white-space: nowrap;
+    }
+    .payment-badge img { height: 18px; width: auto; display: inline; }
+    .badge-afterpay { background: #B2FCE4; color: #000; }
+    .badge-paypal { background: #003087; color: #fff; }
+    .badge-zip { background: #AA8FFF; color: #1A1A2E; }
   </style>
 </head>
 <body>
   <div id="site-header"></div>
   <div id="cart-drawer-root"></div>
+
+  <!-- Category filter bar (populated by JS) -->
+  <nav class="product-cat-bar" id="product-cat-bar" aria-label="Shop by category" style="display:none">
+    <div class="container">
+      <div class="cat-scroll" id="product-cat-scroll">
+        <!-- Populated by loadProduct() -->
+      </div>
+    </div>
+  </nav>
 
   <main id="main-content">
     <div class="container">
@@ -141,11 +223,26 @@
         const products = await res.json();
         currentProduct = products.find(p => p.id === productId);
         if (!currentProduct) { showNotFound(`Product "${productId}" not found.`); return; }
+
+        // Build category bar
+        const cats = ['All', ...Array.from(new Set(products.map(p => p.category))).sort()];
+        const base2 = getBase();
+        const scroll = document.getElementById('product-cat-scroll');
+        if (scroll) {
+          scroll.innerHTML = cats.map(c =>
+            `<a href="${base2}shop.html?category=${encodeURIComponent(c)}" class="category-btn${c === currentProduct.category ? ' active' : ''}" style="text-decoration:none">${escHtml(c)}</a>`
+          ).join('');
+        }
+        const bar = document.getElementById('product-cat-bar');
+        if (bar) bar.style.display = '';
+
         renderProduct(currentProduct);
       } catch (e) {
         showNotFound('Unable to load product data.');
       }
     }
+
+    function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
     function renderProduct(p) {
       document.getElementById('page-title').textContent = p.name + ' | BlueBush';
@@ -166,9 +263,15 @@
 
       const stock = p.dynamic_data.stock_level;
       let stockHtml = '';
-      if (stock === 0) stockHtml = `<div class="stock-indicator stock-out"><span class="stock-dot"></span>Out of Stock</div>`;
-      else if (stock <= 5) stockHtml = `<div class="stock-indicator stock-low"><span class="stock-dot"></span>Only ${stock} left</div>`;
-      else stockHtml = `<div class="stock-indicator stock-in"><span class="stock-dot"></span>In Stock</div>`;
+      if (stock === 0) {
+        stockHtml = `<div class="stock-indicator stock-out"><span class="stock-dot"></span>Out of Stock</div>`;
+      } else if (stock <= 5) {
+        stockHtml = `<div class="stock-indicator stock-low"><span class="stock-dot"></span>Only ${stock} left in stock</div>`;
+      } else if (stock <= 15) {
+        stockHtml = `<div class="stock-indicator stock-low"><span class="stock-dot"></span>Low Stock — ${stock} remaining</div>`;
+      } else {
+        stockHtml = `<div class="stock-indicator stock-in"><span class="stock-dot"></span>In Stock — ${stock} available</div>`;
+      }
 
       const specs = p.content_triage.technical_specs || [];
       const specItems = specs.map(s => {
@@ -196,6 +299,12 @@
 
       const mainImgSrc = getProductImagePath(p.id, p.name, selectedVariant);
 
+      // Qty options (1–10, capped at stock)
+      const maxQty = Math.min(stock, 10);
+      const qtyOptions = stock > 0
+        ? Array.from({length: maxQty}, (_, i) => `<option value="${i+1}">${i+1}</option>`).join('')
+        : '<option value="0">0</option>';
+
       document.getElementById('product-content').innerHTML = `
         <div class="product-detail-grid">
           <!-- Gallery -->
@@ -219,9 +328,31 @@
               <div class="variant-grid" id="variant-grid">${variantBtns}</div>
             </div>` : ''}
 
-            <button class="add-to-cart-btn" onclick="addToCartFromDetail()" ${stock===0?'disabled style="opacity:0.5;cursor:not-allowed"':''}>
-              ${stock===0 ? 'Out of Stock' : 'Add to Cart'}
-            </button>
+            <div class="add-to-cart-row">
+              <select class="qty-select" id="qty-select" aria-label="Select quantity" ${stock===0?'disabled':''}>
+                ${qtyOptions}
+              </select>
+              <button class="add-to-cart-btn" onclick="addToCartFromDetail()" ${stock===0?'disabled style="opacity:0.5;cursor:not-allowed"':''}>
+                ${stock===0 ? 'Out of Stock' : 'Add to Cart'}
+              </button>
+            </div>
+
+            <!-- Payment instalment options -->
+            <div class="payment-options" aria-label="Payment instalment options">
+              <span class="payment-options-label">Or pay in instalments with:</span>
+              <span class="payment-badge badge-afterpay">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Afterpay_logo.svg/120px-Afterpay_logo.svg.png" alt="Afterpay" onerror="this.style.display='none'">
+                4 × $${(p.dynamic_data.price_aud / 4).toFixed(2)}
+              </span>
+              <span class="payment-badge badge-paypal">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/80px-PayPal_logo.svg.png" alt="PayPal" onerror="this.style.display='none'" style="filter:brightness(0) invert(1)">
+                Pay in 4
+              </span>
+              <span class="payment-badge badge-zip">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Zip_Co_logo.svg/80px-Zip_Co_logo.svg.png" alt="Zip" onerror="this.style.display='none'">
+                Zip Pay
+              </span>
+            </div>
 
             <div class="product-meta-grid">
               <div class="product-meta-item">
@@ -297,7 +428,23 @@
 
     function addToCartFromDetail() {
       if (!currentProduct) return;
-      cart.addItem(currentProduct.id, currentProduct.name, currentProduct.dynamic_data.price_aud, selectedVariant || 'Default');
+      const qty = parseInt(document.getElementById('qty-select')?.value || '1', 10);
+      const id = currentProduct.id;
+      const name = currentProduct.name;
+      const price = currentProduct.dynamic_data.price_aud;
+      const variant = selectedVariant || 'Default';
+      const stockLevel = currentProduct.dynamic_data.stock_level;
+      const existing = cart.items.find(i => i.id === id && i.variant === variant);
+      const currentQtyInCart = existing ? existing.qty : 0;
+      const addQty = Math.min(qty, stockLevel - currentQtyInCart);
+      if (addQty <= 0) return;
+      if (existing) {
+        existing.qty += addQty;
+      } else {
+        cart.items.push({ id, name, price, variant, qty: addQty });
+      }
+      cart.save();
+      openCart();
     }
 
     function showNotFound(msg) {

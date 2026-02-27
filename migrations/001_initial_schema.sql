@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS order_items (
   variant     TEXT,
   price_aud   NUMERIC(10,2) NOT NULL,
   quantity    INTEGER NOT NULL DEFAULT 1,
-  subtotal    NUMERIC(10,2) GENERATED ALWAYS AS (price_aud * quantity) STORED
+  line_total  NUMERIC(10,2) GENERATED ALWAYS AS (price_aud * quantity) STORED
 );
 
 -- ===== CHATBOT TRAINING TABLE =====

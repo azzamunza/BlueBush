@@ -410,11 +410,12 @@
                     </div>
                     <span class="shipping-opt-price">$19.95</span>
                   </label>
-                  <label class="shipping-opt">
-                    <input type="radio" name="shipping-method" value="free" onchange="updateShipping()" id="free-shipping-opt">
+                  <label class="shipping-opt" id="free-shipping-label">
+                    <input type="radio" name="shipping-method" value="free" onchange="updateShipping()" id="free-shipping-opt" aria-describedby="free-shipping-note">
                     <div class="shipping-opt-info">
                       <div class="shipping-opt-name">Free Shipping</div>
                       <div class="shipping-opt-eta">7–10 business days · Orders over $150</div>
+                      <div id="free-shipping-note" style="font-size:0.75rem;color:var(--gray-500);display:none">Add more items to qualify for free shipping</div>
                     </div>
                     <span class="shipping-opt-price" style="color:#16a34a">FREE</span>
                   </label>
@@ -705,8 +706,21 @@
       else shippingCost = 9.95;
 
       const subtotal = cart.getTotal();
+      const qualifies = subtotal >= 150;
       const freeEl = document.getElementById('free-shipping-opt');
-      if (freeEl) freeEl.disabled = subtotal < 150;
+      const noteEl = document.getElementById('free-shipping-note');
+      const labelEl = document.getElementById('free-shipping-label');
+      if (freeEl) {
+        freeEl.disabled = !qualifies;
+        freeEl.setAttribute('aria-disabled', qualifies ? 'false' : 'true');
+      }
+      if (noteEl) noteEl.style.display = qualifies ? 'none' : '';
+      if (labelEl) labelEl.style.opacity = qualifies ? '' : '0.5';
+      // If free was selected but no longer qualifies, revert to standard
+      if (!qualifies && method === 'free') {
+        const standardEl = document.querySelector('input[name="shipping-method"][value="standard"]');
+        if (standardEl) { standardEl.checked = true; shippingCost = 9.95; }
+      }
 
       document.getElementById('summary-shipping').textContent = shippingCost === 0 ? 'FREE' : '$' + shippingCost.toFixed(2);
       document.getElementById('summary-total').textContent = '$' + (subtotal + shippingCost).toFixed(2);

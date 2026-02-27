@@ -433,11 +433,15 @@
       const name = currentProduct.name;
       const price = currentProduct.dynamic_data.price_aud;
       const variant = selectedVariant || 'Default';
+      const stockLevel = currentProduct.dynamic_data.stock_level;
       const existing = cart.items.find(i => i.id === id && i.variant === variant);
+      const currentQtyInCart = existing ? existing.qty : 0;
+      const addQty = Math.min(qty, stockLevel - currentQtyInCart);
+      if (addQty <= 0) return;
       if (existing) {
-        existing.qty += qty;
+        existing.qty += addQty;
       } else {
-        cart.items.push({ id, name, price, variant, qty });
+        cart.items.push({ id, name, price, variant, qty: addQty });
       }
       cart.save();
       openCart();

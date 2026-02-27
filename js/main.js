@@ -311,7 +311,7 @@ function renderCartDrawer() {
           <span class="cart-total-label">Total</span>
           <span class="cart-total-value" id="cart-total">$0.00</span>
         </div>
-        <a href="${getBase()}contact.html" class="btn-checkout">Proceed to Checkout</a>
+        <a href="${getBase()}checkout.html" class="btn-checkout">Proceed to Checkout</a>
       </div>
     </div>`;
 }

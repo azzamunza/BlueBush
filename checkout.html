@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure checkout — BlueBush Sustainable Homewares">
+  <title>Checkout | BlueBush Sustainable Homewares</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    .checkout-page { padding: 3rem 0 5rem; }
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 1024px) {
+      .checkout-layout { grid-template-columns: 1fr 380px; }
+    }
+
+    /* ---- Stepper ---- */
+    .checkout-steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+    .step-num {
+      width: 2rem; height: 2rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 0.875rem;
+      background: var(--paperbark);
+      color: var(--gray-500);
+      border: 2px solid var(--gray-200);
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .step.active .step-num, .step.done .step-num {
+      background: var(--deep-teal); color: white; border-color: var(--deep-teal);
+    }
+    .step-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.875rem; font-weight: 600;
+      color: var(--gray-500);
+      transition: color 0.3s;
+    }
+    .step.active .step-label { color: var(--deep-teal); }
+    .step.done .step-label { color: var(--emerald); }
+    .step-divider {
+      flex: 1; min-width: 1.5rem; height: 2px;
+      background: var(--gray-200); margin: 0 0.5rem;
+    }
+    .step.done ~ .step-divider, .step-divider.done { background: var(--deep-teal); }
+
+    /* ---- Panel ---- */
+    .checkout-panel {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+      padding: 2rem;
+    }
+    .checkout-panel h2 {
+      font-size: 1.25rem;
+      color: var(--deep-forest);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---- Form ---- */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    @media (min-width: 640px) {
+      .form-row.two-col { grid-template-columns: 1fr 1fr; }
+      .form-row.three-col { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.375rem; }
+    .form-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8125rem; font-weight: 600;
+      color: var(--gray-700);
+    }
+    .form-label .req { color: var(--red-500); margin-left: 0.2rem; }
+    .form-input, .form-select {
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      background: white;
+      color: var(--deep-forest);
+      font-family: 'Lora', serif;
+      font-size: 0.9375rem;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input:focus, .form-select:focus { border-color: var(--deep-teal); }
+    .form-input.error { border-color: var(--red-500); }
+    .form-error { font-size: 0.75rem; color: var(--red-500); margin-top: 0.2rem; display: none; }
+    .form-error.visible { display: block; }
+
+    /* ---- Shipping methods ---- */
+    .shipping-options { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .shipping-opt {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--gray-200);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .shipping-opt:has(input:checked) { border-color: var(--deep-teal); background: rgba(32,108,104,0.05); }
+    .shipping-opt input[type="radio"] { accent-color: var(--deep-teal); width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+    .shipping-opt-info { flex: 1; }
+    .shipping-opt-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.9375rem; color: var(--deep-forest); }
+    .shipping-opt-eta { font-size: 0.8125rem; color: var(--gray-500); }
+    .shipping-opt-price { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--deep-teal); white-space: nowrap; }
+
+    /* ---- Payment ---- */
+    .payment-methods { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .payment-method {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--gray-200);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .payment-method:has(input:checked) { border-color: var(--deep-teal); background: rgba(32,108,104,0.05); }
+    .payment-method input[type="radio"] { accent-color: var(--deep-teal); width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+    .payment-method-label { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.9375rem; color: var(--deep-forest); }
+    .payment-card-fields { display: none; margin-top: 1rem; }
+    .payment-card-fields.visible { display: block; }
+    .card-number-wrap { position: relative; }
+    .card-icon { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: 1.2rem; }
+
+    /* ---- Section nav buttons ---- */
+    .checkout-nav {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--gray-200);
+    }
+    .btn-back {
+      padding: 0.875rem 1.5rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--gray-200);
+      background: white;
+      color: var(--gray-700);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600; font-size: 0.9375rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-back:hover { background: var(--gray-100); }
+    .btn-next {
+      padding: 0.875rem 2rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--deep-teal);
+      color: white;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 0.9375rem;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn-next:hover { background: var(--emerald); }
+    .btn-place-order {
+      width: 100%;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--deep-teal);
+      color: white;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 1.05rem;
+      cursor: pointer; transition: background 0.2s;
+      margin-top: 1rem;
+    }
+    .btn-place-order:hover { background: var(--emerald); }
+
+    /* ---- Order Summary Sidebar ---- */
+    .order-summary {
+      background: var(--paperbark);
+      border-radius: 16px;
+      padding: 1.5rem;
+      position: sticky;
+      top: 6.5rem;
+    }
+    .order-summary h2 { font-size: 1.125rem; color: var(--deep-forest); margin-bottom: 1.25rem; }
+    .summary-items { display: flex; flex-direction: column; gap: 0.875rem; margin-bottom: 1.5rem; }
+    .summary-item { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .summary-item-img {
+      width: 56px; height: 56px; border-radius: 8px;
+      background: var(--soft-sandstone);
+      flex-shrink: 0; object-fit: cover;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray-500); font-size: 0.7rem;
+    }
+    .summary-item-info { flex: 1; }
+    .summary-item-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.875rem; font-weight: 600; color: var(--deep-forest); }
+    .summary-item-variant { font-size: 0.78rem; color: var(--gray-500); }
+    .summary-item-qty { font-size: 0.78rem; color: var(--gray-500); }
+    .summary-item-price { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--deep-teal); font-size: 0.875rem; white-space: nowrap; }
+    .summary-divider { border: none; border-top: 1px solid rgba(0,0,0,0.1); margin: 1rem 0; }
+    .summary-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.9375rem; }
+    .summary-row-label { color: var(--gray-600); }
+    .summary-row-val { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; color: var(--deep-forest); }
+    .summary-total { font-size: 1.125rem; font-weight: 700; }
+    .summary-total .summary-row-val { color: var(--deep-teal); font-size: 1.25rem; }
+
+    /* ---- Confirmation screen ---- */
+    .order-confirmation {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .order-confirm-icon {
+      width: 5rem; height: 5rem;
+      background: #dcfce7;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2.5rem;
+    }
+    .order-confirm-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      color: var(--gray-500);
+      margin-bottom: 0.5rem;
+    }
+    .order-confirm-title { font-size: 1.75rem; color: var(--deep-forest); margin-bottom: 1rem; }
+    .order-confirm-msg { color: var(--gray-600); max-width: 480px; margin: 0 auto 2rem; }
+    .order-confirm-details {
+      background: var(--paperbark);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+    .order-confirm-details h3 { font-size: 0.9375rem; color: var(--deep-forest); margin-bottom: 0.75rem; }
+    .order-confirm-details p { font-size: 0.875rem; color: var(--gray-600); margin-bottom: 0.25rem; }
+    .order-confirm-details strong { color: var(--deep-forest); }
+
+    .checkout-disclaimer {
+      font-size: 0.75rem; color: var(--gray-500);
+      text-align: center;
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: #fef9c3;
+      border-radius: 8px;
+      border: 1px solid #fde68a;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="cart-drawer-root"></div>
+
+  <main id="main-content">
+    <section class="checkout-page" aria-label="Checkout">
+      <div class="container">
+
+        <!-- ===== EMPTY CART STATE ===== -->
+        <div id="empty-cart-msg" style="display:none;text-align:center;padding:6rem 2rem">
+          <p style="font-size:1.25rem;color:var(--gray-500);margin-bottom:1.5rem">Your cart is empty.</p>
+          <a href="shop.html" class="btn-primary">Continue Shopping</a>
+        </div>
+
+        <!-- ===== CHECKOUT CONTENT ===== -->
+        <div id="checkout-content">
+          <h1 style="font-size:clamp(1.5rem,3vw,2rem);color:var(--deep-forest);margin-bottom:2rem">Checkout</h1>
+
+          <!-- Stepper -->
+          <div class="checkout-steps" id="checkout-steps" aria-label="Checkout progress">
+            <div class="step active" id="step-indicator-1">
+              <div class="step-num">1</div>
+              <span class="step-label">Details</span>
+            </div>
+            <div class="step-divider" id="divider-1"></div>
+            <div class="step" id="step-indicator-2">
+              <div class="step-num">2</div>
+              <span class="step-label">Shipping</span>
+            </div>
+            <div class="step-divider" id="divider-2"></div>
+            <div class="step" id="step-indicator-3">
+              <div class="step-num">3</div>
+              <span class="step-label">Billing</span>
+            </div>
+            <div class="step-divider" id="divider-3"></div>
+            <div class="step" id="step-indicator-4">
+              <div class="step-num">4</div>
+              <span class="step-label">Payment</span>
+            </div>
+          </div>
+
+          <div class="checkout-layout">
+            <!-- ===== MAIN COLUMN ===== -->
+            <div>
+
+              <!-- STEP 1: Customer Details -->
+              <div id="step-1" class="checkout-panel">
+                <h2>Customer Details</h2>
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label" for="first-name">First Name<span class="req">*</span></label>
+                    <input class="form-input" id="first-name" type="text" autocomplete="given-name" placeholder="e.g. Matilda">
+                    <span class="form-error" id="err-first-name">Please enter your first name.</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="last-name">Last Name<span class="req">*</span></label>
+                    <input class="form-input" id="last-name" type="text" autocomplete="family-name" placeholder="e.g. Nguyen">
+                    <span class="form-error" id="err-last-name">Please enter your last name.</span>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="email">Email Address<span class="req">*</span></label>
+                    <input class="form-input" id="email" type="email" autocomplete="email" placeholder="you@example.com">
+                    <span class="form-error" id="err-email">Please enter a valid email address.</span>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="phone">Phone Number</label>
+                    <input class="form-input" id="phone" type="tel" autocomplete="tel" placeholder="04XX XXX XXX">
+                  </div>
+                </div>
+                <div style="margin-top:0.5rem">
+                  <button class="btn-next" style="margin-top:0" onclick="generateDetails()">Autofill with Random Details</button>
+                </div>
+                <div class="checkout-nav">
+                  <button class="btn-next" onclick="goToStep(2)">Continue to Shipping →</button>
+                </div>
+              </div>
+
+              <!-- STEP 2: Shipping -->
+              <div id="step-2" class="checkout-panel" style="display:none">
+                <h2>Shipping Address</h2>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="ship-address">Street Address<span class="req">*</span></label>
+                    <input class="form-input" id="ship-address" type="text" autocomplete="shipping street-address" placeholder="42 Wandoo Way">
+                    <span class="form-error" id="err-ship-address">Please enter a street address.</span>
+                  </div>
+                </div>
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label" for="ship-suburb">Suburb<span class="req">*</span></label>
+                    <input class="form-input" id="ship-suburb" type="text" autocomplete="shipping locality" placeholder="Forrestfield">
+                    <span class="form-error" id="err-ship-suburb">Please enter a suburb.</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="ship-state">State<span class="req">*</span></label>
+                    <select class="form-select" id="ship-state" autocomplete="shipping region">
+                      <option value="">Select state</option>
+                      <option value="WA">Western Australia</option>
+                      <option value="NSW">New South Wales</option>
+                      <option value="VIC">Victoria</option>
+                      <option value="QLD">Queensland</option>
+                      <option value="SA">South Australia</option>
+                      <option value="TAS">Tasmania</option>
+                      <option value="ACT">Australian Capital Territory</option>
+                      <option value="NT">Northern Territory</option>
+                    </select>
+                    <span class="form-error" id="err-ship-state">Please select a state.</span>
+                  </div>
+                </div>
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label" for="ship-postcode">Postcode<span class="req">*</span></label>
+                    <input class="form-input" id="ship-postcode" type="text" autocomplete="shipping postal-code" placeholder="6057" maxlength="4">
+                    <span class="form-error" id="err-ship-postcode">Please enter a valid 4-digit postcode.</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="ship-country">Country</label>
+                    <select class="form-select" id="ship-country" autocomplete="shipping country">
+                      <option value="AU" selected>Australia</option>
+                      <option value="NZ">New Zealand</option>
+                    </select>
+                  </div>
+                </div>
+
+                <h3 style="font-size:1rem;color:var(--deep-forest);margin:1.5rem 0 1rem">Delivery Method</h3>
+                <div class="shipping-options">
+                  <label class="shipping-opt">
+                    <input type="radio" name="shipping-method" value="standard" checked onchange="updateShipping()">
+                    <div class="shipping-opt-info">
+                      <div class="shipping-opt-name">Standard Shipping</div>
+                      <div class="shipping-opt-eta">5–8 business days</div>
+                    </div>
+                    <span class="shipping-opt-price">$9.95</span>
+                  </label>
+                  <label class="shipping-opt">
+                    <input type="radio" name="shipping-method" value="express" onchange="updateShipping()">
+                    <div class="shipping-opt-info">
+                      <div class="shipping-opt-name">Express Shipping</div>
+                      <div class="shipping-opt-eta">2–3 business days</div>
+                    </div>
+                    <span class="shipping-opt-price">$19.95</span>
+                  </label>
+                  <label class="shipping-opt">
+                    <input type="radio" name="shipping-method" value="free" onchange="updateShipping()" id="free-shipping-opt">
+                    <div class="shipping-opt-info">
+                      <div class="shipping-opt-name">Free Shipping</div>
+                      <div class="shipping-opt-eta">7–10 business days · Orders over $150</div>
+                    </div>
+                    <span class="shipping-opt-price" style="color:#16a34a">FREE</span>
+                  </label>
+                </div>
+
+                <div class="checkout-nav">
+                  <button class="btn-back" onclick="goToStep(1)">← Back</button>
+                  <button class="btn-next" onclick="goToStep(3)">Continue to Billing →</button>
+                </div>
+              </div>
+
+              <!-- STEP 3: Billing -->
+              <div id="step-3" class="checkout-panel" style="display:none">
+                <h2>Billing Address</h2>
+                <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1.25rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9375rem;font-weight:600;color:var(--deep-forest)">
+                  <input type="checkbox" id="same-as-shipping" checked onchange="toggleBillingFields()" style="accent-color:var(--deep-teal);width:1.1rem;height:1.1rem">
+                  Same as shipping address
+                </label>
+                <div id="billing-fields" style="display:none">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label" for="bill-address">Street Address<span class="req">*</span></label>
+                      <input class="form-input" id="bill-address" type="text" autocomplete="billing street-address" placeholder="42 Wandoo Way">
+                      <span class="form-error" id="err-bill-address">Please enter a billing street address.</span>
+                    </div>
+                  </div>
+                  <div class="form-row two-col">
+                    <div class="form-group">
+                      <label class="form-label" for="bill-suburb">Suburb<span class="req">*</span></label>
+                      <input class="form-input" id="bill-suburb" type="text" autocomplete="billing locality" placeholder="Forrestfield">
+                      <span class="form-error" id="err-bill-suburb">Please enter a suburb.</span>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="bill-state">State<span class="req">*</span></label>
+                      <select class="form-select" id="bill-state" autocomplete="billing region">
+                        <option value="">Select state</option>
+                        <option value="WA">Western Australia</option>
+                        <option value="NSW">New South Wales</option>
+                        <option value="VIC">Victoria</option>
+                        <option value="QLD">Queensland</option>
+                        <option value="SA">South Australia</option>
+                        <option value="TAS">Tasmania</option>
+                        <option value="ACT">Australian Capital Territory</option>
+                        <option value="NT">Northern Territory</option>
+                      </select>
+                      <span class="form-error" id="err-bill-state">Please select a state.</span>
+                    </div>
+                  </div>
+                  <div class="form-row two-col">
+                    <div class="form-group">
+                      <label class="form-label" for="bill-postcode">Postcode<span class="req">*</span></label>
+                      <input class="form-input" id="bill-postcode" type="text" autocomplete="billing postal-code" placeholder="6057" maxlength="4">
+                      <span class="form-error" id="err-bill-postcode">Please enter a valid 4-digit postcode.</span>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="bill-country">Country</label>
+                      <select class="form-select" id="bill-country" autocomplete="billing country">
+                        <option value="AU" selected>Australia</option>
+                        <option value="NZ">New Zealand</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="checkout-nav">
+                  <button class="btn-back" onclick="goToStep(2)">← Back</button>
+                  <button class="btn-next" onclick="goToStep(4)">Continue to Payment →</button>
+                </div>
+              </div>
+
+              <!-- STEP 4: Payment -->
+              <div id="step-4" class="checkout-panel" style="display:none">
+                <h2>Payment</h2>
+                <div class="payment-methods">
+                  <label class="payment-method">
+                    <input type="radio" name="payment-method" value="card" checked onchange="showPaymentFields()">
+                    <span class="payment-method-label">💳 Credit / Debit Card</span>
+                  </label>
+                  <label class="payment-method">
+                    <input type="radio" name="payment-method" value="afterpay" onchange="showPaymentFields()">
+                    <span class="payment-method-label">🟢 Afterpay — 4 interest-free payments</span>
+                  </label>
+                  <label class="payment-method">
+                    <input type="radio" name="payment-method" value="paypal" onchange="showPaymentFields()">
+                    <span class="payment-method-label">🔵 PayPal Pay in 4</span>
+                  </label>
+                  <label class="payment-method">
+                    <input type="radio" name="payment-method" value="zip" onchange="showPaymentFields()">
+                    <span class="payment-method-label">🟣 Zip Pay</span>
+                  </label>
+                </div>
+
+                <div id="card-fields" class="payment-card-fields visible">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label" for="card-name">Name on Card<span class="req">*</span></label>
+                      <input class="form-input" id="card-name" type="text" autocomplete="cc-name" placeholder="Matilda Nguyen">
+                      <span class="form-error" id="err-card-name">Please enter the name on the card.</span>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label" for="card-number">Card Number<span class="req">*</span></label>
+                      <div class="card-number-wrap">
+                        <input class="form-input" id="card-number" type="text" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatCardNumber(this)">
+                        <span class="card-icon" id="card-icon">💳</span>
+                      </div>
+                      <span class="form-error" id="err-card-number">Please enter a valid 16-digit card number.</span>
+                    </div>
+                  </div>
+                  <div class="form-row two-col">
+                    <div class="form-group">
+                      <label class="form-label" for="card-expiry">Expiry Date<span class="req">*</span></label>
+                      <input class="form-input" id="card-expiry" type="text" autocomplete="cc-exp" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
+                      <span class="form-error" id="err-card-expiry">Please enter a valid expiry date.</span>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="card-cvv">CVV<span class="req">*</span></label>
+                      <input class="form-input" id="card-cvv" type="text" autocomplete="cc-csc" placeholder="123" maxlength="4">
+                      <span class="form-error" id="err-card-cvv">Please enter a valid CVV.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="instalment-msg" class="payment-card-fields" style="padding:1rem;background:var(--paperbark);border-radius:10px;color:var(--gray-600)">
+                  You'll be redirected to complete your instalment payment after placing your order.
+                </div>
+
+                <div class="checkout-disclaimer">
+                  ⚠️ <strong>DISCLAIMER:</strong> This is a fictitious website. No real payment will be processed. All order and payment details are simulated for demonstration purposes only.
+                </div>
+
+                <button class="btn-place-order" onclick="placeOrder()">Place Order</button>
+
+                <div class="checkout-nav" style="border-top:none;padding-top:0;margin-top:0.75rem">
+                  <button class="btn-back" onclick="goToStep(3)">← Back</button>
+                </div>
+              </div>
+
+              <!-- STEP 5: Confirmation -->
+              <div id="step-5" class="checkout-panel" style="display:none">
+                <div class="order-confirmation">
+                  <div class="order-confirm-icon">✅</div>
+                  <p class="order-confirm-number" id="order-number">Order #BB-100001</p>
+                  <h2 class="order-confirm-title">Thank you for your order!</h2>
+                  <p class="order-confirm-msg">
+                    Your fictitious order has been placed successfully. A confirmation email has been sent to <strong id="confirm-email">your email address</strong>.
+                  </p>
+                  <div class="order-confirm-details" id="order-confirm-details">
+                    <h3>Order Summary</h3>
+                  </div>
+                  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+                    <a href="shop.html" class="btn-primary">Continue Shopping</a>
+                  </div>
+                  <p class="checkout-disclaimer" style="margin-top:1.5rem">
+                    ⚠️ <strong>DISCLAIMER:</strong> This website is 100% fictitious. No real products, transactions, or deliveries are involved. <a href="about-this-site.html">Learn more.</a>
+                  </p>
+                </div>
+              </div>
+
+            </div><!-- /main column -->
+
+            <!-- ===== ORDER SUMMARY SIDEBAR ===== -->
+            <aside class="order-summary" aria-label="Order summary">
+              <h2>Order Summary</h2>
+              <div class="summary-items" id="summary-items">
+                <!-- Populated by JS -->
+              </div>
+              <hr class="summary-divider">
+              <div class="summary-row">
+                <span class="summary-row-label">Subtotal</span>
+                <span class="summary-row-val" id="summary-subtotal">$0.00</span>
+              </div>
+              <div class="summary-row">
+                <span class="summary-row-label">Shipping</span>
+                <span class="summary-row-val" id="summary-shipping">$9.95</span>
+              </div>
+              <hr class="summary-divider">
+              <div class="summary-row summary-total">
+                <span class="summary-row-label" style="font-weight:700;color:var(--deep-forest)">Total</span>
+                <span class="summary-row-val" id="summary-total">$0.00</span>
+              </div>
+            </aside>
+          </div><!-- /checkout-layout -->
+        </div><!-- /checkout-content -->
+
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/main.js"></script>
+  <script>
+    // ===== RANDOM DATA GENERATORS =====
+    const FIRST_NAMES = ['Matilda','Oliver','Charlotte','William','Amelia','Jack','Isla','Noah','Ava','Liam','Sophia','Ethan','Grace','Henry','Chloe','James','Zoe','Lucas','Ruby','Thomas'];
+    const LAST_NAMES  = ['Smith','Nguyen','Johnson','Williams','Brown','Jones','Davis','Wilson','Taylor','Anderson','Thompson','White','Martin','Garcia','Lee','Harris','Clark','Walker','Hall','Young'];
+    const STREETS     = ['Wandoo Way','Banksia Drive','Jarrah Street','Wattle Close','Karri Court','Paperbark Place','Eucalyptus Road','Acacia Avenue','Saltbush Lane','Grevillea Court'];
+    const SUBURBS     = [
+      {name:'Forrestfield',state:'WA',pc:'6057'},{name:'Leederville',state:'WA',pc:'6007'},
+      {name:'Surry Hills',state:'NSW',pc:'2010'},{name:'Fitzroy',state:'VIC',pc:'3065'},
+      {name:'West End',state:'QLD',pc:'4101'},{name:'Norwood',state:'SA',pc:'5067'},
+      {name:'Sandy Bay',state:'TAS',pc:'7005'},{name:'Braddon',state:'ACT',pc:'2612'},
+    ];
+
+    let orderCounter = 100001;
+    let shippingCost = 9.95;
+    let currentStep = 1;
+
+    function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    function generateDetails() {
+      const first = rand(FIRST_NAMES), last = rand(LAST_NAMES);
+      const suburb = rand(SUBURBS);
+      const num = Math.floor(Math.random() * 98) + 2;
+      document.getElementById('first-name').value = first;
+      document.getElementById('last-name').value = last;
+      document.getElementById('email').value = (first + '.' + last).toLowerCase() + '@example.com.au';
+      document.getElementById('phone').value = '04' + String(Math.floor(Math.random() * 90000000) + 10000000);
+      document.getElementById('ship-address').value = num + ' ' + rand(STREETS);
+      document.getElementById('ship-suburb').value = suburb.name;
+      document.getElementById('ship-postcode').value = suburb.pc;
+      const stateEl = document.getElementById('ship-state');
+      stateEl.value = suburb.state;
+      // card
+      document.getElementById('card-name').value = first + ' ' + last;
+      document.getElementById('card-number').value = generateCardNumber();
+      document.getElementById('card-expiry').value = generateExpiry();
+      document.getElementById('card-cvv').value = String(Math.floor(Math.random() * 900) + 100);
+    }
+
+    function generateCardNumber() {
+      const prefix = rand(['4','5','3','6']);
+      let num = prefix;
+      while (num.length < 16) num += Math.floor(Math.random() * 10);
+      return num.replace(/(\d{4})(?=\d)/g, '$1 ');
+    }
+
+    function generateExpiry() {
+      const year = new Date().getFullYear() + Math.floor(Math.random() * 5) + 1;
+      const month = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
+      return month + '/' + String(year).slice(-2);
+    }
+
+    function formatCardNumber(input) {
+      let v = input.value.replace(/\D/g, '').slice(0, 16);
+      input.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+    }
+
+    function formatExpiry(input) {
+      let v = input.value.replace(/\D/g, '').slice(0, 4);
+      if (v.length >= 3) v = v.slice(0, 2) + '/' + v.slice(2);
+      input.value = v;
+    }
+
+    // ===== ORDER SUMMARY =====
+    function renderSummary() {
+      const items = cart.items;
+      const subtotal = cart.getTotal();
+      const total = subtotal + shippingCost;
+      const container = document.getElementById('summary-items');
+
+      if (items.length === 0) {
+        document.getElementById('checkout-content').style.display = 'none';
+        document.getElementById('empty-cart-msg').style.display = 'block';
+        return;
+      }
+
+      container.innerHTML = items.map(item => `
+        <div class="summary-item">
+          <div class="summary-item-img">📦</div>
+          <div class="summary-item-info">
+            <div class="summary-item-name">${escHtml(item.name)}</div>
+            <div class="summary-item-variant">${escHtml(item.variant)}</div>
+            <div class="summary-item-qty">Qty: ${item.qty}</div>
+          </div>
+          <div class="summary-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+        </div>`).join('');
+
+      document.getElementById('summary-subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('summary-total').textContent = '$' + total.toFixed(2);
+      updateShipping();
+    }
+
+    function updateShipping() {
+      const method = document.querySelector('input[name="shipping-method"]:checked')?.value || 'standard';
+      if (method === 'free') shippingCost = 0;
+      else if (method === 'express') shippingCost = 19.95;
+      else shippingCost = 9.95;
+
+      const subtotal = cart.getTotal();
+      const freeEl = document.getElementById('free-shipping-opt');
+      if (freeEl) freeEl.disabled = subtotal < 150;
+
+      document.getElementById('summary-shipping').textContent = shippingCost === 0 ? 'FREE' : '$' + shippingCost.toFixed(2);
+      document.getElementById('summary-total').textContent = '$' + (subtotal + shippingCost).toFixed(2);
+    }
+
+    // ===== STEP NAVIGATION =====
+    function goToStep(n) {
+      if (n > currentStep && !validateStep(currentStep)) return;
+
+      for (let i = 1; i <= 4; i++) {
+        const panel = document.getElementById('step-' + i);
+        if (panel) panel.style.display = (i === n) ? '' : 'none';
+        const ind = document.getElementById('step-indicator-' + i);
+        if (ind) {
+          ind.classList.remove('active', 'done');
+          if (i < n) ind.classList.add('done');
+          else if (i === n) ind.classList.add('active');
+        }
+      }
+      currentStep = n;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validateStep(step) {
+      let valid = true;
+      const check = (id, errId, fn) => {
+        const el = document.getElementById(id);
+        const err = document.getElementById(errId);
+        if (!el || !err) return;
+        const ok = fn(el.value);
+        el.classList.toggle('error', !ok);
+        err.classList.toggle('visible', !ok);
+        if (!ok) valid = false;
+      };
+      if (step === 1) {
+        check('first-name', 'err-first-name', v => v.trim().length >= 2);
+        check('last-name', 'err-last-name', v => v.trim().length >= 2);
+        check('email', 'err-email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()));
+      }
+      if (step === 2) {
+        check('ship-address', 'err-ship-address', v => v.trim().length >= 3);
+        check('ship-suburb', 'err-ship-suburb', v => v.trim().length >= 2);
+        check('ship-state', 'err-ship-state', v => v !== '');
+        check('ship-postcode', 'err-ship-postcode', v => /^\d{4}$/.test(v.trim()));
+      }
+      if (step === 3) {
+        if (!document.getElementById('same-as-shipping').checked) {
+          check('bill-address', 'err-bill-address', v => v.trim().length >= 3);
+          check('bill-suburb', 'err-bill-suburb', v => v.trim().length >= 2);
+          check('bill-state', 'err-bill-state', v => v !== '');
+          check('bill-postcode', 'err-bill-postcode', v => /^\d{4}$/.test(v.trim()));
+        }
+      }
+      if (step === 4) {
+        const method = document.querySelector('input[name="payment-method"]:checked')?.value;
+        if (method === 'card') {
+          check('card-name', 'err-card-name', v => v.trim().length >= 2);
+          check('card-number', 'err-card-number', v => v.replace(/\s/g,'').length === 16);
+          check('card-expiry', 'err-card-expiry', v => /^\d{2}\/\d{2}$/.test(v));
+          check('card-cvv', 'err-card-cvv', v => /^\d{3,4}$/.test(v));
+        }
+      }
+      return valid;
+    }
+
+    function toggleBillingFields() {
+      const checked = document.getElementById('same-as-shipping').checked;
+      document.getElementById('billing-fields').style.display = checked ? 'none' : '';
+    }
+
+    function showPaymentFields() {
+      const method = document.querySelector('input[name="payment-method"]:checked')?.value;
+      document.getElementById('card-fields').classList.toggle('visible', method === 'card');
+      document.getElementById('instalment-msg').classList.toggle('visible', method !== 'card');
+    }
+
+    function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    // ===== PLACE ORDER =====
+    function placeOrder() {
+      if (!validateStep(4)) return;
+
+      const orderNum = 'BB-' + orderCounter++;
+      const firstName = document.getElementById('first-name').value || 'Customer';
+      const email = document.getElementById('email').value || 'your email';
+      const suburb = document.getElementById('ship-suburb').value;
+      const state = document.getElementById('ship-state').value;
+      const method = document.querySelector('input[name="shipping-method"]:checked')?.value || 'standard';
+      const payMethod = document.querySelector('input[name="payment-method"]:checked')?.value || 'card';
+
+      const shippingLabel = method === 'free' ? 'Free Shipping (7–10 days)' : method === 'express' ? 'Express Shipping (2–3 days)' : 'Standard Shipping (5–8 days)';
+      const payLabel = {card:'Credit/Debit Card',afterpay:'Afterpay',paypal:'PayPal Pay in 4',zip:'Zip Pay'}[payMethod] || payMethod;
+
+      const subtotal = cart.getTotal();
+      const total = subtotal + shippingCost;
+
+      document.getElementById('order-number').textContent = 'Order #' + orderNum;
+      document.getElementById('confirm-email').textContent = email;
+      document.getElementById('order-confirm-details').innerHTML = `
+        <h3>Order Details</h3>
+        <p><strong>Order Number:</strong> ${escHtml(orderNum)}</p>
+        <p><strong>Name:</strong> ${escHtml(firstName)} ${escHtml(document.getElementById('last-name').value || '')}</p>
+        <p><strong>Ship to:</strong> ${escHtml(suburb)}${state ? ', ' + state : ''}</p>
+        <p><strong>Delivery:</strong> ${escHtml(shippingLabel)}</p>
+        <p><strong>Payment:</strong> ${escHtml(payLabel)}</p>
+        <p><strong>Total Paid:</strong> $${total.toFixed(2)} AUD</p>`;
+
+      // Clear cart
+      cart.items = [];
+      cart.save();
+
+      // Show confirmation
+      for (let i = 1; i <= 4; i++) {
+        const panel = document.getElementById('step-' + i);
+        if (panel) panel.style.display = 'none';
+        const ind = document.getElementById('step-indicator-' + i);
+        if (ind) { ind.classList.remove('active'); ind.classList.add('done'); }
+      }
+      document.getElementById('step-5').style.display = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ===== INIT =====
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSummary();
+      // Pre-fill if cart has items
+      if (cart.items.length > 0 && cart.getTotal() >= 150) {
+        document.querySelector('input[name="shipping-method"][value="free"]').disabled = false;
+      }
+    });
+  </script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

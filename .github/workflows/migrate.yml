@@ -1,0 +1,28 @@
+name: Run Supabase Migrations
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "migrations/**"
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    name: Apply Database Migrations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install PostgreSQL client
+        run: sudo apt-get install -y postgresql-client
+
+      - name: Run migrations
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          for f in migrations/*.sql; do
+            echo "Applying migration: $f"
+            psql "$SUPABASE_DB_URL" -f "$f"
+          done

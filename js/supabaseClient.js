@@ -52,16 +52,16 @@
       static_data: {
         origin: row.origin || '',
         weight_kg: parseFloat(row.weight_kg) || 0,
-        variants: Array.isArray(row.variants) ? row.variants : (row.variants || []),
+        variants: Array.isArray(row.variants) ? row.variants : row.variants || [],
         eco_badge: row.eco_badge || null,
         dimensions_cm: row.dimensions_cm || null,
       },
       content_triage: {
         marketing_hook: row.marketing_hook || '',
-        technical_specs: Array.isArray(row.technical_specs) ? row.technical_specs : (row.technical_specs || []),
+        technical_specs: Array.isArray(row.technical_specs) ? row.technical_specs : row.technical_specs || [],
       },
       rag_resources: {
-        care_instructions: Array.isArray(row.care_instructions) ? row.care_instructions : (row.care_instructions || []),
+        care_instructions: Array.isArray(row.care_instructions) ? row.care_instructions : row.care_instructions || [],
         manual_excerpt: row.manual_excerpt || null,
       },
     };

@@ -223,15 +223,14 @@
       try {
         const base = getBase();
 
-        // Try Supabase single product first
-        currentProduct = await window.bbSupabase.fetchProduct(productId);
+        // Fetch all products (for category bar) and the specific product in parallel.
+        const [singleProduct, fetchedAll] = await Promise.all([
+          window.bbSupabase.fetchProduct(productId),
+          window.bbSupabase.fetchProducts(),
+        ]);
+        currentProduct = singleProduct;
 
-        // Category bar needs all products for the filter strip
-        let allProducts = null;
-        if (!currentProduct || true) {
-          // Always load all products for building the category bar
-          allProducts = await window.bbSupabase.fetchProducts();
-        }
+        let allProducts = fetchedAll;
         if (!allProducts) {
           const res = await fetch(base + 'data/products.json');
           allProducts = await res.json();

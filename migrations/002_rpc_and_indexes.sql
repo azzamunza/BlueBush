@@ -92,7 +92,7 @@ BEGIN
   );
 
   -- Process each order item
-  FOR v_item IN SELECT * FROM json_array_elements(v_items_arr)
+  FOR v_item IN SELECT value FROM json_array_elements(v_items_arr) AS value
   LOOP
     v_product_id   := v_item->>'product_id';
     v_product_name := v_item->>'product_name';

@@ -74,6 +74,9 @@
 
   <div id="site-footer"></div>
 
+  <script src="js/env.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/supabaseClient.js"></script>
   <script src="js/main.js"></script>
   <script>
     let allProducts = [];
@@ -84,8 +87,13 @@
 
     async function loadProducts() {
       try {
-        const res = await fetch('data/products.json');
-        allProducts = await res.json();
+        // Try Supabase first; fall back to static JSON
+        let products = await window.bbSupabase.fetchProducts();
+        if (!products) {
+          const res = await fetch('data/products.json');
+          products = await res.json();
+        }
+        allProducts = products;
         buildCategoryFilters();
 
         // Check URL params

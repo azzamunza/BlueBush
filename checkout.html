@@ -607,6 +607,24 @@
   </main>
 
   <div id="site-footer"></div>
+
+  <!-- Backorder Modal -->
+  <div id="backorder-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center" role="dialog" aria-modal="true" aria-labelledby="backorder-title">
+    <div style="background:white;border-radius:16px;padding:2rem;max-width:460px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.2)">
+      <h2 id="backorder-title" style="font-size:1.25rem;color:var(--deep-forest);margin-bottom:0.75rem">⚠️ Out of Stock Items</h2>
+      <p style="color:var(--gray-600);margin-bottom:1rem;font-size:0.9375rem">The following items are currently out of stock:</p>
+      <ul id="backorder-items-list" style="margin:0 0 1.25rem;padding-left:1.25rem;color:var(--gray-700);font-size:0.9375rem"></ul>
+      <p style="color:var(--gray-600);margin-bottom:1.5rem;font-size:0.875rem">You can place a <strong>backorder</strong> and we'll ship these items as soon as they arrive, or remove them and continue with in-stock items only.</p>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+        <button id="backorder-accept-btn" style="flex:1;padding:0.875rem 1.25rem;border-radius:999px;border:none;background:var(--deep-teal);color:white;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9375rem;cursor:pointer">Place Backorder</button>
+        <button id="backorder-decline-btn" style="flex:1;padding:0.875rem 1.25rem;border-radius:999px;border:1.5px solid var(--gray-200);background:white;color:var(--gray-700);font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.9375rem;cursor:pointer">Remove &amp; Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/env.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/supabaseClient.js"></script>
   <script src="js/main.js"></script>
   <script>
     // ===== RANDOM DATA GENERATORS =====
@@ -799,48 +817,165 @@
 
     function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-    // ===== PLACE ORDER =====
-    function placeOrder() {
+    // ===== BACKORDER MODAL HELPERS =====
+    function showBackorderModal(outOfStockItems) {
+      return new Promise(resolve => {
+        const modal = document.getElementById('backorder-modal');
+        const list  = document.getElementById('backorder-items-list');
+        list.innerHTML = outOfStockItems.map(n => `<li>${escHtml(n)}</li>`).join('');
+        modal.style.display = 'flex';
+
+        document.getElementById('backorder-accept-btn').onclick = () => {
+          modal.style.display = 'none';
+          resolve('backorder');
+        };
+        document.getElementById('backorder-decline-btn').onclick = () => {
+          modal.style.display = 'none';
+          resolve('remove');
+        };
+      });
+    }
+
+    // ===== PLACE ORDER (async, Supabase-backed) =====
+    async function placeOrder() {
       if (!validateStep(4)) return;
 
-      const orderNum = 'BB-' + orderCounter++;
-      const firstName = document.getElementById('first-name').value || 'Customer';
-      const email = document.getElementById('email').value || 'your email';
-      const suburb = document.getElementById('ship-suburb').value;
-      const state = document.getElementById('ship-state').value;
-      const method = document.querySelector('input[name="shipping-method"]:checked')?.value || 'standard';
-      const payMethod = document.querySelector('input[name="payment-method"]:checked')?.value || 'card';
+      const btn = document.querySelector('.btn-place-order');
+      if (btn) { btn.disabled = true; btn.textContent = 'Placing order…'; }
 
-      const shippingLabel = method === 'free' ? 'Free Shipping (7–10 days)' : method === 'express' ? 'Express Shipping (2–3 days)' : 'Standard Shipping (5–8 days)';
-      const payLabel = {card:'Credit/Debit Card',afterpay:'Afterpay',paypal:'PayPal Pay in 4',zip:'Zip Pay'}[payMethod] || payMethod;
+      try {
+        const orderNum   = 'BB-' + orderCounter++;
+        const firstName  = document.getElementById('first-name').value || 'Customer';
+        const lastName   = document.getElementById('last-name').value || '';
+        const email      = document.getElementById('email').value || 'your email';
+        const phone      = document.getElementById('phone').value || null;
+        const suburb     = document.getElementById('ship-suburb').value;
+        const state      = document.getElementById('ship-state').value;
+        const method     = document.querySelector('input[name="shipping-method"]:checked')?.value || 'standard';
+        const payMethod  = document.querySelector('input[name="payment-method"]:checked')?.value || 'card';
+        const sameShip   = document.getElementById('same-as-shipping').checked;
+        const subtotal   = cart.getTotal();
+        const total      = subtotal + shippingCost;
 
-      const subtotal = cart.getTotal();
-      const total = subtotal + shippingCost;
+        const shippingLabel = method === 'free' ? 'Free Shipping (7–10 days)' : method === 'express' ? 'Express Shipping (2–3 days)' : 'Standard Shipping (5–8 days)';
+        const payLabel = {card:'Credit/Debit Card',afterpay:'Afterpay',paypal:'PayPal Pay in 4',zip:'Zip Pay'}[payMethod] || payMethod;
 
-      document.getElementById('order-number').textContent = 'Order #' + orderNum;
-      document.getElementById('confirm-email').textContent = email;
-      document.getElementById('order-confirm-details').innerHTML = `
-        <h3>Order Details</h3>
-        <p><strong>Order Number:</strong> ${escHtml(orderNum)}</p>
-        <p><strong>Name:</strong> ${escHtml(firstName)} ${escHtml(document.getElementById('last-name').value || '')}</p>
-        <p><strong>Ship to:</strong> ${escHtml(suburb)}${state ? ', ' + state : ''}</p>
-        <p><strong>Delivery:</strong> ${escHtml(shippingLabel)}</p>
-        <p><strong>Payment:</strong> ${escHtml(payLabel)}</p>
-        <p><strong>Total Paid:</strong> $${total.toFixed(2)} AUD</p>`;
+        // Build items array for Supabase RPC
+        const orderItems = cart.items.map(item => ({
+          product_id:   item.id,
+          product_name: item.name,
+          variant:      item.variant || null,
+          price_aud:    item.price,
+          quantity:     item.qty,
+          is_backorder: false,
+        }));
 
-      // Clear cart
-      cart.items = [];
-      cart.save();
+        // Check stock levels from Supabase if configured
+        const outOfStockNames = [];
+        if (window.bbSupabase.isConfigured()) {
+          const products = await window.bbSupabase.fetchProducts();
+          if (products) {
+            for (const item of orderItems) {
+              const prod = products.find(p => p.id === item.product_id);
+              if (prod && prod.dynamic_data.stock_level < item.quantity) {
+                outOfStockNames.push(item.product_name + (item.variant ? ` (${item.variant})` : ''));
+              }
+            }
+          }
+        }
 
-      // Show confirmation
-      for (let i = 1; i <= 4; i++) {
-        const panel = document.getElementById('step-' + i);
-        if (panel) panel.style.display = 'none';
-        const ind = document.getElementById('step-indicator-' + i);
-        if (ind) { ind.classList.remove('active'); ind.classList.add('done'); }
+        // If any out-of-stock items, show backorder modal
+        if (outOfStockNames.length > 0) {
+          const decision = await showBackorderModal(outOfStockNames);
+          if (decision === 'backorder') {
+            // Mark affected items as backorders
+            for (const item of orderItems) {
+              const name = item.product_name + (item.variant ? ` (${item.variant})` : '');
+              if (outOfStockNames.includes(name)) item.is_backorder = true;
+            }
+          } else {
+            // Remove out-of-stock items from order
+            const names = new Set(outOfStockNames);
+            const kept = orderItems.filter(item => {
+              const n = item.product_name + (item.variant ? ` (${item.variant})` : '');
+              return !names.has(n);
+            });
+            if (kept.length === 0) {
+              // All items removed; abort
+              if (btn) { btn.disabled = false; btn.textContent = 'Place Order'; }
+              alert('No in-stock items remain in your cart. Please add available products and try again.');
+              return;
+            }
+            orderItems.length = 0;
+            kept.forEach(i => orderItems.push(i));
+          }
+        }
+
+        // Call Supabase RPC (or demo fallback)
+        const result = await window.bbSupabase.placeOrder({
+          order_id:             orderNum,
+          customer_name:        firstName + ' ' + lastName,
+          customer_email:       email,
+          customer_phone:       phone,
+          ship_address:         document.getElementById('ship-address').value || null,
+          ship_suburb:          suburb || null,
+          ship_state:           state || null,
+          ship_postcode:        document.getElementById('ship-postcode').value || null,
+          ship_country:         document.getElementById('ship-country').value || 'AU',
+          billing_same_as_ship: sameShip,
+          bill_address:         !sameShip ? (document.getElementById('bill-address')?.value || null) : null,
+          bill_suburb:          !sameShip ? (document.getElementById('bill-suburb')?.value || null) : null,
+          bill_state:           !sameShip ? (document.getElementById('bill-state')?.value || null) : null,
+          bill_postcode:        !sameShip ? (document.getElementById('bill-postcode')?.value || null) : null,
+          bill_country:         !sameShip ? (document.getElementById('bill-country')?.value || 'AU') : 'AU',
+          shipping_method:      method,
+          shipping_cost:        shippingCost,
+          payment_method:       payMethod,
+          subtotal,
+          total,
+          items: orderItems,
+        });
+
+        if (!result.success) {
+          throw new Error(result.error || 'Order placement failed.');
+        }
+
+        const hasBackorder = result.backorder_items && result.backorder_items.length > 0;
+
+        // Build confirmation HTML
+        document.getElementById('order-number').textContent = 'Order #' + orderNum;
+        document.getElementById('confirm-email').textContent = email;
+        document.getElementById('order-confirm-details').innerHTML = `
+          <h3>Order Details</h3>
+          <p><strong>Order Number:</strong> ${escHtml(orderNum)}</p>
+          <p><strong>Name:</strong> ${escHtml(firstName)} ${escHtml(lastName)}</p>
+          <p><strong>Ship to:</strong> ${escHtml(suburb)}${state ? ', ' + state : ''}</p>
+          <p><strong>Delivery:</strong> ${escHtml(shippingLabel)}</p>
+          <p><strong>Payment:</strong> ${escHtml(payLabel)}</p>
+          <p><strong>Total Paid:</strong> $${total.toFixed(2)} AUD</p>
+          ${hasBackorder ? `<p style="margin-top:0.75rem;padding:0.6rem 0.75rem;background:#fef9c3;border-radius:8px;font-size:0.875rem;color:#92400e">⚠️ Some items are on <strong>backorder</strong> and will ship separately when stock arrives.</p>` : ''}
+          ${result.demo ? `<p style="font-size:0.8rem;color:var(--gray-400);margin-top:0.5rem">(Demo mode — Supabase not configured)</p>` : ''}`;
+
+        // Clear cart
+        cart.items = [];
+        cart.save();
+
+        // Show confirmation step
+        for (let i = 1; i <= 4; i++) {
+          const panel = document.getElementById('step-' + i);
+          if (panel) panel.style.display = 'none';
+          const ind = document.getElementById('step-indicator-' + i);
+          if (ind) { ind.classList.remove('active'); ind.classList.add('done'); }
+        }
+        document.getElementById('step-5').style.display = '';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      } catch (err) {
+        console.error('Order error:', err);
+        alert('There was a problem placing your order: ' + (err.message || err));
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = 'Place Order'; }
       }
-      document.getElementById('step-5').style.display = '';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // ===== INIT =====

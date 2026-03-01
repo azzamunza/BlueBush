@@ -283,6 +283,9 @@
 
   <div id="site-footer"></div>
 
+  <script src="js/env.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/supabaseClient.js"></script>
   <script src="js/main.js"></script>
   <script>
     function toggleFaq(btn) {
@@ -302,11 +305,54 @@
       answer.classList.toggle('open', !isOpen);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    // ── Supabase FAQ loader ─────────────────────────────────
+    function escFaq(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    async function loadFaqsFromSupabase() {
+      const faqs = await window.bbSupabase.fetchFaqs();
+      if (!faqs || faqs.length === 0) return; // keep static HTML
+
+      // Group by category
+      const groups = {};
+      faqs.forEach(f => {
+        const cat = f.category || 'General';
+        if (!groups[cat]) groups[cat] = [];
+        groups[cat].push(f);
+      });
+
+      const container = document.querySelector('.faq-categories');
+      if (!container) return;
+
+      let html = '';
+      Object.entries(groups).forEach(([cat, items]) => {
+        html += `<div class="anim">
+          <h2 class="faq-category-title">${escFaq(cat)}</h2>
+          <div class="faq-list" role="list">`;
+        items.forEach(f => {
+          html += `
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                ${escFaq(f.question)}
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>${escFaq(f.answer)}</p>
+              </div>
+            </div>`;
+        });
+        html += `</div></div>`;
+      });
+
+      container.innerHTML = html;
+      initScrollAnimations();
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
       renderHeader();
       renderFooter();
       renderCartDrawer();
       initScrollAnimations();
+      await loadFaqsFromSupabase();
     });
   </script>
   <script src="js/chatbot.js"></script>

@@ -207,6 +207,9 @@
   </main>
 
   <div id="site-footer"></div>
+  <script src="js/env.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/supabaseClient.js"></script>
   <script src="js/main.js"></script>
   <script>
     let currentProduct = null;
@@ -219,13 +222,26 @@
 
       try {
         const base = getBase();
-        const res = await fetch(base + 'data/products.json');
-        const products = await res.json();
-        currentProduct = products.find(p => p.id === productId);
+
+        // Fetch all products (for category bar) and the specific product in parallel.
+        const [singleProduct, fetchedAll] = await Promise.all([
+          window.bbSupabase.fetchProduct(productId),
+          window.bbSupabase.fetchProducts(),
+        ]);
+        currentProduct = singleProduct;
+
+        let allProducts = fetchedAll;
+        if (!allProducts) {
+          const res = await fetch(base + 'data/products.json');
+          allProducts = await res.json();
+        }
+        if (!currentProduct) {
+          currentProduct = allProducts.find(p => p.id === productId);
+        }
         if (!currentProduct) { showNotFound(`Product "${productId}" not found.`); return; }
 
         // Build category bar
-        const cats = ['All', ...Array.from(new Set(products.map(p => p.category))).sort()];
+        const cats = ['All', ...Array.from(new Set(allProducts.map(p => p.category))).sort()];
         const base2 = getBase();
         const scroll = document.getElementById('product-cat-scroll');
         if (scroll) {

@@ -262,11 +262,16 @@ function truncate(s, n) {
 }
 
 function decodeBase64(b64) {
-  return decodeURIComponent(escape(atob(b64.replace(/\n/g, ''))));
+  const binary = atob(b64.replace(/\n/g, ''));
+  const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
 }
 
 function encodeBase64(str) {
-  return btoa(unescape(encodeURIComponent(str)));
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  bytes.forEach(b => { binary += String.fromCharCode(b); });
+  return btoa(binary);
 }
 
 function downloadFile(name, content, mime = 'text/plain') {
@@ -277,15 +282,23 @@ function downloadFile(name, content, mime = 'text/plain') {
   URL.revokeObjectURL(a.href);
 }
 
+/* Pagination callback registry — avoids embedding function.toString() in onclick */
+const _pagCallbacks = {};
+let _pagCallbackId = 0;
+
 function renderPagination(current, total, onPage) {
   if (total <= 1) return '';
-  let html = `<button class="page-btn" onclick="(${onPage.toString()})(${current - 1})" ${current === 1 ? 'disabled' : ''}>‹</button>`;
-  const range = paginationRange(current, total);
-  range.forEach(p => {
+  const cbId = ++_pagCallbackId;
+  _pagCallbacks[cbId] = onPage;
+  const btn = (label, page, disabled, active) =>
+    `<button class="page-btn${active ? ' active' : ''}" ${disabled ? 'disabled' : ''} data-pag="${cbId}" data-page="${page}">${label}</button>`;
+
+  let html = btn('‹', current - 1, current === 1, false);
+  paginationRange(current, total).forEach(p => {
     if (p === '…') html += `<span class="page-info">…</span>`;
-    else html += `<button class="page-btn ${p === current ? 'active' : ''}" onclick="(${onPage.toString()})(${p})">${p}</button>`;
+    else html += btn(p, p, false, p === current);
   });
-  html += `<button class="page-btn" onclick="(${onPage.toString()})(${current + 1})" ${current === total ? 'disabled' : ''}>›</button>`;
+  html += btn('›', current + 1, current === total, false);
   return html;
 }
 
@@ -1130,6 +1143,9 @@ async function addGlobalPromo() {
     let count = 0;
     products.forEach(p => {
       if (p.category === cat) {
+        if (!Array.isArray(p.dynamic_data.active_promotions)) {
+          p.dynamic_data.active_promotions = [];
+        }
         if (!p.dynamic_data.active_promotions.includes(promo)) {
           p.dynamic_data.active_promotions.push(promo);
           count++;
@@ -1462,6 +1478,14 @@ function switchTrainingTab(tab) {
    INIT
 =========================== */
 document.addEventListener('DOMContentLoaded', async () => {
+  // Delegated event listener for pagination buttons
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-pag][data-page]');
+    if (!btn || btn.disabled) return;
+    const cb = _pagCallbacks[btn.dataset.pag];
+    if (cb) cb(Number(btn.dataset.page));
+  });
+
   // Check for existing session
   const token = sessionStorage.getItem('bb_admin_token');
   if (token) {

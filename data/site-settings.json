@@ -1,0 +1,13 @@
+{
+  "store_name": "BlueBush",
+  "contact_email": "hello@bluebush.com.au",
+  "contact_phone": "+61 2 0000 0000",
+  "store_address": "Sydney, NSW, Australia",
+  "instagram_url": "https://instagram.com/bluebush.au",
+  "facebook_url": "https://facebook.com/bluebush.au",
+  "chatbot_enabled": true,
+  "chatbot_greeting": "G'day! I'm Bilby, your BlueBush assistant. How can I help you today? 🌿",
+  "free_shipping_threshold": 150,
+  "standard_shipping_cost": 9.95,
+  "express_shipping_cost": 19.95
+}

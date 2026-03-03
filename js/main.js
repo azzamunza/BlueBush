@@ -76,9 +76,11 @@ const cart = {
               <button class="qty-btn" onclick="cart.updateQty('${item.id}','${item.variant}',-1)" aria-label="Decrease quantity">−</button>
               <span class="qty-value">${item.qty}</span>
               <button class="qty-btn" onclick="cart.updateQty('${item.id}','${item.variant}',1)" aria-label="Increase quantity">+</button>
+              <button class="qty-btn cart-item-trash" onclick="cart.removeItem('${item.id}','${item.variant}')" aria-label="Remove ${escHtml(item.name)}" title="Remove item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"/></svg>
+              </button>
             </div>
           </div>
-          <button class="remove-btn" onclick="cart.removeItem('${item.id}','${item.variant}')" aria-label="Remove ${escHtml(item.name)}">✕</button>
         </div>`).join('');
     }
 
@@ -97,6 +99,16 @@ const cart = {
 
 function escHtml(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ===== CLEAR USER PROFILE =====
+function clearUserProfile() {
+  if (!confirm('Clear your saved details and cart? This cannot be undone.')) return;
+  localStorage.removeItem('bb_user_profile');
+  localStorage.removeItem('bb_cart');
+  cart.items = [];
+  cart.updateUI();
+  renderHeader();
 }
 
 // ===== PRODUCT IMAGE HELPER =====
@@ -169,6 +181,13 @@ function renderHeader() {
   // Determine base path (for GitHub Pages /BlueBush/ or root)
   const base = getBase();
 
+  // Show "Clear profile" button if there's a saved profile or non-empty cart
+  let showClearProfile = false;
+  try {
+    showClearProfile = !!localStorage.getItem('bb_user_profile') ||
+      JSON.parse(localStorage.getItem('bb_cart') || '[]').length > 0;
+  } catch (_) { showClearProfile = false; }
+
   el.innerHTML = `
     <header class="site-header" role="banner">
       <div class="container">
@@ -198,6 +217,12 @@ function renderHeader() {
             <a href="${base}account.html" class="icon-btn" aria-label="My account">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
             </a>
+
+            ${showClearProfile ? `
+            <!-- Clear saved profile -->
+            <button class="icon-btn" onclick="clearUserProfile()" aria-label="Clear saved details" title="Clear saved details">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9A3.75 3.75 0 1 1 8.25 9a3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/><path stroke-linecap="round" stroke-linejoin="round" d="M17 17l4 4m0-4-4 4"/></svg>
+            </button>` : ''}
 
             <!-- Cart -->
             <button class="icon-btn cart-btn" onclick="openCart()" aria-label="Open shopping cart">

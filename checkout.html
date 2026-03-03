@@ -638,7 +638,6 @@
       {name:'Sandy Bay',state:'TAS',pc:'7005'},{name:'Braddon',state:'ACT',pc:'2612'},
     ];
 
-    let orderCounter = 100001;
     let shippingCost = 9.95;
     let currentStep = 1;
 
@@ -844,7 +843,7 @@
       if (btn) { btn.disabled = true; btn.textContent = 'Placing order…'; }
 
       try {
-        const orderNum   = 'BB-' + orderCounter++;
+        const orderNum   = await window.bbSupabase.getNextOrderId();
         const firstName  = document.getElementById('first-name').value || 'Customer';
         const lastName   = document.getElementById('last-name').value || '';
         const email      = document.getElementById('email').value || 'your email';
@@ -960,6 +959,20 @@
         cart.items = [];
         cart.save();
 
+        // Save customer profile for future visits
+        try {
+          localStorage.setItem('bb_user_profile', JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            phone: phone || '',
+            address: document.getElementById('ship-address').value || '',
+            suburb: suburb || '',
+            state: state || '',
+            postcode: document.getElementById('ship-postcode').value || '',
+          }));
+        } catch (_) { /* ignore storage errors */ }
+
         // Show confirmation step
         for (let i = 1; i <= 4; i++) {
           const panel = document.getElementById('step-' + i);
@@ -985,6 +998,20 @@
       if (cart.items.length > 0 && cart.getTotal() >= 150) {
         document.querySelector('input[name="shipping-method"][value="free"]').disabled = false;
       }
+      // Pre-fill form from saved profile
+      try {
+        const saved = JSON.parse(localStorage.getItem('bb_user_profile') || 'null');
+        if (saved) {
+          if (saved.firstName) document.getElementById('first-name').value = saved.firstName;
+          if (saved.lastName)  document.getElementById('last-name').value  = saved.lastName;
+          if (saved.email)     document.getElementById('email').value      = saved.email;
+          if (saved.phone)     document.getElementById('phone').value      = saved.phone;
+          if (saved.address)   document.getElementById('ship-address').value  = saved.address;
+          if (saved.suburb)    document.getElementById('ship-suburb').value   = saved.suburb;
+          if (saved.state)     document.getElementById('ship-state').value    = saved.state;
+          if (saved.postcode)  document.getElementById('ship-postcode').value = saved.postcode;
+        }
+      } catch (_) { /* ignore */ }
     });
   </script>
   <script src="js/chatbot.js"></script>

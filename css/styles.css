@@ -475,6 +475,8 @@ img { max-width: 100%; height: auto; display: block; }
 
 .qty-btn:hover { background: var(--gray-100); }
 
+.cart-item-trash:hover { background: var(--gray-100); color: var(--red-600); border-color: var(--red-200, #fecaca); }
+
 .qty-value {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;

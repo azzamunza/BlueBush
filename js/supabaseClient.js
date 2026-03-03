@@ -209,6 +209,38 @@
     }
   }
 
+  /**
+   * Return the next available order ID string (e.g. "BB-100003").
+   * Queries the orders table for the highest existing BB-XXXXXX suffix.
+   * Falls back to a timestamp-based ID when Supabase is not configured or
+   * the query fails.
+   * @returns {Promise<string>}
+   */
+  async function getNextOrderId() {
+    const client = getClient();
+    if (!client) return `BB-${Date.now()}`;
+    try {
+      const { data, error } = await client
+        .from('orders')
+        .select('order_id')
+        .like('order_id', 'BB-%')
+        .limit(1000);
+      if (error) throw error;
+      if (data && data.length > 0) {
+        let maxSuffix = 0;
+        for (const row of data) {
+          const suffix = parseInt(row.order_id.replace('BB-', ''), 10);
+          if (!isNaN(suffix) && suffix > maxSuffix) maxSuffix = suffix;
+        }
+        if (maxSuffix > 0) return `BB-${maxSuffix + 1}`;
+      }
+      return 'BB-100001';
+    } catch (e) {
+      console.warn('BlueBush: getNextOrderId failed, using timestamp fallback.', e);
+      return `BB-${Date.now()}`;
+    }
+  }
+
   // ── Expose on window ───────────────────────────────────────
   window.bbSupabase = {
     isConfigured,
@@ -216,5 +248,6 @@
     fetchProduct,
     fetchFaqs,
     placeOrder,
+    getNextOrderId,
   };
 })();

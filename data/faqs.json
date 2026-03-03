@@ -1,0 +1,44 @@
+[
+  {
+    "id": "FAQ-001",
+    "question": "What is BlueBush's return policy?",
+    "answer": "We offer a 30-day return policy on all items in their original condition. Items must be unused, unwashed, and in original packaging. Simply contact us at hello@bluebush.com.au to initiate a return.",
+    "category": "Returns"
+  },
+  {
+    "id": "FAQ-002",
+    "question": "How long does shipping take?",
+    "answer": "Standard shipping within Australia takes 3–7 business days. Express shipping (1–3 business days) is available at checkout. All orders over $150 qualify for free standard shipping.",
+    "category": "Shipping"
+  },
+  {
+    "id": "FAQ-003",
+    "question": "Are your products sustainably sourced?",
+    "answer": "Yes! Sustainability is at the heart of everything we do. All our materials are ethically sourced, and we work exclusively with suppliers who share our commitment to environmental responsibility. Many of our products carry OEKO-TEX or similar certifications.",
+    "category": "Sustainability"
+  },
+  {
+    "id": "FAQ-004",
+    "question": "How do I care for my linen products?",
+    "answer": "Linen products should be machine washed on a gentle, cool cycle (30°C). Line dry in shade to prevent fading. Avoid bleach and harsh detergents. Natural linen may shed initially — this is normal and will reduce after the first few washes.",
+    "category": "Products"
+  },
+  {
+    "id": "FAQ-005",
+    "question": "Can I create an account?",
+    "answer": "Yes! Creating an account allows you to track orders, save your shipping address, and view your purchase history. You can register during checkout or via the Account page.",
+    "category": "Account"
+  },
+  {
+    "id": "FAQ-006",
+    "question": "Do you ship internationally?",
+    "answer": "Currently we ship within Australia only. We are working on international shipping options — sign up to our newsletter to be notified when international shipping becomes available.",
+    "category": "Shipping"
+  },
+  {
+    "id": "FAQ-007",
+    "question": "What payment methods do you accept?",
+    "answer": "We accept all major credit cards (Visa, Mastercard, Amex), PayPal, and Afterpay. All transactions are processed securely via our payment gateway.",
+    "category": "General"
+  }
+]

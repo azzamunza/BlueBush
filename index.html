@@ -190,6 +190,7 @@
           products = await res.json();
         }
         const featured = products.slice(0, 4);
+        window._featuredProducts = products; // store for variant lookup
         renderProductCards(featured, 'featured-products');
       } catch (e) {
         document.getElementById('featured-products').innerHTML =
@@ -213,8 +214,13 @@
           `<button class="variant-btn${i===0?' active':''}" onclick="selectVariant(this,'${p.id}')" data-variant="${escapeAttr(v)}">${escapeHtml(v)}</button>`
         ).join('');
 
+        // Use first variant SKU price/sku if available
+        const firstVariantSku = p.static_data?.variant_skus?.find(s => s.variant_label === variants[0]);
+        const displayPrice = firstVariantSku ? parseFloat(firstVariantSku.price_aud) : p.dynamic_data.price_aud;
+        const initialSkuId = firstVariantSku ? firstVariantSku.sku : p.id;
+
         return `
-          <div class="product-card anim" style="animation-delay:${Math.random()*0.2}s">
+          <div class="product-card anim" style="animation-delay:${Math.random()*0.2}s" data-active-variant-sku="${escapeAttr(initialSkuId)}">
             <a href="product.html?id=${escapeAttr(p.id)}" aria-label="${escapeAttr(p.name)}">
               <div class="product-img">
                 <img
@@ -241,7 +247,7 @@
                 <p class="product-hook">${escapeHtml(p.content_triage.marketing_hook)}</p>
                 <div class="product-variants" onclick="event.preventDefault()">${variantBtns}</div>
                 <div class="product-footer">
-                  <span class="product-price">$${p.dynamic_data.price_aud.toFixed(2)}</span>
+                  <span class="product-price">$${displayPrice.toFixed(2)}</span>
                   <span class="product-origin">${escapeHtml(p.static_data.origin.split(',')[0])}</span>
                 </div>
               </div>
@@ -254,6 +260,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
             </button>
           </div>`;
+      }).join('');
       }).join('');
 
       // Re-trigger scroll animations for new elements
@@ -278,13 +285,30 @@
           if (fallback) fallback.style.display = 'none';
         }
       }
+      // Update price and store active SKU for cart
+      if (productId) {
+        const allProds = window._featuredProducts || [];
+        const p = allProds.find(prod => prod.id === productId);
+        if (p) {
+          const variantSku = p.static_data?.variant_skus?.find(s => s.variant_label === btn.dataset.variant);
+          if (variantSku) {
+            const priceEl = card.querySelector('.product-price');
+            if (priceEl) priceEl.textContent = '$' + parseFloat(variantSku.price_aud).toFixed(2);
+            card.dataset.activeVariantSku = variantSku.sku;
+          }
+        }
+      }
     }
 
     function addProductToCart(id, name, price) {
-      const card = document.querySelector(`.product-card [data-id="${id}"]`) ||
-                   document.querySelector(`.product-card .product-quick-add[onclick*="${id}"]`)?.closest('.product-card');
+      const card = document.querySelector(`.product-card .product-quick-add[onclick*="${id}"]`)?.closest('.product-card');
       const activeVariant = card?.querySelector('.variant-btn.active')?.dataset.variant || 'Default';
-      cart.addItem(id, name, price, activeVariant);
+      const activeSkuId = card?.dataset.activeVariantSku || id;
+      const allProds = window._featuredProducts || [];
+      const product = allProds.find(p => p.id === id);
+      const variantSku = product?.static_data?.variant_skus?.find(s => s.variant_label === activeVariant);
+      const variantPrice = variantSku ? variantSku.price_aud : price;
+      cart.addItem(activeSkuId, name, variantPrice, activeVariant);
     }
 
     function escapeHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }

@@ -25,7 +25,54 @@
         "fitted_sheet": "152 x 203 x 40",
         "flat_sheet": "245 x 265",
         "pillowcase": "48 x 73"
-      }
+      },
+      "variant_skus": [
+        {
+          "variant_label": "Sage",
+          "price_aud": 280,
+          "stock_level": 9,
+          "status": "In Stock",
+          "description": "Our Maireana French Flax Linen Sheet Set in Sage brings the tranquillity of an Australian garden into your bedroom. Stonewashed to a soft, lived-in feel from night one, this muted sage tone pairs beautifully with natural timber and earthy neutrals.",
+          "marketing_hook": "",
+          "sku": "BED-001-SAGE"
+        },
+        {
+          "variant_label": "Ochre",
+          "price_aud": 280,
+          "stock_level": 9,
+          "status": "In Stock",
+          "description": "The Ochre colourway of our Maireana French Flax Linen Sheet Set brings warm, golden earth tones to your bedroom sanctuary. Stonewashed French flax linen with a rich, sun-drenched warmth \u2014 perfect for layering with botanical and neutral palettes.",
+          "marketing_hook": "",
+          "sku": "BED-001-OCHRE"
+        },
+        {
+          "variant_label": "White",
+          "price_aud": 280,
+          "stock_level": 9,
+          "status": "In Stock",
+          "description": "Crisp, clean and timeless \u2014 our Maireana French Flax Linen Sheet Set in White is stonewashed French flax at its purest. A classic choice that gets softer and more beautifully textured with every wash.",
+          "marketing_hook": "",
+          "sku": "BED-001-WHITE"
+        },
+        {
+          "variant_label": "Sand",
+          "price_aud": 280,
+          "stock_level": 9,
+          "status": "In Stock",
+          "description": "The Sand colourway of our Maireana French Flax Linen Sheet Set is a whisper of warm, desert-toned linen. Stonewashed to silky softness, this neutral tone is effortlessly versatile and elevates any bedroom palette.",
+          "marketing_hook": "",
+          "sku": "BED-001-SAND"
+        },
+        {
+          "variant_label": "Charcoal",
+          "price_aud": 280,
+          "stock_level": 9,
+          "status": "In Stock",
+          "description": "Make a sophisticated statement with our Maireana French Flax Linen Sheet Set in Charcoal. Deep, muted, and strikingly beautiful \u2014 this stonewashed French flax linen is as temperature-regulating as it is dramatic.",
+          "marketing_hook": "",
+          "sku": "BED-001-CHARCOAL"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Experience the effortless luxury of 100% pure French flax. Stonewashed for a lived-in feel from night one, our Maireana linen is temperature-regulating and gets softer with every wash.",
@@ -37,9 +84,9 @@
     },
     "rag_resources": {
       "care_instructions": [
-        "Gentle machine wash cool (30°C)",
+        "Gentle machine wash cool (30\u00b0C)",
         "Line dry in shade to prevent fading",
-        "Expect initial shedding—this is normal for natural flax fibres",
+        "Expect initial shedding\u2014this is normal for natural flax fibres",
         "Avoid bleach or harsh detergents"
       ],
       "manual_excerpt": "LINEN SHEDDING: Natural linen releases excess fibres in the first 3-4 washes. To manage this, wash separately and use wool dryer balls on a cool setting to help the shedding process along."
@@ -66,7 +113,54 @@
         "Sand",
         "Charcoal"
       ],
-      "eco_badge": "Biodegradable"
+      "eco_badge": "Biodegradable",
+      "variant_skus": [
+        {
+          "variant_label": "Sage",
+          "price_aud": 210,
+          "stock_level": 8,
+          "status": "In Stock",
+          "description": "Our Maireana Duvet Cover in Sage features a coconut button closure and stonewashed French flax linen in a calming sage tone. The inner ties keep your duvet insert perfectly positioned all night.",
+          "marketing_hook": "",
+          "sku": "BED-002-SAGE"
+        },
+        {
+          "variant_label": "Ochre",
+          "price_aud": 210,
+          "stock_level": 6,
+          "status": "In Stock",
+          "description": "Warm ochre stonewashed French flax linen meets functional coconut button closure in our Maireana Duvet Cover. A rich, earthy statement piece that softens beautifully over time.",
+          "marketing_hook": "",
+          "sku": "BED-002-OCHRE"
+        },
+        {
+          "variant_label": "White",
+          "price_aud": 210,
+          "stock_level": 6,
+          "status": "In Stock",
+          "description": "The classic White Maireana Duvet Cover is stonewashed French flax at its most refined \u2014 crisp, breathable, and endlessly versatile with coconut button closure and inner tie loops.",
+          "marketing_hook": "",
+          "sku": "BED-002-WHITE"
+        },
+        {
+          "variant_label": "Sand",
+          "price_aud": 210,
+          "stock_level": 6,
+          "status": "In Stock",
+          "description": "Our Maireana Duvet Cover in Sand is a neutral, warm-toned stonewashed French flax linen piece with coconut button closure. Effortlessly timeless and sustainably crafted.",
+          "marketing_hook": "",
+          "sku": "BED-002-SAND"
+        },
+        {
+          "variant_label": "Charcoal",
+          "price_aud": 210,
+          "stock_level": 6,
+          "status": "In Stock",
+          "description": "A bold, sophisticated choice \u2014 our Charcoal Maireana Duvet Cover is deep-toned stonewashed French flax linen with coconut button closure. Pairs beautifully with natural oak furniture and earthy accents.",
+          "marketing_hook": "",
+          "sku": "BED-002-CHARCOAL"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Breathable linen duvet cover finished with natural coconut button closures and internal ties to keep your quilt perfectly in place.",
@@ -102,7 +196,27 @@
         "Summer Weight",
         "Winter Weight"
       ],
-      "eco_badge": "Vegan"
+      "eco_badge": "Vegan",
+      "variant_skus": [
+        {
+          "variant_label": "Summer Weight",
+          "price_aud": 160.0,
+          "stock_level": 6,
+          "status": "In Stock",
+          "description": "Our Summer Weight Bamboo Lyocell Quilt Insert is crafted for warm nights \u2014 a lighter fill weight that keeps you cool and comfortable without sacrificing the silky softness of 100% bamboo lyocell. Perfect for Australian summers.",
+          "marketing_hook": "",
+          "sku": "BED-003-SUMMER-WEIGHT"
+        },
+        {
+          "variant_label": "Winter Weight",
+          "price_aud": 200.0,
+          "stock_level": 6,
+          "status": "In Stock",
+          "description": "The Winter Weight Bamboo Lyocell Quilt Insert offers a generous fill for those cooler months while remaining far lighter than traditional synthetic quilts. The bamboo lyocell shell is naturally temperature-regulating, keeping you cosy without overheating.",
+          "marketing_hook": "",
+          "sku": "BED-003-WINTER-WEIGHT"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "The ultimate plant-based alternative to down. Hypoallergenic, temperature-regulating, and crafted in a closed-loop system.",
@@ -138,7 +252,27 @@
         "Natural",
         "Olive"
       ],
-      "eco_badge": "Water-Saving Crop"
+      "eco_badge": "Water-Saving Crop",
+      "variant_skus": [
+        {
+          "variant_label": "Natural",
+          "price_aud": 120,
+          "stock_level": 4,
+          "status": "In Stock",
+          "description": "Our Hemp Bed Runner in Natural is a beautifully textured piece in the raw, undyed colour of premium hemp fibre. Adds an organic, earthy accent to any bed end without synthetic dyes or treatments.",
+          "marketing_hook": "",
+          "sku": "BED-004-NATURAL"
+        },
+        {
+          "variant_label": "Olive",
+          "price_aud": 120,
+          "stock_level": 4,
+          "status": "In Stock",
+          "description": "The Olive Hemp Bed Runner brings a rich, botanical tone to your bedroom. Naturally dyed hemp fibre with a beautifully coarse texture \u2014 a sustainably crafted accent that only gets better with age.",
+          "marketing_hook": "",
+          "sku": "BED-004-OLIVE"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Add grounded texture and warmth to the foot of your bed with this heavyweight, sustainable hemp fabric runner.",
@@ -174,7 +308,27 @@
         "Blush",
         "Navy"
       ],
-      "eco_badge": "Non-Toxic Dye"
+      "eco_badge": "Non-Toxic Dye",
+      "variant_skus": [
+        {
+          "variant_label": "Blush",
+          "price_aud": 45,
+          "stock_level": 75,
+          "status": "In Stock",
+          "description": "Our Blush Silk Eye Mask is vegetable-dyed peace silk in a delicate rose tone \u2014 gentle on your skin and completely plastic-free. The soft elastic keeps it comfortably in place through the night.",
+          "marketing_hook": "",
+          "sku": "BED-005-BLUSH"
+        },
+        {
+          "variant_label": "Navy",
+          "price_aud": 45,
+          "stock_level": 75,
+          "status": "In Stock",
+          "description": "The Navy Silk Eye Mask is a deep, sophisticated peace silk option with vegetable dye for a rich, consistent tone. Perfectly weighted to block light completely while remaining gentle on delicate eye skin.",
+          "marketing_hook": "",
+          "sku": "BED-005-NAVY"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Sleep deeply while protecting delicate skin. Made from vegetable-dyed peace silk to prevent sleep creases and block out the world.",
@@ -211,7 +365,36 @@
         "7kg",
         "9kg"
       ],
-      "eco_badge": "Plastic Free Filling"
+      "eco_badge": "Plastic Free Filling",
+      "variant_skus": [
+        {
+          "variant_label": "5kg",
+          "price_aud": 200.0,
+          "stock_level": 8,
+          "status": "In Stock",
+          "description": "Our 5kg Weighted Blanket uses organic cotton shell filled with hypo-allergenic micro glass beads for a gentle, calming pressure ideal for lighter adults and teenagers. Scientifically shown to support better sleep quality.",
+          "marketing_hook": "",
+          "sku": "BED-006-5KG"
+        },
+        {
+          "variant_label": "7kg",
+          "price_aud": 220.0,
+          "stock_level": 6,
+          "status": "In Stock",
+          "description": "The 7kg Weighted Blanket is our most popular weight \u2014 perfectly calibrated for the average adult, using organic cotton shell and micro glass bead filling for deep, restorative pressure therapy.",
+          "marketing_hook": "",
+          "sku": "BED-006-7KG"
+        },
+        {
+          "variant_label": "9kg",
+          "price_aud": 250.0,
+          "stock_level": 6,
+          "status": "In Stock",
+          "description": "For those who love the deepest, most grounding pressure, our 9kg Weighted Blanket delivers maximum weighted therapy in an organic cotton shell with premium micro glass bead filling.",
+          "marketing_hook": "",
+          "sku": "BED-006-9KG"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Experience calming, deep-pressure stimulation. An organic cotton shell filled with micro glass beads for a grounding, plastic-free sleep.",
@@ -226,7 +409,7 @@
         "Spot clean recommended",
         "Machine wash cold on gentle cycle only if machine capacity allows"
       ],
-      "manual_excerpt": "WEIGHT SELECTION: For optimal comfort, choose a blanket weight that is roughly 10% of your body weight."
+      "manual_excerpt": "WEIGHT SELECTION: For optimal comfort, choose a blanket weight that is roughly 10% of your body weight. Available in 5kg ($200), 7kg ($220), and 9kg ($250)."
     }
   },
   {
@@ -252,10 +435,39 @@
       "dimensions_cm": {
         "diameter": 27,
         "height": 2
-      }
+      },
+      "variant_skus": [
+        {
+          "variant_label": "Speckled White",
+          "price_aud": 80,
+          "stock_level": 5,
+          "status": "In Stock",
+          "description": "Our Saltbush Dinner Plates in Speckled White are wabi-sabi handcrafted stoneware with a beautifully irregular speckled glaze. Each set of four is unique \u2014 no two pieces are identical, celebrating the art of the handmade.",
+          "marketing_hook": "",
+          "sku": "DIN-001-SPECKLED-WHITE"
+        },
+        {
+          "variant_label": "Matte Black",
+          "price_aud": 80,
+          "stock_level": 5,
+          "status": "In Stock",
+          "description": "The Matte Black Saltbush Dinner Plates are bold, modern stoneware with a sophisticated matte glaze finish. Wabi-sabi handcrafted, the subtle surface texture makes each plate in the set unique.",
+          "marketing_hook": "",
+          "sku": "DIN-001-MATTE-BLACK"
+        },
+        {
+          "variant_label": "Earth",
+          "price_aud": 80,
+          "stock_level": 5,
+          "status": "In Stock",
+          "description": "Our Saltbush Dinner Plates in Earth are warm, terracotta-toned handcrafted stoneware with wabi-sabi character. The raw, organic glaze celebrates imperfection and brings the warmth of natural clay to your table.",
+          "marketing_hook": "",
+          "sku": "DIN-001-EARTH"
+        }
+      ]
     },
     "content_triage": {
-      "marketing_hook": "Elevate your daily ritual with our Saltbush ceramics. Each plate is hand-glazed, meaning no two pieces are identical—bringing a sense of 'Wabi-Sabi' and organic beauty to your table.",
+      "marketing_hook": "Elevate your daily ritual with our Saltbush ceramics. Each plate is hand-glazed, meaning no two pieces are identical\u2014bringing a sense of 'Wabi-Sabi' and organic beauty to your table.",
       "technical_specs": [
         "High-fired stoneware",
         "Reactive glaze finish",
@@ -289,7 +501,27 @@
         "Speckled White",
         "Matte Black"
       ],
-      "eco_badge": "Handmade"
+      "eco_badge": "Handmade",
+      "variant_skus": [
+        {
+          "variant_label": "Speckled White",
+          "price_aud": 25,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "Our Saltbush Ramen Bowl in Speckled White is a deep, wide-form wabi-sabi stoneware piece with a beautiful speckled glaze. Perfectly sized for ramen, poke bowls, or generous grain salads.",
+          "marketing_hook": "",
+          "sku": "DIN-002-SPECKLED-WHITE"
+        },
+        {
+          "variant_label": "Matte Black",
+          "price_aud": 25,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "The Matte Black Saltbush Ramen Bowl is a deep, wide-form handcrafted stoneware piece with a striking matte glaze. Bold and beautiful at the table, and sustainably crafted for everyday use.",
+          "marketing_hook": "",
+          "sku": "DIN-002-MATTE-BLACK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A deep, wide-brimmed bowl designed perfectly for hearty soups, pastas, and salads. Hand-glazed for a unique finish.",
@@ -325,7 +557,27 @@
         "Round",
         "Rectangle"
       ],
-      "eco_badge": "FSC Certified"
+      "eco_badge": "FSC Certified",
+      "variant_skus": [
+        {
+          "variant_label": "Round",
+          "price_aud": 50.0,
+          "stock_level": 13,
+          "status": "In Stock",
+          "description": "Our Round Acacia Wood Serving Paddle is sustainably harvested and hand-oiled for a rich natural grain finish. The circular form makes it ideal for cheese, antipasto, or small charcuterie arrangements.",
+          "marketing_hook": "",
+          "sku": "DIN-003-ROUND"
+        },
+        {
+          "variant_label": "Rectangle",
+          "price_aud": 60.0,
+          "stock_level": 12,
+          "status": "In Stock",
+          "description": "The Rectangle Acacia Wood Serving Paddle offers more surface area for generous grazing boards or whole loaves of artisan bread. Sustainably harvested acacia with a beautiful hand-oiled grain finish.",
+          "marketing_hook": "",
+          "sku": "DIN-003-RECTANGLE"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Serve in style. Sustainably harvested Acacia wood, sealed with food-safe mineral oil to showcase the beautiful natural grain.",
@@ -362,7 +614,36 @@
         "Amber",
         "Bottle Green"
       ],
-      "eco_badge": "Recycled Material"
+      "eco_badge": "Recycled Material",
+      "variant_skus": [
+        {
+          "variant_label": "Clear",
+          "price_aud": 40,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "Our Recycled Glass Tumblers in Clear showcase the thick, eco-friendly glass with beautiful natural bubbles and slight irregularities that tell the story of their recycled origins. A set of four that gets better with use.",
+          "marketing_hook": "",
+          "sku": "DIN-004-CLEAR"
+        },
+        {
+          "variant_label": "Amber",
+          "price_aud": 40,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "The Amber Recycled Glass Tumblers bring warmth and depth to your table \u2014 thick eco-friendly glass in a rich amber tone with natural bubbles and artisan irregularities.",
+          "marketing_hook": "",
+          "sku": "DIN-004-AMBER"
+        },
+        {
+          "variant_label": "Bottle Green",
+          "price_aud": 40,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "Our Bottle Green Recycled Glass Tumblers are a stunning deep green with the characteristic thick walls and natural bubbles of true recycled glass. An eco-conscious statement at any table setting.",
+          "marketing_hook": "",
+          "sku": "DIN-004-BOTTLE-GREEN"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Thick, durable glass made from post-consumer waste. Perfect for everyday hydration or evening cocktails.",
@@ -397,7 +678,18 @@
       "variants": [
         "Gold/Teak"
       ],
-      "eco_badge": "Long-Lasting"
+      "eco_badge": "Long-Lasting",
+      "variant_skus": [
+        {
+          "variant_label": "Gold/Teak",
+          "price_aud": 35,
+          "stock_level": 45,
+          "status": "In Stock",
+          "description": "Our Brass & Wood Salad Servers pair polished brass handles with a sustainably sourced teak paddle in a minimalist design. An elegant, long-lasting alternative to plastic serving utensils.",
+          "marketing_hook": "",
+          "sku": "DIN-005-GOLD-TEAK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Minimalist elegance for your dining table. Featuring polished brass heads and sustainable teak handles.",
@@ -433,7 +725,27 @@
         "Charcoal Pouch",
         "Sage Pouch"
       ],
-      "eco_badge": "Zero Waste"
+      "eco_badge": "Zero Waste",
+      "variant_skus": [
+        {
+          "variant_label": "Charcoal Pouch",
+          "price_aud": 15,
+          "stock_level": 100,
+          "status": "In Stock",
+          "description": "Our Travel Bamboo Cutlery Set arrives in a natural-draw Charcoal Pouch \u2014 a sleek, sustainable zero-waste dining kit for everyday commuters, travellers, or lunchbox heroes.",
+          "marketing_hook": "",
+          "sku": "DIN-006-CHARCOAL-POUCH"
+        },
+        {
+          "variant_label": "Sage Pouch",
+          "price_aud": 15,
+          "stock_level": 100,
+          "status": "In Stock",
+          "description": "The Sage Pouch Travel Bamboo Cutlery Set is a beautifully botanical-toned sustainable dining kit. Organic bamboo cutlery in a natural-draw sage canvas pouch \u2014 zero plastic, maximum style.",
+          "marketing_hook": "",
+          "sku": "DIN-006-SAGE-POUCH"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Never use single-use plastic again. A reusable knife, fork, spoon, and straw safely housed in an organic canvas pouch.",
@@ -468,7 +780,18 @@
       "variants": [
         "1200ml"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "1200ml",
+          "price_aud": 42,
+          "stock_level": 85,
+          "status": "In Stock",
+          "description": "Our 1200ml Zero-Waste Bento Box is a double-tier stainless steel lunch container with a leak-proof lid \u2014 the perfect plastic-free alternative for work, school, or picnic lunches.",
+          "marketing_hook": "",
+          "sku": "KIT-001-1200ML"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A double-tier stainless steel lunchbox featuring a bamboo lid that doubles as a chopping board. The ultimate plastic-free prep station.",
@@ -510,7 +833,18 @@
         "small": "15x15",
         "medium": "25x25",
         "large": "33x33"
-      }
+      },
+      "variant_skus": [
+        {
+          "variant_label": "Mixed Size (S/M/L)",
+          "price_aud": 28,
+          "stock_level": 120,
+          "status": "In Stock",
+          "description": "Our Beeswax Wrap Starter Pack comes in three sizes \u2014 Small, Medium, and Large \u2014 made from organic beeswax-infused cotton cloth. A beautiful, plastic-free alternative to cling wrap for wrapping food, covering bowls, or storing cheese.",
+          "marketing_hook": "",
+          "sku": "KIT-002-MIXED-SIZE-S-M-L"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Ditch the cling wrap for good. Our wraps use locally sourced WA beeswax and organic cotton to keep your food fresh naturally. They are breathable, reusable, and fully compostable.",
@@ -526,7 +860,7 @@
         "Do not use with raw meat or hot food",
         "Air dry away from heat sources"
       ],
-      "manual_excerpt": "REVIVAL TIP: If your wraps lose their stickiness, place them on baking paper in a 100°C oven for 2 minutes to redistribute the wax. Remove and hang to cool instantly."
+      "manual_excerpt": "REVIVAL TIP: If your wraps lose their stickiness, place them on baking paper in a 100\u00b0C oven for 2 minutes to redistribute the wax. Remove and hang to cool instantly."
     }
   },
   {
@@ -546,7 +880,18 @@
       "variants": [
         "Mixed Size (S/M/L)"
       ],
-      "eco_badge": "Vegan"
+      "eco_badge": "Vegan",
+      "variant_skus": [
+        {
+          "variant_label": "Mixed Size (S/M/L)",
+          "price_aud": 30,
+          "stock_level": 50,
+          "status": "In Stock",
+          "description": "Our plant-based Vegan Wax Wrap Pack comes in three sizes in the Mixed S/M/L assortment. Made from plant wax-infused cotton cloth \u2014 a fully vegan, plastic-free wrap solution for all your food storage needs.",
+          "marketing_hook": "",
+          "sku": "KIT-003-MIXED-SIZE-S-M-L"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "The plant-based alternative. 100% vegan wraps using Candelilla wax to replace single-use plastics in your fridge.",
@@ -581,7 +926,18 @@
       "variants": [
         "Clear"
       ],
-      "eco_badge": "Reusable"
+      "eco_badge": "Reusable",
+      "variant_skus": [
+        {
+          "variant_label": "Clear",
+          "price_aud": 18,
+          "stock_level": 300,
+          "status": "In Stock",
+          "description": "Our Clear Silicone Stretch Lids in a 6 Pack stretch tightly over any bowl, pot, or container of various sizes. Transparent, food-safe, and infinitely reusable \u2014 the zero-waste kitchen essential that replaces cling wrap and tin foil.",
+          "marketing_hook": "",
+          "sku": "KIT-004-CLEAR"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Food-grade silicone lids that stretch to fit bowls, jars, and even half-cut fruit. The ultimate airtight seal.",
@@ -617,7 +973,27 @@
         "Wattle Print",
         "Gum Nut Print"
       ],
-      "eco_badge": "Home Compostable"
+      "eco_badge": "Home Compostable",
+      "variant_skus": [
+        {
+          "variant_label": "Wattle Print",
+          "price_aud": 15,
+          "stock_level": 250,
+          "status": "In Stock",
+          "description": "Our Compostable Sponge Cloths in the Wattle Print feature a beautiful golden wattle design on a natural compostable cloth. Replaces hundreds of disposable sponges and is 100% compostable at end of life.",
+          "marketing_hook": "",
+          "sku": "KIT-005-WATTLE-PRINT"
+        },
+        {
+          "variant_label": "Gum Nut Print",
+          "price_aud": 15,
+          "stock_level": 250,
+          "status": "In Stock",
+          "description": "The Gum Nut Print Compostable Sponge Cloths bring an iconic Australian botanical print to your kitchen. 100% compostable, absorbent, and beautifully designed to make sustainable cleaning joyful.",
+          "marketing_hook": "",
+          "sku": "KIT-005-GUM-NUT-PRINT"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Absorbs 15x its weight in water. These cellulose and cotton blend cloths replace paper towels and break down cleanly in your compost.",
@@ -629,7 +1005,7 @@
     },
     "rag_resources": {
       "care_instructions": [
-        "Machine washable up to 60°C",
+        "Machine washable up to 60\u00b0C",
         "Can be boiled for 1 minute to sterilize"
       ],
       "manual_excerpt": "DISPOSAL: Simply cut into small pieces and bury in your home compost. Breaks down completely in 6-8 weeks."
@@ -652,7 +1028,18 @@
       "variants": [
         "Natural"
       ],
-      "eco_badge": "Biodegradable"
+      "eco_badge": "Biodegradable",
+      "variant_skus": [
+        {
+          "variant_label": "Natural",
+          "price_aud": 12,
+          "stock_level": 150,
+          "status": "In Stock",
+          "description": "Our Natural Coconut Coir Scourer 4 Pack is made from tough natural husk fibres \u2014 an effective, plastic-free scrubbing solution for pots, pans, and surfaces that fully composts at end of life.",
+          "marketing_hook": "",
+          "sku": "KIT-006-NATURAL"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Tough on grease, safe on non-stick. Made from natural coconut husk fibres, bypassing synthetic plastic sponges entirely.",
@@ -689,7 +1076,36 @@
         "1L",
         "2L"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "500ml",
+          "price_aud": 9.0,
+          "stock_level": 68,
+          "status": "In Stock",
+          "description": "Our 500ml Glass Pantry Jar is borosilicate glass with an airtight bamboo lid \u2014 the smallest in our pantry range, perfect for herbs, spices, nuts, or small grains. Beautiful on the bench or in the pantry.",
+          "marketing_hook": "",
+          "sku": "KIT-007-500ML"
+        },
+        {
+          "variant_label": "1L",
+          "price_aud": 14.0,
+          "stock_level": 66,
+          "status": "In Stock",
+          "description": "The 1L Glass Pantry Jar is the mid-size of our borosilicate glass pantry range with airtight bamboo lid \u2014 ideal for rice, oats, pasta, or coffee beans. Stackable and beautifully minimalist.",
+          "marketing_hook": "",
+          "sku": "KIT-007-1L"
+        },
+        {
+          "variant_label": "2L",
+          "price_aud": 20.0,
+          "stock_level": 66,
+          "status": "In Stock",
+          "description": "Our largest 2L Glass Pantry Jar is borosilicate glass with an airtight bamboo lid \u2014 designed for bulk dry goods like flour, grains, or legumes. A zero-plastic pantry hero that looks as good as it functions.",
+          "marketing_hook": "",
+          "sku": "KIT-007-2L"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Elevate your pantry organization. Borosilicate glass jars fitted with an airtight bamboo suction lid for maximum freshness.",
@@ -704,7 +1120,7 @@
         "Glass is dishwasher safe",
         "Hand wash bamboo lids and dry immediately"
       ],
-      "manual_excerpt": "AIRTIGHT SEAL: The silicone ring can be removed for deep cleaning if storing strongly scented foods."
+      "manual_excerpt": "AIRTIGHT SEAL: The silicone ring can be removed for deep cleaning if storing strongly scented foods. Available in 500ml ($9), 1L ($14), and 2L ($20)."
     }
   },
   {
@@ -724,13 +1140,24 @@
       "variants": [
         "15m Roll"
       ],
-      "eco_badge": "Toxin Free"
+      "eco_badge": "Toxin Free",
+      "variant_skus": [
+        {
+          "variant_label": "15m Roll",
+          "price_aud": 8,
+          "stock_level": 80,
+          "status": "In Stock",
+          "description": "Our 15m Roll of Unbleached Baking Paper is toxin-free, non-stick parcel paper from sustainably managed forests. Unbleached for a natural brown tone \u2014 completely plastic-free and 100% compostable.",
+          "marketing_hook": "",
+          "sku": "KIT-008-15M-ROLL"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Chlorine-free, totally compostable parchment paper for baking. Safe for your food and the earth.",
       "technical_specs": [
         "Silicone-coated unbleached paper",
-        "Oven safe up to 220°C",
+        "Oven safe up to 220\u00b0C",
         "FSC certified"
       ]
     },
@@ -760,7 +1187,36 @@
         "Oatmeal",
         "Navy"
       ],
-      "eco_badge": "Circular Economy"
+      "eco_badge": "Circular Economy",
+      "variant_skus": [
+        {
+          "variant_label": "Grey Tartan",
+          "price_aud": 160,
+          "stock_level": 9,
+          "status": "In Stock",
+          "description": "Our Bower Recycled Wool Throw in Grey Tartan is a heavy fringe throw woven from premium recycled wool in a classic grey plaid pattern. Draped over a linen sofa or armchair, it brings cosy, sustainable warmth to any living space.",
+          "marketing_hook": "",
+          "sku": "LIV-001-GREY-TARTAN"
+        },
+        {
+          "variant_label": "Oatmeal",
+          "price_aud": 160,
+          "stock_level": 8,
+          "status": "In Stock",
+          "description": "The Oatmeal Bower Recycled Wool Throw is a neutral, warm-toned recycled wool piece with heavy fringe \u2014 the perfect sustainable accent for any living room palette.",
+          "marketing_hook": "",
+          "sku": "LIV-001-OATMEAL"
+        },
+        {
+          "variant_label": "Navy",
+          "price_aud": 160,
+          "stock_level": 8,
+          "status": "In Stock",
+          "description": "Our Bower Recycled Wool Throw in Navy is a deep, classic navy recycled wool throw with heavy fringe. Rich, timeless, and sustainably crafted for lasting warmth.",
+          "marketing_hook": "",
+          "sku": "LIV-001-NAVY"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Heavy, warm, and highly durable. Woven entirely from recycled wool garments, giving new life to textile waste.",
@@ -796,7 +1252,27 @@
         "Round (2m)",
         "Rectangle (2x3m)"
       ],
-      "eco_badge": "Biodegradable"
+      "eco_badge": "Biodegradable",
+      "variant_skus": [
+        {
+          "variant_label": "Round (2m)",
+          "price_aud": 350.0,
+          "stock_level": 5,
+          "status": "In Stock",
+          "description": "Our Round 2m Jute Area Rug is hand-braided from natural jute fibre in a beautiful circular form. Adds warm, organic texture to any living space while supporting sustainable natural fibre craft.",
+          "marketing_hook": "",
+          "sku": "LIV-002-ROUND-2M"
+        },
+        {
+          "variant_label": "Rectangle (2x3m)",
+          "price_aud": 480.0,
+          "stock_level": 5,
+          "status": "In Stock",
+          "description": "The Rectangle 2x3m Jute Area Rug is hand-braided natural jute in a classic rectangular format \u2014 generous enough for a living room centrepiece or under a dining table.",
+          "marketing_hook": "",
+          "sku": "LIV-002-RECT-2X3M"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Hand-braided natural jute that adds organic texture to any room. Hardwearing and earth-friendly.",
@@ -832,7 +1308,27 @@
         "Rust",
         "Sage"
       ],
-      "eco_badge": "Recycled Filling"
+      "eco_badge": "Recycled Filling",
+      "variant_skus": [
+        {
+          "variant_label": "Rust",
+          "price_aud": 95,
+          "stock_level": 8,
+          "status": "In Stock",
+          "description": "Our Hemp Floor Cushion in Rust is an oversized casual seating piece in a rich, warm rust tone. Natural hemp canvas outer with a sustainably sourced fill \u2014 beautiful on the floor for lounging or meditation.",
+          "marketing_hook": "",
+          "sku": "LIV-003-RUST"
+        },
+        {
+          "variant_label": "Sage",
+          "price_aud": 95,
+          "stock_level": 7,
+          "status": "In Stock",
+          "description": "The Sage Hemp Floor Cushion is an oversized, calming green-toned natural hemp canvas floor cushion. Perfect for meditation corners, reading nooks, or casual extra seating.",
+          "marketing_hook": "",
+          "sku": "LIV-003-SAGE"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "An oversized cushion for casual floor seating, featuring a durable hemp cover and filled with eco-friendly recycled PET fibre.",
@@ -868,10 +1364,30 @@
         "Banksia Mix",
         "Eucalypt Mix"
       ],
-      "eco_badge": "Water-Free"
+      "eco_badge": "Water-Free",
+      "variant_skus": [
+        {
+          "variant_label": "Banksia Mix",
+          "price_aud": 65,
+          "stock_level": 15,
+          "status": "In Stock",
+          "description": "Our Banksia Mix Dried Native Arrangement features striking banksia cones, protea, and native Australian dried botanicals in a beautiful eucalyptus branch vessel. Zero water, infinite beauty \u2014 sustainably harvested native flora.",
+          "marketing_hook": "",
+          "sku": "LIV-004-BANKSIA-MIX"
+        },
+        {
+          "variant_label": "Eucalypt Mix",
+          "price_aud": 65,
+          "stock_level": 15,
+          "status": "In Stock",
+          "description": "The Eucalypt Mix Dried Native Arrangement celebrates Australian native botanicals with silvery eucalyptus leaves, pods, and native dried florals. A naturally fragrant, zero-maintenance sustainable arrangement.",
+          "marketing_hook": "",
+          "sku": "LIV-004-EUCALYPT-MIX"
+        }
+      ]
     },
     "content_triage": {
-      "marketing_hook": "Preserved Australian native flowers that last forever. No water required—just place and enjoy the structural beauty of the bush.",
+      "marketing_hook": "Preserved Australian native flowers that last forever. No water required\u2014just place and enjoy the structural beauty of the bush.",
       "technical_specs": [
         "Naturally dried",
         "No chemical preservatives",
@@ -905,7 +1421,36 @@
         "Hand Towel",
         "Face Washer"
       ],
-      "eco_badge": "Fast Drying"
+      "eco_badge": "Fast Drying",
+      "variant_skus": [
+        {
+          "variant_label": "Bath Sheet",
+          "price_aud": 55.0,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "Our Bamboo Bath Sheet is the most generous size in our towel range \u2014 ultra-absorbent bamboo and organic cotton blend in a beautifully plush weave. Incredibly soft, fast-drying, and sustainably crafted.",
+          "marketing_hook": "",
+          "sku": "BATH-001-BATH-SHEET"
+        },
+        {
+          "variant_label": "Hand Towel",
+          "price_aud": 35.0,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "The Bamboo Hand Towel is the everyday workhorse of our towel range \u2014 ultra-absorbent bamboo and organic cotton blend in a perfect mid-size. Soft, quick-drying, and built to last.",
+          "marketing_hook": "",
+          "sku": "BATH-001-HAND-TOWEL"
+        },
+        {
+          "variant_label": "Face Washer",
+          "price_aud": 15.0,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "Our Bamboo Face Washer is the smallest and softest member of the towel family \u2014 gentle enough for daily skincare routines, with the same ultra-absorbent bamboo and organic cotton blend.",
+          "marketing_hook": "",
+          "sku": "BATH-001-FACE-WASHER"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Ultra-absorbent and naturally antimicrobial. Our bamboo-cotton blend dries quickly and stays fresh longer.",
@@ -921,7 +1466,7 @@
         "Tumble dry low",
         "Avoid fabric softeners"
       ],
-      "manual_excerpt": "ABSORBENCY: Fabric softeners coat the fibres and destroy the bamboo's natural absorbency. Use white vinegar in the rinse cycle instead."
+      "manual_excerpt": "ABSORBENCY: Fabric softeners coat the fibres and destroy the bamboo's natural absorbency. Use white vinegar in the rinse cycle instead. Available as a Face Washer ($15), Hand Towel ($35), or Bath Sheet ($55)."
     }
   },
   {
@@ -942,7 +1487,27 @@
         "Grey",
         "Sand"
       ],
-      "eco_badge": "Mould Free"
+      "eco_badge": "Mould Free",
+      "variant_skus": [
+        {
+          "variant_label": "Grey",
+          "price_aud": 60,
+          "stock_level": 23,
+          "status": "In Stock",
+          "description": "Our Diatomite Stone Bath Mat in Grey is a minimalist, ultra-absorbent bath mat carved from natural diatomite. The grey tone suits modern bathroom aesthetics while the stone surface dries instantly and resists mould naturally.",
+          "marketing_hook": "",
+          "sku": "BATH-002-GREY"
+        },
+        {
+          "variant_label": "Sand",
+          "price_aud": 60,
+          "stock_level": 22,
+          "status": "In Stock",
+          "description": "The Sand Diatomite Stone Bath Mat brings a warm, neutral tone to your bathroom floor. Carved from natural diatomite, it absorbs water instantly, air-dries in minutes, and never harbours mould.",
+          "marketing_hook": "",
+          "sku": "BATH-002-SAND"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Step onto solid stone that dries instantly. Made from fossilised algae, this mat absorbs water rapidly, preventing mould and damp smells.",
@@ -980,7 +1545,36 @@
         "Silver"
       ],
       "eco_badge": "Zero Waste",
-      "dimensions_cm": {}
+      "dimensions_cm": {},
+      "variant_skus": [
+        {
+          "variant_label": "Rose Gold",
+          "price_aud": 49.0,
+          "stock_level": 34,
+          "status": "In Stock",
+          "description": "Our Rose Gold Safety Razor features an intricately diamond-knurled brass handle with a warm rose gold plating \u2014 the most premium finish in our range. The textured grip provides exceptional control for a close, luxurious shave.",
+          "marketing_hook": "",
+          "sku": "BATH-003-ROSE-GOLD"
+        },
+        {
+          "variant_label": "Matte Black",
+          "price_aud": 42.0,
+          "stock_level": 33,
+          "status": "In Stock",
+          "description": "The Matte Black Safety Razor offers a sleek, powder-coated brass handle with a clean minimalist look. A sophisticated choice for the modern zero-waste bathroom.",
+          "marketing_hook": "",
+          "sku": "BATH-003-MATTE-BLACK"
+        },
+        {
+          "variant_label": "Silver",
+          "price_aud": 45.0,
+          "stock_level": 33,
+          "status": "In Stock",
+          "description": "The classic Silver Safety Razor features a polished chrome-finish brass handle \u2014 timeless, durable, and perfectly weighted for effortless shaving with zero plastic waste.",
+          "marketing_hook": "",
+          "sku": "BATH-003-SILVER"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "The ultimate plastic-free shave. A beautifully weighted brass handle designed to last a lifetime while giving a closer, smoother shave.",
@@ -1015,7 +1609,18 @@
       "variants": [
         "Standard"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "Standard",
+          "price_aud": 8,
+          "stock_level": 500,
+          "status": "In Stock",
+          "description": "Our Safety Razor Blades 10 Pack contains stainless steel double-edge blades compatible with any three-piece safety razor. Made to last and fully recyclable \u2014 10 blades, zero plastic packaging.",
+          "marketing_hook": "",
+          "sku": "BATH-004-STANDARD"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Standard stainless steel double-edge blades. Sharp, durable, and fully recyclable.",
@@ -1050,7 +1655,27 @@
         "Eucalyptus",
         "Lemon"
       ],
-      "eco_badge": "Chemical Free"
+      "eco_badge": "Chemical Free",
+      "variant_skus": [
+        {
+          "variant_label": "Eucalyptus",
+          "price_aud": 15,
+          "stock_level": 40,
+          "status": "In Stock",
+          "description": "Our Eucalyptus Toilet Cleaning Bombs fizz on contact, releasing powerful natural eucalyptus oil to clean, deodorise, and freshen your toilet bowl. Chemical-free, plastic-free, and genuinely effective.",
+          "marketing_hook": "",
+          "sku": "BATH-005-EUCALYPTUS"
+        },
+        {
+          "variant_label": "Lemon",
+          "price_aud": 15,
+          "stock_level": 40,
+          "status": "In Stock",
+          "description": "The Lemon Toilet Cleaning Bombs use zesty lemon essential oil to naturally clean and brighten your toilet bowl. Chemical-free, 100% compostable packaging \u2014 a citrus-fresh sustainable bathroom essential.",
+          "marketing_hook": "",
+          "sku": "BATH-005-LEMON"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Fizzing cleaning tablets that make toilet scrubbing easy. Naturally antibacterial without the harsh bleach fumes.",
@@ -1085,7 +1710,27 @@
         "Charcoal (Oily)",
         "Pink Clay (Sensitive)"
       ],
-      "eco_badge": "Compostable"
+      "eco_badge": "Compostable",
+      "variant_skus": [
+        {
+          "variant_label": "Charcoal (Oily)",
+          "price_aud": 12,
+          "stock_level": 60,
+          "status": "In Stock",
+          "description": "Our Charcoal Konjac Facial Sponge is infused with activated charcoal \u2014 ideal for oily or acne-prone skin. The deeply cleansing charcoal draws out impurities while the soft konjac fibre gently exfoliates.",
+          "marketing_hook": "",
+          "sku": "BATH-006-CHARCOAL-OILY"
+        },
+        {
+          "variant_label": "Pink Clay (Sensitive)",
+          "price_aud": 12,
+          "stock_level": 60,
+          "status": "In Stock",
+          "description": "Our Pink Clay Konjac Facial Sponge is infused with rose-tinted kaolin clay \u2014 ideal for sensitive or dry skin. Gently cleanses and soothes while delivering a beautiful blush-pink tint to the sponge.",
+          "marketing_hook": "",
+          "sku": "BATH-006-PINK-CLAY-SENSITIVE"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Made from the root of the konjac plant, this sponge gently exfoliates and balances pH without the need for plastic microbeads.",
@@ -1126,7 +1771,36 @@
       "dimensions_cm": {
         "diameter": 6,
         "height": 3
-      }
+      },
+      "variant_skus": [
+        {
+          "variant_label": "Normal Hair",
+          "price_aud": 22,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "Our Kakadu Plum Solid Shampoo Bar for Normal Hair is packed with Australian native Kakadu plum extract for a vitamin C\u2013rich cleanse. One bar replaces 2\u20133 bottles of liquid shampoo \u2014 plastic-free and salon-quality.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-001-NORMAL-HAIR"
+        },
+        {
+          "variant_label": "Dry Hair",
+          "price_aud": 22,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "The Dry Hair Kakadu Plum Solid Shampoo Bar is enriched with extra moisturising botanicals and Kakadu plum extract to nourish and hydrate thirsty hair. A deeply conditioning plastic-free cleanse.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-001-DRY-HAIR"
+        },
+        {
+          "variant_label": "Oily Hair",
+          "price_aud": 22,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "Our Oily Hair Kakadu Plum Solid Shampoo Bar uses a targeted formula to balance and clarify oily scalps with Kakadu plum extract and gentle astringent botanicals. Plastic-free, zero waste, and effective.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-001-OILY-HAIR"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Clean hair, clear conscience. One bar replaces up to three plastic bottles of liquid shampoo. Infused with wild-harvested Kakadu Plum for high antioxidant protection.",
@@ -1142,7 +1816,7 @@
         "Lather in hands or directly onto wet hair",
         "Store away from direct shower spray"
       ],
-      "manual_excerpt": "DETOX PERIOD: If moving from commercial sulphate shampoos, your hair may feel 'waxy' for 1-2 weeks as it detoxes. Stick with it—your natural oils will balance out."
+      "manual_excerpt": "DETOX PERIOD: If moving from commercial sulphate shampoos, your hair may feel 'waxy' for 1-2 weeks as it detoxes. Stick with it\u2014your natural oils will balance out."
     }
   },
   {
@@ -1163,7 +1837,27 @@
         "Hydrating",
         "Volumising"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "Hydrating",
+          "price_aud": 24,
+          "stock_level": 43,
+          "status": "In Stock",
+          "description": "Our Hydrating Macadamia Solid Conditioner Bar is rich in plant-based macadamia oil \u2014 a deeply nourishing, plastic-free conditioner for dry or normal hair. Lathers beautifully and leaves hair silky and smooth.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-002-HYDRATING"
+        },
+        {
+          "variant_label": "Volumising",
+          "price_aud": 24,
+          "stock_level": 42,
+          "status": "In Stock",
+          "description": "The Volumising Macadamia Solid Conditioner Bar uses a lightweight macadamia oil formula to condition without weighing fine hair down. Adds body and shine \u2014 plastic-free and sustainably crafted.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-002-VOLUMISING"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Deeply moisturising solid conditioner enriched with Australian macadamia oil to tame frizz and lock in hydration.",
@@ -1200,7 +1894,36 @@
         "Rose & Geranium",
         "Unscented"
       ],
-      "eco_badge": "Toxin Free"
+      "eco_badge": "Toxin Free",
+      "variant_skus": [
+        {
+          "variant_label": "Lemon Myrtle",
+          "price_aud": 19,
+          "stock_level": 38,
+          "status": "In Stock",
+          "description": "Our Natural Deodorant Paste in Lemon Myrtle is a toxin-free, baking-soda-free formula with fresh Australian lemon myrtle essential oil. Effective all-day odour protection without aluminium or synthetic fragrance.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-003-LEMON-MYRTLE"
+        },
+        {
+          "variant_label": "Rose & Geranium",
+          "price_aud": 19,
+          "stock_level": 36,
+          "status": "In Stock",
+          "description": "The Rose & Geranium Natural Deodorant Paste is a soft, floral-scented toxin-free formula with Australian rose and geranium essential oils. Gentle on sensitive underarm skin and effective all day.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-003-ROSE-GERANIUM"
+        },
+        {
+          "variant_label": "Unscented",
+          "price_aud": 19,
+          "stock_level": 36,
+          "status": "In Stock",
+          "description": "Our Unscented Natural Deodorant Paste is a completely fragrance-free, toxin-free formula for sensitive skin or fragrance-free lifestyles. Aluminium-free, baking-soda-free, and genuinely effective.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-003-UNSCENTED"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Aluminium-free deodorant in a recyclable tin. Uses shea butter and kaolin clay to neutralize odor all day naturally.",
@@ -1238,7 +1961,45 @@
         "Tan",
         "Deep"
       ],
-      "eco_badge": "Vegan"
+      "eco_badge": "Vegan",
+      "variant_skus": [
+        {
+          "variant_label": "Light",
+          "price_aud": 35,
+          "stock_level": 15,
+          "status": "In Stock",
+          "description": "Our Mineral Foundation Powder in Light is a vegan loose mineral powder for fair skin tones. Buildable coverage, SPF-mineral ingredients, and zero synthetic fragrances \u2014 breathable, sustainable beauty.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-004-LIGHT"
+        },
+        {
+          "variant_label": "Medium",
+          "price_aud": 35,
+          "stock_level": 15,
+          "status": "In Stock",
+          "description": "The Medium Mineral Foundation Powder is a vegan loose mineral formula for medium skin tones with buildable, natural-finish coverage and inherent SPF protection from zinc oxide.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-004-MEDIUM"
+        },
+        {
+          "variant_label": "Tan",
+          "price_aud": 35,
+          "stock_level": 15,
+          "status": "In Stock",
+          "description": "Our Tan Mineral Foundation Powder is a vegan loose mineral formula for tan skin tones \u2014 a warm, buildable coverage powder with inherent SPF protection and natural finish.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-004-TAN"
+        },
+        {
+          "variant_label": "Deep",
+          "price_aud": 35,
+          "stock_level": 15,
+          "status": "In Stock",
+          "description": "The Deep Mineral Foundation Powder is a rich, warm-toned vegan loose mineral formula for deeper skin tones. Full buildable coverage with inherent SPF protection and a luminous natural finish.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-004-DEEP"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Lightweight loose mineral powder with built-in SPF15 protection. Breathable coverage in a refillable container.",
@@ -1275,7 +2036,36 @@
         "Nude",
         "Berry"
       ],
-      "eco_badge": "Compostable Packaging"
+      "eco_badge": "Compostable Packaging",
+      "variant_skus": [
+        {
+          "variant_label": "Rosy Red",
+          "price_aud": 15,
+          "stock_level": 50,
+          "status": "In Stock",
+          "description": "Our Rosy Red Tinted Lip & Cheek Balm is a zero-waste, compostable-packaged lip and cheek colour in a warm rose-red tint. Sheer, buildable coverage with nourishing natural waxes.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-005-ROSY-RED"
+        },
+        {
+          "variant_label": "Nude",
+          "price_aud": 15,
+          "stock_level": 50,
+          "status": "In Stock",
+          "description": "The Nude Tinted Lip & Cheek Balm is a barely-there natural tone in our zero-waste compostable range \u2014 perfectly sheer, nourishing, and universally flattering.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-005-NUDE"
+        },
+        {
+          "variant_label": "Berry",
+          "price_aud": 15,
+          "stock_level": 50,
+          "status": "In Stock",
+          "description": "Our Berry Tinted Lip & Cheek Balm is a deep berry-toned natural lip and cheek colour in zero-waste compostable packaging. Rich pigment with a natural wax formula \u2014 beautifully sustainable.",
+          "marketing_hook": "",
+          "sku": "BEAUTY-005-BERRY"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A zero-waste balm housed in a push-up compostable cardboard tube. Provides a sheer, buildable wash of colour for lips and cheeks.",
@@ -1288,7 +2078,7 @@
     "rag_resources": {
       "care_instructions": [
         "Push up gently from the base",
-        "Store below 30°C to prevent melting"
+        "Store below 30\u00b0C to prevent melting"
       ],
       "manual_excerpt": "PUSH TUBE: If the balm is hard to push up in winter, warm the tube in your hands for a minute first."
     }
@@ -1310,7 +2100,18 @@
       "variants": [
         "Mixed Colours"
       ],
-      "eco_badge": "Compostable Handle"
+      "eco_badge": "Compostable Handle",
+      "variant_skus": [
+        {
+          "variant_label": "Mixed Colours",
+          "price_aud": 20,
+          "stock_level": 400,
+          "status": "In Stock",
+          "description": "Our Bamboo Toothbrush 4 Pack comes in a mix of naturally dyed handle colours \u2014 a fun, zero-waste alternative to plastic toothbrushes. Compostable bamboo handles with BPA-free nylon bristles.",
+          "marketing_hook": "",
+          "sku": "DENT-001-MIXED-COLOURS"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Moso bamboo handles with charcoal-infused bristles. Each brush is numbered to prevent mix-ups in family bathrooms.",
@@ -1346,7 +2147,27 @@
         "With Fluoride",
         "Fluoride Free"
       ],
-      "eco_badge": "Waterless"
+      "eco_badge": "Waterless",
+      "variant_skus": [
+        {
+          "variant_label": "With Fluoride",
+          "price_aud": 14,
+          "stock_level": 38,
+          "status": "In Stock",
+          "description": "Our Mint Toothpaste Tablets With Fluoride are chewable, water-activated toothpaste pellets in a glass jar \u2014 a zero-plastic oral care option with added fluoride for cavity protection.",
+          "marketing_hook": "",
+          "sku": "DENT-002-WITH-FLUORIDE"
+        },
+        {
+          "variant_label": "Fluoride Free",
+          "price_aud": 14,
+          "stock_level": 37,
+          "status": "In Stock",
+          "description": "The Fluoride Free Mint Toothpaste Tablets are chewable, water-activated toothpaste pellets in a glass jar \u2014 a zero-plastic oral care option for those who prefer a natural fluoride-free formula.",
+          "marketing_hook": "",
+          "sku": "DENT-002-FLUORIDE-FREE"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Say goodbye to unrecyclable plastic tubes. Chewable toothpaste tabs housed in a refillable glass jar. Perfect for travel and zero-waste living.",
@@ -1381,7 +2202,18 @@
       "variants": [
         "Mint"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "Mint",
+          "price_aud": 9,
+          "stock_level": 150,
+          "status": "In Stock",
+          "description": "Our Mint Corn Starch Dental Floss is vegan, plant-based floss with a fresh mint coating in a refillable glass jar. A zero-plastic, compostable daily flossing option.",
+          "marketing_hook": "",
+          "sku": "DENT-003-MINT"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "100% vegan floss made from plant-based corn starch, lightly coated in Candelilla wax, inside a refillable glass vial.",
@@ -1415,7 +2247,18 @@
       "variants": [
         "Copper"
       ],
-      "eco_badge": "Ayurvedic"
+      "eco_badge": "Ayurvedic",
+      "variant_skus": [
+        {
+          "variant_label": "Copper",
+          "price_aud": 12,
+          "stock_level": 90,
+          "status": "In Stock",
+          "description": "Our Copper Tongue Cleaner is a pure copper U-shaped tongue scraper \u2014 the ancient Ayurvedic practice of tongue scraping, reimagined in a sustainably crafted, naturally antimicrobial form.",
+          "marketing_hook": "",
+          "sku": "DENT-004-COPPER"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A traditional Ayurvedic tool. Pure copper naturally eliminates bacteria, improving oral hygiene and breath far better than brushing alone.",
@@ -1451,7 +2294,27 @@
         "Model 1 (Pre-Birth)",
         "Model 2 (Post-Birth)"
       ],
-      "eco_badge": "Zero Waste"
+      "eco_badge": "Zero Waste",
+      "variant_skus": [
+        {
+          "variant_label": "Model 1 (Pre-Birth)",
+          "price_aud": 45.0,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "The 'Flow' Menstrual Cup Model 1 is designed for lighter flows and pre-childbirth anatomy \u2014 medical-grade silicone in the smallest size for comfortable, leak-free wear for up to 12 hours.",
+          "marketing_hook": "",
+          "sku": "FEM-001-MODEL-1-PRE-BIRTH"
+        },
+        {
+          "variant_label": "Model 2 (Post-Birth)",
+          "price_aud": 45.0,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "The 'Flow' Menstrual Cup Model 2 is designed for post-childbirth anatomy \u2014 medical-grade silicone in a slightly wider size for optimal comfort and reliable leak-free wear up to 12 hours.",
+          "marketing_hook": "",
+          "sku": "FEM-001-MODEL-2-POST-BIRTH"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Medical-grade silicone cup that completely replaces tampons and pads. Reusable for up to 10 years, saving money and massive landfill waste.",
@@ -1487,7 +2350,27 @@
         "Bikini (Black)",
         "High Waist (Black)"
       ],
-      "eco_badge": "Reusable"
+      "eco_badge": "Reusable",
+      "variant_skus": [
+        {
+          "variant_label": "Bikini (Black)",
+          "price_aud": 28,
+          "stock_level": 100,
+          "status": "In Stock",
+          "description": "Our Organic Cotton Period Briefs in a Black Bikini cut are a low-rise, everyday silhouette in certified organic cotton with an integrated leak-proof lining for light to moderate flow days.",
+          "marketing_hook": "",
+          "sku": "FEM-002-BIKINI-BLACK"
+        },
+        {
+          "variant_label": "High Waist (Black)",
+          "price_aud": 28,
+          "stock_level": 100,
+          "status": "In Stock",
+          "description": "The High Waist Black Organic Cotton Period Briefs offer full coverage and support for heavier flow days or night wear \u2014 certified organic cotton with an integrated multi-layer leak-proof lining.",
+          "marketing_hook": "",
+          "sku": "FEM-002-HIGH-WAIST-BLACK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Highly absorbent, leak-proof underwear holding up to 3 tampons worth of fluid. Comfortable organic cotton against your skin.",
@@ -1524,7 +2407,27 @@
         "Day Pack",
         "Night Pack"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "Day Pack",
+          "price_aud": 35.0,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "Our Day Pack Reusable Cloth Pad Set contains softer, lighter pads in bamboo velour for comfortable daytime wear. Snap-fastened, washable, and made to last years \u2014 the zero-waste period alternative.",
+          "marketing_hook": "",
+          "sku": "FEM-003-DAY-PACK"
+        },
+        {
+          "variant_label": "Night Pack",
+          "price_aud": 42.0,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "The Night Pack Reusable Cloth Pad Set contains longer, more absorbent pads in bamboo velour for overnight protection. Generously sized with snap fastening \u2014 the zero-waste overnight option.",
+          "marketing_hook": "",
+          "sku": "FEM-003-NIGHT-PACK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Soft bamboo velour pads with secure snap wings. A breathable, chemical-free alternative to disposable plastic pads.",
@@ -1561,7 +2464,36 @@
         "Wattle Print",
         "Sage Solid"
       ],
-      "eco_badge": "Reusable"
+      "eco_badge": "Reusable",
+      "variant_skus": [
+        {
+          "variant_label": "Eucalypt Print",
+          "price_aud": 32,
+          "stock_level": 28,
+          "status": "In Stock",
+          "description": "Our Modern Cloth Nappy in Eucalypt Print features a beautiful Australian botanical print in muted greens on a waterproof outer shell with a reusable bamboo insert. Adjustable for newborn through to toddler.",
+          "marketing_hook": "",
+          "sku": "BABY-001-EUCALYPT-PRINT"
+        },
+        {
+          "variant_label": "Wattle Print",
+          "price_aud": 32,
+          "stock_level": 26,
+          "status": "In Stock",
+          "description": "The Wattle Print Modern Cloth Nappy celebrates Australia's national flower in a golden illustrated print on waterproof outer shell. Reusable bamboo insert, adjustable sizing, and zero single-use plastic.",
+          "marketing_hook": "",
+          "sku": "BABY-001-WATTLE-PRINT"
+        },
+        {
+          "variant_label": "Sage Solid",
+          "price_aud": 32,
+          "stock_level": 26,
+          "status": "In Stock",
+          "description": "Our Sage Solid Modern Cloth Nappy is a clean, botanical-toned waterproof outer shell in a minimalist sage colour. Reusable bamboo insert, adjustable sizing, and beautifully simple.",
+          "marketing_hook": "",
+          "sku": "BABY-001-SAGE-SOLID"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Adjustable waterproof shell with ultra-thirsty bamboo inserts. Designed to fit from newborn to toddler (OSFM).",
@@ -1574,7 +2506,7 @@
     "rag_resources": {
       "care_instructions": [
         "Dry pail used nappies",
-        "Pre-wash warm, main wash hot (60°C)",
+        "Pre-wash warm, main wash hot (60\u00b0C)",
         "Line dry shells, inserts can be tumble dried low"
       ],
       "manual_excerpt": "FIT: Ensure the elastics sit snugly in the groin crease, not on the thigh, to prevent leaks."
@@ -1597,7 +2529,18 @@
       "variants": [
         "80 Pack"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "80 Pack",
+          "price_aud": 7.5,
+          "stock_level": 250,
+          "status": "In Stock",
+          "description": "Our Biodegradable Baby Wipes 80 Pack is bamboo viscose wipes pre-moistened with a gentle aloe and chamomile formula. Fully compostable, plastic-free packaging \u2014 the zero-waste baby essential.",
+          "marketing_hook": "",
+          "sku": "BABY-002-80-PACK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Gentle on sensitive skin and the earth. 99% pure water wipes made from bamboo viscose, entirely free from plastic fibers.",
@@ -1632,7 +2575,27 @@
         "Koala Grey",
         "Possum Pink"
       ],
-      "eco_badge": "Toxin Free"
+      "eco_badge": "Toxin Free",
+      "variant_skus": [
+        {
+          "variant_label": "Koala Grey",
+          "price_aud": 25,
+          "stock_level": 33,
+          "status": "In Stock",
+          "description": "Our Kids Bamboo Dinner Set in Koala Grey features a drop-proof bamboo plate, bowl, and cup in a soft grey tone with a koala graphic embossed into the bamboo. Dishwasher safe and completely plastic-free.",
+          "marketing_hook": "",
+          "sku": "BABY-003-KOALA-GREY"
+        },
+        {
+          "variant_label": "Possum Pink",
+          "price_aud": 25,
+          "stock_level": 32,
+          "status": "In Stock",
+          "description": "The Possum Pink Kids Bamboo Dinner Set is a soft blush-pink drop-proof bamboo plate, bowl, and cup set with an adorable possum emboss. Dishwasher safe, plastic-free, and made to last.",
+          "marketing_hook": "",
+          "sku": "BABY-003-POSSUM-PINK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Drop-proof and durable. Includes a plate, bowl, and cup made from compressed bamboo fibre, skipping the melamine.",
@@ -1667,7 +2630,18 @@
       "variants": [
         "100g Tin"
       ],
-      "eco_badge": "Gentle"
+      "eco_badge": "Gentle",
+      "variant_skus": [
+        {
+          "variant_label": "100g Tin",
+          "price_aud": 22,
+          "stock_level": 90,
+          "status": "In Stock",
+          "description": "Our Natural Baby Balm in a 100g Tin is a zinc and calendula-enriched balm for nappy rash, dry skin, and general baby skincare in a reusable tin. No synthetic fragrance, no parabens \u2014 just clean, effective care.",
+          "marketing_hook": "",
+          "sku": "BABY-004-100G-TIN"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A soothing, multi-purpose barrier cream with Zinc and Calendula to rapidly treat nappy rash and dry patches.",
@@ -1680,7 +2654,7 @@
     "rag_resources": {
       "care_instructions": [
         "Apply a thin layer to clean, dry skin",
-        "Store below 30°C"
+        "Store below 30\u00b0C"
       ],
       "manual_excerpt": "CLOTH SAFE: This balm uses natural oils that will easily wash out of cloth nappies, unlike thick petroleum-based creams."
     }
@@ -1710,7 +2684,27 @@
         "White Stone",
         "Black Stone"
       ],
-      "eco_badge": "Energy Efficient"
+      "eco_badge": "Energy Efficient",
+      "variant_skus": [
+        {
+          "variant_label": "White Stone",
+          "price_aud": 89,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "Our Stone Ultrasonic Diffuser in White Stone is a matte white ceramic diffuser with whisper-quiet ultrasonic technology and warm LED lighting. Adds calm aromatherapy to any room, sustainably crafted.",
+          "marketing_hook": "",
+          "sku": "TECH-001-WHITE-STONE"
+        },
+        {
+          "variant_label": "Black Stone",
+          "price_aud": 89,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "The Black Stone Ultrasonic Diffuser is a bold matte black ceramic diffuser with whisper-quiet ultrasonic technology \u2014 a sophisticated addition to any modern living space or bedroom.",
+          "marketing_hook": "",
+          "sku": "TECH-001-BLACK-STONE"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Transform your home into a sanctuary. The Stone Diffuser uses ultrasonic vibrations to disperse essential oils without heat, preserving their therapeutic properties. Its matte ceramic cover doubles as a piece of sculptural decor.",
@@ -1748,7 +2742,18 @@
       "variants": [
         "White"
       ],
-      "eco_badge": "Clean Air"
+      "eco_badge": "Clean Air",
+      "variant_skus": [
+        {
+          "variant_label": "White",
+          "price_aud": 199,
+          "stock_level": 20,
+          "status": "In Stock",
+          "description": "The Bluebush Pure Air Micro in White is a compact desktop HEPA air purifier in a clean white finish \u2014 removes 99.97% of airborne particles in personal spaces. Whisper-quiet, energy-efficient, and beautifully designed.",
+          "marketing_hook": "",
+          "sku": "TECH-002-WHITE"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A compact desktop HEPA-13 air purifier that silently removes 99.9% of pollen, smoke, and dust from your personal workspace.",
@@ -1784,7 +2789,27 @@
         "AA",
         "AAA"
       ],
-      "eco_badge": "Waste Reduction"
+      "eco_badge": "Waste Reduction",
+      "variant_skus": [
+        {
+          "variant_label": "AA",
+          "price_aud": 29.0,
+          "stock_level": 75,
+          "status": "In Stock",
+          "description": "Our Loop Rechargeable AA Battery Kit contains four lithium-ion AA batteries with a USB charging cradle. Replace disposable batteries for good \u2014 each battery lasts thousands of recharge cycles.",
+          "marketing_hook": "",
+          "sku": "TECH-003-AA"
+        },
+        {
+          "variant_label": "AAA",
+          "price_aud": 26.0,
+          "stock_level": 75,
+          "status": "In Stock",
+          "description": "The Loop Rechargeable AAA Battery Kit contains four lithium-ion AAA batteries with a USB charging cradle \u2014 a zero-waste power solution for remotes, clocks, and small devices.",
+          "marketing_hook": "",
+          "sku": "TECH-003-AAA"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Stop throwing batteries away. These lithium-ion batteries feature a built-in USB-C port for rapid charging, lasting over 1000 cycles.",
@@ -1825,6 +2850,17 @@
       "eco_badge": "Solar Energy",
       "variants": [
         "10000mAh"
+      ],
+      "variant_skus": [
+        {
+          "variant_label": "10000mAh",
+          "price_aud": 75,
+          "stock_level": 45,
+          "status": "In Stock",
+          "description": "Our 10000mAh Solar Power Bank features a bamboo casing with integrated solar panels \u2014 charge on the go using renewable sunlight or via USB. Two USB-A outputs for simultaneous device charging.",
+          "marketing_hook": "",
+          "sku": "TECH-004-10000MAH"
+        }
       ]
     },
     "content_triage": {
@@ -1838,7 +2874,7 @@
     "rag_resources": {
       "care_instructions": [
         "Keep ports clear of dust and sand",
-        "Avoid leaving in extremely hot cars (>50°C)",
+        "Avoid leaving in extremely hot cars (>50\u00b0C)",
         "Wipe bamboo casing with a dry cloth only"
       ],
       "manual_excerpt": "SOLAR EXPECTATIONS: The solar panel is designed for emergency top-ups only. A full charge via sun can take 40+ hours. For daily use, charge via the included USB-C cable."
@@ -1861,7 +2897,18 @@
       "variants": [
         "Tin"
       ],
-      "eco_badge": "Reef Safe"
+      "eco_badge": "Reef Safe",
+      "variant_skus": [
+        {
+          "variant_label": "Tin",
+          "price_aud": 29,
+          "stock_level": 100,
+          "status": "In Stock",
+          "description": "Our Kakadu Plum Zinc Balm SPF 50 in a Tin is a reef-safe, mineral zinc sunscreen enriched with Australian Kakadu plum extract. No oxybenzone, no octinoxate \u2014 just clean, effective sun protection in a reusable tin.",
+          "marketing_hook": "",
+          "sku": "CHEM-001-TIN"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "High-performance, reef-safe sun protection. This clear zinc formula rubs in easily, offering 4 hours of water resistance without the chemical footprint.",
@@ -1873,7 +2920,7 @@
     },
     "rag_resources": {
       "care_instructions": [
-        "Store below 30°C",
+        "Store below 30\u00b0C",
         "Apply 20 mins before sun exposure"
       ],
       "manual_excerpt": "APPLICATION: Warm the balm slightly between fingers before applying to help it glide on completely clear."
@@ -1896,7 +2943,18 @@
       "variants": [
         "100ml Glass Spray"
       ],
-      "eco_badge": "Natural"
+      "eco_badge": "Natural",
+      "variant_skus": [
+        {
+          "variant_label": "100ml Glass Spray",
+          "price_aud": 18,
+          "stock_level": 80,
+          "status": "In Stock",
+          "description": "Our Mozzie Mist Insect Repellent is a 100ml glass spray bottle of DEET-free, essential oil\u2013based insect repellent. Effective against mosquitoes and midges with a fresh botanical scent.",
+          "marketing_hook": "",
+          "sku": "CHEM-002-100ML-GLASS-SPRAY"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Effective protection without the DEET. Uses a highly concentrated Lemon Eucalyptus oil blend proven to deter sandflies and mosquitoes.",
@@ -1932,7 +2990,27 @@
         "Native Citrus",
         "Fragrance Free"
       ],
-      "eco_badge": "Refillable"
+      "eco_badge": "Refillable",
+      "variant_skus": [
+        {
+          "variant_label": "Native Citrus",
+          "price_aud": 12,
+          "stock_level": 150,
+          "status": "In Stock",
+          "description": "Our Natural Hand Sanitizer in Native Citrus is a refillable, gel-based formula with a bright native citrus essential oil blend. 70% ethanol, no synthetic fragrance, no plastic waste.",
+          "marketing_hook": "",
+          "sku": "CHEM-003-NATIVE-CITRUS"
+        },
+        {
+          "variant_label": "Fragrance Free",
+          "price_aud": 12,
+          "stock_level": 150,
+          "status": "In Stock",
+          "description": "The Fragrance Free Natural Hand Sanitizer is a refillable 70% ethanol gel formula with zero added fragrance \u2014 ideal for sensitive skin or fragrance-free workplaces.",
+          "marketing_hook": "",
+          "sku": "CHEM-003-FRAGRANCE-FREE"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Kills 99.9% of germs without stripping your skin. An alcohol-based gel heavily infused with Aloe Vera for constant hydration.",
@@ -1967,7 +3045,27 @@
         "Rainforest",
         "Outback"
       ],
-      "eco_badge": "Toxin Free"
+      "eco_badge": "Toxin Free",
+      "variant_skus": [
+        {
+          "variant_label": "Rainforest",
+          "price_aud": 22,
+          "stock_level": 38,
+          "status": "In Stock",
+          "description": "Our Rainforest Native Room Spray is a glass amber bottle room mist with deep green, earthy rainforest botanicals \u2014 Australian cedar, fern, and forest floor notes in a biodegradable spray formula.",
+          "marketing_hook": "",
+          "sku": "CHEM-004-RAINFOREST"
+        },
+        {
+          "variant_label": "Outback",
+          "price_aud": 22,
+          "stock_level": 37,
+          "status": "In Stock",
+          "description": "The Outback Native Room Spray captures the dry, golden warmth of Australian outback air \u2014 native botanicals including wattle, red earth, and warm wood notes in a refillable glass amber bottle.",
+          "marketing_hook": "",
+          "sku": "CHEM-004-OUTBACK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Instantly freshen a room or linens without harsh synthetic aerosols. Pure essential oil blends inspired by the Australian landscape.",
@@ -2001,7 +3099,18 @@
       "variants": [
         "Natural"
       ],
-      "eco_badge": "Energy Saver"
+      "eco_badge": "Energy Saver",
+      "variant_skus": [
+        {
+          "variant_label": "Natural",
+          "price_aud": 25,
+          "stock_level": 130,
+          "status": "In Stock",
+          "description": "Our Natural Wool Dryer Balls 3 Pack is made from solid 100% Australian wool \u2014 reduces drying time by up to 25%, naturally softens fabrics, and replaces chemical dryer sheets indefinitely.",
+          "marketing_hook": "",
+          "sku": "UTIL-001-NATURAL"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Reduce drying time by 30% and soften clothes naturally. These solid Australian wool balls bounce through your laundry, replacing toxic softening sheets.",
@@ -2035,7 +3144,18 @@
       "variants": [
         "20 Pack"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "20 Pack",
+          "price_aud": 18,
+          "stock_level": 200,
+          "status": "In Stock",
+          "description": "Our Storm-Proof Wooden Pegs 20 Pack are single-piece moulded hardwood pegs \u2014 no metal spring, no plastic, no rust. Engineered to grip in strong winds and last for years of outdoor use.",
+          "marketing_hook": "",
+          "sku": "UTIL-002-20-PACK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Built from a single piece of dense hardwood, these pegs contain no metal springs to snap or rust on your clothes.",
@@ -2070,7 +3190,27 @@
         "Natural",
         "Grey"
       ],
-      "eco_badge": "Natural Materials"
+      "eco_badge": "Natural Materials",
+      "variant_skus": [
+        {
+          "variant_label": "Natural",
+          "price_aud": 55,
+          "stock_level": 25,
+          "status": "In Stock",
+          "description": "Our Canvas Laundry Hamper in Natural is a heavy-duty cotton canvas hamper with a natural undyed finish. Robust carry handles, collapsible design \u2014 a stylish, plastic-free laundry essential.",
+          "marketing_hook": "",
+          "sku": "UTIL-003-NATURAL"
+        },
+        {
+          "variant_label": "Grey",
+          "price_aud": 55,
+          "stock_level": 25,
+          "status": "In Stock",
+          "description": "The Grey Canvas Laundry Hamper is a heavy-duty cotton canvas piece in a clean neutral grey \u2014 robust, collapsible, and beautifully understated for any laundry or bedroom.",
+          "marketing_hook": "",
+          "sku": "UTIL-003-GREY"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A heavy-duty canvas bag suspended on a collapsible bamboo X-frame. Stylish enough for the bedroom, practical enough for heavy loads.",
@@ -2110,7 +3250,18 @@
         "height": 25,
         "width": 15,
         "depth": 12
-      }
+      },
+      "variant_skus": [
+        {
+          "variant_label": "Natural Timber",
+          "price_aud": 45,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "Our Native Bee Hotel in Natural Timber is a hand-crafted hardwood structure packed with hollow bamboo tubes, pine cones, and natural nesting materials \u2014 a beautiful habitat for solitary native bees in any garden.",
+          "marketing_hook": "",
+          "sku": "GARD-001-NATURAL-TIMBER"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Support your local ecosystem. This hand-crafted hotel provides a nesting site for solitary native bees, who are vital for pollinating Australian flora.",
@@ -2146,7 +3297,18 @@
       "variants": [
         "WA Wildflowers"
       ],
-      "eco_badge": "Native Flora"
+      "eco_badge": "Native Flora",
+      "variant_skus": [
+        {
+          "variant_label": "WA Wildflowers",
+          "price_aud": 25,
+          "stock_level": 100,
+          "status": "In Stock",
+          "description": "Our Heirloom Native Seed Kit featuring WA Wildflowers contains a curated collection of Western Australian wildflower seeds in a beautiful recycled card and glass seed vial presentation. Supports native pollinator populations.",
+          "marketing_hook": "",
+          "sku": "GARD-002-WA-WILDFLOWERS"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Bring the bush to your backyard. A curated box of non-GMO seeds including Billy Buttons, Everlastings, and Kangaroo Paw.",
@@ -2180,7 +3342,18 @@
       "variants": [
         "Gold"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "Gold",
+          "price_aud": 35,
+          "stock_level": 55,
+          "status": "In Stock",
+          "description": "Our Brass Plant Mister in Gold is a solid brass construction with a beautiful polished finish and a long-reach nozzle \u2014 the premium plant care tool for indoor plants and botanical collections.",
+          "marketing_hook": "",
+          "sku": "GARD-003-GOLD"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Keep your humidity-loving indoor plants thriving. A solid brass mister that creates a micro-fine spray while looking beautiful on your shelf.",
@@ -2221,7 +3394,36 @@
       "dimensions_cm": {
         "length": 150,
         "width": 2.5
-      }
+      },
+      "variant_skus": [
+        {
+          "variant_label": "Olive",
+          "price_aud": 40,
+          "stock_level": 14,
+          "status": "In Stock",
+          "description": "Our Hemp Dog Leash in Olive is strong raw hemp fibre in a rich botanical olive green \u2014 a durable, naturally antibacterial leash with a solid brass clip and comfortable woven handle.",
+          "marketing_hook": "",
+          "sku": "PET-001-OLIVE"
+        },
+        {
+          "variant_label": "Rust",
+          "price_aud": 40,
+          "stock_level": 13,
+          "status": "In Stock",
+          "description": "The Rust Hemp Dog Leash is raw hemp fibre in a warm, earthy rust tone \u2014 strong, naturally antibacterial, and a beautiful alternative to synthetic leashes.",
+          "marketing_hook": "",
+          "sku": "PET-001-RUST"
+        },
+        {
+          "variant_label": "Natural",
+          "price_aud": 40,
+          "stock_level": 13,
+          "status": "In Stock",
+          "description": "Our Natural Hemp Dog Leash is undyed raw hemp fibre in its natural warm beige tone \u2014 strong, sustainable, and finished with a solid brass clip.",
+          "marketing_hook": "",
+          "sku": "PET-001-NATURAL"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Stronger than cotton and softer than nylon. Our hemp leashes are naturally antimicrobial and get softer with every walk. Perfect for sensitive skin and heavy pullers.",
@@ -2257,7 +3459,18 @@
       "variants": [
         "Gum Nut Shape"
       ],
-      "eco_badge": "Toxin Free"
+      "eco_badge": "Toxin Free",
+      "variant_skus": [
+        {
+          "variant_label": "Gum Nut Shape",
+          "price_aud": 22,
+          "stock_level": 70,
+          "status": "In Stock",
+          "description": "Our Natural Rubber Chew Toy in a Gum Nut Shape is made from sustainably tapped natural rubber \u2014 non-toxic, long-lasting, and shaped like a beloved Australian native. Safe for all dog sizes.",
+          "marketing_hook": "",
+          "sku": "PET-002-GUM-NUT-SHAPE"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Safe chewing for tough jaws. Made from sustainably tapped Hevea rubber, avoiding the toxic plastics found in cheap toys.",
@@ -2293,7 +3506,27 @@
         "Speckled White",
         "Matte Black"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "Speckled White",
+          "price_aud": 45,
+          "stock_level": 13,
+          "status": "In Stock",
+          "description": "Our Speckled White Ceramic Pet Bowl is a heavyweight, chip-resistant stoneware bowl with a beautiful speckled glaze. Heavy enough to resist being pushed around \u2014 a sustainably crafted alternative to plastic pet bowls.",
+          "marketing_hook": "",
+          "sku": "PET-003-SPECKLED-WHITE"
+        },
+        {
+          "variant_label": "Matte Black",
+          "price_aud": 45,
+          "stock_level": 12,
+          "status": "In Stock",
+          "description": "The Matte Black Ceramic Pet Bowl is a heavy, chip-resistant stoneware bowl in a bold matte glaze \u2014 a sophisticated, sustainably crafted alternative to plastic for the style-conscious pet owner.",
+          "marketing_hook": "",
+          "sku": "PET-003-MATTE-BLACK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A heavyweight stoneware bowl that won't get tipped over. Designed to perfectly match our human dining range.",
@@ -2328,7 +3561,27 @@
         "Lavender & Mint",
         "Unscented"
       ],
-      "eco_badge": "Palm Oil Free"
+      "eco_badge": "Palm Oil Free",
+      "variant_skus": [
+        {
+          "variant_label": "Lavender & Mint",
+          "price_aud": 24,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "Our Natural Dog Shampoo in Lavender & Mint is a 500ml pump bottle of gentle, natural surfactant dog shampoo with calming lavender and fresh mint essential oils. pH-balanced, biodegradable, and plastic bottle\u2013free on refill.",
+          "marketing_hook": "",
+          "sku": "PET-004-LAVENDER-MINT"
+        },
+        {
+          "variant_label": "Unscented",
+          "price_aud": 24,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "The Unscented Natural Dog Shampoo is a 500ml pump bottle gentle dog shampoo with zero added fragrance \u2014 ideal for dogs with sensitive skin or smell sensitivities.",
+          "marketing_hook": "",
+          "sku": "PET-004-UNSCENTED"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A gentle, soap-free wash designed specifically for a dog's pH. Soothes sensitive, itchy skin without synthetic fragrances.",
@@ -2362,7 +3615,18 @@
       "variants": [
         "60 Pack"
       ],
-      "eco_badge": "Plastic Free"
+      "eco_badge": "Plastic Free",
+      "variant_skus": [
+        {
+          "variant_label": "60 Pack",
+          "price_aud": 10,
+          "stock_level": 400,
+          "status": "In Stock",
+          "description": "Our Compostable Poop Bags 60 Pack is plant-based PLA bioplastic bags certified to EN13432 home compostable standards. Completely plastic-free and genuinely compostable \u2014 the responsible choice for dog owners.",
+          "marketing_hook": "",
+          "sku": "PET-005-60-PACK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Never leave plastic in the park. Thick, leak-proof bags made from corn starch that break down completely in compost.",
@@ -2397,7 +3661,18 @@
       "variants": [
         "80g Block"
       ],
-      "eco_badge": "Fair Trade"
+      "eco_badge": "Fair Trade",
+      "variant_skus": [
+        {
+          "variant_label": "80g Block",
+          "price_aud": 12,
+          "stock_level": 200,
+          "status": "In Stock",
+          "description": "Our 80g Native Plum Chocolate Block is an ethically traded dark chocolate bar with Australian Kakadu plum \u2014 a uniquely native flavour profile with an intensely fruity, complex character in plastic-free packaging.",
+          "marketing_hook": "",
+          "sku": "FOOD-001-80G-BLOCK"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A sharp, tart contrast to rich dark chocolate. Made with ethically sourced cacao and native Australian Davidson Plum.",
@@ -2409,7 +3684,7 @@
     },
     "rag_resources": {
       "care_instructions": [
-        "Store in a cool, dry place below 22°C"
+        "Store in a cool, dry place below 22\u00b0C"
       ],
       "manual_excerpt": "ALLERGENS: Manufactured in a facility that also handles tree nuts and dairy."
     }
@@ -2433,7 +3708,36 @@
         "Awake (English Breakfast)",
         "Digest (Peppermint)"
       ],
-      "eco_badge": "Organic"
+      "eco_badge": "Organic",
+      "variant_skus": [
+        {
+          "variant_label": "Sleep (Chamomile)",
+          "price_aud": 22,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "Our Sleep Organic Loose Leaf Tea is a calming chamomile blend in a beautiful hand-sealed kraft paper pouch \u2014 naturally caffeine-free and organically grown for a gentle, restful evening ritual.",
+          "marketing_hook": "",
+          "sku": "FOOD-002-SLEEP-CHAMOMILE"
+        },
+        {
+          "variant_label": "Awake (English Breakfast)",
+          "price_aud": 22,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "The Awake Organic Loose Leaf Tea is a bold, full-bodied English Breakfast blend of organic black teas \u2014 a rich, malt-forward morning cup in a beautifully packaged kraft paper pouch.",
+          "marketing_hook": "",
+          "sku": "FOOD-002-AWAKE-ENGLISH-BREAKFAST"
+        },
+        {
+          "variant_label": "Digest (Peppermint)",
+          "price_aud": 22,
+          "stock_level": 30,
+          "status": "In Stock",
+          "description": "Our Digest Organic Loose Leaf Tea is a pure, bright peppermint blend in a kraft paper pouch \u2014 caffeine-free, organically grown, and naturally soothing for digestion after meals.",
+          "marketing_hook": "",
+          "sku": "FOOD-002-DIGEST-PEPPERMINT"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "Skip the plastic microfibres found in standard tea bags. Hand-blended organic herbal teas presented in a beautiful, refillable tin.",
@@ -2447,7 +3751,7 @@
       "care_instructions": [
         "Keep sealed to retain freshness"
       ],
-      "manual_excerpt": "BREWING: Brew at 100°C for 3-5 minutes depending on desired strength."
+      "manual_excerpt": "BREWING: Brew at 100\u00b0C for 3-5 minutes depending on desired strength."
     }
   },
   {
@@ -2467,7 +3771,18 @@
       "variants": [
         "White"
       ],
-      "eco_badge": "Reusable"
+      "eco_badge": "Reusable",
+      "variant_skus": [
+        {
+          "variant_label": "White",
+          "price_aud": 18,
+          "stock_level": 50,
+          "status": "In Stock",
+          "description": "Our White Ceramic Tea Strainer is a hand-pierced stoneware basket strainer for loose leaf tea \u2014 a beautiful, reusable alternative to single-use tea bags. Fits most standard mugs and teapots.",
+          "marketing_hook": "",
+          "sku": "FOOD-003-WHITE"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "A completely plastic and metal-free way to brew your tea. Hand-pierced ceramic that fits perfectly over a standard mug.",
@@ -2504,7 +3819,45 @@
         "$100",
         "$200"
       ],
-      "eco_badge": "Paperless"
+      "eco_badge": "Paperless",
+      "variant_skus": [
+        {
+          "variant_label": "$25",
+          "price_aud": 25.0,
+          "stock_level": 2502,
+          "status": "In Stock",
+          "description": "Give the gift of sustainable living with a $25 BlueBush Digital Gift Card \u2014 delivered instantly by email, redeemable on anything in the BlueBush store. The perfect plastic-free, zero-waste gift.",
+          "marketing_hook": "",
+          "sku": "GIFT-001-25"
+        },
+        {
+          "variant_label": "$50",
+          "price_aud": 50.0,
+          "stock_level": 2499,
+          "status": "In Stock",
+          "description": "Our $50 BlueBush Digital Gift Card is delivered instantly by email \u2014 a thoughtful, sustainable gift for anyone who values conscious living. Redeemable on the full BlueBush range.",
+          "marketing_hook": "",
+          "sku": "GIFT-001-50"
+        },
+        {
+          "variant_label": "$100",
+          "price_aud": 100.0,
+          "stock_level": 2499,
+          "status": "In Stock",
+          "description": "The $100 BlueBush Digital Gift Card is delivered instantly by email \u2014 a generous, plastic-free gift for birthdays, housewarmings, or any occasion. Redeemable on the full BlueBush range.",
+          "marketing_hook": "",
+          "sku": "GIFT-001-100"
+        },
+        {
+          "variant_label": "$200",
+          "price_aud": 200.0,
+          "stock_level": 2499,
+          "status": "In Stock",
+          "description": "Our $200 BlueBush Digital Gift Card is the ultimate sustainable gift \u2014 delivered instantly by email and redeemable on the full BlueBush range. Perfect for weddings, major milestones, or as a corporate gift.",
+          "marketing_hook": "",
+          "sku": "GIFT-001-200"
+        }
+      ]
     },
     "content_triage": {
       "marketing_hook": "The perfect zero-waste gift. Instant delivery via email for the eco-conscious person who is hard to buy for.",

@@ -442,6 +442,8 @@ function renderProductTable(products) {
         : s.status === 'Low Stock'
           ? '<span class="badge badge-amber">Low Stock</span>'
           : '<span class="badge badge-red">Out of Stock</span>';
+      const variantCount = p.static_data.variants ? p.static_data.variants.length : 0;
+      const variantDisplay = `${variantCount} variant${variantCount !== 1 ? 's' : ''}`;
       return `<tr>
         <td><code style="font-size:0.78rem">${escapeHtml(p.id)}</code></td>
         <td>${escapeHtml(p.name)}</td>
@@ -449,6 +451,7 @@ function renderProductTable(products) {
         <td>$${s.price_aud.toFixed(2)}</td>
         <td>${s.stock_level}</td>
         <td>${statusBadge}</td>
+        <td><span class="badge badge-blue">${variantDisplay}</span></td>
         <td>${p.static_data.eco_badge ? `<span class="badge badge-green">🌿 ${escapeHtml(p.static_data.eco_badge)}</span>` : '—'}</td>
         <td>
           <button class="btn-secondary btn-sm" onclick="openProductEdit('${escapeHtml(p.id)}')">Edit</button>
@@ -527,6 +530,7 @@ function populateProductForm(p) {
   setRepeater('pf-specs', p.content_triage.technical_specs || []);
   setRepeater('pf-care', p.rag_resources.care_instructions || []);
   setKvPairs('pf-dims', p.static_data.dimensions_cm || {});
+  setVariantSkus('pf-variant-skus', p.static_data.variant_skus || []);
 }
 
 function resetProductForm() {
@@ -536,6 +540,7 @@ function resetProductForm() {
   setRepeater('pf-specs', []);
   setRepeater('pf-care', []);
   setKvPairs('pf-dims', {});
+  setVariantSkus('pf-variant-skus', []);
 }
 
 async function saveProduct() {
@@ -571,6 +576,12 @@ async function saveProduct() {
     showLoader(true);
     const products = await getProducts();
 
+    const variantSkus = getVariantSkus('pf-variant-skus');
+    // Auto-populate variants array from variant SKU labels
+    const variantLabels = variantSkus.length > 0
+      ? variantSkus.map(s => s.variant_label)
+      : getTagInput('pf-variants');
+
     const product = {
       id,
       name,
@@ -585,7 +596,8 @@ async function saveProduct() {
       static_data: {
         origin: val('pf-origin'),
         weight_kg: parseFloat(val('pf-weight')) || 0,
-        variants: getTagInput('pf-variants'),
+        variants: variantLabels,
+        variant_skus: variantSkus,
         eco_badge: val('pf-eco') || null,
         dimensions_cm: getKvPairs('pf-dims'),
         ...(val('pf-power') ? { power_source: val('pf-power') } : {}),
@@ -824,6 +836,113 @@ function getKvPairs(id) {
 }
 
 /* ===========================
+   VARIANT SKU HELPERS
+=========================== */
+function slugifyVariantLabel(label) {
+  return label
+    .toUpperCase()
+    .replace(/\$/g, '')
+    .replace(/[()]/g, '')
+    .replace(/[^A-Z0-9]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function setVariantSkus(id, skus) {
+  const container = document.getElementById(id + '-container');
+  if (!container) return;
+  container.innerHTML = '';
+  (skus || []).forEach(s => addVariantSkuRow(s));
+}
+
+function addVariantSkuRow(sku = {}) {
+  const container = document.getElementById('pf-variant-skus-container');
+  if (!container) return;
+  const productId = document.getElementById('pf-id')?.value?.trim() || '';
+  const label = sku.variant_label || '';
+  const skuId = sku.sku || (productId && label ? productId + '-' + slugifyVariantLabel(label) : '');
+  const row = document.createElement('div');
+  row.className = 'variant-sku-row';
+  row.style.cssText = 'background:var(--paperbark,#f8f4ef);border:1px solid var(--gray-200,#e5e7eb);border-radius:8px;padding:1rem;margin-bottom:0.75rem;';
+  row.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1rem;margin-bottom:0.5rem">
+      <div>
+        <label style="font-size:0.75rem;font-weight:600;color:var(--gray-600,#4b5563);text-transform:uppercase;letter-spacing:0.05em">Variant Label</label>
+        <input class="form-input vsku-label" type="text" value="${escapeHtml(label)}" placeholder="e.g. Rose Gold" oninput="updateVariantSkuId(this)">
+      </div>
+      <div>
+        <label style="font-size:0.75rem;font-weight:600;color:var(--gray-600,#4b5563);text-transform:uppercase;letter-spacing:0.05em">SKU ID (auto)</label>
+        <input class="form-input vsku-id" type="text" value="${escapeHtml(skuId)}" readonly style="background:#f3f4f6;cursor:default">
+      </div>
+      <div>
+        <label style="font-size:0.75rem;font-weight:600;color:var(--gray-600,#4b5563);text-transform:uppercase;letter-spacing:0.05em">Price (AUD)</label>
+        <input class="form-input vsku-price" type="number" min="0" step="0.01" value="${escapeHtml(String(sku.price_aud ?? ''))}">
+      </div>
+      <div>
+        <label style="font-size:0.75rem;font-weight:600;color:var(--gray-600,#4b5563);text-transform:uppercase;letter-spacing:0.05em">Stock Level</label>
+        <input class="form-input vsku-stock" type="number" min="0" value="${escapeHtml(String(sku.stock_level ?? ''))}">
+      </div>
+      <div>
+        <label style="font-size:0.75rem;font-weight:600;color:var(--gray-600,#4b5563);text-transform:uppercase;letter-spacing:0.05em">Status</label>
+        <select class="form-select vsku-status">
+          ${['In Stock','Low Stock','Out of Stock','Backorder'].map(s =>
+            `<option value="${s}" ${(sku.status||'In Stock')===s?'selected':''}>${s}</option>`
+          ).join('')}
+        </select>
+      </div>
+      <div>
+        <label style="font-size:0.75rem;font-weight:600;color:var(--gray-600,#4b5563);text-transform:uppercase;letter-spacing:0.05em">Marketing Hook <span style="font-weight:400">(optional)</span></label>
+        <input class="form-input vsku-hook" type="text" value="${escapeHtml(sku.marketing_hook || '')}" placeholder="Variant-specific hook">
+      </div>
+    </div>
+    <div style="margin-bottom:0.5rem">
+      <label style="font-size:0.75rem;font-weight:600;color:var(--gray-600,#4b5563);text-transform:uppercase;letter-spacing:0.05em">Description</label>
+      <textarea class="form-textarea vsku-desc" rows="2" placeholder="Commercial product description for this variant">${escapeHtml(sku.description || '')}</textarea>
+    </div>
+    <button type="button" class="btn-danger btn-sm" onclick="this.closest('.variant-sku-row').remove()">Remove Variant</button>`;
+  container.appendChild(row);
+}
+
+function updateVariantSkuId(labelInput) {
+  const row = labelInput.closest('.variant-sku-row');
+  if (!row) return;
+  const idInput = row.querySelector('.vsku-id');
+  if (!idInput) return;
+  const productId = document.getElementById('pf-id')?.value?.trim() || '';
+  const label = labelInput.value.trim();
+  idInput.value = label ? (productId ? productId + '-' + slugifyVariantLabel(label) : slugifyVariantLabel(label)) : '';
+}
+
+function getVariantSkus(id) {
+  const container = document.getElementById(id + '-container');
+  if (!container) return [];
+  return [...container.querySelectorAll('.variant-sku-row')].map(row => ({
+    sku: row.querySelector('.vsku-id')?.value?.trim() || '',
+    variant_label: row.querySelector('.vsku-label')?.value?.trim() || '',
+    price_aud: parseFloat(row.querySelector('.vsku-price')?.value) || 0,
+    stock_level: parseInt(row.querySelector('.vsku-stock')?.value, 10) || 0,
+    status: row.querySelector('.vsku-status')?.value || 'In Stock',
+    description: row.querySelector('.vsku-desc')?.value?.trim() || '',
+    marketing_hook: row.querySelector('.vsku-hook')?.value?.trim() || '',
+  })).filter(s => s.variant_label);
+}
+
+/* ===========================
+   PRODUCT VALIDATION
+=========================== */
+function validateProducts(products) {
+  const errors = [];
+  products.forEach(p => {
+    const variantCount = p.static_data?.variants?.length || 0;
+    const skuCount = p.static_data?.variant_skus?.length || 0;
+    if (variantCount > 1 && skuCount > 0 && skuCount !== variantCount) {
+      errors.push(`${p.id}: has ${variantCount} variants but ${skuCount} variant_skus (should match).`);
+    }
+  });
+  return errors;
+}
+
+/* ===========================
    STOCK MANAGEMENT
 =========================== */
 let _stockEdits = {}; // { productId: { stock_level, status, next_shipment_eta } }
@@ -850,14 +969,15 @@ function renderStockTable(products) {
   const tbody = document.getElementById('stock-tbody');
   if (!tbody) return;
 
-  tbody.innerHTML = filtered.map(p => {
+  const rows = [];
+  filtered.forEach(p => {
     const s = p.dynamic_data;
     const edit = _stockEdits[p.id] || {};
     const stockVal = edit.stock_level !== undefined ? edit.stock_level : s.stock_level;
     const statusVal = edit.status || s.status;
     const etaVal = edit.next_shipment_eta !== undefined ? edit.next_shipment_eta : (s.next_shipment_eta || '');
     const rowClass = stockVal === 0 ? 'stock-row-red' : stockVal <= 10 ? 'stock-row-amber' : '';
-    return `<tr class="${rowClass}" data-product-id="${escapeHtml(p.id)}">
+    rows.push(`<tr class="${rowClass}" data-product-id="${escapeHtml(p.id)}">
       <td><code style="font-size:0.78rem">${escapeHtml(p.id)}</code></td>
       <td>${escapeHtml(p.name)}</td>
       <td>${escapeHtml(p.category)}</td>
@@ -870,8 +990,34 @@ function renderStockTable(products) {
         </select>
       </td>
       <td><input class="inline-input" style="width:130px" type="date" value="${etaVal}" onchange="recordStockEdit('${escapeHtml(p.id)}','next_shipment_eta',this.value)"></td>
-    </tr>`;
-  }).join('');
+    </tr>`);
+
+    // Show variant SKU sub-rows
+    const variantSkus = p.static_data?.variant_skus || [];
+    variantSkus.forEach(vsku => {
+      const skuId = vsku.sku;
+      const skuEdit = _stockEdits[skuId] || {};
+      const skuStock = skuEdit.stock_level !== undefined ? skuEdit.stock_level : (vsku.stock_level || 0);
+      const skuStatus = skuEdit.status || vsku.status || 'In Stock';
+      const skuRowClass = skuStock === 0 ? 'stock-row-red' : skuStock <= 5 ? 'stock-row-amber' : '';
+      rows.push(`<tr class="${skuRowClass}" data-product-id="${escapeHtml(skuId)}" style="background:rgba(248,244,239,0.7)">
+        <td style="padding-left:2rem"><code style="font-size:0.75rem;color:var(--gray-500)">${escapeHtml(skuId)}</code></td>
+        <td style="color:var(--gray-600);font-size:0.875rem">↳ ${escapeHtml(vsku.variant_label)}</td>
+        <td></td>
+        <td><input class="inline-input" type="number" min="0" value="${skuStock}" onchange="recordVariantSkuStockEdit('${escapeHtml(p.id)}','${escapeHtml(skuId)}','stock_level',this.value)"></td>
+        <td>
+          <select class="inline-select" onchange="recordVariantSkuStockEdit('${escapeHtml(p.id)}','${escapeHtml(skuId)}','status',this.value)">
+            ${['In Stock','Low Stock','Out of Stock'].map(st =>
+              `<option value="${st}" ${skuStatus === st ? 'selected' : ''}>${st}</option>`
+            ).join('')}
+          </select>
+        </td>
+        <td></td>
+      </tr>`);
+    });
+  });
+
+  tbody.innerHTML = rows.join('');
 }
 
 function recordStockEdit(productId, field, value) {
@@ -890,6 +1036,18 @@ function recordStockEdit(productId, field, value) {
   }
 }
 
+function recordVariantSkuStockEdit(parentId, skuId, field, value) {
+  if (!_stockEdits[skuId]) _stockEdits[skuId] = { _parentId: parentId };
+  if (field === 'stock_level') _stockEdits[skuId][field] = parseInt(value, 10);
+  else _stockEdits[skuId][field] = value;
+
+  const row = document.querySelector(`tr[data-product-id="${skuId}"]`);
+  if (row) {
+    const stock = _stockEdits[skuId].stock_level !== undefined ? _stockEdits[skuId].stock_level : 0;
+    row.className = stock === 0 ? 'stock-row-red' : stock <= 5 ? 'stock-row-amber' : '';
+  }
+}
+
 async function saveAllStock() {
   if (Object.keys(_stockEdits).length === 0) {
     showToast('info', 'No changes to save.');
@@ -901,6 +1059,7 @@ async function saveAllStock() {
     const products = await getProducts();
     let changed = 0;
     products.forEach(p => {
+      // Update parent product stock
       const edit = _stockEdits[p.id];
       if (edit) {
         if (edit.stock_level !== undefined) p.dynamic_data.stock_level = edit.stock_level;
@@ -908,10 +1067,20 @@ async function saveAllStock() {
         if (edit.next_shipment_eta !== undefined) p.dynamic_data.next_shipment_eta = edit.next_shipment_eta || null;
         changed++;
       }
+      // Update variant SKU stock within static_data.variant_skus
+      const variantSkus = p.static_data?.variant_skus || [];
+      variantSkus.forEach(vsku => {
+        const skuEdit = _stockEdits[vsku.sku];
+        if (skuEdit) {
+          if (skuEdit.stock_level !== undefined) vsku.stock_level = skuEdit.stock_level;
+          if (skuEdit.status) vsku.status = skuEdit.status;
+          changed++;
+        }
+      });
     });
     await saveProducts(products, 'Admin: Bulk stock update');
     _stockEdits = {};
-    showToast('success', `Saved stock updates for ${changed} product(s).`);
+    showToast('success', `Saved stock updates for ${changed} item(s).`);
   } catch (e) {
     showToast('error', 'Save failed: ' + e.message);
   } finally {

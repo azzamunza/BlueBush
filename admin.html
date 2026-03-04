@@ -748,6 +748,7 @@
           <button class="admin-tab" role="tab" data-tab="browser" onclick="switchTrainingTab('browser')">Entry Browser</button>
           <button class="admin-tab" role="tab" data-tab="todos" onclick="switchTrainingTab('todos')">TODO Tracker</button>
           <button class="admin-tab" role="tab" data-tab="validate" onclick="switchTrainingTab('validate')">Validate</button>
+          <button class="admin-tab" role="tab" data-tab="chatbot-db" onclick="switchTrainingTab('chatbot-db')">Chatbot DB</button>
         </div>
 
         <!-- Overview -->
@@ -810,7 +811,81 @@
             <div id="training-validate-result" class="mt-2"></div>
           </div>
         </div>
+
+        <!-- Chatbot DB (Supabase chatbot_training table) -->
+        <div class="admin-sub-section" id="training-chatbot-db">
+          <div id="chatbot-db-placeholder" class="hidden">
+            <div class="admin-card" style="background:#fff7ed;border-color:#fed7aa;text-align:center;padding:2rem">
+              <p style="font-size:1rem;font-weight:600;color:#9a3412">⚙️ Supabase Configuration Required</p>
+              <p class="text-muted" style="margin-top:0.5rem">Configure your Supabase URL and API key in the Settings section, then return here to manage chatbot training data.</p>
+            </div>
+          </div>
+          <div id="chatbot-db-content">
+            <!-- Stats bar -->
+            <div id="chatbot-db-stats" class="stats-grid mb-2"></div>
+            <!-- Toolbar -->
+            <div class="admin-toolbar">
+              <input class="admin-search" type="search" id="chatbot-db-search" placeholder="Search questions or tags…" aria-label="Search chatbot training data"
+                oninput="adminChatbotDB.search(this.value)">
+              <span class="admin-toolbar-spacer"></span>
+              <span id="chatbot-db-count" class="text-muted"></span>
+              <button class="btn-secondary" onclick="adminChatbotDB.exportJsonl()" aria-label="Export as JSONL">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                Export
+              </button>
+              <label class="btn-secondary" style="cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem" aria-label="Import JSONL or JSON file">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12l-4.5-4.5m0 0L7.5 12M12 7.5V21"/></svg>
+                Import
+                <input type="file" accept=".jsonl,.json" style="display:none" onchange="adminChatbotDB.importFile(this)">
+              </label>
+              <button class="btn-primary" onclick="adminChatbotDB.openAddModal()">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+                Add Entry
+              </button>
+            </div>
+            <!-- Table -->
+            <div class="admin-table-wrap">
+              <table class="admin-table" aria-label="Chatbot training entries">
+                <thead>
+                  <tr><th>ID</th><th>Question</th><th>Tags</th><th>Created</th><th>Actions</th></tr>
+                </thead>
+                <tbody id="chatbot-db-tbody">
+                  <tr class="loading-row"><td colspan="5"><div class="spinner"></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="chatbot-db-pagination" class="pagination" aria-label="Chatbot training entry pagination"></div>
+          </div>
+        </div>
       </section>
+
+      <!-- Chatbot DB Entry Modal -->
+      <div id="chatbot-db-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="chatbot-db-modal-title" onclick="if(event.target===this)closeModal('chatbot-db-modal')">
+        <div class="modal">
+          <div class="modal-header">
+            <h2 class="modal-title" id="chatbot-db-modal-title">Add Training Entry</h2>
+            <button class="modal-close" onclick="closeModal('chatbot-db-modal')" aria-label="Close modal">×</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group mb-2">
+              <label class="form-label" for="cdb-question">Question</label>
+              <textarea id="cdb-question" class="form-textarea" style="min-height:80px" placeholder="Customer question or prompt…"></textarea>
+            </div>
+            <div class="form-group mb-2">
+              <label class="form-label" for="cdb-answer">Answer</label>
+              <textarea id="cdb-answer" class="form-textarea" style="min-height:120px" placeholder="Chatbot response…"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cdb-tags">Tags (comma-separated)</label>
+              <input class="form-input" type="text" id="cdb-tags" placeholder="e.g. shipping, returns, product-care">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn-secondary" onclick="closeModal('chatbot-db-modal')">Cancel</button>
+            <button class="btn-primary" onclick="adminChatbotDB.save()">Save Entry</button>
+          </div>
+        </div>
+      </div>
 
       <!-- ===================================================
            SECTION 7: SETTINGS

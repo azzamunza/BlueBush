@@ -57,6 +57,7 @@
         dimensions_cm: row.dimensions_cm || null,
         parent_id: row.parent_id || null,
         variant_label: row.variant_label || null,
+        variant_skus: [],
       },
       content_triage: {
         marketing_hook: row.marketing_hook || '',

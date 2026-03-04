@@ -1641,7 +1641,251 @@ function switchContentTab(tab) {
 function switchTrainingTab(tab) {
   document.querySelectorAll('#section-training .admin-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
   document.querySelectorAll('#section-training .admin-sub-section').forEach(s => s.classList.toggle('active', s.id === 'training-' + tab));
+  if (tab === 'chatbot-db') adminChatbotDB.load();
 }
+
+/* ===========================
+   CHATBOT TRAINING DB (Supabase)
+=========================== */
+const adminChatbotDB = {
+  entries: [],
+  currentPage: 1,
+  pageSize: 25,
+  searchQuery: '',
+  editingId: null,
+
+  _url() { return sessionStorage.getItem('bb_supabase_url'); },
+  _key() { return sessionStorage.getItem('bb_supabase_key'); },
+
+  async load() {
+    const url = this._url();
+    const key = this._key();
+    const placeholder = document.getElementById('chatbot-db-placeholder');
+    const content = document.getElementById('chatbot-db-content');
+    if (!url || !key) {
+      if (placeholder) placeholder.classList.remove('hidden');
+      if (content) content.classList.add('hidden');
+      return;
+    }
+    if (placeholder) placeholder.classList.add('hidden');
+    if (content) content.classList.remove('hidden');
+    const tbody = document.getElementById('chatbot-db-tbody');
+    if (tbody) tbody.innerHTML = '<tr class="loading-row"><td colspan="5"><div class="spinner"></div></td></tr>';
+    try {
+      const res = await fetch(`${url}/rest/v1/chatbot_training?select=*&order=created_at.desc`, {
+        headers: { 'apikey': key, 'Authorization': `Bearer ${key}` }
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      this.entries = await res.json();
+      this.currentPage = 1;
+      this.renderStats();
+      this.render();
+    } catch (e) {
+      if (tbody) tbody.innerHTML = `<tr><td colspan="5" class="text-muted" style="padding:1.5rem;text-align:center">Failed to load: ${escapeHtml(e.message)}</td></tr>`;
+    }
+  },
+
+  filtered() {
+    const q = this.searchQuery.toLowerCase();
+    if (!q) return this.entries;
+    return this.entries.filter(e =>
+      (e.question || '').toLowerCase().includes(q) ||
+      (e.tags || []).some(t => t.toLowerCase().includes(q))
+    );
+  },
+
+  render() {
+    const filtered = this.filtered();
+    const total = filtered.length;
+    const totalPages = Math.max(1, Math.ceil(total / this.pageSize));
+    if (this.currentPage > totalPages) this.currentPage = 1;
+    const start = (this.currentPage - 1) * this.pageSize;
+    const page = filtered.slice(start, start + this.pageSize);
+    const tbody = document.getElementById('chatbot-db-tbody');
+    if (!tbody) return;
+    const cnt = document.getElementById('chatbot-db-count');
+    if (cnt) cnt.textContent = `${total} entries`;
+    if (page.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5"><div class="empty-state"><div class="empty-state-icon">📭</div><div class="empty-state-title">No entries found</div></div></td></tr>';
+    } else {
+      tbody.innerHTML = page.map(e => {
+        const tags = (e.tags || []).map(t => `<span class="badge badge-blue" style="margin-right:2px">${escapeHtml(t)}</span>`).join('');
+        const date = e.created_at ? new Date(e.created_at).toLocaleDateString('en-AU') : '—';
+        const safeId = String(e.id || '');
+        return `<tr>
+          <td><code style="font-size:0.75rem">${escapeHtml(safeId.slice(0, 8))}</code></td>
+          <td>${escapeHtml(truncate(e.question || '—', 80))}</td>
+          <td>${tags || '<span class="text-muted">—</span>'}</td>
+          <td class="text-muted">${date}</td>
+          <td>
+            <button class="btn-secondary btn-sm" data-cdb-edit="${escapeHtml(safeId)}">Edit</button>
+            <button class="btn-danger btn-sm" data-cdb-delete="${escapeHtml(safeId)}">Delete</button>
+          </td>
+        </tr>`;
+      }).join('');
+    }
+    const pag = document.getElementById('chatbot-db-pagination');
+    if (pag) {
+      pag.innerHTML = renderPagination(this.currentPage, totalPages, p => {
+        this.currentPage = p;
+        this.render();
+      });
+    }
+  },
+
+  renderStats() {
+    const el = document.getElementById('chatbot-db-stats');
+    if (!el) return;
+    const total = this.entries.length;
+    const tagged = this.entries.filter(e => (e.tags || []).length > 0).length;
+    const tagFreq = {};
+    this.entries.forEach(e => (e.tags || []).forEach(t => { tagFreq[t] = (tagFreq[t] || 0) + 1; }));
+    const topTags = Object.entries(tagFreq).sort((a, b) => b[1] - a[1]).slice(0, 5);
+    el.innerHTML = `
+      <div class="stat-card">
+        <div class="stat-icon blue"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776"/></svg></div>
+        <div><div class="stat-label">Total Entries</div><div class="stat-value">${total}</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"/></svg></div>
+        <div><div class="stat-label">Tagged Entries</div><div class="stat-value">${tagged}</div></div>
+      </div>
+      ${topTags.length ? `<div class="stat-card" style="flex:2;min-width:200px">
+        <div><div class="stat-label">Top Tags</div><div style="margin-top:0.25rem">${topTags.map(([t, c]) => `<span class="badge badge-blue" style="margin-right:3px">${escapeHtml(t)} (${c})</span>`).join('')}</div></div>
+      </div>` : ''}`;
+  },
+
+  search(q) {
+    this.searchQuery = q;
+    this.currentPage = 1;
+    this.render();
+  },
+
+  openAddModal() {
+    this.editingId = null;
+    document.getElementById('chatbot-db-modal-title').textContent = 'Add Training Entry';
+    document.getElementById('cdb-question').value = '';
+    document.getElementById('cdb-answer').value = '';
+    document.getElementById('cdb-tags').value = '';
+    openModal('chatbot-db-modal');
+  },
+
+  openEditModal(id) {
+    const entry = this.entries.find(e => String(e.id) === String(id));
+    if (!entry) return;
+    this.editingId = entry.id;
+    document.getElementById('chatbot-db-modal-title').textContent = 'Edit Training Entry';
+    document.getElementById('cdb-question').value = entry.question || '';
+    document.getElementById('cdb-answer').value = entry.answer || '';
+    document.getElementById('cdb-tags').value = (entry.tags || []).join(', ');
+    openModal('chatbot-db-modal');
+  },
+
+  async save() {
+    const url = this._url();
+    const key = this._key();
+    if (!url || !key) { showToast('error', 'Supabase not configured.'); return; }
+    const question = document.getElementById('cdb-question').value.trim();
+    const answer = document.getElementById('cdb-answer').value.trim();
+    const tagsRaw = document.getElementById('cdb-tags').value.trim();
+    const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [];
+    if (!question || !answer) { showToast('error', 'Question and Answer are required.'); return; }
+    try {
+      showLoader(true);
+      if (this.editingId) {
+        const res = await fetch(`${url}/rest/v1/chatbot_training?id=eq.${encodeURIComponent(this.editingId)}`, {
+          method: 'PATCH',
+          headers: { 'apikey': key, 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ question, answer, tags }),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        showToast('success', 'Entry updated.');
+      } else {
+        const res = await fetch(`${url}/rest/v1/chatbot_training`, {
+          method: 'POST',
+          headers: { 'apikey': key, 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ question, answer, tags }),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        showToast('success', 'Entry added.');
+      }
+      closeModal('chatbot-db-modal');
+      await this.load();
+    } catch (e) {
+      showToast('error', 'Save failed: ' + e.message);
+    } finally {
+      showLoader(false);
+    }
+  },
+
+  async deleteEntry(id) {
+    if (!confirm('Delete this training entry? This cannot be undone.')) return;
+    const url = this._url();
+    const key = this._key();
+    if (!url || !key) return;
+    try {
+      showLoader(true);
+      const res = await fetch(`${url}/rest/v1/chatbot_training?id=eq.${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+        headers: { 'apikey': key, 'Authorization': `Bearer ${key}` },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      showToast('success', 'Entry deleted.');
+      await this.load();
+    } catch (e) {
+      showToast('error', 'Delete failed: ' + e.message);
+    } finally {
+      showLoader(false);
+    }
+  },
+
+  exportJsonl() {
+    const lines = this.entries.map(e => JSON.stringify({ prompt: e.question, completion: e.answer }));
+    downloadFile('chatbot-training.jsonl', lines.join('\n') + '\n', 'application/x-ndjson');
+  },
+
+  async importFile(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const url = this._url();
+    const key = this._key();
+    if (!url || !key) { showToast('error', 'Supabase not configured.'); return; }
+    try {
+      showLoader(true);
+      const text = await file.text();
+      let rows = [];
+      if (file.name.endsWith('.jsonl')) {
+        rows = text.split('\n').filter(l => l.trim()).map(l => JSON.parse(l));
+      } else {
+        rows = JSON.parse(text);
+        if (!Array.isArray(rows)) rows = [rows];
+      }
+      // Normalise: support {prompt, completion} or {question, answer, tags}
+      const existing = new Set(this.entries.map(e => e.question));
+      const toInsert = rows
+        .map(r => ({
+          question: r.question || r.prompt || '',
+          answer: r.answer || r.completion || '',
+          tags: r.tags || [],
+        }))
+        .filter(r => r.question && r.answer && !existing.has(r.question));
+      if (toInsert.length === 0) { showToast('info', 'No new entries to import (all duplicates).'); return; }
+      const res = await fetch(`${url}/rest/v1/chatbot_training`, {
+        method: 'POST',
+        headers: { 'apikey': key, 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify(toInsert),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      showToast('success', `Imported ${toInsert.length} entries.`);
+      await this.load();
+    } catch (e) {
+      showToast('error', 'Import failed: ' + e.message);
+    } finally {
+      showLoader(false);
+      input.value = '';
+    }
+  },
+};
 
 /* ===========================
    INIT
@@ -1653,6 +1897,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!btn || btn.disabled) return;
     const cb = _pagCallbacks[btn.dataset.pag];
     if (cb) cb(Number(btn.dataset.page));
+  });
+
+  // Delegated event listeners for chatbot DB table actions
+  document.addEventListener('click', e => {
+    const editBtn = e.target.closest('[data-cdb-edit]');
+    if (editBtn) { adminChatbotDB.openEditModal(editBtn.dataset.cdbEdit); return; }
+    const delBtn = e.target.closest('[data-cdb-delete]');
+    if (delBtn) { adminChatbotDB.deleteEntry(delBtn.dataset.cdbDelete); return; }
   });
 
   // Check for existing session

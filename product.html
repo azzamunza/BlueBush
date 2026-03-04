@@ -481,16 +481,19 @@
 
     function updateVariantData(variantLabel) {
       const sku = variantSkuMap[variantLabel];
-      if (!sku) return;
+      // If no variant-specific SKU data, fall back to parent product values
+      const price = sku ? sku.price_aud : (currentProduct ? currentProduct.dynamic_data.price_aud : null);
+      const stockLevel = sku ? sku.stock_level : (currentProduct ? currentProduct.dynamic_data.stock_level : 0);
+      if (price === null) return;
 
       // Update price
       const priceEl = document.querySelector('.product-detail-price');
-      if (priceEl) priceEl.innerHTML = `$${parseFloat(sku.price_aud).toFixed(2)} <span style="font-size:1rem;color:var(--gray-500);font-weight:400">AUD</span>`;
+      if (priceEl) priceEl.innerHTML = `$${parseFloat(price).toFixed(2)} <span style="font-size:1rem;color:var(--gray-500);font-weight:400">AUD</span>`;
 
       // Update stock badge
       const stockEl = document.getElementById('stock-status');
       if (stockEl) {
-        const stock = parseInt(sku.stock_level, 10);
+        const stock = parseInt(stockLevel, 10);
         if (stock === 0) {
           stockEl.className = 'stock-indicator stock-out';
           stockEl.innerHTML = `<span class="stock-dot"></span>Out of Stock`;
@@ -509,7 +512,7 @@
       // Update Add to Cart button
       const addBtn = document.querySelector('.add-to-cart-btn');
       if (addBtn) {
-        const stock = parseInt(sku.stock_level, 10);
+        const stock = parseInt(stockLevel, 10);
         addBtn.disabled = stock === 0;
         addBtn.textContent = stock === 0 ? 'Out of Stock' : 'Add to Cart';
         addBtn.style.opacity = stock === 0 ? '0.5' : '';
@@ -519,7 +522,7 @@
       // Update qty select
       const qtySelect = document.getElementById('qty-select');
       if (qtySelect) {
-        const stock = parseInt(sku.stock_level, 10);
+        const stock = parseInt(stockLevel, 10);
         qtySelect.disabled = stock === 0;
         if (stock > 0) {
           const maxQty = Math.min(stock, 10);
@@ -531,7 +534,7 @@
 
       // Update variant description
       const descEl = document.getElementById('variant-description');
-      if (descEl && sku.description) {
+      if (descEl && sku && sku.description) {
         descEl.textContent = sku.description;
         descEl.style.display = '';
       } else if (descEl) {
@@ -539,7 +542,7 @@
       }
 
       // Update active SKU for cart
-      window._activeVariantSku = sku.sku || (currentProduct.id + '-' + variantLabel.toUpperCase().replace(/[^A-Z0-9]/g, '-'));
+      window._activeVariantSku = (sku && sku.sku) || (currentProduct.id + '-' + variantLabel.toUpperCase().replace(/[^A-Z0-9]/g, '-'));
     }
 
     function switchTab(btn, panelId) {

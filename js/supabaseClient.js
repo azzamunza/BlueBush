@@ -84,13 +84,36 @@
     const client = getClient();
     if (!client) return null;
     try {
-      const { data, error } = await client
-        .from('products')
-        .select('*')
-        .order('category')
-        .order('name');
-      if (error) throw error;
-      return (data || []).map(normaliseProduct);
+      const [parentResult, variantResult] = await Promise.all([
+        client.from('products').select('*').is('parent_id', null).order('category').order('name'),
+        client.from('products')
+          .select('id, parent_id, variant_label, price_aud, stock_level, status, variant_description, variant_marketing_hook')
+          .not('parent_id', 'is', null)
+          .order('id'),
+      ]);
+      if (parentResult.error) throw parentResult.error;
+      if (variantResult.error) throw variantResult.error;
+
+      // Build parent_id → variant SKU list map
+      const variantsByParent = {};
+      for (const v of (variantResult.data || [])) {
+        if (!variantsByParent[v.parent_id]) variantsByParent[v.parent_id] = [];
+        variantsByParent[v.parent_id].push({
+          sku: v.id,
+          variant_label: v.variant_label,
+          price_aud: parseFloat(v.price_aud) || 0,
+          stock_level: parseInt(v.stock_level, 10) || 0,
+          status: v.status,
+          description: v.variant_description,
+          marketing_hook: v.variant_marketing_hook,
+        });
+      }
+
+      return (parentResult.data || []).map(row => {
+        const product = normaliseProduct(row);
+        product.static_data.variant_skus = variantsByParent[row.id] || [];
+        return product;
+      });
     } catch (e) {
       console.warn('BlueBush: fetchProducts failed, will fall back to JSON.', e);
       return null;
@@ -247,14 +270,14 @@
     try {
       const { data, error } = await client
         .from('orders')
-        .select('order_id')
-        .like('order_id', 'BB-%')
+        .select('id')
+        .like('id', 'BB-%')
         .limit(1000);
       if (error) throw error;
       if (data && data.length > 0) {
         let maxSuffix = 0;
         for (const row of data) {
-          const suffix = parseInt(row.order_id.replace('BB-', ''), 10);
+          const suffix = parseInt(row.id.replace('BB-', ''), 10);
           if (!isNaN(suffix) && suffix > maxSuffix) maxSuffix = suffix;
         }
         if (maxSuffix > 0) return `BB-${maxSuffix + 1}`;

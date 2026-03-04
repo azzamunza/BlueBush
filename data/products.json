@@ -4,7 +4,7 @@
     "name": "Maireana French Flax Linen Sheet Set",
     "category": "Bedroom",
     "dynamic_data": {
-      "price_aud": 280.00,
+      "price_aud": 280,
       "stock_level": 45,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -50,7 +50,7 @@
     "name": "Maireana Duvet Cover",
     "category": "Bedroom",
     "dynamic_data": {
-      "price_aud": 210.00,
+      "price_aud": 210,
       "stock_level": 32,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -89,7 +89,7 @@
     "name": "Bamboo Lyocell Quilt Insert",
     "category": "Bedroom",
     "dynamic_data": {
-      "price_aud": 180.00,
+      "price_aud": 180,
       "stock_level": 12,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -97,7 +97,7 @@
     },
     "static_data": {
       "origin": "Ethically made in China (Closed Loop System)",
-      "weight_kg": 3.0,
+      "weight_kg": 3,
       "variants": [
         "Summer Weight",
         "Winter Weight"
@@ -125,7 +125,7 @@
     "name": "Hemp Bed Runner",
     "category": "Bedroom",
     "dynamic_data": {
-      "price_aud": 120.00,
+      "price_aud": 120,
       "stock_level": 8,
       "status": "Low Stock",
       "next_shipment_eta": "2026-03-01",
@@ -161,7 +161,7 @@
     "name": "Silk Eye Mask",
     "category": "Bedroom",
     "dynamic_data": {
-      "price_aud": 45.00,
+      "price_aud": 45,
       "stock_level": 150,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -197,7 +197,7 @@
     "name": "Weighted Blanket (Glass Bead)",
     "category": "Bedroom",
     "dynamic_data": {
-      "price_aud": 220.00,
+      "price_aud": 220,
       "stock_level": 20,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -205,7 +205,7 @@
     },
     "static_data": {
       "origin": "Designed in Melbourne, Made in India",
-      "weight_kg": 7.0,
+      "weight_kg": 7,
       "variants": [
         "5kg",
         "7kg",
@@ -234,7 +234,7 @@
     "name": "Saltbush Dinner Plate (Set of 4)",
     "category": "Dining",
     "dynamic_data": {
-      "price_aud": 80.00,
+      "price_aud": 80,
       "stock_level": 15,
       "status": "Low Stock",
       "next_shipment_eta": "2026-03-01",
@@ -276,7 +276,7 @@
     "name": "Saltbush Ramen Bowl",
     "category": "Dining",
     "dynamic_data": {
-      "price_aud": 25.00,
+      "price_aud": 25,
       "stock_level": 40,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -312,7 +312,7 @@
     "name": "Acacia Wood Serving Paddle",
     "category": "Dining",
     "dynamic_data": {
-      "price_aud": 55.00,
+      "price_aud": 55,
       "stock_level": 25,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -348,7 +348,7 @@
     "name": "Recycled Glass Tumbler (Set of 4)",
     "category": "Dining",
     "dynamic_data": {
-      "price_aud": 40.00,
+      "price_aud": 40,
       "stock_level": 60,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -385,7 +385,7 @@
     "name": "Brass & Wood Salad Servers",
     "category": "Dining",
     "dynamic_data": {
-      "price_aud": 35.00,
+      "price_aud": 35,
       "stock_level": 45,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -420,7 +420,7 @@
     "name": "Bamboo Cutlery Set (Travel)",
     "category": "Dining",
     "dynamic_data": {
-      "price_aud": 15.00,
+      "price_aud": 15,
       "stock_level": 200,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -456,7 +456,7 @@
     "name": "Zero-Waste Bento Box",
     "category": "Kitchen",
     "dynamic_data": {
-      "price_aud": 42.00,
+      "price_aud": 42,
       "stock_level": 85,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -491,7 +491,7 @@
     "name": "Beeswax Wrap Starter Pack",
     "category": "Kitchen",
     "dynamic_data": {
-      "price_aud": 28.00,
+      "price_aud": 28,
       "stock_level": 120,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -534,7 +534,7 @@
     "name": "Vegan Wax Wrap Pack",
     "category": "Kitchen",
     "dynamic_data": {
-      "price_aud": 30.00,
+      "price_aud": 30,
       "stock_level": 50,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -569,7 +569,7 @@
     "name": "Silicone Stretch Lids (6 Pack)",
     "category": "Kitchen",
     "dynamic_data": {
-      "price_aud": 18.00,
+      "price_aud": 18,
       "stock_level": 300,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -604,7 +604,7 @@
     "name": "Compostable Sponge Cloths",
     "category": "Kitchen",
     "dynamic_data": {
-      "price_aud": 15.00,
+      "price_aud": 15,
       "stock_level": 500,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -640,7 +640,7 @@
     "name": "Coconut Coir Scourer (4 Pack)",
     "category": "Kitchen",
     "dynamic_data": {
-      "price_aud": 12.00,
+      "price_aud": 12,
       "stock_level": 150,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -675,7 +675,7 @@
     "name": "Glass Pantry Jar",
     "category": "Kitchen",
     "dynamic_data": {
-      "price_aud": 14.00,
+      "price_aud": 14,
       "stock_level": 200,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -712,7 +712,7 @@
     "name": "Unbleached Baking Paper",
     "category": "Kitchen",
     "dynamic_data": {
-      "price_aud": 8.00,
+      "price_aud": 8,
       "stock_level": 80,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -746,7 +746,7 @@
     "name": "Bower Recycled Wool Throw",
     "category": "Living",
     "dynamic_data": {
-      "price_aud": 160.00,
+      "price_aud": 160,
       "stock_level": 25,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -783,7 +783,7 @@
     "name": "Jute Area Rug",
     "category": "Living",
     "dynamic_data": {
-      "price_aud": 350.00,
+      "price_aud": 350,
       "stock_level": 10,
       "status": "Low Stock",
       "next_shipment_eta": null,
@@ -791,7 +791,7 @@
     },
     "static_data": {
       "origin": "India",
-      "weight_kg": 8.0,
+      "weight_kg": 8,
       "variants": [
         "Round (2m)",
         "Rectangle (2x3m)"
@@ -819,7 +819,7 @@
     "name": "Hemp Floor Cushion",
     "category": "Living",
     "dynamic_data": {
-      "price_aud": 95.00,
+      "price_aud": 95,
       "stock_level": 15,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -827,7 +827,7 @@
     },
     "static_data": {
       "origin": "Made in Melbourne",
-      "weight_kg": 3.0,
+      "weight_kg": 3,
       "variants": [
         "Rust",
         "Sage"
@@ -855,7 +855,7 @@
     "name": "Dried Native Arrangement",
     "category": "Living",
     "dynamic_data": {
-      "price_aud": 65.00,
+      "price_aud": 65,
       "stock_level": 30,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -891,7 +891,7 @@
     "name": "Bamboo Towel Set",
     "category": "Bathroom",
     "dynamic_data": {
-      "price_aud": 90.00,
+      "price_aud": 90,
       "stock_level": 60,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -899,7 +899,7 @@
     },
     "static_data": {
       "origin": "Turkey",
-      "weight_kg": 1.0,
+      "weight_kg": 1,
       "variants": [
         "Bath Sheet",
         "Hand Towel",
@@ -929,7 +929,7 @@
     "name": "Diatomite Stone Bath Mat",
     "category": "Bathroom",
     "dynamic_data": {
-      "price_aud": 60.00,
+      "price_aud": 60,
       "stock_level": 45,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -965,7 +965,7 @@
     "name": "Safety Razor",
     "category": "Bathroom",
     "dynamic_data": {
-      "price_aud": 45.00,
+      "price_aud": 45,
       "stock_level": 100,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -979,7 +979,8 @@
         "Matte Black",
         "Silver"
       ],
-      "eco_badge": "Zero Waste"
+      "eco_badge": "Zero Waste",
+      "dimensions_cm": {}
     },
     "content_triage": {
       "marketing_hook": "The ultimate plastic-free shave. A beautifully weighted brass handle designed to last a lifetime while giving a closer, smoother shave.",
@@ -1002,7 +1003,7 @@
     "name": "Safety Razor Blades (10 Pack)",
     "category": "Bathroom",
     "dynamic_data": {
-      "price_aud": 8.00,
+      "price_aud": 8,
       "stock_level": 500,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1036,7 +1037,7 @@
     "name": "Toilet Cleaning Bombs",
     "category": "Bathroom",
     "dynamic_data": {
-      "price_aud": 15.00,
+      "price_aud": 15,
       "stock_level": 80,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1071,7 +1072,7 @@
     "name": "Konjac Facial Sponge",
     "category": "Bathroom",
     "dynamic_data": {
-      "price_aud": 12.00,
+      "price_aud": 12,
       "stock_level": 120,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1107,7 +1108,7 @@
     "name": "Kakadu Plum Solid Shampoo Bar",
     "category": "Beauty & Hair",
     "dynamic_data": {
-      "price_aud": 22.00,
+      "price_aud": 22,
       "stock_level": 90,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1149,7 +1150,7 @@
     "name": "Macadamia Solid Conditioner Bar",
     "category": "Beauty & Hair",
     "dynamic_data": {
-      "price_aud": 24.00,
+      "price_aud": 24,
       "stock_level": 85,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1185,7 +1186,7 @@
     "name": "Natural Deodorant Paste",
     "category": "Beauty & Hair",
     "dynamic_data": {
-      "price_aud": 19.00,
+      "price_aud": 19,
       "stock_level": 110,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1222,7 +1223,7 @@
     "name": "Mineral Foundation Powder",
     "category": "Beauty & Hair",
     "dynamic_data": {
-      "price_aud": 35.00,
+      "price_aud": 35,
       "stock_level": 60,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1260,7 +1261,7 @@
     "name": "Tinted Lip & Cheek Balm",
     "category": "Beauty & Hair",
     "dynamic_data": {
-      "price_aud": 15.00,
+      "price_aud": 15,
       "stock_level": 150,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1297,7 +1298,7 @@
     "name": "Bamboo Toothbrush (4 Pack)",
     "category": "Dental",
     "dynamic_data": {
-      "price_aud": 20.00,
+      "price_aud": 20,
       "stock_level": 400,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1332,7 +1333,7 @@
     "name": "Mint Toothpaste Tablets",
     "category": "Dental",
     "dynamic_data": {
-      "price_aud": 14.00,
+      "price_aud": 14,
       "stock_level": 75,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1368,7 +1369,7 @@
     "name": "Corn Starch Dental Floss",
     "category": "Dental",
     "dynamic_data": {
-      "price_aud": 9.00,
+      "price_aud": 9,
       "stock_level": 150,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1402,7 +1403,7 @@
     "name": "Copper Tongue Cleaner",
     "category": "Dental",
     "dynamic_data": {
-      "price_aud": 12.00,
+      "price_aud": 12,
       "stock_level": 90,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1437,7 +1438,7 @@
     "name": "The 'Flow' Menstrual Cup",
     "category": "Period Care",
     "dynamic_data": {
-      "price_aud": 45.00,
+      "price_aud": 45,
       "stock_level": 60,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1473,7 +1474,7 @@
     "name": "Organic Cotton Period Briefs",
     "category": "Period Care",
     "dynamic_data": {
-      "price_aud": 28.00,
+      "price_aud": 28,
       "stock_level": 200,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1510,7 +1511,7 @@
     "name": "Reusable Cloth Pad Set",
     "category": "Period Care",
     "dynamic_data": {
-      "price_aud": 35.00,
+      "price_aud": 35,
       "stock_level": 40,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1546,7 +1547,7 @@
     "name": "Modern Cloth Nappy (MCN)",
     "category": "Baby & Kids",
     "dynamic_data": {
-      "price_aud": 32.00,
+      "price_aud": 32,
       "stock_level": 80,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1584,7 +1585,7 @@
     "name": "Biodegradable Baby Wipes",
     "category": "Baby & Kids",
     "dynamic_data": {
-      "price_aud": 7.50,
+      "price_aud": 7.5,
       "stock_level": 250,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1618,7 +1619,7 @@
     "name": "Bamboo Dinner Set (Kids)",
     "category": "Baby & Kids",
     "dynamic_data": {
-      "price_aud": 25.00,
+      "price_aud": 25,
       "stock_level": 65,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1654,7 +1655,7 @@
     "name": "Natural Baby Balm",
     "category": "Baby & Kids",
     "dynamic_data": {
-      "price_aud": 22.00,
+      "price_aud": 22,
       "stock_level": 90,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1689,7 +1690,7 @@
     "name": "Stone Ultrasonic Diffuser",
     "category": "Wellness Tech",
     "dynamic_data": {
-      "price_aud": 89.00,
+      "price_aud": 89,
       "stock_level": 40,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1735,7 +1736,7 @@
     "name": "Bluebush Pure Air Micro",
     "category": "Wellness Tech",
     "dynamic_data": {
-      "price_aud": 199.00,
+      "price_aud": 199,
       "stock_level": 20,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1770,7 +1771,7 @@
     "name": "Loop Rechargeable Battery Kit",
     "category": "Wellness Tech",
     "dynamic_data": {
-      "price_aud": 35.00,
+      "price_aud": 35,
       "stock_level": 150,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1806,7 +1807,7 @@
     "name": "Solar Power Bank",
     "category": "Wellness Tech",
     "dynamic_data": {
-      "price_aud": 75.00,
+      "price_aud": 75,
       "stock_level": 45,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1848,7 +1849,7 @@
     "name": "Kakadu Plum Zinc Balm (SPF 50)",
     "category": "Clean Chemical",
     "dynamic_data": {
-      "price_aud": 29.00,
+      "price_aud": 29,
       "stock_level": 100,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1883,7 +1884,7 @@
     "name": "Mozzie Mist Insect Repellent",
     "category": "Clean Chemical",
     "dynamic_data": {
-      "price_aud": 18.00,
+      "price_aud": 18,
       "stock_level": 80,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1918,7 +1919,7 @@
     "name": "Natural Hand Sanitizer",
     "category": "Clean Chemical",
     "dynamic_data": {
-      "price_aud": 12.00,
+      "price_aud": 12,
       "stock_level": 300,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1953,7 +1954,7 @@
     "name": "Native Room Spray",
     "category": "Clean Chemical",
     "dynamic_data": {
-      "price_aud": 22.00,
+      "price_aud": 22,
       "stock_level": 75,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -1988,7 +1989,7 @@
     "name": "Wool Dryer Balls (3 Pack)",
     "category": "Laundry",
     "dynamic_data": {
-      "price_aud": 25.00,
+      "price_aud": 25,
       "stock_level": 130,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2022,7 +2023,7 @@
     "name": "Storm-Proof Wooden Pegs",
     "category": "Laundry",
     "dynamic_data": {
-      "price_aud": 18.00,
+      "price_aud": 18,
       "stock_level": 200,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2056,7 +2057,7 @@
     "name": "Canvas Laundry Hamper",
     "category": "Laundry",
     "dynamic_data": {
-      "price_aud": 55.00,
+      "price_aud": 55,
       "stock_level": 50,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2092,7 +2093,7 @@
     "name": "Native Bee Hotel",
     "category": "Garden",
     "dynamic_data": {
-      "price_aud": 45.00,
+      "price_aud": 45,
       "stock_level": 30,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2133,7 +2134,7 @@
     "name": "Heirloom Native Seed Kit",
     "category": "Garden",
     "dynamic_data": {
-      "price_aud": 25.00,
+      "price_aud": 25,
       "stock_level": 100,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2167,7 +2168,7 @@
     "name": "Brass Plant Mister",
     "category": "Garden",
     "dynamic_data": {
-      "price_aud": 35.00,
+      "price_aud": 35,
       "stock_level": 55,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2202,7 +2203,7 @@
     "name": "Hemp Dog Leash",
     "category": "Pets",
     "dynamic_data": {
-      "price_aud": 40.00,
+      "price_aud": 40,
       "stock_level": 40,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2244,7 +2245,7 @@
     "name": "Natural Rubber Chew Toy",
     "category": "Pets",
     "dynamic_data": {
-      "price_aud": 22.00,
+      "price_aud": 22,
       "stock_level": 70,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2279,7 +2280,7 @@
     "name": "Ceramic Pet Bowl",
     "category": "Pets",
     "dynamic_data": {
-      "price_aud": 45.00,
+      "price_aud": 45,
       "stock_level": 25,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2314,7 +2315,7 @@
     "name": "Natural Dog Shampoo",
     "category": "Pets",
     "dynamic_data": {
-      "price_aud": 24.00,
+      "price_aud": 24,
       "stock_level": 60,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2349,7 +2350,7 @@
     "name": "Compostable Poop Bags",
     "category": "Pets",
     "dynamic_data": {
-      "price_aud": 10.00,
+      "price_aud": 10,
       "stock_level": 400,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2384,7 +2385,7 @@
     "name": "Native Plum Chocolate Block",
     "category": "Pantry & Gifts",
     "dynamic_data": {
-      "price_aud": 12.00,
+      "price_aud": 12,
       "stock_level": 200,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2418,7 +2419,7 @@
     "name": "Organic Loose Leaf Tea",
     "category": "Pantry & Gifts",
     "dynamic_data": {
-      "price_aud": 22.00,
+      "price_aud": 22,
       "stock_level": 90,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2454,7 +2455,7 @@
     "name": "Ceramic Tea Strainer",
     "category": "Pantry & Gifts",
     "dynamic_data": {
-      "price_aud": 18.00,
+      "price_aud": 18,
       "stock_level": 50,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2488,7 +2489,7 @@
     "name": "Bluebush Digital Gift Card",
     "category": "Gifts",
     "dynamic_data": {
-      "price_aud": 0.00,
+      "price_aud": 0,
       "stock_level": 9999,
       "status": "In Stock",
       "next_shipment_eta": null,
@@ -2496,7 +2497,7 @@
     },
     "static_data": {
       "origin": "Digital",
-      "weight_kg": 0.0,
+      "weight_kg": 0,
       "variants": [
         "$25",
         "$50",

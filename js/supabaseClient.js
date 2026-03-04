@@ -55,10 +55,14 @@
         variants: Array.isArray(row.variants) ? row.variants : row.variants || [],
         eco_badge: row.eco_badge || null,
         dimensions_cm: row.dimensions_cm || null,
+        parent_id: row.parent_id || null,
+        variant_label: row.variant_label || null,
       },
       content_triage: {
         marketing_hook: row.marketing_hook || '',
         technical_specs: Array.isArray(row.technical_specs) ? row.technical_specs : row.technical_specs || [],
+        variant_description: row.variant_description || null,
+        variant_marketing_hook: row.variant_marketing_hook || null,
       },
       rag_resources: {
         care_instructions: Array.isArray(row.care_instructions) ? row.care_instructions : row.care_instructions || [],
@@ -210,6 +214,26 @@
   }
 
   /**
+   * Fetch all variant SKU rows for a given parent product ID.
+   * Falls back to null if Supabase is not configured.
+   * @param {string} parentId - e.g. "BATH-003"
+   * @returns {Promise<Array|null>}
+   */
+  async function fetchVariantSkus(parentId) {
+    const client = getClient();
+    if (!client) return null;
+    try {
+      const { data, error } = await client
+        .rpc('get_variant_skus', { p_parent_id: parentId });
+      if (error) throw error;
+      return data || [];
+    } catch (e) {
+      console.warn('BlueBush: fetchVariantSkus failed.', e);
+      return null;
+    }
+  }
+
+  /**
    * Return the next available order ID string (e.g. "BB-100003").
    * Queries the orders table for the highest existing BB-XXXXXX suffix.
    * Falls back to a timestamp-based ID when Supabase is not configured or
@@ -249,5 +273,6 @@
     fetchFaqs,
     placeOrder,
     getNextOrderId,
+    fetchVariantSkus,
   };
 })();

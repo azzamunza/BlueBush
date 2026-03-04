@@ -214,6 +214,7 @@
   <script>
     let currentProduct = null;
     let selectedVariant = null;
+    let variantSkuMap = {}; // keyed by variant_label
 
     async function loadProduct() {
       const params = new URLSearchParams(window.location.search);
@@ -268,6 +269,39 @@
       const variants = p.static_data.variants || [];
       selectedVariant = variants[0] || 'Default';
 
+      // Build variantSkuMap from static JSON fallback
+      variantSkuMap = {};
+      const staticSkus = p.static_data.variant_skus || [];
+      staticSkus.forEach(s => {
+        variantSkuMap[s.variant_label] = s;
+      });
+
+      // Set initial active SKU
+      if (variantSkuMap[selectedVariant]) {
+        window._activeVariantSku = variantSkuMap[selectedVariant].sku;
+      }
+
+      // Attempt live fetch from Supabase (async, updates map if successful)
+      if (window.bbSupabase && window.bbSupabase.fetchVariantSkus) {
+        window.bbSupabase.fetchVariantSkus(p.id).then(liveSkus => {
+          if (liveSkus && liveSkus.length > 0) {
+            liveSkus.forEach(s => {
+              variantSkuMap[s.variant_label] = {
+                sku: s.id,
+                variant_label: s.variant_label,
+                price_aud: s.price_aud,
+                stock_level: s.stock_level,
+                status: s.status,
+                description: s.variant_description,
+                marketing_hook: s.variant_marketing_hook,
+              };
+            });
+            // Refresh display for current variant with live data
+            updateVariantData(selectedVariant);
+          }
+        }).catch(() => {});
+      }
+
       const thumbs = variants.map((v, i) => {
         const src = getProductImagePath(p.id, p.name, v);
         return `<img src="${src}" alt="${escHtml(p.name)} - ${escHtml(v)}" class="product-thumb${i===0?' active':''}" onclick="selectVariantDetail(this,'${escHtml(v)}')" onerror="this.style.display='none'" loading="lazy">`;
@@ -277,16 +311,20 @@
         `<button class="variant-pill${i===0?' active':''}" onclick="selectVariantDetail(null,'${escHtml(v)}',this)">${escHtml(v)}</button>`
       ).join('');
 
-      const stock = p.dynamic_data.stock_level;
+      // Use variant-specific price/stock if available, else fall back to parent
+      const firstSku = variantSkuMap[selectedVariant];
+      const stock = firstSku ? parseInt(firstSku.stock_level, 10) : p.dynamic_data.stock_level;
+      const price = firstSku ? parseFloat(firstSku.price_aud) : p.dynamic_data.price_aud;
+
       let stockHtml = '';
       if (stock === 0) {
-        stockHtml = `<div class="stock-indicator stock-out"><span class="stock-dot"></span>Out of Stock</div>`;
+        stockHtml = `<div id="stock-status" class="stock-indicator stock-out"><span class="stock-dot"></span>Out of Stock</div>`;
       } else if (stock <= 5) {
-        stockHtml = `<div class="stock-indicator stock-low"><span class="stock-dot"></span>Only ${stock} left in stock</div>`;
+        stockHtml = `<div id="stock-status" class="stock-indicator stock-low"><span class="stock-dot"></span>Only ${stock} left in stock</div>`;
       } else if (stock <= 15) {
-        stockHtml = `<div class="stock-indicator stock-low"><span class="stock-dot"></span>Low Stock — ${stock} remaining</div>`;
+        stockHtml = `<div id="stock-status" class="stock-indicator stock-low"><span class="stock-dot"></span>Low Stock — ${stock} remaining</div>`;
       } else {
-        stockHtml = `<div class="stock-indicator stock-in"><span class="stock-dot"></span>In Stock — ${stock} available</div>`;
+        stockHtml = `<div id="stock-status" class="stock-indicator stock-in"><span class="stock-dot"></span>In Stock — ${stock} available</div>`;
       }
 
       const specs = p.content_triage.technical_specs || [];
@@ -321,6 +359,9 @@
         ? Array.from({length: maxQty}, (_, i) => `<option value="${i+1}">${i+1}</option>`).join('')
         : '<option value="0">0</option>';
 
+      // Initial variant description
+      const initDesc = firstSku && firstSku.description ? firstSku.description : '';
+
       document.getElementById('product-content').innerHTML = `
         <div class="product-detail-grid">
           <!-- Gallery -->
@@ -335,7 +376,8 @@
             <h1 class="product-detail-name">${escHtml(p.name)}</h1>
             ${p.static_data.eco_badge ? `<span class="product-detail-badge">🌿 ${escHtml(p.static_data.eco_badge)}</span>` : ''}
             <p class="product-detail-hook">${escHtml(p.content_triage.marketing_hook)}</p>
-            <div class="product-detail-price">$${p.dynamic_data.price_aud.toFixed(2)} <span style="font-size:1rem;color:var(--gray-500);font-weight:400">AUD</span></div>
+            <p id="variant-description" style="font-size:0.9375rem;color:var(--gray-600);margin-bottom:1rem;line-height:1.6;font-style:italic;${initDesc ? '' : 'display:none'}">${escHtml(initDesc)}</p>
+            <div class="product-detail-price">$${price.toFixed(2)} <span style="font-size:1rem;color:var(--gray-500);font-weight:400">AUD</span></div>
             ${stockHtml}
 
             ${variants.length > 0 ? `
@@ -358,7 +400,7 @@
               <span class="payment-options-label">Or pay in instalments with:</span>
               <span class="payment-badge badge-afterpay">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Afterpay_logo.svg/120px-Afterpay_logo.svg.png" alt="Afterpay" onerror="this.style.display='none'">
-                4 × $${(p.dynamic_data.price_aud / 4).toFixed(2)}
+                4 × $${(price / 4).toFixed(2)}
               </span>
               <span class="payment-badge badge-paypal">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/80px-PayPal_logo.svg.png" alt="PayPal" onerror="this.style.display='none'" style="filter:brightness(0) invert(1)">
@@ -432,6 +474,72 @@
         mainImg.src = src;
         mainImg.alt = currentProduct.name + ' - ' + variant;
       }
+
+      // Update variant-specific price, stock, description, and cart SKU
+      updateVariantData(variant);
+    }
+
+    function updateVariantData(variantLabel) {
+      const sku = variantSkuMap[variantLabel];
+      if (!sku) return;
+
+      // Update price
+      const priceEl = document.querySelector('.product-detail-price');
+      if (priceEl) priceEl.innerHTML = `$${parseFloat(sku.price_aud).toFixed(2)} <span style="font-size:1rem;color:var(--gray-500);font-weight:400">AUD</span>`;
+
+      // Update stock badge
+      const stockEl = document.getElementById('stock-status');
+      if (stockEl) {
+        const stock = parseInt(sku.stock_level, 10);
+        if (stock === 0) {
+          stockEl.className = 'stock-indicator stock-out';
+          stockEl.innerHTML = `<span class="stock-dot"></span>Out of Stock`;
+        } else if (stock <= 5) {
+          stockEl.className = 'stock-indicator stock-low';
+          stockEl.innerHTML = `<span class="stock-dot"></span>Only ${stock} left in stock`;
+        } else if (stock <= 15) {
+          stockEl.className = 'stock-indicator stock-low';
+          stockEl.innerHTML = `<span class="stock-dot"></span>Low Stock — ${stock} remaining`;
+        } else {
+          stockEl.className = 'stock-indicator stock-in';
+          stockEl.innerHTML = `<span class="stock-dot"></span>In Stock — ${stock} available`;
+        }
+      }
+
+      // Update Add to Cart button
+      const addBtn = document.querySelector('.add-to-cart-btn');
+      if (addBtn) {
+        const stock = parseInt(sku.stock_level, 10);
+        addBtn.disabled = stock === 0;
+        addBtn.textContent = stock === 0 ? 'Out of Stock' : 'Add to Cart';
+        addBtn.style.opacity = stock === 0 ? '0.5' : '';
+        addBtn.style.cursor = stock === 0 ? 'not-allowed' : '';
+      }
+
+      // Update qty select
+      const qtySelect = document.getElementById('qty-select');
+      if (qtySelect) {
+        const stock = parseInt(sku.stock_level, 10);
+        qtySelect.disabled = stock === 0;
+        if (stock > 0) {
+          const maxQty = Math.min(stock, 10);
+          qtySelect.innerHTML = Array.from({length: maxQty}, (_, i) => `<option value="${i+1}">${i+1}</option>`).join('');
+        } else {
+          qtySelect.innerHTML = '<option value="0">0</option>';
+        }
+      }
+
+      // Update variant description
+      const descEl = document.getElementById('variant-description');
+      if (descEl && sku.description) {
+        descEl.textContent = sku.description;
+        descEl.style.display = '';
+      } else if (descEl) {
+        descEl.style.display = 'none';
+      }
+
+      // Update active SKU for cart
+      window._activeVariantSku = sku.sku || (currentProduct.id + '-' + variantLabel.toUpperCase().replace(/[^A-Z0-9]/g, '-'));
     }
 
     function switchTab(btn, panelId) {
@@ -445,19 +553,25 @@
     function addToCartFromDetail() {
       if (!currentProduct) return;
       const qty = parseInt(document.getElementById('qty-select')?.value || '1', 10);
-      const id = currentProduct.id;
-      const name = currentProduct.name;
-      const price = currentProduct.dynamic_data.price_aud;
       const variant = selectedVariant || 'Default';
-      const stockLevel = currentProduct.dynamic_data.stock_level;
-      const existing = cart.items.find(i => i.id === id && i.variant === variant);
+      const name = currentProduct.name;
+
+      // Use variant SKU ID instead of parent product ID
+      const cartId = window._activeVariantSku || (currentProduct.id + '-' + variant.toUpperCase().replace(/[^A-Z0-9]/g, '-'));
+
+      // Use variant-specific price if available, else parent price
+      const sku = variantSkuMap[variant];
+      const price = sku ? parseFloat(sku.price_aud) : currentProduct.dynamic_data.price_aud;
+      const stockLevel = sku ? parseInt(sku.stock_level, 10) : currentProduct.dynamic_data.stock_level;
+
+      const existing = cart.items.find(i => i.id === cartId && i.variant === variant);
       const currentQtyInCart = existing ? existing.qty : 0;
       const addQty = Math.min(qty, stockLevel - currentQtyInCart);
       if (addQty <= 0) return;
       if (existing) {
         existing.qty += addQty;
       } else {
-        cart.items.push({ id, name, price, variant, qty: addQty });
+        cart.items.push({ id: cartId, name, price, variant, qty: addQty });
       }
       cart.save();
       openCart();

@@ -323,12 +323,13 @@
                   <th>Price (AUD)</th>
                   <th>Stock</th>
                   <th>Status</th>
+                  <th>Variants</th>
                   <th>Eco Badge</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody id="product-tbody">
-                <tr class="loading-row"><td colspan="8"><div class="spinner"></div></td></tr>
+                <tr class="loading-row"><td colspan="9"><div class="spinner"></div></td></tr>
               </tbody>
             </table>
           </div>
@@ -435,6 +436,13 @@
                   <label class="form-label">Dimensions (cm)</label>
                   <div id="pf-dims-container"></div>
                   <button type="button" class="add-kv-btn" onclick="addKvRow('pf-dims')">+ Add dimension</button>
+                </div>
+
+                <div class="form-section-title">Variant SKUs</div>
+                <div class="form-group span-2">
+                  <p class="text-muted" style="font-size:0.85rem;margin-bottom:0.75rem">Each variant is its own SKU with individual price, stock, and description. The Variants list above is auto-populated from these entries on save.</p>
+                  <div id="pf-variant-skus-container"></div>
+                  <button type="button" class="add-repeater-btn" onclick="addVariantSkuRow()">+ Add Variant SKU</button>
                 </div>
 
                 <div class="form-section-title">Content & RAG Resources</div>

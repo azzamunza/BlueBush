@@ -1,12 +1,12 @@
 {
   "assignment": "AT1 - Identify Opportunities for AI Task Automation",
-  "lastUpdated": "2026-03-05T04:44:37.910Z",
+  "lastUpdated": "2026-03-05T04:48:50.367Z",
   "sections": {
     "section1": {
       "title": "Business Overview",
-      "completed": false,
+      "completed": true,
       "content": "<p>\"BlueBush\" is an Eco-Friendly company that is dedicated to selling only products that tick the eco-friendly box. This covers are large range of bespoke homeware products. Premium sustainable Australian homewares. Ethically sourced, beautifully crafted, built to last.</p><p>They are an online only store, adding further sustainability to their business. Therefore, they are an online e-commerce business offering direct-to-consumer products.</p><p>The business is small in size only requiring minimal employed people to handle online orders, customer service, stock taking, and order deliveries.</p><p><br></p><p>Their Key Values:</p><p><br></p><ul><li>Sustainability First</li><li>Community Focused</li><li>Quality Craftsmanship</li><li>Transparency</li></ul>",
-      "lastSaved": "2026-03-05T04:44:37.910Z"
+      "lastSaved": "2026-03-05T04:48:50.367Z"
     },
     "section2": {
       "title": "Current Business Processes",

@@ -1,6 +1,6 @@
 {
   "assignment": "AT1 - Identify Opportunities for AI Task Automation",
-  "lastUpdated": "2026-03-05T04:48:50.367Z",
+  "lastUpdated": "2026-03-05T05:16:33.784Z",
   "sections": {
     "section1": {
       "title": "Business Overview",
@@ -11,8 +11,8 @@
     "section2": {
       "title": "Current Business Processes",
       "completed": false,
-      "content": "",
-      "lastSaved": null
+      "content": "<p>BlueBush business processes:</p><ol><li>Review online orders.</li><li class=\"ql-indent-1\">Login to BlueBush Admin site.</li><li class=\"ql-indent-1\">Review orders placed by customers.</li><li class=\"ql-indent-1\">Confirm payment received.</li><li class=\"ql-indent-1\">Confirm allocated stock for fulfilling customers' orders.</li><li class=\"ql-indent-1\">If stock is missing, send email to customers providing options going forward.</li><li class=\"ql-indent-1\">If stock is available, send order to dispatch team to prepare orders for delivery.</li><li>Stocktake.</li><li class=\"ql-indent-1\">Review and record all current stock in the warehouse.</li><li class=\"ql-indent-1\">Compare warehouse stock levels with online database of stock quantities.</li><li class=\"ql-indent-1\">Make note of missing, lost, or stolen stock.</li><li>Processing incoming stock and update online database stock levels.</li><li class=\"ql-indent-1\">Receive deliveries of stock.</li><li class=\"ql-indent-1\">Categorise each stock based on product ID/variant.</li><li class=\"ql-indent-1\">Update database with new stock counts.</li><li class=\"ql-indent-1\">Create new product stock data for new products to add to the website.</li><li class=\"ql-indent-2\">Source stock promotional photography</li><li class=\"ql-indent-2\">Develop new product information to populate product webpage.</li><li class=\"ql-indent-2\">Login to the Admin portal and add new product information to the database.</li><li class=\"ql-indent-2\">Confirm the new product is live and stock levels are accurate.</li><li>Preparing Customer Orders for delivery</li><li class=\"ql-indent-1\">Receive confirmed customer orders ready for dispatching</li><li class=\"ql-indent-1\">Collect ordered items and and package for delivery.</li><li class=\"ql-indent-1\">Organise package for delivery based on delivery method requested.</li><li>Customer Support</li></ol><p><br></p>",
+      "lastSaved": "2026-03-05T05:16:33.784Z"
     },
     "section3": {
       "title": "AI Automation Opportunities — Identification",

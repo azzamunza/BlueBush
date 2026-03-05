@@ -886,10 +886,13 @@
         const q = quills[sectionId];
         if (!q) return;
 
-        // Set content (HTML)
+        // Set content (HTML) — sanitize via DOMParser before inserting
         if (sec.content) {
           q.enable(true); // must be enabled to paste HTML
-          q.clipboard.dangerouslyPasteHTML(sec.content);
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(sec.content, 'text/html');
+          const safeHtml = doc.body.innerHTML;
+          q.clipboard.dangerouslyPasteHTML(safeHtml);
         }
 
         // Apply completed state
@@ -944,7 +947,7 @@
       const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + DATA_PATH;
       const res = await fetch(url, {
         headers: {
-          'Authorization': 'token ' + token,
+          'Authorization': 'Bearer ' + token,
           'Accept': 'application/vnd.github.v3+json'
         }
       });
@@ -960,13 +963,13 @@
       const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + DATA_PATH;
       const body = {
         message: message || 'Update AT1 assignment data',
-        content: btoa(unescape(encodeURIComponent(content))),
+        content: btoa(String.fromCharCode(...new TextEncoder().encode(content))),
         sha:     sha
       };
       const res = await fetch(url, {
         method:  'PUT',
         headers: {
-          'Authorization': 'token ' + token,
+          'Authorization': 'Bearer ' + token,
           'Accept':        'application/vnd.github.v3+json',
           'Content-Type':  'application/json'
         },
@@ -987,7 +990,8 @@
       try {
         const fileData = await githubGetFile(token);
         fileSha = fileData.sha;
-        const jsonStr = decodeURIComponent(escape(atob(fileData.content.replace(/\n/g, ''))));
+        const rawBytes = Uint8Array.from(atob(fileData.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+        const jsonStr = new TextDecoder().decode(rawBytes);
         assignmentData = JSON.parse(jsonStr);
         populateEditors(assignmentData);
       } catch (err) {

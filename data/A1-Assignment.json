@@ -1,6 +1,6 @@
 {
   "assignment": "AT1 - Identify Opportunities for AI Task Automation",
-  "lastUpdated": "2026-03-05T05:36:35.653Z",
+  "lastUpdated": "2026-03-05T05:55:22.729Z",
   "sections": {
     "section1": {
       "title": "Business Overview",
@@ -17,8 +17,8 @@
     "section3": {
       "title": "AI Automation Opportunities — Identification",
       "completed": false,
-      "content": "",
-      "lastSaved": null
+      "content": "<p>Potential AI Automation benefits:</p><ol><li>Review online orders.</li><li class=\"ql-indent-1\">Review online orders.</li><li class=\"ql-indent-1\">Correlate orders made with incoming payments</li><li class=\"ql-indent-1\">Confirm allocation of stock for orders.</li><li class=\"ql-indent-1\">Provide work orders for staff to gather customer stock, and package ready for delivery.</li><li class=\"ql-indent-1\">Prepare shipping labels</li><li class=\"ql-indent-1\">Automate delivery pickup requests for sending items</li><li>Stocktake.</li><li class=\"ql-indent-1\">Mobile device used to scan incoming stock.</li><li class=\"ql-indent-1\">Accidental double counting eliminated due to each items unique package ID flags ignore if re-scanned.</li><li class=\"ql-indent-1\">Compares previous stock levels and previous orders to maintain balance between incoming/outgoing stock.</li><li class=\"ql-indent-1\">AI flags missing/stolen stock.</li><li class=\"ql-indent-1\">AI determines potential time windows of missing stock items.</li><li class=\"ql-indent-1\">AI logs all delivery data, company names, drivers name, time, date, destination addresses, etc.</li><li>Processing incoming stock and update online database stock levels.</li><li class=\"ql-indent-1\">AI scans incoming labels from delivery drivers when new stock is received. Confirms product items/quantities for worker to confirm order is correct or is missing items.</li><li class=\"ql-indent-1\">AI confirms delivery is ready for storing in warehouse. Sends warehouse request and provides all the items in the delivery, and where in the warehouse each product should be located.</li><li class=\"ql-indent-1\">Worker scans each item as they are logged into storage. AI then updates the online stock in the Supabase database.</li><li>Preparing Customer Orders for delivery</li><li>Customer Support (Performed by Staff, facilitated by admin portal and email integration)</li></ol><p><br></p>",
+      "lastSaved": "2026-03-05T05:55:22.729Z"
     },
     "section4": {
       "title": "AI Automation Opportunities — Priority Assessment",

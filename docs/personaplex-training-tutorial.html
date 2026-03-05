@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlueBush AI Chatbot + Voice Bot — PersonaPlex Training Tutorial</title>
+  <style>
+    /* ── Design tokens ───────────────────────────────────────────────── */
+    :root {
+      --bg:        #f5f3ef;
+      --surface:   #ffffff;
+      --border:    #d9d4c8;
+      --accent:    #3a6b35;
+      --accent-lt: #e8f5e9;
+      --warn:      #7a4f00;
+      --warn-lt:   #fff8e1;
+      --code-bg:   #1e1e2e;
+      --code-fg:   #cdd6f4;
+      --text:      #2c2c2c;
+      --muted:     #6b6b6b;
+      --radius:    8px;
+    }
+
+    /* ── Base ────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ─────────────────────────────────────────────────────── */
+    header {
+      background: var(--accent);
+      color: #fff;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 .4rem; font-size: 2rem; }
+    header p  { margin: 0; opacity: .85; }
+
+    nav#toc {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+    }
+    nav#toc summary { font-weight: 600; cursor: pointer; }
+    nav#toc ol { margin: .5rem 0 0 1.5rem; padding: 0; }
+    nav#toc li { margin: .2rem 0; }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    section { margin-bottom: 3rem; }
+
+    h2 {
+      border-left: 5px solid var(--accent);
+      padding-left: .75rem;
+      font-size: 1.55rem;
+      margin-top: 2.5rem;
+    }
+    h3 { font-size: 1.2rem; margin-top: 2rem; color: var(--accent); }
+    h4 { font-size: 1rem; margin-top: 1.5rem; }
+
+    /* ── Callouts ────────────────────────────────────────────────────── */
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: var(--accent-lt);
+      border-radius: var(--radius);
+      padding: .75rem 1rem;
+      margin: 1rem 0;
+    }
+    .callout.warn {
+      border-color: var(--warn);
+      background: var(--warn-lt);
+    }
+    .callout strong { color: var(--accent); }
+    .callout.warn strong { color: var(--warn); }
+
+    /* ── Code blocks ─────────────────────────────────────────────────── */
+    pre {
+      background: var(--code-bg);
+      color: var(--code-fg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      font-size: .88rem;
+      line-height: 1.55;
+      margin: 1rem 0 1.5rem;
+      tab-size: 4;
+    }
+    code { font-family: "Cascadia Code", "Fira Code", monospace; }
+    p code, li code, td code {
+      background: #eee;
+      border-radius: 3px;
+      padding: .1em .35em;
+      font-size: .9em;
+    }
+
+    /* ── ASCII diagram ───────────────────────────────────────────────── */
+    .ascii {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      font-size: .85rem;
+      line-height: 1.45;
+    }
+
+    /* ── Tables ─────────────────────────────────────────────────────── */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0 1.5rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: .55rem .85rem;
+      text-align: left;
+    }
+    th { background: var(--accent-lt); }
+
+    /* ── Checklist ───────────────────────────────────────────────────── */
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li::before { content: "☐ "; color: var(--accent); font-weight: 700; }
+
+    /* ── Step badges ─────────────────────────────────────────────────── */
+    .step-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      width: 1.9rem; height: 1.9rem;
+      text-align: center;
+      line-height: 1.9rem;
+      font-weight: 700;
+      margin-right: .5rem;
+      font-size: .95rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .85rem;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌿 BlueBush AI — End-to-End Tutorial</h1>
+  <p>Build &amp; deploy a conversational chatbot + full-duplex voice bot using NVIDIA PersonaPlex, LoRA fine-tuning, and Supabase RAG</p>
+</header>
+
+<!-- ── Table of Contents ─────────────────────────────────────────── -->
+<nav id="toc">
+  <details open>
+    <summary>📋 Table of Contents</summary>
+    <ol>
+      <li><a href="#overview">Overview &amp; Architecture</a></li>
+      <li><a href="#prerequisites">Prerequisites &amp; Environment Setup</a></li>
+      <li><a href="#data-pipeline">Data Pipeline</a></li>
+      <li><a href="#fine-tuning">Fine-Tuning with LoRA (SFT — Persona &amp; Style)</a></li>
+      <li><a href="#rag">RAG Indexing (Business Knowledge)</a></li>
+      <li><a href="#gateway">AI Gateway — Deployment Recommendation</a></li>
+      <li><a href="#website-integration">Website Integration &amp; Security</a></li>
+      <li><a href="#voice">Voice: Australian Neutral + PersonaPlex Full-Duplex</a></li>
+      <li><a href="#supabase-checklist">Supabase Review Checklist</a></li>
+      <li><a href="#artifacts">Output Artifacts Checklist</a></li>
+    </ol>
+  </details>
+</nav>
+
+<main>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section id="overview">
+  <h2>1 · Overview &amp; Architecture</h2>
+
+  <p>
+    This tutorial shows you how to go from the BlueBush repository to a
+    production-quality AI chatbot (and later a full-duplex voice bot) for the
+    BlueBush sustainable homewares store. The approach uses a <strong>two-layer
+    AI strategy</strong>:
+  </p>
+  <ul>
+    <li><strong>SFT / LoRA fine-tuning</strong> — teaches the LLM the BlueBush
+      <em>persona, tone, and conversational style</em> ("Aussie-casual, eco-savvy").</li>
+    <li><strong>RAG (Retrieval-Augmented Generation)</strong> — injects
+      <em>live business knowledge</em> (products, FAQs, orders) at inference
+      time so product data never goes stale.</li>
+  </ul>
+  <p>
+    Keep these two layers distinct: fine-tuning is <em>never</em> the right
+    tool for injecting factual product data (it memorises poorly and is
+    expensive to update). RAG is the right tool for facts; fine-tuning is the
+    right tool for <em>how</em> the bot speaks.
+  </p>
+
+  <h3>System Architecture Diagram</h3>
+<pre class="ascii">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                            BROWSER (GitHub Pages)                            │
+│                                                                              │
+│   index.html / shop.html / product.html / faq.html                          │
+│   js/chatbot.js  ──── text chat REST ────────────────────────┐              │
+│   js/supabaseClient.js ── direct Supabase anon read ─────┐   │              │
+│   WebRTC / WebSocket  ──── voice stream ──────────────┐  │   │              │
+└───────────────────────────────────────────────────────│──│───│──────────────┘
+                                                        │  │   │
+          ┌─────────────────────────────────────────────│──│───│──────────────┐
+          │              AI GATEWAY  (Cloudflare Worker / Cloud Run)          │
+          │                                             │  │   │              │
+          │   POST /chat ◄──────────────────────────────│──│───┘              │
+          │   WS   /voice ◄─────────────────────────────┘  │                  │
+          │                                                  │                 │
+          │   ① Auth / rate-limit (API key + Turnstile)      │                │
+          │   ② RAG retrieval  ──────────────────────────────│──────────┐     │
+          │   ③ Prompt assembly (system prompt + context)    │          │     │
+          │   ④a Text: call fine-tuned LLM endpoint ─────────┘          │     │
+          │   ④b Voice: stream to PersonaPlex endpoint                   │     │
+          └────────────────────────────────────────────────────────────│─┘    │
+                                                                        │
+          ┌─────────────────────────────────────────────────────────────│─────┐
+          │                    SUPABASE (source of truth)               │     │
+          │                                                             │     │
+          │   products  ◄──────────────── RAG indexing job ────────────┘     │
+          │   faqs                         (run nightly or on-demand)         │
+          │   orders  ◄──────────────────  place_order RPC                    │
+          │   pgvector (embeddings)  ◄────  embedding pipeline                │
+          └──────────────────────────────────────────────────────────────────┘
+                                                                        │
+          ┌─────────────────────────────────────────────────────────────▼─────┐
+          │                    NVIDIA PersonaPlex  (NIM endpoint)             │
+          │                                                                    │
+          │   PersonaPlex-7B + LoRA adapter (BlueBush voice/style)            │
+          │   Full-duplex: audio-in ──► text + audio-out  (<300 ms)           │
+          │   Text-only:   text-in  ──► text-out  (MVP path)                 │
+          └──────────────────────────────────────────────────────────────────┘
+</pre>
+
+  <h3>Technology Choices at a Glance</h3>
+  <table>
+    <tr>
+      <th>Layer</th><th>Technology</th><th>Why</th>
+    </tr>
+    <tr><td>Static site</td><td>GitHub Pages</td><td>Already in repo; zero cost</td></tr>
+    <tr><td>AI Gateway</td><td>Cloudflare Workers <em>(recommended)</em></td><td>Free tier (100 k req/day), no cold starts, global edge, simple deploy</td></tr>
+    <tr><td>Database / auth</td><td>Supabase</td><td>Already in repo; free tier generous for demos</td></tr>
+    <tr><td>Vector store</td><td>Supabase <code>pgvector</code></td><td>Same project = no extra service; simple SQL retrieval</td></tr>
+    <tr><td>LLM fine-tuning</td><td>Llama 3 / 3.1 8B + LoRA via HF + PEFT</td><td>Open-weight, free on Colab A100; Unsloth for speed</td></tr>
+    <tr><td>Voice (MVP)</td><td>Browser Web Speech API + OpenAI Whisper TTS</td><td>Near-zero cost, no new infrastructure</td></tr>
+    <tr><td>Voice (full-duplex)</td><td>NVIDIA PersonaPlex (NIM)</td><td>Single model: ASR + LLM + TTS, &lt;300 ms round-trip</td></tr>
+  </table>
+
+  <div class="callout warn">
+    <strong>⚠ Gateway cannot live on GitHub Pages.</strong>
+    GitHub Pages only serves static files. Any call that requires secrets
+    (LLM API keys, Supabase service-role key, rate-limiting) must go through
+    a separate server-side gateway.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section id="prerequisites">
+  <h2>2 · Prerequisites &amp; Environment Setup</h2>
+
+  <h3>Accounts &amp; Services</h3>
+  <ul>
+    <li>Google Account (for Colab)</li>
+    <li>Hugging Face account — <a href="https://huggingface.co/settings/tokens" target="_blank">API token</a> with read access to Llama gated models (requires Meta licence acceptance)</li>
+    <li>Supabase project (already set up per <a href="supabase-setup.md">docs/supabase-setup.md</a>)</li>
+    <li>Cloudflare account — free tier sufficient</li>
+    <li>NVIDIA NGC account — for PersonaPlex NIM (full-duplex voice, Phase 2)</li>
+  </ul>
+
+  <h3>Colab Runtime</h3>
+  <p>
+    All fine-tuning code in this tutorial targets a <strong>Colab A100 GPU
+    runtime</strong> (free in Colab Pro; available ad-hoc in free tier).
+    Minimum recommended: T4 (16 GB VRAM) for a 4-bit quantised Llama 3 8B.
+  </p>
+
+  <h3>Step 0 — Clone the Repo &amp; Install Dependencies in Colab</h3>
+<pre><code class="language-python"># Cell 0 — Run once at the top of your Colab notebook
+import os, subprocess
+
+# ── Clone the BlueBush repo ────────────────────────────────────────
+!git clone https://github.com/azzamunza/BlueBush.git
+%cd BlueBush
+
+# ── Install training dependencies ─────────────────────────────────
+!pip install -q \
+    transformers==4.44.* \
+    peft==0.12.* \
+    datasets==2.21.* \
+    trl==0.9.* \
+    bitsandbytes==0.43.* \
+    accelerate==0.33.* \
+    sentence-transformers==3.1.* \
+    supabase==2.7.* \
+    "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"  # optional speedup
+
+# ── Store secrets via Colab Secrets (left sidebar → 🔑 icon) ───────
+# Required secrets:
+#   HF_TOKEN              — Hugging Face read token
+#   SUPABASE_URL          — https://&lt;project-id&gt;.supabase.co
+#   SUPABASE_SERVICE_KEY  — service-role key (server-side ONLY, never in client JS)
+#   NVIDIA_API_KEY        — for PersonaPlex NIM (Phase 2)
+
+from google.colab import userdata
+HF_TOKEN          = userdata.get("HF_TOKEN")
+SUPABASE_URL      = userdata.get("SUPABASE_URL")
+SUPABASE_SVC_KEY  = userdata.get("SUPABASE_SERVICE_KEY")
+NVIDIA_API_KEY    = userdata.get("NVIDIA_API_KEY")   # Phase 2 only
+
+os.environ["HF_TOKEN"]     = HF_TOKEN
+os.environ["SUPABASE_URL"] = SUPABASE_URL
+</code></pre>
+
+  <div class="callout warn">
+    <strong>⚠ Secret hygiene.</strong>
+    Use <em>Colab Secrets</em> (the 🔑 padlock icon in the left sidebar), not
+    plain Python strings or environment variable exports you accidentally
+    commit. Never paste <code>SUPABASE_SERVICE_KEY</code> or
+    <code>NVIDIA_API_KEY</code> into a public notebook.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section id="data-pipeline">
+  <h2>3 · Data Pipeline</h2>
+
+  <p>
+    Three data sources feed the training pipeline. The table below shows what
+    each source contributes and the target format.
+  </p>
+  <table>
+    <tr><th>Source file</th><th>Format</th><th>Use</th></tr>
+    <tr>
+      <td><code>training/bluebush-training.jsonl</code></td>
+      <td>JSONL — <code>{"messages":[…]}</code> (chat-ML)</td>
+      <td>Primary SFT dataset — product Q&amp;A, care instructions</td>
+    </tr>
+    <tr>
+      <td><code>source/BlueBush-Training-Dataset.JSON</code></td>
+      <td>JSON array — <code>{"id","channel","customer_inquiry","brand_response"}</code></td>
+      <td>Additional multi-channel interactions (email, chat, social)</td>
+    </tr>
+    <tr>
+      <td>External (optional)</td>
+      <td>Various</td>
+      <td>Generic customer-service augmentation + AU language style</td>
+    </tr>
+  </table>
+
+  <h3><span class="step-badge">1</span> Load &amp; Inspect Primary Dataset</h3>
+<pre><code class="language-python">from datasets import load_dataset
+import json, pathlib
+
+# ── Primary JSONL (chat-ML format already) ─────────────────────────
+primary_ds = load_dataset(
+    "json",
+    data_files="training/bluebush-training.jsonl",
+    split="train"
+)
+print(f"Primary dataset rows: {len(primary_ds)}")   # expected: 638
+print(primary_ds[0])  # inspect first example
+
+# ── Quick sanity-check: all rows have 'messages' key ───────────────
+assert all("messages" in row for row in primary_ds), "Unexpected schema"
+
+# ── Count roles ────────────────────────────────────────────────────
+from collections import Counter
+role_counts = Counter(
+    msg["role"]
+    for row in primary_ds
+    for msg in row["messages"]
+)
+print("Role distribution:", dict(role_counts))
+# Expected: {'system': 638, 'user': 638, 'assistant': 638}
+</code></pre>
+
+  <h3><span class="step-badge">2</span> Convert <code>BlueBush-Training-Dataset.JSON</code> to Chat-ML JSONL</h3>
+
+  <p>
+    The JSON training dataset uses a flat <code>{"customer_inquiry","brand_response"}</code>
+    schema. We must convert it to the same chat-ML format used by the primary
+    dataset before merging.
+  </p>
+<pre><code class="language-python">import json, pathlib
+
+SYSTEM_PROMPT = (
+    "You are the BlueBush Virtual Assistant — a knowledgeable, eco-conscious, "
+    "and friendly shopping guide for an Australian sustainable homewares store. "
+    "Respond in a warm 'Aussie-casual' tone: friendly and professional. "
+    "Use natural Australian phrasing (e.g., 'No worries', 'Cheers', 'Sorted') "
+    "but avoid tourist clichés. Keep answers concise and helpful."
+)
+
+raw_path  = pathlib.Path("source/BlueBush-Training-Dataset.JSON")
+out_path  = pathlib.Path("/tmp/bluebush_extra.jsonl")
+
+with raw_path.open() as f:
+    raw_examples = json.load(f)   # list of 53 dicts
+
+converted = []
+for ex in raw_examples:
+    inquiry  = ex.get("customer_inquiry", "").strip()
+    response = ex.get("brand_response",   "").strip()
+    if not inquiry or not response:
+        continue
+    converted.append({
+        "messages": [
+            {"role": "system",    "content": SYSTEM_PROMPT},
+            {"role": "user",      "content": inquiry},
+            {"role": "assistant", "content": response},
+        ]
+    })
+
+with out_path.open("w") as f:
+    for row in converted:
+        f.write(json.dumps(row) + "\n")
+
+print(f"Converted {len(converted)} examples → {out_path}")
+</code></pre>
+
+  <h3><span class="step-badge">3</span> (Optional) Augment with External Datasets</h3>
+  <p>
+    Adding general customer-service data helps the model handle edge-cases not
+    covered by BlueBush examples. Use a high BlueBush oversampling ratio so
+    the brand voice is not diluted.
+  </p>
+<pre><code class="language-python">from datasets import load_dataset, concatenate_datasets, Dataset
+import json, pathlib, random
+
+# ── Example external datasets (check licences before use) ──────────
+# 1. bitext/Bitext-customer-support-llm-chatbot-training-dataset
+#    (CC-BY-4.0; generic retail/e-commerce support; ~26 k rows)
+# 2. For Australian English style, filter for AU-locale rows or
+#    lightly post-process with a style-transfer prompt if data is scarce.
+
+external_ds = load_dataset(
+    "bitext/Bitext-customer-support-llm-chatbot-training-dataset",
+    split="train"
+)
+
+# ── Filter to relevant retail intents ──────────────────────────────
+KEEP_TAGS = {"ORDER", "SHIPPING", "REFUND", "PRODUCT", "PAYMENT"}
+filtered  = external_ds.filter(
+    lambda x: any(t in x.get("tags", "").upper() for t in KEEP_TAGS)
+)
+print(f"Filtered external rows: {len(filtered)}")
+
+# ── Convert external format → chat-ML ──────────────────────────────
+EXTERNAL_SYSTEM = (
+    "You are a helpful, friendly customer support agent for an online store."
+)
+def convert_external(row):
+    return {
+        "messages": [
+            {"role": "system",    "content": EXTERNAL_SYSTEM},
+            {"role": "user",      "content": row["instruction"]},
+            {"role": "assistant", "content": row["response"]},
+        ]
+    }
+ext_converted = filtered.map(convert_external, remove_columns=filtered.column_names)
+
+# ── Load all BlueBush data ─────────────────────────────────────────
+primary_ds = load_dataset("json",
+    data_files="training/bluebush-training.jsonl", split="train")
+extra_ds   = load_dataset("json",
+    data_files=str(pathlib.Path("/tmp/bluebush_extra.jsonl")), split="train")
+
+# ── Oversample BlueBush 4× to preserve brand voice ─────────────────
+OVERSAMPLE = 4
+bb_combined = concatenate_datasets([primary_ds, extra_ds] * OVERSAMPLE)
+
+# ── Cap external data to avoid voice dilution ──────────────────────
+MAX_EXTERNAL = len(bb_combined) // 2   # max 50 % external
+ext_sample   = ext_converted.shuffle(seed=42).select(
+    range(min(MAX_EXTERNAL, len(ext_converted)))
+)
+
+full_ds = concatenate_datasets([bb_combined, ext_sample]).shuffle(seed=42)
+print(f"Combined dataset: {len(full_ds)} rows "
+      f"({len(bb_combined)} BlueBush + {len(ext_sample)} external)")
+</code></pre>
+
+  <h3><span class="step-badge">4</span> Train / Validation Split &amp; Evaluation Harness</h3>
+<pre><code class="language-python">from datasets import DatasetDict
+
+# ── Use only BlueBush data for evaluation (no brand dilution) ──────
+bb_eval_pool  = concatenate_datasets([primary_ds, extra_ds])
+split         = bb_eval_pool.train_test_split(test_size=0.1, seed=42)
+
+train_ds = concatenate_datasets([
+    split["train"],          # ~90% BlueBush
+    ext_sample,              # external augmentation in train only
+]).shuffle(seed=42)
+val_ds   = split["test"]    # 100% BlueBush for honest eval
+
+print(f"Train: {len(train_ds)}  |  Val: {len(val_ds)}")
+
+# ── Simple evaluation harness ─────────────────────────────────────
+# After fine-tuning, run this to get a rough BLEU / ROUGE baseline.
+# For production, use human evaluation with Australian-English speakers.
+
+def evaluate_model(model, tokenizer, eval_ds, n=50):
+    """Quick automated eval — ROUGE-L on assistant turns."""
+    from rouge_score import rouge_scorer
+    scorer  = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
+    scores  = []
+    sample  = eval_ds.shuffle(seed=0).select(range(min(n, len(eval_ds))))
+    for row in sample:
+        messages = row["messages"]
+        prompt_msgs  = [m for m in messages if m["role"] != "assistant"]
+        reference    = next(m["content"] for m in messages if m["role"] == "assistant")
+        input_text   = tokenizer.apply_chat_template(
+            prompt_msgs, tokenize=False, add_generation_prompt=True
+        )
+        inputs   = tokenizer(input_text, return_tensors="pt").to(model.device)
+        outputs  = model.generate(**inputs, max_new_tokens=200, do_sample=False)
+        predicted = tokenizer.decode(outputs[0][inputs["input_ids"].shape[1]:],
+                                     skip_special_tokens=True)
+        scores.append(scorer.score(reference, predicted)["rougeL"].fmeasure)
+    avg = sum(scores) / len(scores)
+    print(f"ROUGE-L avg over {len(scores)} examples: {avg:.3f}")
+    return avg
+</code></pre>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section id="fine-tuning">
+  <h2>4 · Fine-Tuning with LoRA (SFT — Persona &amp; Style)</h2>
+
+  <div class="callout">
+    <strong>What SFT teaches:</strong> <em>How</em> BlueBush speaks — Aussie
+    warmth, eco vocabulary, short voice-optimised sentences, conflict-resolution
+    scripts. It does <em>not</em> teach product facts (that's RAG).
+  </div>
+
+  <h3>LoRA Parameters (from <code>source/BlueBush_Persona_Config.md</code>)</h3>
+  <table>
+    <tr><th>Parameter</th><th>Value</th><th>Notes</th></tr>
+    <tr><td>Base model</td><td><code>meta-llama/Llama-3.1-8B-Instruct</code></td><td>Strong instruction-tuned foundation; gated — accept Meta licence on HF first</td></tr>
+    <tr><td>Adapter type</td><td>LoRA</td><td>PEFT — only ~0.5 % of params trained</td></tr>
+    <tr><td>Rank (r)</td><td>32</td><td>Captures conversational nuance</td></tr>
+    <tr><td>Alpha (α)</td><td>64</td><td>Scaling factor; α/r = 2 is a common heuristic</td></tr>
+    <tr><td>Target modules</td><td><code>q_proj, v_proj, k_proj, o_proj</code></td><td>Attention layers</td></tr>
+    <tr><td>Learning rate</td><td>1e-4</td><td>Stable for PEFT</td></tr>
+    <tr><td>Batch size</td><td>16 (4 × 4 grad accumulation)</td><td>Adjust for your GPU VRAM</td></tr>
+    <tr><td>Epochs</td><td>3–5</td><td>Monitor val loss to avoid overfit</td></tr>
+    <tr><td>Dropout</td><td>0.05</td><td>Robustness to input variation</td></tr>
+  </table>
+
+  <h3><span class="step-badge">1</span> Load Base Model (4-bit quantised)</h3>
+<pre><code class="language-python">import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+
+# ── Option A: standard HF + bitsandbytes ──────────────────────────
+MODEL_ID = "meta-llama/Llama-3.1-8B-Instruct"  # swap for another Llama variant
+
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_use_double_quant=True,
+)
+
+tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, token=HF_TOKEN)
+tokenizer.pad_token = tokenizer.eos_token
+tokenizer.padding_side = "right"
+
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_ID,
+    quantization_config=bnb_config,
+    device_map="auto",
+    token=HF_TOKEN,
+)
+model.config.use_cache = False
+
+# ── Option B (faster on Colab A100): Unsloth ──────────────────────
+# from unsloth import FastLanguageModel
+# model, tokenizer = FastLanguageModel.from_pretrained(
+#     model_name   = MODEL_ID,
+#     max_seq_length = 2048,
+#     load_in_4bit   = True,
+#     token          = HF_TOKEN,
+# )
+</code></pre>
+
+  <h3><span class="step-badge">2</span> Apply LoRA Adapters</h3>
+<pre><code class="language-python">from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+
+model = prepare_model_for_kbit_training(model)
+
+lora_config = LoraConfig(
+    r              = 32,        # rank — from BlueBush_Persona_Config.md
+    lora_alpha     = 64,        # alpha
+    target_modules = ["q_proj", "v_proj", "k_proj", "o_proj"],
+    lora_dropout   = 0.05,
+    bias           = "none",
+    task_type      = "CAUSAL_LM",
+)
+
+model = get_peft_model(model, lora_config)
+model.print_trainable_parameters()
+# Expected: ~0.5% trainable (≈ 40 M / 8 B params)
+</code></pre>
+
+  <h3><span class="step-badge">3</span> Tokenise Dataset</h3>
+<pre><code class="language-python">MAX_LEN = 1024   # reduce to 512 if OOM on T4
+
+def tokenise(example):
+    text = tokenizer.apply_chat_template(
+        example["messages"], tokenize=False, add_generation_prompt=False
+    )
+    encoded = tokenizer(
+        text,
+        truncation=True,
+        max_length=MAX_LEN,
+        padding="max_length",
+    )
+    # Labels: -100 for prompt tokens so loss is computed on assistant only
+    labels = encoded["input_ids"].copy()
+    # Find where assistant turn starts and mask everything before it
+    for i, msg in enumerate(example["messages"]):
+        if msg["role"] == "assistant":
+            break
+    prompt_only = tokenizer.apply_chat_template(
+        example["messages"][:i],
+        tokenize=False, add_generation_prompt=True
+    )
+    prompt_len = len(tokenizer(prompt_only, truncation=True,
+                               max_length=MAX_LEN)["input_ids"])
+    labels[:prompt_len] = [-100] * prompt_len
+    encoded["labels"] = labels
+    return encoded
+
+tok_train = train_ds.map(tokenise, remove_columns=train_ds.column_names,
+                         num_proc=2)
+tok_val   = val_ds.map(tokenise,   remove_columns=val_ds.column_names,
+                       num_proc=2)
+</code></pre>
+
+  <h3><span class="step-badge">4</span> Training</h3>
+<pre><code class="language-python">from transformers import TrainingArguments, Trainer, DataCollatorForSeq2Seq
+
+OUTPUT_DIR = "/tmp/bluebush-lora"
+
+training_args = TrainingArguments(
+    output_dir                  = OUTPUT_DIR,
+    num_train_epochs            = 3,          # 3–5 per config
+    per_device_train_batch_size = 4,
+    gradient_accumulation_steps = 4,          # effective batch = 16
+    learning_rate               = 1e-4,
+    lr_scheduler_type           = "cosine",
+    warmup_ratio                = 0.05,
+    weight_decay                = 0.01,
+    fp16                        = False,
+    bf16                        = True,       # A100 / H100 only; set fp16=True for T4
+    logging_steps               = 20,
+    eval_strategy               = "steps",
+    eval_steps                  = 100,
+    save_strategy               = "steps",
+    save_steps                  = 100,
+    save_total_limit            = 2,
+    load_best_model_at_end      = True,
+    metric_for_best_model       = "eval_loss",
+    report_to                   = "none",     # swap to "wandb" if you want tracking
+    dataloader_num_workers      = 2,
+)
+
+data_collator = DataCollatorForSeq2Seq(tokenizer, model=model, pad_to_multiple_of=8)
+
+trainer = Trainer(
+    model           = model,
+    args            = training_args,
+    train_dataset   = tok_train,
+    eval_dataset    = tok_val,
+    data_collator   = data_collator,
+)
+
+trainer.train()
+print("Training complete ✓")
+</code></pre>
+
+  <h3><span class="step-badge">5</span> Save &amp; Export LoRA Adapters</h3>
+<pre><code class="language-python">import pathlib
+
+ADAPTER_DIR = "/tmp/bluebush-lora-adapter"
+pathlib.Path(ADAPTER_DIR).mkdir(parents=True, exist_ok=True)
+
+# ── Save LoRA adapter weights only (~80 MB) ────────────────────────
+model.save_pretrained(ADAPTER_DIR)
+tokenizer.save_pretrained(ADAPTER_DIR)
+print(f"Adapter saved to {ADAPTER_DIR}/")
+# Files: adapter_config.json  adapter_model.safetensors  tokenizer files
+
+# ── (Optional) merge adapter into full weights for NIM deployment ──
+# merged_model = model.merge_and_unload()
+# merged_model.save_pretrained("/tmp/bluebush-merged", safe_serialization=True)
+# tokenizer.save_pretrained("/tmp/bluebush-merged")
+
+# ── Upload to Hugging Face Hub for easy access ─────────────────────
+# from huggingface_hub import HfApi
+# api = HfApi()
+# api.create_repo("your-username/bluebush-lora", private=True, token=HF_TOKEN)
+# api.upload_folder(
+#     folder_path = ADAPTER_DIR,
+#     repo_id     = "your-username/bluebush-lora",
+#     repo_type   = "model",
+#     token       = HF_TOKEN,
+# )
+</code></pre>
+
+  <h3><span class="step-badge">6</span> Quick Inference Test</h3>
+<pre><code class="language-python">from peft import PeftModel
+
+# Load adapter on top of base model (quantised)
+inference_model = PeftModel.from_pretrained(model, ADAPTER_DIR)
+inference_model.eval()
+
+test_messages = [
+    {"role": "system",  "content": SYSTEM_PROMPT},
+    {"role": "user",    "content": "What's the best eco-friendly option for the bathroom?"},
+]
+prompt_text = tokenizer.apply_chat_template(
+    test_messages, tokenize=False, add_generation_prompt=True
+)
+inputs  = tokenizer(prompt_text, return_tensors="pt").to(inference_model.device)
+outputs = inference_model.generate(
+    **inputs, max_new_tokens=256, temperature=0.7, do_sample=True
+)
+reply = tokenizer.decode(outputs[0][inputs["input_ids"].shape[1]:],
+                         skip_special_tokens=True)
+print("BlueBush:", reply)
+</code></pre>
+
+  <div class="callout">
+    <strong>👁 Evaluation tip.</strong>
+    Run the <code>evaluate_model()</code> function from the Data Pipeline
+    section on 50 held-out BlueBush validation examples. Target ROUGE-L ≥ 0.25
+    as a minimum bar; prioritise human evaluation for tone and Aussie register.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section id="rag">
+  <h2>5 · RAG Indexing (Business Knowledge)</h2>
+
+  <div class="callout">
+    <strong>What RAG handles:</strong> Live product catalogue, stock levels,
+    prices, FAQs, order status — anything that changes frequently and must
+    never be fabricated. RAG is served at <em>inference time</em>; no
+    retraining needed when products change.
+  </div>
+
+  <h3><span class="step-badge">1</span> Enable pgvector in Supabase</h3>
+<pre><code class="language-sql">-- Run in Supabase SQL Editor (Dashboard → SQL Editor → New Query)
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- ── Embeddings table ─────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS embeddings (
+    id         BIGSERIAL PRIMARY KEY,
+    doc_id     TEXT        NOT NULL,         -- e.g. "product:BED-001"
+    source     TEXT        NOT NULL,         -- "products", "faqs", "orders"
+    content    TEXT        NOT NULL,         -- full text chunk
+    embedding  vector(384) NOT NULL,         -- 384-dim for all-MiniLM-L6-v2
+    metadata   JSONB,
+    created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- ── HNSW index for fast approximate nearest-neighbour search ──────
+CREATE INDEX IF NOT EXISTS idx_embeddings_hnsw
+    ON embeddings USING hnsw (embedding vector_cosine_ops)
+    WITH (m = 16, ef_construction = 64);
+
+-- ── RLS: allow service-role reads (gateway), deny anon ───────────
+ALTER TABLE embeddings ENABLE ROW LEVEL SECURITY;
+-- (No anon policy = anon cannot read embeddings; service-role always bypasses RLS)
+</code></pre>
+
+  <h3><span class="step-badge">2</span> Export Supabase Tables &amp; Build Documents</h3>
+<pre><code class="language-python">from supabase import create_client, Client
+import json, pathlib, os
+
+SUPABASE_URL     = os.environ["SUPABASE_URL"]
+SUPABASE_SVC_KEY = os.environ["SUPABASE_SERVICE_KEY"]  # service-role (server only)
+
+sb: Client = create_client(SUPABASE_URL, SUPABASE_SVC_KEY)
+
+def fetch_all(table: str, columns: str = "*") -> list[dict]:
+    """Fetch all rows from a Supabase table (handles pagination)."""
+    rows, start = [], 0
+    while True:
+        resp = sb.table(table).select(columns).range(start, start + 999).execute()
+        rows.extend(resp.data)
+        if len(resp.data) < 1000:
+            break
+        start += 1000
+    return rows
+
+products = fetch_all("products")
+faqs     = fetch_all("faqs")
+print(f"Fetched: {len(products)} products, {len(faqs)} FAQs")
+
+# ── Also load the local product catalogue as fallback ──────────────
+catalog_path = pathlib.Path("source/BlueBush-Product-Catalog-V1.json")
+if catalog_path.exists():
+    with catalog_path.open() as f:
+        local_catalog = json.load(f)
+    print(f"Local catalogue: {len(local_catalog)} products")
+
+def product_to_text(p: dict) -> str:
+    """Convert a product row into a retrievable text chunk."""
+    lines = [
+        f"Product: {p.get('name', p.get('id', ''))}",
+        f"Category: {p.get('category', '')}",
+        f"Price: ${p.get('price_aud', p.get('price', 0)):.2f} AUD",
+        f"Stock: {p.get('stock_level', p.get('stock', 'unknown'))} units",
+        f"Description: {p.get('description', p.get('marketing_hook', ''))}",
+        f"Materials: {p.get('origin', p.get('materials', ''))}",
+        f"Eco badge: {p.get('eco_badge', '')}",
+        f"Care: {p.get('care_instructions', '')}",
+        f"Variants: {', '.join(p.get('variants', []))}",
+    ]
+    return "\n".join(l for l in lines if l.split(': ', 1)[-1].strip())
+
+def faq_to_text(f: dict) -> str:
+    return f"Question: {f.get('question', '')}\nAnswer: {f.get('answer', '')}"
+
+# ── Build document list ────────────────────────────────────────────
+documents = []
+for p in (products or local_catalog):
+    documents.append({
+        "doc_id":  f"product:{p.get('id', p.get('name', ''))}",
+        "source":  "products",
+        "content": product_to_text(p),
+        "metadata": {"id": p.get("id"), "category": p.get("category")},
+    })
+for fq in faqs:
+    documents.append({
+        "doc_id":  f"faq:{fq.get('id', fq.get('question', '')[:40])}",
+        "source":  "faqs",
+        "content": faq_to_text(fq),
+        "metadata": {"id": fq.get("id")},
+    })
+
+print(f"Total documents to index: {len(documents)}")
+</code></pre>
+
+  <h3><span class="step-badge">3</span> Build Embeddings &amp; Upsert to pgvector</h3>
+<pre><code class="language-python">from sentence_transformers import SentenceTransformer
+import numpy as np
+
+# all-MiniLM-L6-v2: 384-dim, fast, good quality; free, no API key needed
+EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+embedder    = SentenceTransformer(EMBED_MODEL)
+
+BATCH_SIZE = 64
+rows_to_insert = []
+
+contents = [d["content"] for d in documents]
+embeddings = embedder.encode(
+    contents, batch_size=BATCH_SIZE, show_progress_bar=True, normalize_embeddings=True
+)
+
+for doc, emb in zip(documents, embeddings):
+    rows_to_insert.append({
+        "doc_id":    doc["doc_id"],
+        "source":    doc["source"],
+        "content":   doc["content"],
+        "embedding": emb.tolist(),   # pgvector accepts a list of floats
+        "metadata":  doc["metadata"],
+    })
+
+# ── Upsert in batches (delete-then-insert for idempotency) ────────
+for i in range(0, len(rows_to_insert), 100):
+    batch = rows_to_insert[i:i+100]
+    # Delete existing docs with same doc_ids
+    doc_ids = [r["doc_id"] for r in batch]
+    sb.table("embeddings").delete().in_("doc_id", doc_ids).execute()
+    sb.table("embeddings").insert(batch).execute()
+
+print(f"Indexed {len(rows_to_insert)} documents into Supabase pgvector ✓")
+</code></pre>
+
+  <h3><span class="step-badge">4</span> Retrieval Function (used by AI Gateway)</h3>
+<pre><code class="language-python">def retrieve_context(query: str, top_k: int = 3) -> str:
+    """
+    Retrieve top_k most relevant chunks for a user query.
+    Call this from the AI Gateway before assembling the final prompt.
+    """
+    query_emb = embedder.encode([query], normalize_embeddings=True)[0].tolist()
+    # Use Supabase's built-in RPC for vector similarity search
+    resp = sb.rpc(
+        "match_embeddings",           # see SQL function below
+        {"query_embedding": query_emb, "match_count": top_k}
+    ).execute()
+    chunks = [row["content"] for row in resp.data]
+    return "\n\n---\n".join(chunks)
+</code></pre>
+
+<pre><code class="language-sql">-- Add this RPC function to Supabase (SQL Editor)
+CREATE OR REPLACE FUNCTION match_embeddings(
+    query_embedding vector(384),
+    match_count     INT DEFAULT 3
+)
+RETURNS TABLE (
+    id       BIGINT,
+    doc_id   TEXT,
+    source   TEXT,
+    content  TEXT,
+    similarity FLOAT
+)
+LANGUAGE SQL STABLE
+AS $$
+    SELECT id, doc_id, source, content,
+           1 - (embedding &lt;=&gt; query_embedding) AS similarity
+    FROM embeddings
+    ORDER BY embedding &lt;=&gt; query_embedding
+    LIMIT match_count;
+$$;
+</code></pre>
+
+  <h3>Retrieval + Grounding Approach in the Gateway</h3>
+  <p>The gateway assembles the final prompt as follows:</p>
+<pre><code class="language-text">┌─ System prompt (from source/BlueBush_Persona_Config.md) ───────────────┐
+│ Role: You are the BlueBush Virtual Assistant …                          │
+│                                                                         │
+│ [CONTEXT DATA START]                                                    │
+│ {retrieved_chunks — top-3 nearest from pgvector}                       │
+│ [CONTEXT DATA END]                                                      │
+└─────────────────────────────────────────────────────────────────────────┘
+  + conversation history (last 5 turns)
+  + current user message
+</code></pre>
+  <p>
+    Keep retrieved context under ~800 tokens to stay within the context
+    window of a Llama 3 8B model running at typical gateway timeout limits.
+    Use only the top-3 chunks; more rarely helps and adds latency.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section id="gateway">
+  <h2>6 · AI Gateway — Deployment Recommendation</h2>
+
+  <h3>Option Comparison for a Short-Lived Demo Project</h3>
+  <table>
+    <tr>
+      <th>Option</th><th>Free tier</th><th>Cold starts</th><th>CPU limit</th><th>Deploy complexity</th><th>Verdict</th>
+    </tr>
+    <tr>
+      <td><strong>Cloudflare Workers</strong></td>
+      <td>100 k req/day; 30 s wall time</td>
+      <td>None (global edge)</td>
+      <td>10 ms (JS CPU); ample for proxy/gateway calls to external LLM</td>
+      <td>Low — <code>wrangler deploy</code></td>
+      <td>✅ <strong>Recommended</strong></td>
+    </tr>
+    <tr>
+      <td>Google Cloud Run</td>
+      <td>2 M req/month; 360 k GB-s</td>
+      <td>Yes (~2–5 s)</td>
+      <td>No CPU limit per request</td>
+      <td>Medium — Docker required</td>
+      <td>Good if you need Node/Python runtime; overkill for a proxy</td>
+    </tr>
+    <tr>
+      <td>Render (free)</td>
+      <td>750 h/month</td>
+      <td>Yes (~30 s spin-up after idle)</td>
+      <td>None</td>
+      <td>Low</td>
+      <td>Slow cold starts hurt UX</td>
+    </tr>
+    <tr>
+      <td>Railway</td>
+      <td>$5 credit/month</td>
+      <td>No</td>
+      <td>None</td>
+      <td>Low</td>
+      <td>Cost after credit exhausted</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>Recommendation: Cloudflare Workers.</strong>
+    For a short-lived demo project the Cloudflare Workers free tier covers
+    all realistic demo traffic with zero cold-start penalty and no Docker
+    overhead. The 10 ms <em>CPU</em> limit does not apply to external fetch
+    calls (the worker suspends its CPU clock while awaiting the LLM API
+    response), so streaming LLM proxies work perfectly.
+  </div>
+
+  <h3>Cloudflare Worker — Gateway Skeleton</h3>
+<pre><code class="language-javascript">// gateway/src/index.js  (Cloudflare Worker)
+// Deploy: npx wrangler deploy
+//
+// Environment variables (set via `wrangler secret put` or CF dashboard):
+//   LLM_API_KEY        — HF Inference API or OpenAI-compatible endpoint key
+//   LLM_ENDPOINT       — e.g. https://api-inference.huggingface.co/models/your-username/bluebush-lora
+//   SUPABASE_URL       — https://&lt;project-id&gt;.supabase.co
+//   SUPABASE_SVC_KEY   — service-role key (NEVER expose to browser)
+//   GATEWAY_API_KEY    — a secret string the website JS must include in X-API-Key header
+//   EMBED_ENDPOINT     — optional: hosted embedding service URL
+
+const ALLOWED_ORIGINS = ["https://azzamunza.github.io"];  // GitHub Pages origin
+
+export default {
+  async fetch(request, env) {
+    // ── CORS preflight ────────────────────────────────────────────
+    if (request.method === "OPTIONS") {
+      return corsHeaders(new Response(null, { status: 204 }), request, env);
+    }
+
+    // ── Auth: require X-API-Key header ────────────────────────────
+    const apiKey = request.headers.get("X-API-Key");
+    if (apiKey !== env.GATEWAY_API_KEY) {
+      return corsHeaders(new Response("Unauthorised", { status: 401 }), request, env);
+    }
+
+    const url = new URL(request.url);
+
+    if (url.pathname === "/chat" &amp;&amp; request.method === "POST") {
+      return corsHeaders(await handleChat(request, env), request, env);
+    }
+
+    return corsHeaders(new Response("Not found", { status: 404 }), request, env);
+  }
+};
+
+async function handleChat(request, env) {
+  const { message, history = [] } = await request.json();
+
+  // ── 1. RAG: retrieve context from Supabase pgvector ─────────────
+  const context = await retrieveContext(message, env);
+
+  // ── 2. Assemble prompt ────────────────────────────────────────────
+  const systemPrompt = `You are the BlueBush Virtual Assistant — eco-conscious,
+friendly, Aussie-casual. Use the context below to answer product questions.
+Never invent prices or stock levels.
+
+[CONTEXT DATA START]
+${context}
+[CONTEXT DATA END]`;
+
+  const messages = [
+    { role: "system",    content: systemPrompt },
+    ...history.slice(-10),   // last 5 turns (10 messages)
+    { role: "user",      content: message },
+  ];
+
+  // ── 3. Call fine-tuned LLM (OpenAI-compatible endpoint) ──────────
+  const llmResp = await fetch(env.LLM_ENDPOINT, {
+    method:  "POST",
+    headers: {
+      "Content-Type":  "application/json",
+      "Authorization": `Bearer ${env.LLM_API_KEY}`,
+    },
+    body: JSON.stringify({ messages, max_tokens: 400, temperature: 0.7 }),
+  });
+  const llmData  = await llmResp.json();
+  const reply    = llmData.choices?.[0]?.message?.content ?? "No worries — let me look into that for you.";
+
+  return new Response(JSON.stringify({ reply }), {
+    headers: { "Content-Type": "application/json" },
+  });
+}
+
+async function retrieveContext(query, env) {
+  // Call your embedding service to get query embedding, then Supabase RPC
+  // Simplified version using Supabase REST + a serverless embed endpoint:
+  try {
+    const embedResp = await fetch(env.EMBED_ENDPOINT, {
+      method:  "POST",
+      headers: { "Content-Type": "application/json" },
+      body:    JSON.stringify({ text: query }),
+    });
+    const { embedding } = await embedResp.json();
+
+    const sbResp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/rpc/match_embeddings`,
+      {
+        method:  "POST",
+        headers: {
+          "Content-Type":  "application/json",
+          "apikey":        env.SUPABASE_SVC_KEY,
+          "Authorization": `Bearer ${env.SUPABASE_SVC_KEY}`,
+        },
+        body: JSON.stringify({ query_embedding: embedding, match_count: 3 }),
+      }
+    );
+    const chunks = await sbResp.json();
+    return chunks.map(c =&gt; c.content).join("\n\n---\n");
+  } catch (err) {
+    console.warn("[RAG] Retrieval failed, answering without context:", err);
+    return "";   // graceful degradation — answer without RAG context
+  }
+}
+
+function corsHeaders(response, request, env) {
+  const origin = request.headers.get("Origin") || "";
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    response.headers.set("Access-Control-Allow-Origin", origin);
+    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type, X-API-Key");
+  }
+  return response;
+}
+</code></pre>
+
+  <h3>Cloudflare Workers — Dockerfile Alternative (Cloud Run)</h3>
+  <p>
+    If you prefer Google Cloud Run (e.g., to use Python for the gateway),
+    here is a minimal <code>Dockerfile</code>:
+  </p>
+<pre><code class="language-dockerfile"># gateway/Dockerfile  (for Cloud Run)
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+</code></pre>
+<pre><code class="language-text"># gateway/requirements.txt
+fastapi==0.115.*
+uvicorn==0.32.*
+httpx==0.27.*
+supabase==2.7.*
+sentence-transformers==3.1.*
+</code></pre>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section id="website-integration">
+  <h2>7 · Website Integration &amp; Security</h2>
+
+  <h3>Front-End Integration Plan</h3>
+  <p>
+    The BlueBush website already has <code>js/chatbot.js</code>. Extend it to
+    call the AI Gateway instead of (or in addition to) the existing rule-based
+    logic.
+  </p>
+
+  <h4>Text Chat Endpoint</h4>
+<pre><code class="language-javascript">// js/chatbot.js — add AI Gateway call
+// The GATEWAY_URL and GATEWAY_KEY should be injected via js/env.js
+// (same pattern as SUPABASE_URL / SUPABASE_ANON_KEY)
+
+const GATEWAY_URL = window.GATEWAY_URL;      // e.g. https://bluebush-ai.yourname.workers.dev
+const GATEWAY_KEY = window.GATEWAY_API_KEY;  // public-facing API key (not LLM key)
+
+let conversationHistory = [];
+
+async function sendMessage(userText) {
+  conversationHistory.push({ role: "user", content: userText });
+
+  const response = await fetch(`${GATEWAY_URL}/chat`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-Key":    GATEWAY_KEY,
+    },
+    body: JSON.stringify({
+      message: userText,
+      history: conversationHistory.slice(-10),   // last 5 turns
+    }),
+  });
+
+  const data  = await response.json();
+  const reply = data.reply;
+  conversationHistory.push({ role: "assistant", content: reply });
+  return reply;
+}
+</code></pre>
+
+  <h4>Update <code>js/env.js</code></h4>
+<pre><code class="language-javascript">// js/env.js  (add these lines alongside existing Supabase config)
+// IMPORTANT: GATEWAY_API_KEY is a low-privilege key for rate-limiting only.
+// It does NOT provide access to LLM or Supabase service-role.
+window.GATEWAY_URL     = 'https://bluebush-ai.yourname.workers.dev';
+window.GATEWAY_API_KEY = 'bb-pub-xxxxxxxxxxxxxxxxxxxx';  // rotate periodically
+</code></pre>
+
+  <h3>Security Guidance</h3>
+  <table>
+    <tr><th>What</th><th>Where it lives</th><th>Rule</th></tr>
+    <tr>
+      <td>Supabase <strong>anon key</strong></td>
+      <td><code>js/env.js</code> (client-visible)</td>
+      <td>✅ Safe to expose; protected by RLS policies. See <a href="supabase-setup.md">docs/supabase-setup.md</a></td>
+    </tr>
+    <tr>
+      <td>Supabase <strong>service-role key</strong></td>
+      <td>Gateway environment variables only</td>
+      <td>🚫 Never in JS, never in git. Use <code>wrangler secret put</code></td>
+    </tr>
+    <tr>
+      <td>LLM API key</td>
+      <td>Gateway environment variables only</td>
+      <td>🚫 Never in JS, never in git</td>
+    </tr>
+    <tr>
+      <td>NVIDIA API key</td>
+      <td>Gateway environment variables only</td>
+      <td>🚫 Never in JS, never in git</td>
+    </tr>
+    <tr>
+      <td>Gateway API key (<code>GATEWAY_API_KEY</code>)</td>
+      <td><code>js/env.js</code> + CF secret</td>
+      <td>Low-privilege; provides rate-limiting only. Rotate every 30 days</td>
+    </tr>
+  </table>
+
+  <h3>Rate Limiting</h3>
+<pre><code class="language-javascript">// Add to Cloudflare Worker (uses CF's built-in KV for simple rate limiting)
+// wrangler.toml:  [[kv_namespaces]]  binding = "RATE_LIMIT_KV"  id = "..."
+
+async function checkRateLimit(ip, env) {
+  const key     = `rl:${ip}`;
+  const current = parseInt(await env.RATE_LIMIT_KV.get(key) || "0");
+  const MAX_RPM = 20;
+  if (current >= MAX_RPM) return false;
+  await env.RATE_LIMIT_KV.put(key, String(current + 1), { expirationTtl: 60 });
+  return true;
+}
+
+// Inside fetch():
+const clientIP = request.headers.get("CF-Connecting-IP");
+if (!(await checkRateLimit(clientIP, env))) {
+  return new Response("Rate limit exceeded", { status: 429 });
+}
+</code></pre>
+
+  <div class="callout warn">
+    <strong>Cloudflare Turnstile (optional but recommended).</strong>
+    Add Turnstile to the chat form for bot protection without requiring users
+    to solve a CAPTCHA. The gateway verifies the Turnstile token before
+    processing the request. See
+    <a href="https://developers.cloudflare.com/turnstile/" target="_blank">
+      developers.cloudflare.com/turnstile
+    </a>.
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section id="voice">
+  <h2>8 · Voice — Australian Neutral + PersonaPlex Full-Duplex</h2>
+
+  <div class="callout">
+    <strong>Important distinction.</strong>
+    The <em>accent and voice identity</em> is the job of the TTS or voice
+    model. The <em>vocabulary and phrasing</em> ("No worries", "Cheers",
+    "Sorted") is the job of the text LLM (trained in Section 4).
+    These are separate concerns — do not conflate them.
+  </div>
+
+  <h3>Phase A — MVP: Text Chat + Non-Full-Duplex TTS/ASR</h3>
+  <p>
+    Deliver a working voice experience without any specialised voice
+    infrastructure. Use the browser Web Speech API (ASR) and a TTS service.
+  </p>
+<pre><code class="language-javascript">// js/voice-mvp.js — Browser Web Speech API (ASR) + TTS
+// No new backend needed; works with the existing AI Gateway /chat endpoint
+
+// ── ASR: listen ─────────────────────────────────────────────────
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang     = "en-AU";   // Australian English
+recognition.interimResults = false;
+
+recognition.onresult = async (event) => {
+  const userText = event.results[0][0].transcript;
+  const reply    = await sendMessage(userText);  // existing chat function
+  speakReply(reply);
+};
+
+// ── TTS: speak ───────────────────────────────────────────────────
+function speakReply(text) {
+  const utterance      = new SpeechSynthesisUtterance(text);
+  utterance.lang       = "en-AU";
+  // Try to select an Australian voice if available
+  const voices         = window.speechSynthesis.getVoices();
+  const auVoice        = voices.find(v =&gt; v.lang === "en-AU") || null;
+  if (auVoice) utterance.voice = auVoice;
+  utterance.rate  = 1.0;
+  utterance.pitch = 1.0;
+  window.speechSynthesis.speak(utterance);
+}
+</code></pre>
+
+  <p>
+    <strong>Server-side TTS alternative (Phase A+):</strong> Route TTS through
+    the gateway to use OpenAI TTS (<code>tts-1</code> with <code>alloy</code>
+    or <code>nova</code> voice) or ElevenLabs. This gives much higher quality
+    without requiring PersonaPlex.
+  </p>
+
+  <h3>Phase B — Full Duplex: NVIDIA PersonaPlex</h3>
+  <p>
+    PersonaPlex is a single unified model that handles ASR → LLM → TTS in one
+    low-latency stream (&lt;300 ms). It uses a <strong>dual-stream
+    architecture</strong>: audio-in and text-in are processed concurrently,
+    and audio-out is streamed back as tokens are generated.
+  </p>
+
+  <h4>Gateway WebSocket Handler (PersonaPlex streaming)</h4>
+<pre><code class="language-python"># gateway/voice_session.py  (Python, e.g., FastAPI on Cloud Run)
+# This is where PersonaPlex makes Cloud Run a better fit than CF Workers
+# (WebSocket + streaming binary audio is complex in Workers)
+
+import asyncio, os, websockets
+from fastapi import FastAPI, WebSocket
+
+NVIDIA_API_KEY      = os.environ["NVIDIA_API_KEY"]
+PERSONAPLEX_WS_URL  = "wss://integrate.api.nvidia.com/v1/personaplex/stream"
+SYSTEM_PROMPT       = open("system_prompt.txt").read()
+
+app = FastAPI()
+
+@app.websocket("/voice")
+async def voice_session(ws: WebSocket, api_key: str):
+    """Full-duplex voice bridge: Browser ↔ Gateway ↔ PersonaPlex."""
+    if api_key != os.environ["GATEWAY_API_KEY"]:
+        await ws.close(code=4001)
+        return
+    await ws.accept()
+
+    async with websockets.connect(
+        PERSONAPLEX_WS_URL,
+        extra_headers={"Authorization": f"Bearer {NVIDIA_API_KEY}"}
+    ) as pp_ws:
+        # ── Send session config ──────────────────────────────────
+        import json
+        await pp_ws.send(json.dumps({
+            "type":          "session.init",
+            "system_prompt": SYSTEM_PROMPT,
+            "voice_preset":  "en-AU-neutral",   # AU neutral voice preset
+            "lora_adapter":  "your-username/bluebush-lora",   # HF Hub adapter ID
+            "sample_rate":   24000,
+        }))
+
+        # ── Bidirectional relay ────────────────────────────────────
+        async def browser_to_pp():
+            async for audio_chunk in ws.iter_bytes():
+                await pp_ws.send(audio_chunk)
+
+        async def pp_to_browser():
+            async for message in pp_ws:
+                if isinstance(message, bytes):
+                    await ws.send_bytes(message)   # audio tokens → browser
+                else:
+                    data = json.loads(message)
+                    if data.get("type") == "transcript":
+                        await ws.send_json(data)   # live transcript → UI
+
+        await asyncio.gather(browser_to_pp(), pp_to_browser())
+</code></pre>
+
+  <h4>Browser WebSocket Client (Full-Duplex)</h4>
+<pre><code class="language-javascript">// js/voice-fullduplex.js
+const ws = new WebSocket(
+  `wss://bluebush-gateway.run.app/voice?api_key=${window.GATEWAY_API_KEY}`
+);
+ws.binaryType = "arraybuffer";
+
+// ── Microphone capture (PCM 24 kHz, mono) ──────────────────────
+const stream  = await navigator.mediaDevices.getUserMedia({ audio: true });
+const ctx     = new AudioContext({ sampleRate: 24000 });
+const source  = ctx.createMediaStreamSource(stream);
+const proc    = ctx.createScriptProcessor(2048, 1, 1);
+// NOTE: ScriptProcessorNode is deprecated; for production, replace with AudioWorkletNode
+// (see https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode)
+
+proc.onaudioprocess = (e) =&gt; {
+  const pcm = e.inputBuffer.getChannelData(0);
+  ws.send(Float32Array.from(pcm).buffer);
+};
+source.connect(proc);
+proc.connect(ctx.destination);
+
+// ── Play incoming audio ──────────────────────────────────────────
+ws.onmessage = async (event) =&gt; {
+  if (event.data instanceof ArrayBuffer) {
+    // Decode PCM 24 kHz and play
+    const audioBuffer = await ctx.decodeAudioData(event.data);
+    const playback    = ctx.createBufferSource();
+    playback.buffer   = audioBuffer;
+    playback.connect(ctx.destination);
+    playback.start();
+  } else {
+    const data = JSON.parse(event.data);
+    if (data.type === "transcript") {
+      document.getElementById("transcript").textContent = data.text;
+    }
+  }
+};
+</code></pre>
+
+  <h3>Australian Neutral Voice — Guidance</h3>
+  <table>
+    <tr><th>Approach</th><th>Data needed</th><th>Quality</th><th>Cost</th></tr>
+    <tr>
+      <td>PersonaPlex built-in voice preset <code>en-AU-neutral</code></td>
+      <td>None</td>
+      <td>Good baseline — accent from NVIDIA training data</td>
+      <td>API usage only</td>
+    </tr>
+    <tr>
+      <td>Zero-shot voice cloning (10 s reference audio)</td>
+      <td>10 s of target speaker audio</td>
+      <td>Very good timbre; slight accent bleed from base model</td>
+      <td>One-off recording</td>
+    </tr>
+    <tr>
+      <td>Full voice fine-tuning</td>
+      <td>1–2 h high-quality AU speaker recordings</td>
+      <td>Excellent — custom AU accent</td>
+      <td>High (GPU hours + recording cost)</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>Recommendation for a demo project:</strong>
+    Use the <code>en-AU-neutral</code> preset in Phase B. If voice identity
+    matters, record 10 seconds of a professional Australian voice actor reading
+    neutral sentences and pass it as <code>voice_prompt</code>.
+    Full voice fine-tuning is only justified for production deployments.
+  </div>
+
+  <h4>Evaluation of "Natural Australian, No Strong Accent"</h4>
+  <ul>
+    <li>Have 3–5 Australian listeners rate samples on a 5-point scale for
+      naturalness and accent strength.</li>
+    <li>Target: naturalness ≥ 4/5, accent perceived as "neutral/light Australian"
+      (not British, American, or broad Bogan).</li>
+    <li>Run MOS (Mean Opinion Score) tests for any TTS change before pushing to
+      production.</li>
+  </ul>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section id="supabase-checklist">
+  <h2>9 · Supabase Review Checklist</h2>
+  <p>
+    Once credentials are available, inspect the following in the Supabase
+    dashboard before running the RAG indexing pipeline. See
+    <a href="supabase-setup.md">docs/supabase-setup.md</a> for the full setup
+    guide.
+  </p>
+
+  <h3>Tables to Inspect</h3>
+  <table>
+    <tr><th>Table</th><th>Expected columns</th><th>Verify</th></tr>
+    <tr>
+      <td><code>products</code></td>
+      <td><code>id, name, category, price_aud, stock_level, description, materials, eco_badge, care_instructions, variants, images, origin</code></td>
+      <td>All BlueBush SKUs present; price and stock data correct</td>
+    </tr>
+    <tr>
+      <td><code>faqs</code></td>
+      <td><code>id, question, answer, category</code></td>
+      <td>See <a href="../source/BlueBush-FAQ-Questions_Gap_Analysis.md">source/BlueBush-FAQ-Questions_Gap_Analysis.md</a> for gap coverage</td>
+    </tr>
+    <tr>
+      <td><code>orders</code></td>
+      <td><code>id, customer_email, items (JSONB), total_aud, status, created_at</code></td>
+      <td>Insert-only for anon; service-role can read/update</td>
+    </tr>
+    <tr>
+      <td><code>embeddings</code></td>
+      <td><code>id, doc_id, source, content, embedding (vector), metadata, created_at</code></td>
+      <td>Created by indexing pipeline (Section 5); row count ≈ products + faqs</td>
+    </tr>
+  </table>
+
+  <h3>RLS &amp; Policy Checklist</h3>
+  <ul class="checklist">
+    <li><code>products</code> — anon <code>SELECT</code> allowed; anon <code>INSERT/UPDATE/DELETE</code> denied</li>
+    <li><code>faqs</code> — anon <code>SELECT</code> allowed; writes denied</li>
+    <li><code>orders</code> — anon <code>INSERT</code> allowed (place order); anon <code>SELECT</code> denied; only via authenticated user or service-role</li>
+    <li><code>embeddings</code> — all anon access denied; only service-role (gateway) can read/write</li>
+    <li><code>place_order</code> RPC — defined with <code>SECURITY DEFINER</code>; handles stock decrement atomically</li>
+    <li><code>match_embeddings</code> RPC — callable by service-role; not exposed to anon</li>
+    <li>Supabase service-role key — confirmed <em>not</em> present in any JS file or git history</li>
+    <li>Supabase anon key — in <code>js/env.js</code>; confirmed RLS protects all sensitive tables</li>
+  </ul>
+
+  <h3>Connection String Check</h3>
+<pre><code class="language-bash"># Verify connectivity from your local machine or Colab:
+python3 -c "
+from supabase import create_client
+import os
+sb = create_client(os.environ['SUPABASE_URL'], os.environ['SUPABASE_SERVICE_KEY'])
+products = sb.table('products').select('id,name').limit(3).execute()
+print('Products sample:', [p['name'] for p in products.data])
+faqs     = sb.table('faqs').select('id').execute()
+print('FAQ count:', len(faqs.data))
+"
+</code></pre>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section id="artifacts">
+  <h2>10 · Output Artifacts Checklist</h2>
+  <p>
+    After completing this tutorial, you should have the following artifacts.
+    Use this as your "definition of done" before going live.
+  </p>
+
+  <h3>Training Artifacts</h3>
+  <ul class="checklist">
+    <li>LoRA adapter weights: <code>adapter_model.safetensors</code></li>
+    <li>Adapter config: <code>adapter_config.json</code> (r=32, α=64, target modules)</li>
+    <li>Tokenizer files: <code>tokenizer.json</code>, <code>tokenizer_config.json</code>, <code>special_tokens_map.json</code></li>
+    <li>Training loss curve (screenshot from Colab or W&amp;B)</li>
+    <li>Validation ROUGE-L score ≥ 0.25</li>
+    <li>Adapter published to a private HF Hub repo for easy versioning</li>
+  </ul>
+
+  <h3>RAG Artifacts</h3>
+  <ul class="checklist">
+    <li>Supabase <code>embeddings</code> table populated (all products + FAQs)</li>
+    <li>HNSW index created on <code>embeddings.embedding</code></li>
+    <li><code>match_embeddings</code> RPC function deployed to Supabase</li>
+    <li>Embedding model noted: <code>sentence-transformers/all-MiniLM-L6-v2</code> (384-dim)</li>
+    <li>Retrieval test: query "bamboo bathroom" returns relevant products</li>
+  </ul>
+
+  <h3>Gateway Service</h3>
+  <ul class="checklist">
+    <li>Cloudflare Worker code in <code>gateway/src/index.js</code></li>
+    <li><code>wrangler.toml</code> configured with correct routes and KV namespace</li>
+    <li>All secrets set via <code>wrangler secret put</code> (not in files)</li>
+    <li>Rate limiting: 20 req/min per IP</li>
+    <li>CORS: restricted to GitHub Pages origin</li>
+    <li><code>POST /chat</code> tested end-to-end from browser</li>
+    <li>(Phase B) <code>WS /voice</code> tested with PersonaPlex endpoint</li>
+  </ul>
+
+  <h3>Website Config Changes</h3>
+  <ul class="checklist">
+    <li><code>js/env.js</code> updated with <code>GATEWAY_URL</code> and <code>GATEWAY_API_KEY</code></li>
+    <li><code>js/chatbot.js</code> calls <code>sendMessage()</code> via gateway</li>
+    <li>(Phase B) <code>js/voice-fullduplex.js</code> added and linked in relevant HTML pages</li>
+    <li>No secrets committed to git — scan with a dedicated tool:
+      <code>pip install trufflehog &amp;&amp; trufflehog git file://. --only-verified</code>
+      or <code>git secrets --scan-history</code>. Note: <code>git log -p | grep</code>
+      only searches the current branch tip; use a scanner to check full history
+      and rotate any key that was ever accidentally committed.</li>
+  </ul>
+
+  <h3>Final End-to-End Smoke Test</h3>
+<pre><code class="language-bash"># Run this from your local machine or Colab after all artifacts are deployed
+
+GATEWAY_URL="https://bluebush-ai.yourname.workers.dev"
+GATEWAY_KEY="bb-pub-xxxxxxxxxxxxxxxxxxxx"
+
+# 1. Text chat endpoint
+curl -s -X POST "$GATEWAY_URL/chat" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: $GATEWAY_KEY" \
+  -d '{"message":"Do you have any bamboo products for the bathroom?","history":[]}' \
+  | python3 -m json.tool
+
+# Expected: JSON with "reply" containing a BlueBush-style answer
+# referencing actual products from the RAG context.
+
+# 2. RAG retrieval direct test (from Colab)
+# python3 -c "from rag_pipeline import retrieve_context; print(retrieve_context('bamboo bathroom'))"
+
+echo "All systems go 🌿"
+</code></pre>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    BlueBush AI Tutorial · Generated for
+    <a href="https://github.com/azzamunza/BlueBush">azzamunza/BlueBush</a> ·
+    Repo files referenced:
+    <a href="../source/BlueBush_Persona_Config.md">source/BlueBush_Persona_Config.md</a> ·
+    <a href="../source/BlueBush System Persona.md">source/BlueBush System Persona.md</a> ·
+    <a href="../training/bluebush-training.jsonl">training/bluebush-training.jsonl</a> ·
+    <a href="../source/BlueBush-Training-Dataset.JSON">source/BlueBush-Training-Dataset.JSON</a> ·
+    <a href="../source/BlueBush-Product-Catalog-V1.json">source/BlueBush-Product-Catalog-V1.json</a> ·
+    <a href="supabase-setup.md">docs/supabase-setup.md</a> ·
+    <a href="../js/env.js">js/env.js</a>
+  </p>
+</footer>
+
+</body>
+</html>

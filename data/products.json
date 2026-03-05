@@ -30,7 +30,7 @@
         {
           "variant_label": "Sage",
           "price_aud": 280,
-          "stock_level": 9,
+          "stock_level": 7,
           "status": "In Stock",
           "description": "Our Maireana French Flax Linen Sheet Set in Sage brings the tranquillity of an Australian garden into your bedroom. Stonewashed to a soft, lived-in feel from night one, this muted sage tone pairs beautifully with natural timber and earthy neutrals.",
           "marketing_hook": "Bring the calm of an Australian garden into your bedroom.",
@@ -48,7 +48,7 @@
         {
           "variant_label": "White",
           "price_aud": 280,
-          "stock_level": 9,
+          "stock_level": 3,
           "status": "In Stock",
           "description": "Crisp, clean and timeless — our Maireana French Flax Linen Sheet Set in White is stonewashed French flax at its purest. A classic choice that gets softer and more beautifully textured with every wash.",
           "marketing_hook": "Timeless white linen — crisp, clean, and forever stylish.",
@@ -66,7 +66,7 @@
         {
           "variant_label": "Charcoal",
           "price_aud": 280,
-          "stock_level": 9,
+          "stock_level": 3,
           "status": "In Stock",
           "description": "Make a sophisticated statement with our Maireana French Flax Linen Sheet Set in Charcoal. Deep, muted, and strikingly beautiful — this stonewashed French flax linen is as temperature-regulating as it is dramatic.",
           "marketing_hook": "Sophisticated and bold — linen bedding that makes a statement.",
@@ -200,7 +200,7 @@
       "variant_skus": [
         {
           "variant_label": "Summer Weight",
-          "price_aud": 160.0,
+          "price_aud": 160,
           "stock_level": 6,
           "status": "In Stock",
           "description": "Our Summer Weight Bamboo Lyocell Quilt Insert is crafted for warm nights — a lighter fill weight that keeps you cool and comfortable without sacrificing the silky softness of 100% bamboo lyocell. Perfect for Australian summers.",
@@ -209,7 +209,7 @@
         },
         {
           "variant_label": "Winter Weight",
-          "price_aud": 200.0,
+          "price_aud": 200,
           "stock_level": 6,
           "status": "In Stock",
           "description": "The Winter Weight Bamboo Lyocell Quilt Insert offers a generous fill for those cooler months while remaining far lighter than traditional synthetic quilts. The bamboo lyocell shell is naturally temperature-regulating, keeping you cosy without overheating.",
@@ -369,7 +369,7 @@
       "variant_skus": [
         {
           "variant_label": "5kg",
-          "price_aud": 200.0,
+          "price_aud": 200,
           "stock_level": 8,
           "status": "In Stock",
           "description": "Our 5kg Weighted Blanket uses organic cotton shell filled with hypo-allergenic micro glass beads for a gentle, calming pressure ideal for lighter adults and teenagers. Scientifically shown to support better sleep quality.",
@@ -378,7 +378,7 @@
         },
         {
           "variant_label": "7kg",
-          "price_aud": 220.0,
+          "price_aud": 220,
           "stock_level": 6,
           "status": "In Stock",
           "description": "The 7kg Weighted Blanket is our most popular weight — perfectly calibrated for the average adult, using organic cotton shell and micro glass bead filling for deep, restorative pressure therapy.",
@@ -387,7 +387,7 @@
         },
         {
           "variant_label": "9kg",
-          "price_aud": 250.0,
+          "price_aud": 250,
           "stock_level": 6,
           "status": "In Stock",
           "description": "For those who love the deepest, most grounding pressure, our 9kg Weighted Blanket delivers maximum weighted therapy in an organic cotton shell with premium micro glass bead filling.",
@@ -561,7 +561,7 @@
       "variant_skus": [
         {
           "variant_label": "Round",
-          "price_aud": 50.0,
+          "price_aud": 50,
           "stock_level": 13,
           "status": "In Stock",
           "description": "Our Round Acacia Wood Serving Paddle is sustainably harvested and hand-oiled for a rich natural grain finish. The circular form makes it ideal for cheese, antipasto, or small charcuterie arrangements.",
@@ -570,7 +570,7 @@
         },
         {
           "variant_label": "Rectangle",
-          "price_aud": 60.0,
+          "price_aud": 60,
           "stock_level": 12,
           "status": "In Stock",
           "description": "The Rectangle Acacia Wood Serving Paddle offers more surface area for generous grazing boards or whole loaves of artisan bread. Sustainably harvested acacia with a beautiful hand-oiled grain finish.",
@@ -1080,7 +1080,7 @@
       "variant_skus": [
         {
           "variant_label": "500ml",
-          "price_aud": 9.0,
+          "price_aud": 9,
           "stock_level": 68,
           "status": "In Stock",
           "description": "Our 500ml Glass Pantry Jar is borosilicate glass with an airtight bamboo lid — the smallest in our pantry range, perfect for herbs, spices, nuts, or small grains. Beautiful on the bench or in the pantry.",
@@ -1089,7 +1089,7 @@
         },
         {
           "variant_label": "1L",
-          "price_aud": 14.0,
+          "price_aud": 14,
           "stock_level": 66,
           "status": "In Stock",
           "description": "The 1L Glass Pantry Jar is the mid-size of our borosilicate glass pantry range with airtight bamboo lid — ideal for rice, oats, pasta, or coffee beans. Stackable and beautifully minimalist.",
@@ -1098,7 +1098,7 @@
         },
         {
           "variant_label": "2L",
-          "price_aud": 20.0,
+          "price_aud": 20,
           "stock_level": 66,
           "status": "In Stock",
           "description": "Our largest 2L Glass Pantry Jar is borosilicate glass with an airtight bamboo lid — designed for bulk dry goods like flour, grains, or legumes. A zero-plastic pantry hero that looks as good as it functions.",
@@ -1256,7 +1256,7 @@
       "variant_skus": [
         {
           "variant_label": "Round (2m)",
-          "price_aud": 350.0,
+          "price_aud": 350,
           "stock_level": 5,
           "status": "In Stock",
           "description": "Our Round 2m Jute Area Rug is hand-braided from natural jute fibre in a beautiful circular form. Adds warm, organic texture to any living space while supporting sustainable natural fibre craft.",
@@ -1265,7 +1265,7 @@
         },
         {
           "variant_label": "Rectangle (2x3m)",
-          "price_aud": 480.0,
+          "price_aud": 480,
           "stock_level": 5,
           "status": "In Stock",
           "description": "The Rectangle 2x3m Jute Area Rug is hand-braided natural jute in a classic rectangular format — generous enough for a living room centrepiece or under a dining table.",
@@ -1425,7 +1425,7 @@
       "variant_skus": [
         {
           "variant_label": "Bath Sheet",
-          "price_aud": 55.0,
+          "price_aud": 55,
           "stock_level": 20,
           "status": "In Stock",
           "description": "Our Bamboo Bath Sheet is the most generous size in our towel range — ultra-absorbent bamboo and organic cotton blend in a beautifully plush weave. Incredibly soft, fast-drying, and sustainably crafted.",
@@ -1434,7 +1434,7 @@
         },
         {
           "variant_label": "Hand Towel",
-          "price_aud": 35.0,
+          "price_aud": 35,
           "stock_level": 20,
           "status": "In Stock",
           "description": "The Bamboo Hand Towel is the everyday workhorse of our towel range — ultra-absorbent bamboo and organic cotton blend in a perfect mid-size. Soft, quick-drying, and built to last.",
@@ -1443,7 +1443,7 @@
         },
         {
           "variant_label": "Face Washer",
-          "price_aud": 15.0,
+          "price_aud": 15,
           "stock_level": 20,
           "status": "In Stock",
           "description": "Our Bamboo Face Washer is the smallest and softest member of the towel family — gentle enough for daily skincare routines, with the same ultra-absorbent bamboo and organic cotton blend.",
@@ -1549,7 +1549,7 @@
       "variant_skus": [
         {
           "variant_label": "Rose Gold",
-          "price_aud": 49.0,
+          "price_aud": 49,
           "stock_level": 34,
           "status": "In Stock",
           "description": "Our Rose Gold Safety Razor features an intricately diamond-knurled brass handle with a warm rose gold plating — the most premium finish in our range. The textured grip provides exceptional control for a close, luxurious shave.",
@@ -1558,7 +1558,7 @@
         },
         {
           "variant_label": "Matte Black",
-          "price_aud": 42.0,
+          "price_aud": 42,
           "stock_level": 33,
           "status": "In Stock",
           "description": "The Matte Black Safety Razor offers a sleek, powder-coated brass handle with a clean minimalist look. A sophisticated choice for the modern zero-waste bathroom.",
@@ -1567,7 +1567,7 @@
         },
         {
           "variant_label": "Silver",
-          "price_aud": 45.0,
+          "price_aud": 45,
           "stock_level": 33,
           "status": "In Stock",
           "description": "The classic Silver Safety Razor features a polished chrome-finish brass handle — timeless, durable, and perfectly weighted for effortless shaving with zero plastic waste.",
@@ -2298,7 +2298,7 @@
       "variant_skus": [
         {
           "variant_label": "Model 1 (Pre-Birth)",
-          "price_aud": 45.0,
+          "price_aud": 45,
           "stock_level": 30,
           "status": "In Stock",
           "description": "The 'Flow' Menstrual Cup Model 1 is designed for lighter flows and pre-childbirth anatomy — medical-grade silicone in the smallest size for comfortable, leak-free wear for up to 12 hours.",
@@ -2307,7 +2307,7 @@
         },
         {
           "variant_label": "Model 2 (Post-Birth)",
-          "price_aud": 45.0,
+          "price_aud": 45,
           "stock_level": 30,
           "status": "In Stock",
           "description": "The 'Flow' Menstrual Cup Model 2 is designed for post-childbirth anatomy — medical-grade silicone in a slightly wider size for optimal comfort and reliable leak-free wear up to 12 hours.",
@@ -2411,7 +2411,7 @@
       "variant_skus": [
         {
           "variant_label": "Day Pack",
-          "price_aud": 35.0,
+          "price_aud": 35,
           "stock_level": 20,
           "status": "In Stock",
           "description": "Our Day Pack Reusable Cloth Pad Set contains softer, lighter pads in bamboo velour for comfortable daytime wear. Snap-fastened, washable, and made to last years — the zero-waste period alternative.",
@@ -2420,7 +2420,7 @@
         },
         {
           "variant_label": "Night Pack",
-          "price_aud": 42.0,
+          "price_aud": 42,
           "stock_level": 20,
           "status": "In Stock",
           "description": "The Night Pack Reusable Cloth Pad Set contains longer, more absorbent pads in bamboo velour for overnight protection. Generously sized with snap fastening — the zero-waste overnight option.",
@@ -2793,7 +2793,7 @@
       "variant_skus": [
         {
           "variant_label": "AA",
-          "price_aud": 29.0,
+          "price_aud": 29,
           "stock_level": 75,
           "status": "In Stock",
           "description": "Our Loop Rechargeable AA Battery Kit contains four lithium-ion AA batteries with a USB charging cradle. Replace disposable batteries for good — each battery lasts thousands of recharge cycles.",
@@ -2802,7 +2802,7 @@
         },
         {
           "variant_label": "AAA",
-          "price_aud": 26.0,
+          "price_aud": 26,
           "stock_level": 75,
           "status": "In Stock",
           "description": "The Loop Rechargeable AAA Battery Kit contains four lithium-ion AAA batteries with a USB charging cradle — a zero-waste power solution for remotes, clocks, and small devices.",
@@ -3823,7 +3823,7 @@
       "variant_skus": [
         {
           "variant_label": "$25",
-          "price_aud": 25.0,
+          "price_aud": 25,
           "stock_level": 2502,
           "status": "In Stock",
           "description": "Give the gift of sustainable living with a $25 BlueBush Digital Gift Card — delivered instantly by email, redeemable on anything in the BlueBush store. The perfect plastic-free, zero-waste gift.",
@@ -3832,7 +3832,7 @@
         },
         {
           "variant_label": "$50",
-          "price_aud": 50.0,
+          "price_aud": 50,
           "stock_level": 2499,
           "status": "In Stock",
           "description": "Our $50 BlueBush Digital Gift Card is delivered instantly by email — a thoughtful, sustainable gift for anyone who values conscious living. Redeemable on the full BlueBush range.",
@@ -3841,7 +3841,7 @@
         },
         {
           "variant_label": "$100",
-          "price_aud": 100.0,
+          "price_aud": 100,
           "stock_level": 2499,
           "status": "In Stock",
           "description": "The $100 BlueBush Digital Gift Card is delivered instantly by email — a generous, plastic-free gift for birthdays, housewarmings, or any occasion. Redeemable on the full BlueBush range.",
@@ -3850,7 +3850,7 @@
         },
         {
           "variant_label": "$200",
-          "price_aud": 200.0,
+          "price_aud": 200,
           "stock_level": 2499,
           "status": "In Stock",
           "description": "Our $200 BlueBush Digital Gift Card is the ultimate sustainable gift — delivered instantly by email and redeemable on the full BlueBush range. Perfect for weddings, major milestones, or as a corporate gift.",

@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AT1: Identify Opportunities for AI Task Automation — BlueBush Assignment Workbook">
+  <title>AT1: Identify Opportunities for AI Task Automation | BlueBush</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.7/quill.snow.css">
+  <style>
+    /* ===== ASSIGNMENT PAGE STYLES ===== */
+
+    /* Sticky header */
+    .assignment-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--deep-forest);
+      color: var(--white);
+      padding: 0.875rem 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+    .assignment-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .assignment-header-left { display: flex; flex-direction: column; gap: 0.15rem; }
+    .assignment-header h1 {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .assignment-header .subtitle {
+      font-size: 0.8rem;
+      color: var(--vibrant-aqua);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-style: italic;
+      opacity: 0.9;
+    }
+    .progress-badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .progress-badge .progress-count {
+      color: var(--vibrant-aqua);
+    }
+    .back-link {
+      color: var(--vibrant-aqua);
+      text-decoration: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .back-link:hover { opacity: 0.75; color: var(--vibrant-aqua); }
+
+    /* Main layout */
+    .assignment-main {
+      background: var(--gray-100);
+      min-height: 100vh;
+      padding: 2rem 0 4rem;
+    }
+    .assignment-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Disclaimer banner */
+    .disclaimer-banner {
+      background: #fef3c7;
+      border: 2px solid #f59e0b;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .disclaimer-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1.4; }
+    .disclaimer-banner p { margin: 0; color: #78350f; font-size: 0.92rem; line-height: 1.6; }
+
+    /* Token prompt modal */
+    .token-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(27, 48, 34, 0.75);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .token-modal {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .token-modal h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--deep-forest);
+    }
+    .token-modal p {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .token-modal input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: 'Lora', serif;
+      color: var(--deep-forest);
+      margin-bottom: 1rem;
+      background: var(--gray-50);
+    }
+    .token-modal input:focus {
+      outline: 2px solid var(--vibrant-aqua);
+      outline-offset: 2px;
+      border-color: var(--deep-teal);
+    }
+    .token-modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; }
+    .token-modal-error {
+      color: var(--red-600);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      display: none;
+    }
+
+    /* Section cards */
+    .section-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid var(--gray-200);
+      position: relative;
+    }
+    .section-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--deep-teal);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+    }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--deep-forest);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.3;
+    }
+
+    /* Completed checkbox */
+    .complete-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray-500);
+      user-select: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .complete-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--deep-teal);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .complete-label.is-complete { color: var(--deep-teal); }
+
+    /* Instruction block */
+    .instruction-block {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .instruction-block p,
+    .instruction-block li {
+      font-size: 0.9rem;
+      color: #1e3a5f;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 0.4rem;
+    }
+    .instruction-block ul {
+      padding-left: 1.4rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .instruction-block .tip {
+      margin-top: 0.5rem;
+      color: #2563eb;
+      font-size: 0.85rem;
+    }
+    .instruction-block strong { font-style: normal; }
+
+    /* Quill editor wrapper */
+    .editor-wrapper {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .quill-container .ql-toolbar {
+      border-radius: 8px 8px 0 0;
+      border-color: var(--gray-200);
+      background: var(--gray-50);
+    }
+    .quill-container .ql-container {
+      border-radius: 0 0 8px 8px;
+      border-color: var(--gray-200);
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      min-height: 200px;
+    }
+    .quill-container .ql-editor {
+      min-height: 200px;
+      max-height: 500px;
+      overflow-y: auto;
+      line-height: 1.7;
+      color: var(--deep-forest);
+    }
+    .quill-container .ql-editor.ql-blank::before {
+      color: var(--gray-500);
+      font-style: italic;
+    }
+
+    /* Editor overlay (for completed state) */
+    .editor-overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: rgba(200, 200, 200, 0.45);
+      border-radius: 0 0 8px 8px;
+      pointer-events: none;
+      z-index: 5;
+      /* covers only the .ql-container portion */
+    }
+    .editor-overlay-full {
+      display: none;
+      position: absolute;
+      top: 41px; /* below toolbar */
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(200, 200, 200, 0.45);
+      border-radius: 0 0 8px 8px;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .section-card.is-complete .editor-overlay-full {
+      display: block;
+    }
+
+    /* Save button row */
+    .save-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn-save {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.25rem;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      background: var(--gray-500);
+      color: var(--white);
+    }
+    .btn-save:hover { background: var(--gray-700); }
+    .btn-save.saved {
+      background: #16a34a;
+      color: var(--white);
+      cursor: default;
+    }
+    .btn-save:focus {
+      outline: 2px solid var(--vibrant-aqua);
+      outline-offset: 2px;
+    }
+    .save-status {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: none;
+    }
+    .save-status.unsaved { color: var(--red-600); display: inline; }
+    .save-status.error { color: var(--red-600); display: inline; }
+    .save-status.saving { color: var(--gray-500); display: inline; }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.5rem;
+      background: var(--deep-teal);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--emerald); color: var(--white); }
+
+    /* Token refresh button in header */
+    .btn-token {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-token:hover { background: rgba(255,255,255,0.2); }
+
+    /* Section complete badge */
+    .section-complete-badge {
+      display: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--deep-teal);
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .section-card.is-complete .section-complete-badge { display: inline-flex; }
+
+    /* Last saved timestamp */
+    .last-saved-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      color: var(--gray-500);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== STICKY ASSIGNMENT HEADER ===== -->
+  <header class="assignment-header" role="banner">
+    <div class="container">
+      <a href="index.html" class="back-link" aria-label="Back to BlueBush main site">← Back to BlueBush</a>
+      <div class="assignment-header-left">
+        <h1>AT1: Identify Opportunities for AI Task Automation</h1>
+        <span class="subtitle">BlueBush — Sustainable Australian Homewares</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;">
+        <span class="progress-badge">Completed: <span class="progress-count" id="progress-count">0</span> / 8 sections</span>
+        <button class="btn-token" id="btn-change-token" title="Change GitHub Token" aria-label="Change GitHub Personal Access Token">🔑 Token</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== GITHUB TOKEN MODAL ===== -->
+  <div class="token-modal-overlay" id="token-modal" role="dialog" aria-modal="true" aria-labelledby="token-modal-title">
+    <div class="token-modal">
+      <h2 id="token-modal-title">🔐 GitHub Access Token Required</h2>
+      <p>
+        This workbook saves your responses to <code>data/A1-Assignment.json</code> in the BlueBush GitHub repository.
+        Please enter your <strong>GitHub Personal Access Token</strong> (PAT) with <em>repo</em> scope to enable saving.<br><br>
+        Your token will be stored in <strong>session storage only</strong> and never committed to the repository.
+      </p>
+      <div class="token-modal-error" id="token-error" role="alert"></div>
+      <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" aria-label="GitHub Personal Access Token">
+      <div class="token-modal-actions">
+        <button class="btn-primary" id="btn-token-submit">Continue →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="assignment-main" id="main-content">
+    <div class="assignment-container">
+
+      <!-- Disclaimer -->
+      <div class="disclaimer-banner" role="alert">
+        <div class="disclaimer-icon">⚠️</div>
+        <p><strong>This is a guided assignment workbook.</strong> All responses must be written in your own words. Do not paste AI-generated content as your answers.</p>
+      </div>
+
+      <!-- ===== SECTION 1 ===== -->
+      <div class="section-card" id="card-section1" data-section="section1">
+        <div class="section-card-header">
+          <div>
+            <div class="section-number">Section 1</div>
+            <div class="section-title">Business Overview</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="section-complete-badge">✓ Complete</span>
+            <label class="complete-label" id="label-section1">
+              <input type="checkbox" id="chk-section1" aria-label="Mark Section 1 as complete">
+              Mark as Complete
+            </label>
+          </div>
+        </div>
+        <div class="instruction-block" role="note" aria-label="Section instructions">
+          <p>Provide a brief overview of BlueBush as a business. In your own words, describe:</p>
+          <ul>
+            <li>What BlueBush sells (product category, target market)</li>
+            <li>The business model (e-commerce, direct-to-consumer)</li>
+            <li>The size/scale of the business (small/medium, online-only)</li>
+            <li>The key values (sustainability, ethical sourcing, Australian-made)</li>
+          </ul>
+          <p class="tip"><em>Tip: Browse the BlueBush website pages (index.html, our-story.html, about-this-site.html) to gather this information yourself.</em></p>
+        </div>
+        <div class="editor-wrapper">
+          <div class="quill-container" id="editor-section1"></div>
+          <div class="editor-overlay-full" aria-hidden="true"></div>
+        </div>
+        <div class="save-row">
+          <button class="btn-save" id="save-section1" data-section="section1" aria-label="Save Section 1">Save Data</button>
+          <span class="save-status" id="status-section1" aria-live="polite"></span>
+          <span class="last-saved-text" id="lastsaved-section1"></span>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 2 ===== -->
+      <div class="section-card" id="card-section2" data-section="section2">
+        <div class="section-card-header">
+          <div>
+            <div class="section-number">Section 2</div>
+            <div class="section-title">Current Business Processes</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="section-complete-badge">✓ Complete</span>
+            <label class="complete-label" id="label-section2">
+              <input type="checkbox" id="chk-section2" aria-label="Mark Section 2 as complete">
+              Mark as Complete
+            </label>
+          </div>
+        </div>
+        <div class="instruction-block" role="note" aria-label="Section instructions">
+          <p>Identify and describe at least <strong>5 current business processes</strong> that BlueBush performs. For each process, explain:</p>
+          <ul>
+            <li>What the process is (e.g., customer order processing, inventory management)</li>
+            <li>Who performs it (staff role or system)</li>
+            <li>How frequently it occurs (daily, weekly, per order, etc.)</li>
+            <li>What tools/systems are currently used (if apparent from the website)</li>
+          </ul>
+          <p class="tip"><em>Tip: Think about processes like product listing management, order fulfilment, customer service, marketing/social media, checkout processing, account management, email communications, etc.</em></p>
+        </div>
+        <div class="editor-wrapper">
+          <div class="quill-container" id="editor-section2"></div>
+          <div class="editor-overlay-full" aria-hidden="true"></div>
+        </div>
+        <div class="save-row">
+          <button class="btn-save" id="save-section2" data-section="section2" aria-label="Save Section 2">Save Data</button>
+          <span class="save-status" id="status-section2" aria-live="polite"></span>
+          <span class="last-saved-text" id="lastsaved-section2"></span>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 3 ===== -->
+      <div class="section-card" id="card-section3" data-section="section3">
+        <div class="section-card-header">
+          <div>
+            <div class="section-number">Section 3</div>
+            <div class="section-title">AI Automation Opportunities — Identification</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="section-complete-badge">✓ Complete</span>
+            <label class="complete-label" id="label-section3">
+              <input type="checkbox" id="chk-section3" aria-label="Mark Section 3 as complete">
+              Mark as Complete
+            </label>
+          </div>
+        </div>
+        <div class="instruction-block" role="note" aria-label="Section instructions">
+          <p>From the processes you identified in Section 2, select <strong>at least 3 processes</strong> that could benefit from AI automation. For each opportunity:</p>
+          <ul>
+            <li>Name the process</li>
+            <li>Explain WHY this process is suitable for AI automation (repetitive? data-heavy? pattern recognition?)</li>
+            <li>Describe what type of AI tool could be applied (e.g., chatbot, recommendation engine, predictive analytics, automated email, image recognition)</li>
+          </ul>
+          <p class="tip"><em>Tip: Consider the VETASSESS criteria for AI suitability: repetitive tasks, large data volumes, pattern recognition, natural language processing needs.</em></p>
+        </div>
+        <div class="editor-wrapper">
+          <div class="quill-container" id="editor-section3"></div>
+          <div class="editor-overlay-full" aria-hidden="true"></div>
+        </div>
+        <div class="save-row">
+          <button class="btn-save" id="save-section3" data-section="section3" aria-label="Save Section 3">Save Data</button>
+          <span class="save-status" id="status-section3" aria-live="polite"></span>
+          <span class="last-saved-text" id="lastsaved-section3"></span>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 4 ===== -->
+      <div class="section-card" id="card-section4" data-section="section4">
+        <div class="section-card-header">
+          <div>
+            <div class="section-number">Section 4</div>
+            <div class="section-title">AI Automation Opportunities — Priority Assessment</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="section-complete-badge">✓ Complete</span>
+            <label class="complete-label" id="label-section4">
+              <input type="checkbox" id="chk-section4" aria-label="Mark Section 4 as complete">
+              Mark as Complete
+            </label>
+          </div>
+        </div>
+        <div class="instruction-block" role="note" aria-label="Section instructions">
+          <p>For each AI opportunity identified in Section 3, assess its priority using the following criteria and provide a score (1–5) and justification for each:</p>
+          <ul>
+            <li><strong>Impact</strong>: How significantly will it improve business outcomes?</li>
+            <li><strong>Feasibility</strong>: How easy/affordable is it to implement?</li>
+            <li><strong>Risk</strong>: What are the potential risks or downsides?</li>
+            <li><strong>Urgency</strong>: How time-sensitive is the need?</li>
+          </ul>
+          <p>Create a summary table ranking your opportunities from highest to lowest priority.</p>
+          <p class="tip"><em>Tip: A simple scoring table works well here. Consider using the Quill editor's table feature.</em></p>
+        </div>
+        <div class="editor-wrapper">
+          <div class="quill-container" id="editor-section4"></div>
+          <div class="editor-overlay-full" aria-hidden="true"></div>
+        </div>
+        <div class="save-row">
+          <button class="btn-save" id="save-section4" data-section="section4" aria-label="Save Section 4">Save Data</button>
+          <span class="save-status" id="status-section4" aria-live="polite"></span>
+          <span class="last-saved-text" id="lastsaved-section4"></span>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 5 ===== -->
+      <div class="section-card" id="card-section5" data-section="section5">
+        <div class="section-card-header">
+          <div>
+            <div class="section-number">Section 5</div>
+            <div class="section-title">Recommended AI Solution — Detail</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="section-complete-badge">✓ Complete</span>
+            <label class="complete-label" id="label-section5">
+              <input type="checkbox" id="chk-section5" aria-label="Mark Section 5 as complete">
+              Mark as Complete
+            </label>
+          </div>
+        </div>
+        <div class="instruction-block" role="note" aria-label="Section instructions">
+          <p>Select your <strong>TOP priority</strong> AI automation opportunity from Section 4 and provide a detailed recommendation including:</p>
+          <ul>
+            <li><strong>Solution description</strong>: What AI tool/system would you implement?</li>
+            <li><strong>Specific functionality</strong>: What exactly would it do? (be specific to BlueBush)</li>
+            <li><strong>Technology options</strong>: Name 2–3 real AI tools/platforms that could deliver this (e.g., specific chatbot platforms, Shopify AI apps, email automation tools)</li>
+            <li><strong>Integration requirements</strong>: What existing BlueBush systems would it need to integrate with?</li>
+            <li><strong>Expected benefits</strong>: Quantify where possible (e.g., "reduce response time by X%", "save X hours per week")</li>
+          </ul>
+        </div>
+        <div class="editor-wrapper">
+          <div class="quill-container" id="editor-section5"></div>
+          <div class="editor-overlay-full" aria-hidden="true"></div>
+        </div>
+        <div class="save-row">
+          <button class="btn-save" id="save-section5" data-section="section5" aria-label="Save Section 5">Save Data</button>
+          <span class="save-status" id="status-section5" aria-live="polite"></span>
+          <span class="last-saved-text" id="lastsaved-section5"></span>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 6 ===== -->
+      <div class="section-card" id="card-section6" data-section="section6">
+        <div class="section-card-header">
+          <div>
+            <div class="section-number">Section 6</div>
+            <div class="section-title">Implementation Plan</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="section-complete-badge">✓ Complete</span>
+            <label class="complete-label" id="label-section6">
+              <input type="checkbox" id="chk-section6" aria-label="Mark Section 6 as complete">
+              Mark as Complete
+            </label>
+          </div>
+        </div>
+        <div class="instruction-block" role="note" aria-label="Section instructions">
+          <p>Create a high-level implementation plan for your recommended AI solution. Include:</p>
+          <ul>
+            <li><strong>Phase 1 – Planning</strong> (Week 1–2): What needs to be done to prepare?</li>
+            <li><strong>Phase 2 – Setup &amp; Configuration</strong> (Week 3–4): How is the tool configured/trained?</li>
+            <li><strong>Phase 3 – Testing</strong> (Week 5–6): How do you test it before going live?</li>
+            <li><strong>Phase 4 – Launch &amp; Monitor</strong> (Week 7–8): How do you roll it out and monitor success?</li>
+          </ul>
+          <p>For each phase, list: tasks, responsible party, resources needed, success criteria.</p>
+        </div>
+        <div class="editor-wrapper">
+          <div class="quill-container" id="editor-section6"></div>
+          <div class="editor-overlay-full" aria-hidden="true"></div>
+        </div>
+        <div class="save-row">
+          <button class="btn-save" id="save-section6" data-section="section6" aria-label="Save Section 6">Save Data</button>
+          <span class="save-status" id="status-section6" aria-live="polite"></span>
+          <span class="last-saved-text" id="lastsaved-section6"></span>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 7 ===== -->
+      <div class="section-card" id="card-section7" data-section="section7">
+        <div class="section-card-header">
+          <div>
+            <div class="section-number">Section 7</div>
+            <div class="section-title">Risk Assessment</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="section-complete-badge">✓ Complete</span>
+            <label class="complete-label" id="label-section7">
+              <input type="checkbox" id="chk-section7" aria-label="Mark Section 7 as complete">
+              Mark as Complete
+            </label>
+          </div>
+        </div>
+        <div class="instruction-block" role="note" aria-label="Section instructions">
+          <p>Identify and assess <strong>at least 4 risks</strong> associated with implementing your recommended AI solution at BlueBush. For each risk:</p>
+          <ul>
+            <li><strong>Risk description</strong>: What could go wrong?</li>
+            <li><strong>Likelihood</strong>: Low / Medium / High</li>
+            <li><strong>Impact</strong>: Low / Medium / High</li>
+            <li><strong>Mitigation strategy</strong>: What steps would you take to reduce or manage this risk?</li>
+          </ul>
+          <p class="tip"><em>Consider risks such as: data privacy, customer trust/acceptance, staff training needs, technology failures, cost overruns, incorrect AI outputs.</em></p>
+        </div>
+        <div class="editor-wrapper">
+          <div class="quill-container" id="editor-section7"></div>
+          <div class="editor-overlay-full" aria-hidden="true"></div>
+        </div>
+        <div class="save-row">
+          <button class="btn-save" id="save-section7" data-section="section7" aria-label="Save Section 7">Save Data</button>
+          <span class="save-status" id="status-section7" aria-live="polite"></span>
+          <span class="last-saved-text" id="lastsaved-section7"></span>
+        </div>
+      </div>
+
+      <!-- ===== SECTION 8 ===== -->
+      <div class="section-card" id="card-section8" data-section="section8">
+        <div class="section-card-header">
+          <div>
+            <div class="section-number">Section 8</div>
+            <div class="section-title">Conclusion &amp; Reflection</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="section-complete-badge">✓ Complete</span>
+            <label class="complete-label" id="label-section8">
+              <input type="checkbox" id="chk-section8" aria-label="Mark Section 8 as complete">
+              Mark as Complete
+            </label>
+          </div>
+        </div>
+        <div class="instruction-block" role="note" aria-label="Section instructions">
+          <p>Write a conclusion (approximately 200–300 words) that:</p>
+          <ul>
+            <li>Summarises the key AI automation opportunity you identified</li>
+            <li>Explains how it aligns with BlueBush's business values (sustainability, customer experience)</li>
+            <li>Reflects on what you learned about identifying AI opportunities in a real business context</li>
+            <li>States any limitations of your analysis or areas for further investigation</li>
+          </ul>
+          <p class="tip"><em>This section should be written entirely in your own words and reflect genuine personal learning.</em></p>
+        </div>
+        <div class="editor-wrapper">
+          <div class="quill-container" id="editor-section8"></div>
+          <div class="editor-overlay-full" aria-hidden="true"></div>
+        </div>
+        <div class="save-row">
+          <button class="btn-save" id="save-section8" data-section="section8" aria-label="Save Section 8">Save Data</button>
+          <span class="save-status" id="status-section8" aria-live="polite"></span>
+          <span class="last-saved-text" id="lastsaved-section8"></span>
+        </div>
+      </div>
+
+    </div><!-- /.assignment-container -->
+  </main>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Constants ── */
+    const REPO_OWNER = 'azzamunza';
+    const REPO_NAME  = 'BlueBush';
+    const DATA_PATH  = 'data/A1-Assignment.json';
+    const SECTIONS   = ['section1','section2','section3','section4','section5','section6','section7','section8'];
+    const TOKEN_KEY  = 'bb_github_pat'; // sessionStorage key
+
+    /* ── State ── */
+    const quills      = {};   // sectionId → Quill instance
+    let   assignmentData = null; // current JSON from GitHub
+    let   fileSha        = null; // GitHub file SHA for PUT
+
+    /* ── Toolbar config ── */
+    const TOOLBAR_OPTIONS = [
+      [{ header: [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['link', 'clean']
+    ];
+
+    /* ── Helpers ── */
+    function getToken() {
+      return sessionStorage.getItem(TOKEN_KEY) || '';
+    }
+    function setToken(t) {
+      sessionStorage.setItem(TOKEN_KEY, t);
+    }
+
+    function formatLastSaved(iso) {
+      if (!iso) return '';
+      try {
+        const d = new Date(iso);
+        return 'Last saved: ' + d.toLocaleString('en-AU', { dateStyle: 'short', timeStyle: 'short' });
+      } catch (e) {
+        return 'Last saved: ' + iso;
+      }
+    }
+
+    function updateProgressCounter() {
+      const count = SECTIONS.filter(s => {
+        const chk = document.getElementById('chk-' + s);
+        return chk && chk.checked;
+      }).length;
+      document.getElementById('progress-count').textContent = count;
+    }
+
+    /* ── Quill initialisation ── */
+    function initEditors() {
+      SECTIONS.forEach(function (sectionId) {
+        const container = document.getElementById('editor-' + sectionId);
+        if (!container) return;
+        const q = new Quill(container, {
+          theme: 'snow',
+          placeholder: 'Write your response here…',
+          modules: { toolbar: TOOLBAR_OPTIONS }
+        });
+        quills[sectionId] = q;
+
+        // text-change → mark unsaved
+        q.on('text-change', function (delta, old, source) {
+          if (source !== 'user') return;
+          markUnsaved(sectionId);
+        });
+      });
+    }
+
+    /* ── Button state helpers ── */
+    function markUnsaved(sectionId) {
+      const btn = document.getElementById('save-' + sectionId);
+      const status = document.getElementById('status-' + sectionId);
+      if (!btn) return;
+      btn.textContent = 'Save Data';
+      btn.classList.remove('saved');
+      btn.style.background = '';
+      if (status) {
+        status.textContent = 'Changes Not Saved';
+        status.className = 'save-status unsaved';
+      }
+    }
+
+    function markSaved(sectionId, timestamp) {
+      const btn = document.getElementById('save-' + sectionId);
+      const status = document.getElementById('status-' + sectionId);
+      const lastSaved = document.getElementById('lastsaved-' + sectionId);
+      if (!btn) return;
+      btn.textContent = 'Data Saved';
+      btn.classList.add('saved');
+      if (status) {
+        status.textContent = '';
+        status.className = 'save-status';
+      }
+      if (lastSaved && timestamp) {
+        lastSaved.textContent = formatLastSaved(timestamp);
+      }
+    }
+
+    function markSaving(sectionId) {
+      const btn = document.getElementById('save-' + sectionId);
+      const status = document.getElementById('status-' + sectionId);
+      if (!btn) return;
+      btn.textContent = 'Saving…';
+      btn.disabled = true;
+      if (status) {
+        status.textContent = 'Saving…';
+        status.className = 'save-status saving';
+      }
+    }
+
+    function markSaveError(sectionId, msg) {
+      const btn = document.getElementById('save-' + sectionId);
+      const status = document.getElementById('status-' + sectionId);
+      if (!btn) return;
+      btn.textContent = 'Save Data';
+      btn.disabled = false;
+      btn.classList.remove('saved');
+      if (status) {
+        status.textContent = msg || 'Save failed — check your token and try again.';
+        status.className = 'save-status error';
+      }
+    }
+
+    /* ── Section complete toggle ── */
+    function applyCompletedState(sectionId, isComplete) {
+      const card   = document.getElementById('card-' + sectionId);
+      const chk    = document.getElementById('chk-' + sectionId);
+      const label  = document.getElementById('label-' + sectionId);
+      const q      = quills[sectionId];
+      if (!card || !q) return;
+
+      if (isComplete) {
+        card.classList.add('is-complete');
+        if (chk) chk.checked = true;
+        if (label) label.classList.add('is-complete');
+        q.enable(false);
+      } else {
+        card.classList.remove('is-complete');
+        if (chk) chk.checked = false;
+        if (label) label.classList.remove('is-complete');
+        q.enable(true);
+      }
+    }
+
+    /* ── Populate editors from loaded data ── */
+    function populateEditors(data) {
+      if (!data || !data.sections) return;
+      SECTIONS.forEach(function (sectionId) {
+        const sec = data.sections[sectionId];
+        if (!sec) return;
+        const q = quills[sectionId];
+        if (!q) return;
+
+        // Set content (HTML) — sanitize via DOMParser before inserting
+        if (sec.content) {
+          q.enable(true); // must be enabled to paste HTML
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(sec.content, 'text/html');
+          const safeHtml = doc.body.innerHTML;
+          q.clipboard.dangerouslyPasteHTML(safeHtml);
+        }
+
+        // Apply completed state
+        applyCompletedState(sectionId, !!sec.completed);
+
+        // Show last saved
+        const lastSaved = document.getElementById('lastsaved-' + sectionId);
+        if (lastSaved && sec.lastSaved) {
+          lastSaved.textContent = formatLastSaved(sec.lastSaved);
+        }
+
+        // Mark as saved (data freshly loaded = not dirty)
+        const btn = document.getElementById('save-' + sectionId);
+        if (btn) {
+          btn.textContent = 'Save Data';
+          btn.classList.remove('saved');
+          btn.disabled = false;
+        }
+        const status = document.getElementById('status-' + sectionId);
+        if (status) {
+          status.textContent = '';
+          status.className = 'save-status';
+        }
+      });
+      updateProgressCounter();
+    }
+
+    /* ── Build JSON payload ── */
+    function buildPayload() {
+      const now = new Date().toISOString();
+      const sections = {};
+      SECTIONS.forEach(function (sectionId) {
+        const q    = quills[sectionId];
+        const chk  = document.getElementById('chk-' + sectionId);
+        const prev = (assignmentData && assignmentData.sections && assignmentData.sections[sectionId]) || {};
+        sections[sectionId] = {
+          title:     prev.title || sectionId,
+          completed: chk ? chk.checked : false,
+          content:   q ? q.root.innerHTML : (prev.content || ''),
+          lastSaved: now
+        };
+      });
+      return {
+        assignment:  'AT1 - Identify Opportunities for AI Task Automation',
+        lastUpdated: now,
+        sections:    sections
+      };
+    }
+
+    /* ── GitHub API: GET file ── */
+    async function githubGetFile(token) {
+      const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + DATA_PATH;
+      const res = await fetch(url, {
+        headers: {
+          'Authorization': 'Bearer ' + token,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error('GET failed (' + res.status + '): ' + (body.message || res.statusText));
+      }
+      return res.json();
+    }
+
+    /* ── GitHub API: PUT file ── */
+    async function githubPutFile(token, content, sha, message) {
+      const url = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + DATA_PATH;
+      const body = {
+        message: message || 'Update AT1 assignment data',
+        content: btoa(String.fromCharCode(...new TextEncoder().encode(content))),
+        sha:     sha
+      };
+      const res = await fetch(url, {
+        method:  'PUT',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+          'Accept':        'application/vnd.github.v3+json',
+          'Content-Type':  'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => ({}));
+        throw new Error('PUT failed (' + res.status + '): ' + (errBody.message || res.statusText));
+      }
+      return res.json();
+    }
+
+    /* ── Load data from GitHub ── */
+    async function loadData() {
+      const token = getToken();
+      if (!token) return;
+
+      try {
+        const fileData = await githubGetFile(token);
+        fileSha = fileData.sha;
+        const rawBytes = Uint8Array.from(atob(fileData.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+        const jsonStr = new TextDecoder().decode(rawBytes);
+        assignmentData = JSON.parse(jsonStr);
+        populateEditors(assignmentData);
+      } catch (err) {
+        console.warn('Could not load assignment data:', err.message);
+        // Non-fatal: user can still edit and save
+      }
+    }
+
+    /* ── Save a single section ── */
+    async function saveSection(sectionId) {
+      const token = getToken();
+      if (!token) {
+        showTokenModal();
+        return;
+      }
+
+      markSaving(sectionId);
+
+      try {
+        // Refresh SHA first (another device may have saved)
+        const fileData = await githubGetFile(token);
+        fileSha = fileData.sha;
+
+        // Merge latest content into assignmentData
+        const nowSection = new Date().toISOString();
+        if (!assignmentData) assignmentData = buildPayload();
+        if (!assignmentData.sections) assignmentData.sections = {};
+
+        const q   = quills[sectionId];
+        const chk = document.getElementById('chk-' + sectionId);
+        const prev = assignmentData.sections[sectionId] || {};
+
+        assignmentData.sections[sectionId] = {
+          title:     prev.title || sectionId,
+          completed: chk ? chk.checked : false,
+          content:   q ? q.root.innerHTML : (prev.content || ''),
+          lastSaved: nowSection
+        };
+        assignmentData.lastUpdated = nowSection;
+
+        const jsonStr = JSON.stringify(assignmentData, null, 2);
+        const result  = await githubPutFile(token, jsonStr, fileSha, 'AT1: save ' + sectionId);
+
+        // Update stored SHA
+        if (result && result.content && result.content.sha) {
+          fileSha = result.content.sha;
+        }
+
+        // Re-enable save button
+        const btn = document.getElementById('save-' + sectionId);
+        if (btn) btn.disabled = false;
+
+        markSaved(sectionId, nowSection);
+
+      } catch (err) {
+        const btn = document.getElementById('save-' + sectionId);
+        if (btn) btn.disabled = false;
+        markSaveError(sectionId, 'Save failed: ' + err.message);
+        console.error('Save error for', sectionId, err);
+      }
+    }
+
+    /* ── Token modal ── */
+    function showTokenModal() {
+      document.getElementById('token-modal').style.display = 'flex';
+      document.getElementById('token-input').value = '';
+      document.getElementById('token-error').style.display = 'none';
+      setTimeout(function () {
+        document.getElementById('token-input').focus();
+      }, 50);
+    }
+
+    function hideTokenModal() {
+      document.getElementById('token-modal').style.display = 'none';
+    }
+
+    function handleTokenSubmit() {
+      const val = document.getElementById('token-input').value.trim();
+      if (!val) {
+        const err = document.getElementById('token-error');
+        err.textContent = 'Please enter a GitHub Personal Access Token.';
+        err.style.display = 'block';
+        return;
+      }
+      setToken(val);
+      hideTokenModal();
+      loadData();
+    }
+
+    /* ── Wire up events ── */
+    function bindEvents() {
+      // Token submit button
+      document.getElementById('btn-token-submit').addEventListener('click', handleTokenSubmit);
+
+      // Allow pressing Enter in token input
+      document.getElementById('token-input').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') handleTokenSubmit();
+      });
+
+      // Change token button in header
+      document.getElementById('btn-change-token').addEventListener('click', function () {
+        document.getElementById('token-input').value = getToken();
+        showTokenModal();
+      });
+
+      // Save buttons
+      SECTIONS.forEach(function (sectionId) {
+        const btn = document.getElementById('save-' + sectionId);
+        if (btn) {
+          btn.addEventListener('click', function () {
+            saveSection(sectionId);
+          });
+        }
+
+        // Complete checkboxes
+        const chk = document.getElementById('chk-' + sectionId);
+        if (chk) {
+          chk.addEventListener('change', function () {
+            const isComplete = chk.checked;
+            applyCompletedState(sectionId, isComplete);
+            updateProgressCounter();
+            // Auto-save when toggling complete
+            saveSection(sectionId);
+          });
+        }
+      });
+    }
+
+    /* ── Bootstrap ── */
+    document.addEventListener('DOMContentLoaded', function () {
+      initEditors();
+      bindEvents();
+
+      const token = getToken();
+      if (token) {
+        // Token already in session — load data immediately
+        loadData();
+        hideTokenModal();
+      } else {
+        // First load — show token prompt
+        showTokenModal();
+      }
+    });
+
+  })();
+  </script>
+</body>
+</html>

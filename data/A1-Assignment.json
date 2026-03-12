@@ -1,6 +1,6 @@
 {
   "assignment": "AT1 - Identify Opportunities for AI Task Automation",
-  "lastUpdated": "2026-03-12T07:34:01.846Z",
+  "lastUpdated": "2026-03-12T07:36:05.751Z",
   "sections": {
     "section1": {
       "title": "Business Overview",
@@ -75,6 +75,12 @@
       "completed": false,
       "content": "<p>Chosen AI technique base on Task 3</p><ul><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">&nbsp;justify your choice</em></li><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">create a brief proposal for implementing this solution</em></li></ul><p><br></p><p><em>Your response should contain:</em></p><ul><li><em>The final submission of your AI implementation proposal to required personnel.</em></li></ul><p><em>You must also confirm the following observation checklist item:</em></p><ul><li><em>Student discussed proposed application with supervisor (lecturer) and received feedback.</em></li></ul><p><br></p>",
       "lastSaved": "2026-03-12T07:34:01.846Z"
+    },
+    "task5": {
+      "title": "task5",
+      "completed": false,
+      "content": "<p>Prepare a short presentation for giving to the class.</p><p><br></p><ul><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">summarising your findings from Tasks 1–4</em></li><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">highlighting the key aspects of your recommendation&nbsp;</em></li><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">rationale behind your chosen solution</em></li><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">address any questions they may have</em></li></ul><p><br></p><p><em>You must complete the following observation checklist items:</em></p><ul><li><em>Student incorporated relevant feedback into final presentation.</em></li><li><em>Student presented an opportunity to the class to apply AI, ML, &amp; DL technologies in the workplace.</em></li></ul><p><br></p>",
+      "lastSaved": "2026-03-12T07:36:05.751Z"
     }
   }
 }

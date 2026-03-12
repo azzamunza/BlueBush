@@ -1,6 +1,6 @@
 {
   "assignment": "AT1 - Identify Opportunities for AI Task Automation",
-  "lastUpdated": "2026-03-12T07:32:30.882Z",
+  "lastUpdated": "2026-03-12T07:34:01.846Z",
   "sections": {
     "section1": {
       "title": "Business Overview",
@@ -69,6 +69,12 @@
       "completed": false,
       "content": "<p><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">Critically assess Task 2</em></p><ul><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">How can each meet desired outcomes</em></li><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">potential limitations</em></li><li>challenges</li><li>identify risks / adverse outcomes</li></ul><p><br></p><p>It should include the following:</p><ul><li><em>Analysis of the application procedure for the three AI technologies.</em></li><li><em>A documentation of the advantages and disadvantages of each AI technique.</em></li><li><em>Documentation of identified implementation risks for each AI technique.</em></li></ul><p><br></p><p><em>You must also confirm the following observation checklist item:</em></p><ul><li><em>Student discussed implementation risks for AI, ML and DL technologies with required personnel.</em></li></ul><p><br></p>",
       "lastSaved": "2026-03-12T07:32:30.882Z"
+    },
+    "task4": {
+      "title": "task4",
+      "completed": false,
+      "content": "<p>Chosen AI technique base on Task 3</p><ul><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">&nbsp;justify your choice</em></li><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">create a brief proposal for implementing this solution</em></li></ul><p><br></p><p><em>Your response should contain:</em></p><ul><li><em>The final submission of your AI implementation proposal to required personnel.</em></li></ul><p><em>You must also confirm the following observation checklist item:</em></p><ul><li><em>Student discussed proposed application with supervisor (lecturer) and received feedback.</em></li></ul><p><br></p>",
+      "lastSaved": "2026-03-12T07:34:01.846Z"
     }
   }
 }

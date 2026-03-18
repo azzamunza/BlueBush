@@ -1,6 +1,6 @@
 {
   "assignment": "AT1 - Identify Opportunities for AI Task Automation",
-  "lastUpdated": "2026-03-12T07:36:05.751Z",
+  "lastUpdated": "2026-03-18T05:47:31.161Z",
   "sections": {
     "section1": {
       "title": "Business Overview",
@@ -61,8 +61,8 @@
     "task1": {
       "title": "task1",
       "completed": false,
-      "content": "<p><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">Identify a specific task for using AI:</em></p><p><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">A description of the current work task:</em></p><p><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">overview of any existing technologies or processes.</em></p><p><br></p><p><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">observation checklist item:</em></p><ul><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">organisational goals</em></li><li><em style=\"background-color: rgb(239, 246, 255); color: rgb(30, 58, 95);\">improving productivity</em></li></ul>",
-      "lastSaved": "2026-03-12T07:29:32.613Z"
+      "content": "<p><br></p><p>I am using the assignment example scenario for my assessment. I have fabricated BlueBush, an online store selling Eco-Friendly Homewares. The time needed to review, categorise, and respond has overwhelmed BlueBush's ability to respond to customer support requests, leading, in some cases, to a 48-hour response time. Currently, incoming requests are received by the client in bundles; this was an intentional option to reduce the overall time required to process customer requests. These requests are manually categorised according to the customer's request and then forwarded to the appropriate staff for a response. This process of reviewing, sorting, forwarding, and responding to a large volume of customer requests has worsened the response times to unacceptable levels.</p><p><br></p><p>The client wishes to investigate AI solutions to handle the majority of generalised requests made across email, social media, and website channels. My goal is to offer a solution that is iterative and scalable, growing as demand grows. It will need to improve response times, consistency of responses, and maintain a high level of customer satisfaction. This automation is aimed to reduce administration workload, allowing staff to focus on higher-value customer communications.</p><p><br></p><p>Their current customer communications system relies on, as mentioned previously, standard communication platforms: email, social media, and communications enquiries via their website.</p><p><br></p>",
+      "lastSaved": "2026-03-18T05:47:31.161Z"
     },
     "task3": {
       "title": "task3",

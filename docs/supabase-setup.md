@@ -42,7 +42,14 @@ export SUPABASE_DB_URL="postgresql://postgres:<password>@<host>:5432/postgres"
 
 psql "$SUPABASE_DB_URL" -f migrations/001_initial_schema.sql
 psql "$SUPABASE_DB_URL" -f migrations/002_rpc_and_indexes.sql
+psql "$SUPABASE_DB_URL" -f migrations/003_variant_skus.sql
+psql "$SUPABASE_DB_URL" -f migrations/004_rag_pgvector_kb.sql
 ```
+
+Migration 004 requires pgvector (already installed in Supabase). It creates the
+`kb_entries` and `rag_documents` tables, an HNSW vector index, and the
+`match_rag_documents` RPC for RAG retrieval. See `docs/rag-pipeline.md` for the
+full RAG setup guide.
 
 Or via the GitHub Action (automatically runs on push to `main` when migration files change):
 - Ensure the `SUPABASE_DB_URL` secret is set in your repository secrets (*Settings → Secrets → Actions*)
@@ -122,8 +129,12 @@ If Supabase is **not** configured (placeholder values in `env.js`), the site aut
 | `orders` | ❌ | ✅ (via RPC) | ❌ | ❌ |
 | `order_items` | ❌ | ✅ (via RPC) | ❌ | ❌ |
 | `chatbot_training` | ✅ | ❌ | ❌ | ❌ |
+| `kb_entries` | ✅ | ❌ | ❌ | ❌ |
+| `rag_documents` | ❌ | ❌ | ❌ | ❌ |
 
 Stock decrements are performed inside `place_order` which is `SECURITY DEFINER` — the function runs with elevated privileges internally, but is callable by anon. This prevents clients from directly modifying the `products` table.
+
+`rag_documents` is fully locked down — no anon access. Only the Supabase service role key (used by the Cloudflare Worker and Python scripts) can read or write this table. See `docs/rag-pipeline.md` for the RAG pipeline documentation.
 
 ---
 
@@ -136,3 +147,5 @@ Stock decrements are performed inside `place_order` which is `SECURITY DEFINER` 
 | 404 on RPC call | Migration 002 not run | Run `psql $SUPABASE_DB_URL -f migrations/002_rpc_and_indexes.sql` |
 | FAQs still showing static content | Supabase `faqs` table empty | Run migration 001 seed section or insert FAQ rows manually |
 | CORS errors | Project URL mismatch | Ensure `window.SUPABASE_URL` matches exactly the URL in your Supabase project settings |
+| Chatbot gives wrong/vague answers | RAG not indexed | Run `build_kb_entries.py` then `rag_index_supabase.py`; see `docs/rag-pipeline.md` |
+| `match_rag_documents` RPC not found | Migration 004 not run | Run `psql $SUPABASE_DB_URL -f migrations/004_rag_pgvector_kb.sql` |

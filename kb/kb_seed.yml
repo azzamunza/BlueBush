@@ -1,0 +1,199 @@
+# ============================================================
+# BlueBush Knowledge Base Seed
+# ============================================================
+# This file is processed by scripts/build_kb_entries.py which
+# upserts every entry into the Supabase `kb_entries` table.
+#
+# Format:
+#   entries:
+#     - slug: unique-kebab-case-id   # TEXT PRIMARY KEY
+#       title: Short descriptive title
+#       content: |
+#         Full factual text that will be embedded.
+#         Keep it factual, specific, and free of chatty filler.
+#       tags: [tag1, tag2]           # optional text[]
+#       source: manual               # 'manual' | 'policy' | 'faq' etc.
+#       source_id: null              # optional external ID reference
+#
+# To add new entries, append to this list and re-run:
+#   python scripts/build_kb_entries.py
+# ============================================================
+
+entries:
+
+  # ── Gift Cards ──────────────────────────────────────────────
+  - slug: gift-cards-overview
+    title: BlueBush Gift Cards — Overview
+    content: |
+      BlueBush gift cards are available in digital format only.
+      Denominations: AUD $25, $50, $100, $200.
+      Gift cards are delivered by email within 24 hours of purchase.
+      They do not expire and can be used across all products on the BlueBush website.
+      Gift cards cannot be exchanged for cash and are non-refundable.
+      One or more gift cards can be applied to a single order at checkout.
+      If the order total exceeds the gift card balance, the remaining amount can be paid by card.
+      If the order total is less than the gift card balance, the remaining balance is retained on the card.
+      To redeem, enter the gift card code in the "Promo / Gift Card" field at checkout.
+    tags: [gift-cards, payments, checkout]
+    source: manual
+
+  - slug: gift-cards-refund-policy
+    title: BlueBush Gift Cards — Refund and Resale Policy
+    content: |
+      Gift cards are non-refundable and cannot be resold or transferred for cash.
+      If an order paid with a gift card is returned, the refund is issued back to the original gift card code.
+      Lost or stolen gift card codes cannot be replaced unless BlueBush can verify the original purchase.
+      Contact support at support@bluebush.com.au with the order number to report a lost code.
+    tags: [gift-cards, refunds, policy]
+    source: manual
+
+  # ── Shipping & Delivery ─────────────────────────────────────
+  - slug: shipping-australia-standard
+    title: Shipping — Standard Australia-Wide
+    content: |
+      Standard shipping is available to all Australian states and territories.
+      Flat rate: AUD $9.95 per order, regardless of weight or quantity.
+      Estimated delivery: 5–8 business days from dispatch.
+      Orders are dispatched within 1–2 business days of payment being confirmed.
+      A tracking number is emailed when the order is dispatched.
+      BlueBush ships from Perth, WA.
+    tags: [shipping, delivery, australia]
+    source: manual
+
+  - slug: shipping-express
+    title: Shipping — Express Australia-Wide
+    content: |
+      Express shipping is available at checkout for AUD $14.95.
+      Estimated delivery: 2–4 business days from dispatch.
+      Express orders are dispatched within 1 business day if placed before 12:00 PM AWST.
+    tags: [shipping, delivery, express]
+    source: manual
+
+  - slug: shipping-international
+    title: Shipping — International Orders
+    content: |
+      BlueBush does not currently offer international shipping.
+      Customers outside Australia should contact support@bluebush.com.au to discuss options.
+    tags: [shipping, international]
+    source: manual
+
+  # ── Returns & Refunds ───────────────────────────────────────
+  - slug: returns-policy
+    title: Returns and Refunds Policy
+    content: |
+      BlueBush accepts returns within 30 days of delivery for change-of-mind purchases.
+      Items must be unused, in original packaging, and in resaleable condition.
+      To initiate a return, email support@bluebush.com.au with your order number and reason.
+      Return shipping cost is the customer's responsibility for change-of-mind returns.
+      Defective or incorrectly sent items are returned at BlueBush's expense.
+      Refunds are processed within 5 business days of receiving the returned item.
+      Refunds are issued to the original payment method.
+    tags: [returns, refunds, policy]
+    source: manual
+
+  # ── Eco & Sustainability ────────────────────────────────────
+  - slug: eco-credentials
+    title: BlueBush Eco and Sustainability Credentials
+    content: |
+      BlueBush is committed to sustainable, eco-friendly homewares.
+      Packaging is 100% recycled and recyclable. Outer cartons may appear rough or second-hand — this is intentional.
+      Many products carry an eco_badge indicating certifications such as FSC, GOTS, OEKO-TEX, or recycled content.
+      BlueBush sources from suppliers that meet ethical manufacturing standards.
+      Customers are encouraged to repurpose or recycle all packaging.
+    tags: [eco, sustainability, packaging]
+    source: manual
+
+  # ── Handmade Ceramics ───────────────────────────────────────
+  - slug: handmade-ceramics
+    title: Handmade Ceramics — Wabi-Sabi Craftsmanship
+    content: |
+      BlueBush handmade ceramic pieces are individually hand-thrown and kiln-fired.
+      Minor variations in glaze, colour, size, and surface texture are inherent to the handmade process.
+      These variations are not defects; they make each piece unique (wabi-sabi craftsmanship philosophy).
+      Slight differences from product photography are expected and celebrated.
+      If a customer believes their item has a structural defect, they should email support with photos.
+    tags: [ceramics, handmade, quality, care]
+    source: manual
+
+  # ── Natural Haircare & Deodorant ────────────────────────────
+  - slug: shampoo-bar-transition
+    title: Shampoo Bars — Transition Period
+    content: |
+      Switching from conventional liquid shampoo to a shampoo bar may involve a transition period of up to 2 weeks.
+      During transition, hair may feel waxy or heavier than usual as the scalp adjusts to the absence of sulphates.
+      This is normal and resolves as the scalp rebalances its oil production.
+      Rinsing thoroughly and using cool water can reduce transition effects.
+    tags: [shampoo-bar, haircare, natural, transition]
+    source: manual
+
+  - slug: deodorant-transition
+    title: Natural Deodorant — Transition and Sensitive Skin
+    content: |
+      Natural deodorants do not contain aluminium compounds; they neutralise odour rather than blocking sweat.
+      A detox transition of up to 2 weeks is normal when switching from antiperspirants.
+      If skin irritation or rash occurs, discontinue the bicarb-soda formula immediately.
+      BlueBush offers bicarb-free and sensitive-skin deodorant alternatives — contact support for recommendations.
+    tags: [deodorant, natural, sensitive-skin, care]
+    source: manual
+
+  # ── Linen Care ──────────────────────────────────────────────
+  - slug: linen-care
+    title: Linen Care Instructions
+    content: |
+      BlueBush linen is made from natural fibres and requires gentle care.
+      Machine wash cold or warm (up to 40°C) on a gentle cycle.
+      Some shedding or pilling is normal for the first few washes and will reduce over time.
+      Tumble dry low or line dry. Avoid high heat which can shrink or weaken fibres.
+      Linen softens and improves with each wash.
+      Do not bleach. Iron at medium heat while slightly damp for best results.
+      BlueBush linen is durable but not indestructible; avoid sharp or abrasive contact.
+    tags: [linen, care, laundry]
+    source: manual
+
+  # ── Solar Products ──────────────────────────────────────────
+  - slug: solar-products
+    title: Solar-Powered Products — Charging and Usage
+    content: |
+      BlueBush solar products use built-in solar panels for emergency and maintenance top-up charging.
+      Solar charging is NOT a replacement for mains/USB-C charging as the primary power source.
+      Primary charging should always be via the included USB-C cable.
+      Solar charging time varies significantly with light intensity, angle, and duration.
+      Direct sunlight (outdoors, not through glass) provides the most effective solar charging.
+      For best battery longevity, avoid allowing the battery to fully discharge.
+    tags: [solar, charging, battery, care]
+    source: manual
+
+  # ── Bamboo Products — Climate Warning ───────────────────────
+  - slug: bamboo-tropical-climates
+    title: Bamboo Products — Tropical Climate Advisory
+    content: |
+      Bamboo products are not recommended for bathrooms in tropical climates (Queensland, Northern Territory).
+      High humidity and limited airflow accelerate mould growth on bamboo surfaces.
+      In tropical or very humid spaces, BlueBush recommends stainless steel or stone alternatives instead.
+      If bamboo must be used, ensure the bathroom is well ventilated and the product is kept dry between uses.
+    tags: [bamboo, bathroom, mould, tropical, care]
+    source: manual
+
+  # ── Contact & Support ───────────────────────────────────────
+  - slug: contact-support
+    title: BlueBush Customer Support Contact Details
+    content: |
+      Email: support@bluebush.com.au
+      BlueBush is based in Perth, Western Australia.
+      Support hours: Monday to Friday, 9:00 AM – 5:00 PM AWST.
+      Response time: within 1 business day for emails.
+      For urgent order issues, include your order number in the subject line.
+    tags: [contact, support, email]
+    source: manual
+
+  # ── Subscription / Recurring Orders ────────────────────────
+  - slug: subscription-cancellation
+    title: Subscription Orders — Cancellation Policy
+    content: |
+      Customers can cancel a subscription or recurring order at any time with immediate effect.
+      There is no cancellation fee, no minimum commitment, and no pushback from BlueBush.
+      To cancel, email support@bluebush.com.au or use the account portal.
+      Upon cancellation, no further charges will be made.
+      Products already dispatched cannot be recalled, but the subscription will not renew.
+    tags: [subscription, cancellation, policy]
+    source: manual

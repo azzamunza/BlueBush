@@ -1,38 +1,12 @@
 /* BlueBush Chatbot Widget */
 
-const chatbotResponses = {
-  greetings: ['hello','hi','hey','g\'day','howdy'],
-  shipping: ['shipping','delivery','postage','dispatch','send','ship'],
-  returns: ['return','refund','exchange','send back'],
-  sustainability: ['sustainable','eco','environment','carbon','green','ethical'],
-  products: ['product','item','stock','available','range','sell'],
-  price: ['price','cost','how much','expensive','cheap','afford'],
-  contact: ['contact','phone','email','call','speak','talk','human','person','agent'],
-  hours: ['hours','open','close','trading','when'],
-  location: ['location','address','where','perth','store','showroom','visit','pickup'],
-  warranty: ['warranty','guarantee','defect','broken','damaged','fault'],
-  payment: ['pay','payment','card','credit','debit','afterpay','zip'],
-  vegan: ['vegan','animal','cruelty','wool','silk','beeswax'],
-  linen: ['linen','shrink','wash','care','iron','flax'],
-  default: []
-};
+const CHAT_API_BASE_URL = (typeof window !== 'undefined' && window.CHAT_API_BASE_URL)
+  ? window.CHAT_API_BASE_URL
+  : 'https://bluebush-chat-relay.azzamunza.workers.dev';
 
-const chatbotAnswers = {
-  greetings: "G'day! 👋 I'm Bilby, the BlueBush virtual assistant. How can I help you today? I can answer questions about our products, shipping, returns, or sustainability practices.",
-  shipping: "🚚 We offer **free standard shipping** on Australian orders over $75. Standard shipping (3–7 business days) is $9.95 for orders under $75. Express shipping (1–3 business days) is $14.95. We dispatch from our Perth warehouse within 1–2 business days.",
-  returns: "📦 We accept returns of unused, unopened items within **30 days** of delivery. Sale items are final sale unless faulty. To start a return, please contact us with your order number. For hygiene reasons, opened personal care products can't be returned unless defective.",
-  sustainability: "🌿 Sustainability is at our core. We use OEKO-TEX certified materials, plastic-free packaging, and offset every order by planting a native Australian tree. All our suppliers meet strict ethical sourcing standards.",
-  products: "We carry a curated range of sustainable homewares across Bedroom, Bathroom, Kitchen, Dining, and Living categories — over 69 products in total! Visit our Shop page to browse the full collection.",
-  price: "Our prices reflect the quality and ethical sourcing of every product. We offer free shipping over $75. Check individual product pages for pricing. We also offer trade discounts for businesses!",
-  contact: "📞 You can reach us at **hello@bluebush.com.au** or call **1300 123 456** (Mon–Fri 9am–6pm, Sat 10am–4pm). You can also use our Contact form for non-urgent enquiries.",
-  hours: "🕐 We're available Mon–Fri 9am–6pm AWST, and Saturday 10am–4pm. Our online store is open 24/7!",
-  location: "📍 Our showroom is at **42 Wandoo Way, Jarrawood WA 6999**, Perth. Local pickup is available by appointment — select 'Local Pickup' at checkout.",
-  warranty: "🛡️ All BlueBush products are covered by **Australian Consumer Law** guarantees. For manufacturing defects within 12 months of purchase, contact us and we'll arrange a replacement or refund.",
-  payment: "💳 We accept Visa, Mastercard, and American Express. We're working on adding Afterpay — sign up to our newsletter for updates!",
-  vegan: "Most of our products are **vegan**. Exceptions include our Silk Eye Mask (natural silk), Beeswax Wraps, and Wool Throw — clearly noted on each product page. Nothing is tested on animals. 🐾",
-  linen: "Our Maireana linen is **pre-washed** to minimise shrinkage. Wash in cold/warm water (max 30°C), line dry in shade. Some initial shedding is normal for natural flax — it settles after 3–4 washes.",
-  default: "That's a great question! I'm still learning 🌱 For detailed help, please visit our <a href=\"faq.html\">FAQ page</a> or <a href=\"contact.html\">contact our team</a> directly — we'd love to help!"
-};
+const CHAT_API_TIMEOUT_MS = 15000;
+
+let chatInFlight = false;
 
 function createChatbotWidget() {
   const widget = document.createElement('div');
@@ -48,7 +22,7 @@ function createChatbotWidget() {
         <div class="chatbot-header-info">
           <div class="chatbot-avatar" aria-hidden="true">🦘</div>
           <div>
-            <div class="chatbot-name">Bilby</div>
+            <div class="chatbot-name">Chloe</div>
             <div class="chatbot-status">BlueBush Virtual Assistant</div>
           </div>
         </div>
@@ -76,7 +50,7 @@ function createChatbotWidget() {
 
   // Show welcome message after short delay
   setTimeout(() => {
-    addBotMessage("G'day! 👋 I'm <strong>Bilby</strong>, your BlueBush virtual assistant. Ask me anything about our products, shipping, returns, or sustainability — I'm here to help!");
+    addBotMessage("G'day! 👋 I'm <strong>Chloe</strong>, your BlueBush virtual assistant. Ask me anything about our products, shipping, returns, or sustainability — I'm here to help!");
     document.getElementById('chatbot-badge').style.display = 'flex';
   }, 2000);
 }
@@ -99,29 +73,77 @@ function chatbotKeydown(e) {
 }
 
 function sendSuggestion(text) {
+  if (chatInFlight) return;
   addUserMessage(text);
   document.getElementById('chatbot-suggestions').style.display = 'none';
-  setTimeout(() => processChatMessage(text), 600);
+  callChatAPI(text);
 }
 
 function sendChatMessage() {
+  if (chatInFlight) return;
   const input = document.getElementById('chatbot-input');
   const text = input?.value.trim();
   if (!text) return;
   input.value = '';
   addUserMessage(text);
   document.getElementById('chatbot-suggestions').style.display = 'none';
-  setTimeout(() => processChatMessage(text), 600);
+  callChatAPI(text);
 }
 
-function processChatMessage(text) {
-  const lower = text.toLowerCase();
-  let category = 'default';
-  for (const [key, keywords] of Object.entries(chatbotResponses)) {
-    if (key === 'default') continue;
-    if (keywords.some(kw => lower.includes(kw))) { category = key; break; }
+async function callChatAPI(text) {
+  const input = document.getElementById('chatbot-input');
+  const btn = document.querySelector('.chatbot-send');
+  const msgs = document.getElementById('chatbot-messages');
+  if (!msgs) return;
+
+  chatInFlight = true;
+  if (input) input.disabled = true;
+  if (btn) btn.disabled = true;
+
+  const typing = document.createElement('div');
+  typing.className = 'chat-msg chat-bot';
+  typing.setAttribute('aria-label', 'Chloe is typing');
+  typing.innerHTML = '<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble chat-typing"><span></span><span></span><span></span></div>';
+  msgs.appendChild(typing);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), CHAT_API_TIMEOUT_MS);
+    const resp = await fetch(`${CHAT_API_BASE_URL}/api/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text }),
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+
+    if (!resp.ok) throw new Error(`status ${resp.status}`);
+    const data = await resp.json();
+    const reply = data && data.reply;
+    if (!reply || !reply.trim()) throw new Error('empty reply');
+
+    msgs.removeChild(typing);
+    const div = document.createElement('div');
+    div.className = 'chat-msg chat-bot';
+    div.innerHTML = `<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble">${escHtml(reply)}</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  } catch (err) {
+    if (msgs.contains(typing)) msgs.removeChild(typing);
+    const div = document.createElement('div');
+    div.className = 'chat-msg chat-bot';
+    const msg = err.name === 'AbortError'
+      ? "Sorry, the request timed out. Please try again."
+      : "Sorry, I couldn't connect right now. Please try again in a moment.";
+    div.innerHTML = `<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble chat-error">${msg}</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  } finally {
+    chatInFlight = false;
+    if (input) { input.disabled = false; input.focus(); }
+    if (btn) btn.disabled = false;
   }
-  addBotMessage(chatbotAnswers[category] || chatbotAnswers.default);
 }
 
 function addUserMessage(text) {
@@ -137,20 +159,11 @@ function addUserMessage(text) {
 function addBotMessage(html) {
   const msgs = document.getElementById('chatbot-messages');
   if (!msgs) return;
-  // Typing indicator
-  const typing = document.createElement('div');
-  typing.className = 'chat-msg chat-bot';
-  typing.innerHTML = '<div class="chat-bubble chat-typing"><span></span><span></span><span></span></div>';
-  msgs.appendChild(typing);
+  const div = document.createElement('div');
+  div.className = 'chat-msg chat-bot';
+  div.innerHTML = `<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble">${html}</div>`;
+  msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
-  setTimeout(() => {
-    msgs.removeChild(typing);
-    const div = document.createElement('div');
-    div.className = 'chat-msg chat-bot';
-    div.innerHTML = `<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble">${html}</div>`;
-    msgs.appendChild(div);
-    msgs.scrollTop = msgs.scrollHeight;
-  }, 800);
 }
 
 function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }

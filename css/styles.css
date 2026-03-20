@@ -2318,6 +2318,9 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: center; transition: background 0.2s; flex-shrink: 0;
 }
 .chatbot-send:hover { background: var(--emerald); }
+.chatbot-send:disabled { background: var(--gray-200); cursor: not-allowed; }
+.chatbot-input:disabled { background: var(--gray-100); cursor: not-allowed; }
+.chat-bubble.chat-error { background: #fef2f2; color: var(--red-600); border: 1px solid #fecaca; }
 @media (max-width: 480px) {
   #chatbot-widget { bottom: 1rem; right: 1rem; }
   .chatbot-window { width: calc(100vw - 2rem); right: -1rem; }

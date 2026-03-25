@@ -1868,14 +1868,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (delBtn) { adminChatbotDB.deleteEntry(delBtn.dataset.cdbDelete); return; }
   });
 
-  // Check for existing session
-  const token = sessionStorage.getItem('bb_admin_token');
-  if (token) {
-    try {
-      const user = await validateToken(token);
-      showAdminApp(user.login);
-    } catch {
-      sessionStorage.removeItem('bb_admin_token');
-    }
-  }
+  // Auth is handled by js/admin-auth.js (Supabase).
+  // Do not auto-login via legacy GitHub PAT session here.
 });

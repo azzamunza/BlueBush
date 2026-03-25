@@ -81,78 +81,36 @@ const githubAPI = {
 
 /* ===========================
    AUTH
+   Login / logout are handled by js/admin-auth.js (Supabase Google OAuth).
+   The functions below are kept for compatibility and delegate to bbAdminAuth.
 =========================== */
-async function validateToken(token) {
-  const res = await fetch('https://api.github.com/user', {
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Accept': 'application/vnd.github+json',
-    }
-  });
-  if (res.status === 401) throw new Error('invalid_token');
-  if (!res.ok) throw new Error('api_error');
-  const data = await res.json();
-  if (data.login !== ADMIN_USER) throw new Error('wrong_user');
-  return data;
-}
-
-async function handleLogin(e) {
-  e.preventDefault();
-  const tokenInput = document.getElementById('pat-input');
-  const btn = document.getElementById('login-submit');
-  const errEl = document.getElementById('login-error');
-  const token = (tokenInput.value || '').trim();
-
-  if (!token) {
-    showLoginError('Please enter your GitHub Personal Access Token.');
-    return;
-  }
-
-  btn.disabled = true;
-  btn.textContent = 'Verifying…';
-  errEl.classList.remove('visible');
-
-  try {
-    const user = await validateToken(token);
-    sessionStorage.setItem('bb_admin_token', token);
-    sessionStorage.setItem('bb_admin_user', user.login);
-    showAdminApp(user.login);
-  } catch (err) {
-    if (err.message === 'invalid_token') {
-      showLoginError('Invalid token. Please check your GitHub Personal Access Token.');
-    } else if (err.message === 'wrong_user') {
-      showLoginError('Access denied. This admin panel is restricted to the repository owner.');
-    } else {
-      showLoginError('Unable to verify token. Please try again.');
-    }
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Sign In';
-  }
-}
 
 function showLoginError(msg) {
   const el = document.getElementById('login-error');
+  if (!el) return;
   el.textContent = msg;
   el.classList.add('visible');
 }
 
-function handleLogout() {
-  sessionStorage.removeItem('bb_admin_token');
-  sessionStorage.removeItem('bb_admin_user');
-  sessionStorage.removeItem('bb_supabase_url');
-  sessionStorage.removeItem('bb_supabase_key');
-  document.getElementById('admin-app').classList.add('hidden');
-  document.getElementById('login-overlay').classList.remove('hidden');
-  document.getElementById('pat-input').value = '';
-  document.getElementById('login-error').classList.remove('visible');
+async function handleLogout() {
+  if (typeof window.bbAdminAuth !== 'undefined') {
+    await window.bbAdminAuth.handleLogout();
+  }
 }
 
-function showAdminApp(username) {
-  document.getElementById('login-overlay').classList.add('hidden');
-  document.getElementById('admin-app').classList.remove('hidden');
+/**
+ * Called by admin-auth.js after a valid session + role check.
+ * @param {string} displayName - User's full name or email
+ * @param {string} email       - User's Google email
+ * @param {string} role        - Role from admin_roles table
+ */
+function showAdminApp(displayName, email, role) {
+  document.getElementById('login-overlay')?.classList.add('hidden');
+  document.getElementById('admin-app')?.classList.remove('hidden');
   const userEl = document.getElementById('admin-username');
-  if (userEl) userEl.textContent = username || ADMIN_USER;
+  if (userEl) userEl.textContent = displayName || email || ADMIN_USER;
+  const roleEl = document.getElementById('admin-user-role');
+  if (roleEl) roleEl.textContent = role || '';
   navigateTo('dashboard');
 }
 
@@ -1549,12 +1507,11 @@ async function updateOrderStatus(orderId) {
 =========================== */
 async function loadSettings() {
   await checkApiStatus();
-  const url = sessionStorage.getItem('bb_supabase_url') || '';
-  const key = sessionStorage.getItem('bb_supabase_key') || '';
-  const urlEl = document.getElementById('settings-sb-url');
-  const keyEl = document.getElementById('settings-sb-key');
-  if (urlEl) urlEl.value = url;
-  if (keyEl) keyEl.value = key;
+  // Pre-fill GitHub PAT field if one is already saved in the session.
+  const ghPat = sessionStorage.getItem('bb_admin_token') || '';
+  const ghPatEl = document.getElementById('settings-gh-pat');
+  // Show a masked placeholder to indicate a token is saved, without exposing any characters.
+  if (ghPatEl && ghPat) ghPatEl.placeholder = '••••••••••••••••••••';
 }
 
 async function checkApiStatus() {
@@ -1562,6 +1519,11 @@ async function checkApiStatus() {
   const dot = document.getElementById('api-status-dot');
   const text = document.getElementById('api-status-text');
   if (!dot || !text) return;
+  if (!token) {
+    dot.className = 'status-dot amber';
+    text.textContent = 'GitHub API: No PAT configured';
+    return;
+  }
   try {
     const res = await fetch('https://api.github.com/user', {
       headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' }
@@ -1579,13 +1541,12 @@ async function checkApiStatus() {
   }
 }
 
-function saveSettingsSupabase() {
-  const url = document.getElementById('settings-sb-url')?.value?.trim();
-  const key = document.getElementById('settings-sb-key')?.value?.trim();
-  if (!url || !key) { showToast('error', 'Both URL and key are required.'); return; }
-  sessionStorage.setItem('bb_supabase_url', url);
-  sessionStorage.setItem('bb_supabase_key', key);
-  showToast('success', 'Supabase credentials saved to session.');
+function saveSettingsGitHub() {
+  const token = document.getElementById('settings-gh-pat')?.value?.trim();
+  if (!token) { showToast('error', 'Please enter a GitHub Personal Access Token.'); return; }
+  sessionStorage.setItem('bb_admin_token', token);
+  showToast('success', 'GitHub PAT saved to session.');
+  checkApiStatus();
 }
 
 async function validateProductsJSON() {

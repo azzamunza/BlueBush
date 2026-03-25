@@ -142,6 +142,11 @@
     const email = session.user.email;
     const name = session.user.user_metadata?.full_name || session.user.user_metadata?.name || email;
 
+    // Clean up the PKCE ?code=... query param from the URL after a successful login.
+    if (new URLSearchParams(location.search).has('code')) {
+      history.replaceState({}, document.title, location.pathname);
+    }
+
     // Show admin app (defined in admin.js).
     if (typeof window.showAdminApp === 'function') {
       window.showAdminApp(name, email, role);

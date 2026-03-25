@@ -1,6 +1,6 @@
 # Admin Authentication & Authorisation — BlueBush
 
-This document explains how to configure and deploy the Supabase Google OAuth
+This document explains how to configure and deploy the Supabase email magic-link
 login flow for the BlueBush Admin Dashboard, and the companion Cloudflare Worker
 that validates sessions server-side.
 
@@ -11,12 +11,12 @@ that validates sessions server-side.
 ```
 Browser (admin.html)
   │  loads js/admin-auth.js
-  │  calls supabase.auth.signInWithOAuth({ provider: 'google' })
+  │  calls supabase.auth.signInWithOtp({ email })
   ▼
-Google Consent Screen
-  │  redirects back to admin.html with PKCE code
+Supabase (sends magic-link email)
+  │  user clicks link → redirected back to admin.html
   ▼
-js/admin-auth.js (PKCE exchange handled by Supabase JS client)
+js/admin-auth.js (session established by Supabase JS client)
   │  calls admin_roles table to check allowlist
   ▼
 Admin App shown (or "Access denied" error)
@@ -32,16 +32,15 @@ Cloudflare Worker (bluebush-admin-api)
 
 ---
 
-## Step 1 — Supabase: Enable Google OAuth Provider
+## Step 1 — Supabase: Configure Email Auth
 
-1. Go to **Authentication → Providers → Google** in your Supabase project dashboard.
-2. Enable the **Google** provider.
-3. Create a Google Cloud OAuth 2.0 Client ID (type: _Web application_).
-   - **Authorised JavaScript origins**: `https://azzamunza.github.io`
-   - **Authorised redirect URIs**: `https://<project-id>.supabase.co/auth/v1/callback`
-4. Paste the Client ID and Client Secret into Supabase and save.
-5. Under **Authentication → URL Configuration**, add your admin page URL to **Redirect URLs**:
-   - `https://azzamunza.github.io/BlueBush/admin.html`
+Email authentication (magic link / OTP) is **enabled by default** in all Supabase
+projects — no extra configuration is required to use it.
+
+Optionally, under **Authentication → URL Configuration**, add your admin page URL
+to **Redirect URLs** to suppress Supabase warnings:
+
+- `https://azzamunza.github.io/BlueBush/admin.html`
 
 ---
 
@@ -107,10 +106,12 @@ No additional configuration is required for local development as long as
    - If an unexpired session exists in `localStorage`, the user is validated
      against `admin_roles` and the admin app is shown immediately.
    - If not, the login screen is shown.
-3. User clicks **Sign in with Google** → `bbAdminAuth.handleGoogleLogin()` is called:
-   - Supabase initiates a PKCE OAuth flow and redirects the browser to Google.
-4. After Google consent, the browser is redirected back to `admin.html` with a
-   `code` parameter. Supabase JS automatically exchanges it for a session.
+3. User enters their email address and clicks **Send sign-in link**
+   → `bbAdminAuth.handleEmailLogin()` is called:
+   - Supabase sends a magic-link email to the address.
+   - The page shows a "Check your inbox" confirmation.
+4. User clicks the link in the email → the browser is redirected back to
+   `admin.html`. The Supabase JS client automatically establishes a session.
 5. The `onAuthStateChange` listener fires with `SIGNED_IN` → `_handleSession()`
    checks `admin_roles` and shows the app (or an error if not allowlisted).
 

@@ -1,10 +1,10 @@
-/* ===== BlueBush Admin — Supabase Auth (Google OAuth) =====
+/* ===== BlueBush Admin — Supabase Auth (Email Magic Link) =====
  *
  * Responsibilities:
- *   1. On page load: check existing Supabase session or handle OAuth callback.
+ *   1. On page load: check existing Supabase session or handle magic-link callback.
  *   2. If a valid session exists, verify the user's email is in admin_roles.
  *   3. Expose role to the rest of admin.js (window.BB_ADMIN_ROLE).
- *   4. Provide handleGoogleLogin() and handleLogout() replacements.
+ *   4. Provide handleEmailLogin() and handleLogout() replacements.
  *
  * Requires (loaded before this script):
  *   - js/env.js          (window.SUPABASE_URL, window.SUPABASE_ANON_KEY)
@@ -49,6 +49,8 @@
     document.getElementById('admin-app')?.classList.add('hidden');
     document.getElementById('login-overlay')?.classList.remove('hidden');
     document.getElementById('login-error')?.classList.remove('visible');
+    document.getElementById('login-form')?.classList.remove('hidden');
+    document.getElementById('login-sent')?.classList.add('hidden');
   }
 
   function showError(msg) {
@@ -58,11 +60,21 @@
     el.classList.add('visible');
   }
 
+  function showSentConfirmation(email) {
+    document.getElementById('login-form')?.classList.add('hidden');
+    const sentEl = document.getElementById('login-sent');
+    if (sentEl) {
+      sentEl.classList.remove('hidden');
+      const emailEl = document.getElementById('login-sent-email');
+      if (emailEl) emailEl.textContent = email;
+    }
+  }
+
   function setLoginLoading(loading) {
     const btn = document.getElementById('login-submit');
     if (!btn) return;
     btn.disabled = loading;
-    btn.textContent = loading ? 'Redirecting…' : 'Sign in with Google';
+    btn.textContent = loading ? 'Sending…' : 'Send sign-in link';
   }
 
   /* ── Role check ──────────────────────────────────────── */
@@ -104,7 +116,7 @@
       return;
     }
 
-    // Exchange the PKCE code in the URL (after OAuth redirect) if present.
+    // Restore session from URL tokens (after magic-link redirect) if present.
     const { data: { session }, error: sessionError } = await client.auth.getSession();
 
     if (sessionError) {
@@ -128,7 +140,7 @@
   async function _handleSession(session) {
     const role = await fetchAdminRole(session);
     if (!role) {
-      // Authenticated with Google but not in the allowlist.
+      // Authenticated but not in the allowlist.
       const client = getSbClient();
       if (client) await client.auth.signOut();
       showLogin();
@@ -151,27 +163,45 @@
   /* ── Public API ──────────────────────────────────────── */
 
   /**
-   * Initiates Supabase Google OAuth (PKCE).
-   * Redirects the browser to Google's consent page.
+   * Initiates Supabase email magic-link (OTP) sign-in.
+   * Reads the email from #login-email and sends the link.
    */
-  async function handleGoogleLogin() {
+  async function handleEmailLogin() {
     const client = getSbClient();
     if (!client) {
       showError('Authentication service unavailable.');
       return;
     }
+    const emailInput = document.getElementById('login-email');
+    const email = emailInput ? emailInput.value.trim() : '';
+    if (!email) {
+      showError('Please enter your email address.');
+      return;
+    }
     setLoginLoading(true);
     const loc = window.location;
     const redirectTo = loc.origin + loc.pathname;
-    const { error } = await client.auth.signInWithOAuth({
-      provider: 'google',
-      options: { redirectTo },
+    const { error } = await client.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: redirectTo,
+      },
     });
+    setLoginLoading(false);
     if (error) {
-      setLoginLoading(false);
-      showError('Google sign-in failed: ' + error.message);
+      showError('Sign-in failed: ' + error.message);
+    } else {
+      showSentConfirmation(email);
     }
-    // On success the browser is redirected; no further action needed here.
+  }
+
+  /**
+   * Resets the login form back to the email-entry state.
+   */
+  function resetLoginForm() {
+    document.getElementById('login-form')?.classList.remove('hidden');
+    document.getElementById('login-sent')?.classList.add('hidden');
+    document.getElementById('login-error')?.classList.remove('visible');
   }
 
   /**
@@ -216,7 +246,8 @@
   // ── Expose on window ─────────────────────────────────────────
   window.bbAdminAuth = {
     initAuth,
-    handleGoogleLogin,
+    handleEmailLogin,
+    resetLoginForm,
     handleLogout,
     getAccessToken,
     fetchAdminRole,

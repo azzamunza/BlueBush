@@ -132,6 +132,10 @@ body {
 .login-btn-google:hover { background: #f8f9fa; border-color: #c5c6c7; }
 
 
+/* Back button in magic-link sent confirmation */
+.login-btn-back { margin-top: 0.5rem; }
+
+
 .login-error {
   background: #fef2f2;
   border: 1px solid #fecaca;

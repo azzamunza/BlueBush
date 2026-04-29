@@ -50,7 +50,7 @@ function createChatbotWidget() {
 
   // Show welcome message after short delay
   setTimeout(() => {
-    addBotMessage("G'day! 👋 I'm <strong>Chloe</strong>, your BlueBush virtual assistant. Ask me anything about our products, shipping, returns, or sustainability — I'm here to help!");
+    addBotMessage("Hello, your speaking with Chloe, how can I help you?");
     document.getElementById('chatbot-badge').style.display = 'flex';
   }, 2000);
 }

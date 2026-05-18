@@ -179,9 +179,23 @@ async function callChatAPI(text) {
 
     if (!resp.ok) throw new Error(`status ${resp.status}`);
     const data = await resp.json();
-    const reply = (data && data.reply) || '';
+    let reply = (data && data.reply) || '';
     
     msgs.removeChild(typing);
+
+    // Handle [ACTION] tags (process and strip from UI)
+    const actionMatch = reply.match(/\[ACTION\]\s+ADD_TO_CART\s+({.+})/);
+    if (actionMatch) {
+        try {
+            const actionData = JSON.parse(actionMatch[1]);
+            if (typeof cart !== 'undefined' && cart.addItem) {
+                cart.addItem(actionData.id, actionData.name, actionData.price, actionData.variant || 'Standard');
+            }
+        } catch (e) {
+            console.error("Action Parse Error:", e);
+        }
+        reply = reply.replace(/\[ACTION\].*$/, '').trim();
+    }
 
     // Parse and handle STALL messages
     const parts = reply.split(/(\[STALL\][^.]+[\.!])/);

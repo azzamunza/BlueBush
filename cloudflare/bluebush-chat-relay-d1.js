@@ -61,11 +61,13 @@ export default {
         const ids = vectorMatches.matches.map(m => m.id);
         const placeholders = ids.map(() => '?').join(',');
         const d1Results = await env.DB.prepare(
-          `SELECT content FROM rag_documents WHERE id IN (${placeholders})`
+          `SELECT source_id, title, content FROM rag_documents WHERE id IN (${placeholders})`
         ).bind(...ids).all();
         
         if (d1Results.results && d1Results.results.length > 0) {
-          contextString = d1Results.results.map((r, i) => `[Doc ${i+1}]: ${r.content}`).join("\n\n");
+          contextString = d1Results.results.map((r, i) => {
+            return `[Document ${i+1}]\nSKU: ${r.source_id}\nName: ${r.title}\n${r.content}`;
+          }).join("\n\n");
         }
       } else {
         // Fallback to D1 text search if no vector matches found (e.g. index empty)
@@ -126,6 +128,10 @@ Persona Guidelines:
 - Spelling: Use correct Australian English spelling at all times. Do NOT use slang spelling (e.g., use "doing" instead of "doin'", "you" instead of "ya"). 
 - Vocabulary: Use terms like "No worries", "Cheers", or "Sorted" naturally and professionally.
 - Directness: Provide direct answers. Do not start every response with a generic greeting unless appropriate.
+- Shopping Cart Integration:
+    - If a customer expresses interest in buying or adding an item to their cart, and the product/variant is identified, append an action tag at the end of your response.
+    - Action Tag Format: [ACTION] ADD_TO_CART {"id": "...", "name": "...", "price": 0.00, "variant": "..."}
+    - Ensure you provide a natural verbal confirmation before the tag, e.g., "No worries, I've added that Sage Linen Sheet Set to your cart for you."
 - Information Retrieval Realism:
     - If you need to check specific details like stock levels, variant availability, or complex product specs (e.g., ingredients, dimensions), provide a "stalling" phrase first to show you are looking it up.
     - Format: Start these responses with "[STALL] I'll just check our current stock levels for you." or similar natural phrasing, followed by the answer.

@@ -2,7 +2,7 @@
 
 const CHAT_API_BASE_URL = (typeof window !== 'undefined' && window.CHAT_API_BASE_URL)
   ? window.CHAT_API_BASE_URL
-  : 'https://bluebush-chat-relay.azzamunza.workers.dev';
+  : 'https://bluebush-ai.azzamunza.workers.dev';
 
 const CHAT_API_TIMEOUT_MS = 15000;
 

@@ -5,8 +5,10 @@ const CHAT_API_BASE_URL = (typeof window !== 'undefined' && window.CHAT_API_BASE
   : 'https://bluebush-ai.azzamunza.workers.dev';
 
 const CHAT_API_TIMEOUT_MS = 15000;
+const TYPING_SPEED_CPM = 250; // Characters per minute for a skilled typist
 
 let chatInFlight = false;
+let isConnected = false;
 
 function createChatbotWidget() {
   const widget = document.createElement('div');
@@ -22,8 +24,8 @@ function createChatbotWidget() {
         <div class="chatbot-header-info">
           <div class="chatbot-avatar" aria-hidden="true">🦘</div>
           <div>
-            <div class="chatbot-name">Chloe</div>
-            <div class="chatbot-status">BlueBush Virtual Assistant</div>
+            <div class="chatbot-name" id="chatbot-header-name"></div>
+            <div class="chatbot-status" id="chatbot-header-status">BlueBush Support</div>
           </div>
         </div>
         <button class="chatbot-close" onclick="toggleChatbot()" aria-label="Close chat">
@@ -33,26 +35,83 @@ function createChatbotWidget() {
       <div class="chatbot-messages" id="chatbot-messages" role="log" aria-live="polite" aria-label="Chat messages">
         <!-- Messages injected here -->
       </div>
-      <div class="chatbot-suggestions" id="chatbot-suggestions">
+      <div class="chatbot-suggestions" id="chatbot-suggestions" style="display:none">
         <button onclick="sendSuggestion('Shipping info')">🚚 Shipping</button>
         <button onclick="sendSuggestion('Return policy')">📦 Returns</button>
         <button onclick="sendSuggestion('Our location')">📍 Location</button>
         <button onclick="sendSuggestion('Is it vegan?')">🌿 Vegan?</button>
       </div>
       <div class="chatbot-input-row">
-        <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Type a message..." aria-label="Chat message input" onkeydown="chatbotKeydown(event)" maxlength="200">
-        <button class="chatbot-send" onclick="sendChatMessage()" aria-label="Send message">
+        <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Type a message..." aria-label="Chat message input" onkeydown="chatbotKeydown(event)" maxlength="200" disabled>
+        <button class="chatbot-send" id="chatbot-send" onclick="sendChatMessage()" aria-label="Send message" disabled>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
         </button>
       </div>
     </div>`;
   document.body.appendChild(widget);
 
-  // Show welcome message after short delay
-  setTimeout(() => {
-    addBotMessage("Hello, your speaking with Chloe, how can I help you?");
-    document.getElementById('chatbot-badge').style.display = 'flex';
-  }, 2000);
+  initConnectionSequence();
+}
+
+async function initConnectionSequence() {
+  const msgs = document.getElementById('chatbot-messages');
+  if (!msgs) return;
+
+  // 1. Initial Message
+  addBotMessage("Please stand by while we connect you with a BlueBush staff member");
+  
+  // 2. 2-second pause
+  await new Promise(r => setTimeout(r, 2000));
+
+  // 3. Connecting... animation (4 seconds)
+  const connectingDiv = document.createElement('div');
+  connectingDiv.className = 'chat-msg chat-bot';
+  connectingDiv.innerHTML = `<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble">Connecting<span id="connecting-dots"></span></div>`;
+  msgs.appendChild(connectingDiv);
+  
+  let dots = 0;
+  const dotsInterval = setInterval(() => {
+    dots = (dots % 3) + 1;
+    const el = document.getElementById('connecting-dots');
+    if (el) el.textContent = '.'.repeat(dots);
+  }, 500);
+
+  await new Promise(r => setTimeout(r, 4000));
+  clearInterval(dotsInterval);
+  msgs.removeChild(connectingDiv);
+
+  // 4. Update Header
+  document.getElementById('chatbot-header-name').textContent = "Chloe";
+  document.getElementById('chatbot-header-status').textContent = "You are chatting with Chloe";
+
+  // 5. Welcome Message with Typing simulation
+  await simulateTyping("Hello, I am Chloe. How can I help you today?");
+  
+  // 6. Enable Input
+  document.getElementById('chatbot-input').disabled = false;
+  document.getElementById('chatbot-send').disabled = false;
+  document.getElementById('chatbot-suggestions').style.display = 'flex';
+  document.getElementById('chatbot-badge').style.display = 'flex';
+  isConnected = true;
+}
+
+async function simulateTyping(text) {
+  const msgs = document.getElementById('chatbot-messages');
+  if (!msgs) return;
+
+  // Show indicator
+  const typing = document.createElement('div');
+  typing.className = 'chat-msg chat-bot';
+  typing.innerHTML = '<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble chat-typing"><span></span><span></span><span></span></div>';
+  msgs.appendChild(typing);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  // Calculate duration (min 1s, max 10s)
+  const duration = Math.max(1000, Math.min(10000, (text.length / TYPING_SPEED_CPM) * 60 * 1000));
+  await new Promise(r => setTimeout(r, duration));
+
+  msgs.removeChild(typing);
+  addBotMessage(text);
 }
 
 function toggleChatbot() {
@@ -64,7 +123,7 @@ function toggleChatbot() {
   toggle.setAttribute('aria-expanded', String(isOpen));
   if (isOpen) {
     badge.style.display = 'none';
-    document.getElementById('chatbot-input')?.focus();
+    if (isConnected) document.getElementById('chatbot-input')?.focus();
   }
 }
 
@@ -92,7 +151,7 @@ function sendChatMessage() {
 
 async function callChatAPI(text) {
   const input = document.getElementById('chatbot-input');
-  const btn = document.querySelector('.chatbot-send');
+  const btn = document.getElementById('chatbot-send');
   const msgs = document.getElementById('chatbot-messages');
   if (!msgs) return;
 
@@ -100,9 +159,9 @@ async function callChatAPI(text) {
   if (input) input.disabled = true;
   if (btn) btn.disabled = true;
 
+  // Show typing indicator during fetch
   const typing = document.createElement('div');
   typing.className = 'chat-msg chat-bot';
-  typing.setAttribute('aria-label', 'Chloe is typing');
   typing.innerHTML = '<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble chat-typing"><span></span><span></span><span></span></div>';
   msgs.appendChild(typing);
   msgs.scrollTop = msgs.scrollHeight;
@@ -120,15 +179,26 @@ async function callChatAPI(text) {
 
     if (!resp.ok) throw new Error(`status ${resp.status}`);
     const data = await resp.json();
-    const reply = data && data.reply;
-    if (!reply || !reply.trim()) throw new Error('empty reply');
-
+    const reply = (data && data.reply) || '';
+    
     msgs.removeChild(typing);
-    const div = document.createElement('div');
-    div.className = 'chat-msg chat-bot';
-    div.innerHTML = `<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble">${escHtml(reply)}</div>`;
-    msgs.appendChild(div);
-    msgs.scrollTop = msgs.scrollHeight;
+
+    // Parse and handle STALL messages
+    const parts = reply.split(/(\[STALL\][^.]+[\.!])/);
+    for (const part of parts) {
+        let cleanPart = part.trim();
+        if (!cleanPart) continue;
+        
+        if (cleanPart.startsWith('[STALL]')) {
+            cleanPart = cleanPart.replace('[STALL]', '').trim();
+            addBotMessage(cleanPart);
+            // Simulate a "thinking" pause after the stall message
+            await new Promise(r => setTimeout(r, 2500));
+        } else {
+            await simulateTyping(cleanPart);
+        }
+    }
+
   } catch (err) {
     if (msgs.contains(typing)) msgs.removeChild(typing);
     const div = document.createElement('div');
@@ -161,9 +231,10 @@ function addBotMessage(html) {
   if (!msgs) return;
   const div = document.createElement('div');
   div.className = 'chat-msg chat-bot';
-  div.innerHTML = `<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble">${html}</div>`;
+  div.innerHTML = `<div class="chat-avatar" aria-hidden="true">🦘</div><div class="chat-bubble">${escHtml(html)}</div>`;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
+  return div;
 }
 
 function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
